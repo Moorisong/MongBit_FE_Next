@@ -1,0 +1,112 @@
+@media (max-width: 375px) {
+  .userInfoWrap {
+    width: 345px;
+  }
+}
+@media (min-width: 376px) {
+  .userInfoWrap {
+    width: 370px;
+  }
+}
+.userInfoWrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.wrap {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  position: relative;
+  padding-bottom: 130px;
+}
+
+.button {
+  width: 2rem;
+  height: 2rem;
+  background-color: red;
+}
+
+.userImg {
+  width: 35px;
+  height: 35px;
+  margin-right: 5px;
+  border-radius: 13.5px;
+}
+
+.spanWrap {
+  margin-left: 5px;
+}
+
+.spanWrap > p:first-child {
+  color: black;
+  font-size: 0.8rem;
+}
+
+.spanWrap > p:last-child {
+  color: #979797;
+  font-size: 0.7rem;
+  font-weight: 300;
+}
+
+.seeMoreWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2f2f2;
+  width: 100px;
+  height: 30px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.seeMoreWrap {
+  cursor: pointer;
+}
+.seeMoreWrap > button {
+  color: #979797;
+  font-size: 0.8rem;
+  width: 100px;
+  border-radius: 15px;
+}
+
+.loadImg {
+  width: 200px;
+  height: 400px;
+}
+
+.loadImgWrap_2 {
+  width: 60px;
+  height: 60px;
+}
+
+.loadImgWrap_2 > div {
+  padding-top: 5px;
+}
+
+.noResultWrap {
+  margin: 150px 0 200px 0;
+}
+.noResultWrap > p {
+  margin-top: 50px;
+}
+.goTestLink {
+  text-align: center;
+  padding: 8px;
+  border-radius: 1.5rem;
+  background-color: #ffc52f;
+  color: white;
+  margin-top: 20px;
+}
+
+.footerWrap {
+  position: absolute;
+  bottom: 0;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

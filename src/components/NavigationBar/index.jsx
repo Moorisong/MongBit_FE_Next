@@ -85,7 +85,7 @@ export default function NavigationBar() {
             <ul className={styles.ulWrap}>
               개발자 정보
               <li>
-                <Link href="/devInfo">몽뭉이 크루</Link>
+                <Link href="/devinfo">몽뭉이 크루</Link>
               </li>
             </ul>
           </li>

@@ -7,6 +7,7 @@ import lottie from "lottie-web";
 
 import styles from "./index.module.css";
 import animationData_1 from "./loading_1.json";
+import Footer from "@/components/Footer";
 import { TitleWithText } from "@/components/Titles";
 import { TestCard } from "@/components/TestCard";
 import { GoRandomStartBtn } from "@/components/ButtonSets";
@@ -76,7 +77,7 @@ export default function main() {
         type_1={TITLE_WITH_CONTENT}
       />
 
-      <GoRandomStartBtn url="/test-random" str="아무거나 시작" />
+      <GoRandomStartBtn url="/test/random" str="아무거나 시작" />
       <div className={styles.testWrap}>
         <TitleWithText title="🌟 심테의 근본, MBTI 검사" />
         <TestCard
@@ -107,7 +108,7 @@ export default function main() {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

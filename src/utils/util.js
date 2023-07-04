@@ -28,7 +28,6 @@ export function decodeToken() {
   }
 }
 
-
 export function formatTimeDifference(dateString) {
   const currentDate = new Date();
   let targetDate = new Date(dateString);
@@ -84,8 +83,8 @@ export function shareToKatalk(testId, title, description, testImgUri) {
         description: description,
         imageUrl: testImgUri,
         link: {
-          mobileWebUrl: `${DOMAIN}/test-preview/${testId}`,
-          webUrl: `${DOMAIN}/test-preview/${testId}`,
+          mobileWebUrl: `${DOMAIN}/test/preview/${testId}`,
+          webUrl: `${DOMAIN}/test/preview/${testId}`,
         },
       },
     ],
@@ -93,8 +92,8 @@ export function shareToKatalk(testId, title, description, testImgUri) {
       {
         title: "테스트 하러 가기",
         link: {
-          mobileWebUrl: `${DOMAIN}/test-preview/${testId}`,
-          webUrl: `${DOMAIN}/test-preview/${testId}`,
+          mobileWebUrl: `${DOMAIN}/test/preview/${testId}`,
+          webUrl: `${DOMAIN}/test/preview/${testId}`,
         },
       },
     ],
@@ -131,8 +130,8 @@ export function shareToKatalk_result(
       {
         title: "테스트 하기",
         link: {
-          mobileWebUrl: `${DOMAIN}/test-preview/${testId}`,
-          webUrl: `${DOMAIN}/test-preview/${testId}`,
+          mobileWebUrl: `${DOMAIN}/test/preview/${testId}`,
+          webUrl: `${DOMAIN}/test/preview/${testId}`,
         },
       },
       {
@@ -155,6 +154,7 @@ export function clearSessionStorage() {
 }
 
 export function getHeaders() {
+  if (typeof sessionStorage === "undefined") return;
   return {
     Authorization: sessionStorage.getItem(TOKEN_NAME),
   };

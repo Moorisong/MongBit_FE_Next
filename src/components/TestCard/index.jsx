@@ -32,7 +32,7 @@ function TestCard(props) {
       onClick={() => {
         if (props.type === TYPE_MYPAGE)
           return router.push(`/record/${props.testId}/${props.testResultId}`);
-        router.push(`/test-preview/${props.testId}`);
+        router.push(`/test/preview/${props.testId}`);
       }}
     >
       <img src={props.thumbnailUri} className={cn_2} />

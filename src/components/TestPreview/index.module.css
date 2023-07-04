@@ -1,0 +1,245 @@
+@media (max-width: 375px) {
+  .wrap {
+    max-width: 375px;
+  }
+
+  .contentWrap {
+    width: 375px;
+  }
+
+  .contentUl {
+    width: 345px;
+  }
+
+  .buttonSet {
+    width: 345px;
+  }
+
+  .commentInput {
+    width: 100%;
+    max-width: 345px;
+  }
+
+  .contentTextWrap {
+    width: 345px;
+  }
+
+  .commentInputWrap {
+    width: 345px;
+  }
+
+  .commentWrap {
+    width: 345px;
+  }
+}
+
+@media (min-width: 376px) {
+  .wrap {
+    max-width: 400px;
+  }
+
+  .contentWrap {
+    width: 400px;
+  }
+
+  .contentUl {
+    width: 370px;
+  }
+
+  .buttonSet {
+    width: 370px;
+  }
+
+  .commentInput {
+    width: 100%;
+    max-width: 370px;
+  }
+
+  .contentTextWrap {
+    width: 370px;
+  }
+
+  .commentInputWrap {
+    width: 370px;
+  }
+
+  .commentWrap {
+    width: 370px;
+  }
+}
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+}
+
+.contentWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contentUl {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 10px;
+}
+
+.buttonSet {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 30px 0 10px 0;
+}
+
+.commentInput {
+  height: 2.5rem;
+  padding: 0 40px 0 10px;
+  background-color: #f1f1f1;
+  font-size: 12px;
+  color: #979797;
+  border-radius: 0.3rem;
+}
+
+.contentTextWrap {
+  font-size: 1rem;
+  color: black;
+  font-weight: 300;
+  margin: 10px 0 20px 0;
+}
+
+.commentInputWrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+
+.commentWrap {
+  margin: 10px 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.commentWrapLoading {
+  margin: 50px 0 20px 0;
+}
+.contentUl > li {
+  color: #979797;
+  font-size: 0.9rem;
+}
+
+.likeCntNumWrap {
+  text-align: center;
+}
+
+.buttonSet > li p {
+  padding: 5px 0 0 0;
+}
+
+.likeWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.likeWrap > img {
+  width: 20px;
+  height: 20px;
+}
+
+.likeCntNum {
+  color: #979797;
+}
+
+.commentInput::placeholder {
+  color: #979797;
+}
+
+.commentInput:focus {
+  outline: none;
+}
+
+.modifyInputBoderBottomRed {
+  border-bottom: 2px solid red;
+}
+
+.charsLimit {
+  color: #979797;
+  position: absolute;
+  top: -19px;
+  right: 5px;
+  font-size: 11px;
+}
+
+.commentContentWrap {
+  position: relative;
+}
+
+.commentWrap span {
+  color: #979797;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.commentWrap p {
+  width: 100%;
+  color: black;
+  font-size: 0.8rem;
+  font-weight: 350;
+  margin: 3px 0 0 3px;
+}
+
+.seeMoreWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2f2f2;
+  width: 100px;
+  height: 30px;
+  border-radius: 15px;
+  margin-top: 15px;
+}
+
+.seeMoreWrap > button {
+  color: #979797;
+  font-size: 0.8rem;
+}
+
+.loadImgWrap_1 {
+  width: 60px;
+  height: 60px;
+}
+
+.loadImgWrap_2 {
+  width: 100px;
+  height: 30px;
+  position: relative;
+  left: calc(50% - 50px);
+}
+
+.linkCopyWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.linkCopied {
+  width: 2rem;
+  height: 2rem;
+  background-image: url("../../../public/images/test/linkCopyIcon.svg");
+  background-color: white;
+  background-size: contain;
+}
+
+.noneLinkCopied {
+  width: 2rem;
+  height: 2rem;
+  background-image: url("../../../public/images/test/noneLinkCopyIcon.svg");
+  background-color: white;
+  background-size: contain;
+}

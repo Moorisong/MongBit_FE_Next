@@ -1,9 +1,8 @@
 import React from "react";
 import "./globals.css";
-import "./font.css"
+import "./font.css";
 
 import NavigationBar from "@/components/NavigationBar";
-import Footer from "@/components/Footer"
 
 const inter = "Noto Sans";
 
@@ -18,7 +17,6 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <NavigationBar />
         {children}
-        <Footer />
       </body>
     </html>
   );

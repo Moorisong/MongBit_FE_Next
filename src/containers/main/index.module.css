@@ -2,18 +2,18 @@
   .latesCardWrap {
     padding-left: 10px;
   }
-  .testWrap{
+  .testWrap {
     width: 375px;
   }
-  .miniTestWrap{
+  .miniTestWrap {
     width: 375px;
   }
 }
 @media (min-width: 376px) {
-  .testWrap{
+  .testWrap {
     width: 400px;
   }
-  .miniTestWrap{
+  .miniTestWrap {
     width: 400px;
   }
 }
