@@ -1,0 +1,39 @@
+@media (max-width: 375px) {
+  .wrap {
+    width: 375px;
+  }
+}
+@media (min-width: 376px) {
+  .wrap {
+    width: 400px;
+  }
+}
+.wrap {
+  color: #979797;
+  font-size: 0.7rem;
+  background-color: white;
+  padding: 30px 15px 20px 15px;
+}
+
+.moveBottom_4 {
+  width: 400px;
+}
+
+.under {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.upper > p:first-child {
+  margin-bottom: 5px;
+}
+
+.under > a {
+  background-image: url('../../../public/images/footer/gitHub.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+}

@@ -1,0 +1,125 @@
+@media (max-width: 375px) {
+  .inline > img {
+    width: 345px;
+  }
+
+  .normal_thumbnail {
+    width: 345px;
+  }
+  .normal_titleBox {
+    width: 345px;
+  }
+  .latest_thumbnail {
+    width: 110px !important;
+  }
+}
+@media (min-width: 376px) {
+  .inline {
+    padding-right: 5px;
+  }
+  .inline > img {
+    width: 370px;
+  }
+
+  .normal_thumbnail {
+    width: 370px;
+  }
+  .normal_titleBox {
+    width: 370px;
+  }
+  .latest_thumbnail {
+    width: 120px !important;
+  }
+}
+.inline {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.inline > img {
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.normal_thumbnail {
+  height: 15rem;
+}
+
+.normal_titleBox {
+  height: 2.5rem;
+  background-color: black;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 5px;
+  border-radius: 0 0 1rem 1rem;
+}
+
+.latest_thumbnail {
+  height: 15rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.myPageImgWidth {
+  width: 150px;
+}
+.myPage {
+  height: 13rem;
+}
+.preview {
+  pointer-events: none;
+}
+
+.latest_titleBox {
+  width: 120px;
+  opacity: 0.7;
+  display: flex;
+  flex-direction: column;
+}
+
+.test_on_titleBox {
+  width: 120px;
+  height: 2.5rem;
+}
+
+.p_1 {
+  color: white;
+  font-size: 0.8rem;
+  padding-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.p_2 {
+  color: black;
+  font-size: 0.8rem;
+  padding-left: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.playCntWrap {
+  display: flex;
+  flex-direction: row;
+}
+
+.plyCntBtn {
+  background-image: url("../../../public/images/buttonSet/playCnt.svg");
+  width: 15px;
+  height: 15px;
+  margin: 2px 0 0 2px;
+}
+.playCntText {
+  color: black;
+  font-size: 0.8rem;
+  padding-left: 3px;
+  margin-top: -1px;
+}
+
+.test_on_text {
+  color: black;
+}
