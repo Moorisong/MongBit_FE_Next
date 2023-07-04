@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 import { CardButton, Stroke } from "../ButtonSets";
 import { TestCard } from "../TestCard";
@@ -32,7 +32,7 @@ function TestSetComplete(props) {
 }
 
 function TestSetMyPage(props) {
-  const navigate = useNavigate();
+  const router = useRouter();
   const descArr = props.content.description.split("<br>");
   return (
     <div className={styles.testCardWrap}>
@@ -45,7 +45,7 @@ function TestSetMyPage(props) {
       <div
         className={styles.testCardTextWrap}
         onClick={() =>
-          navigate(`/record/${props.testId}/${props.testResultId}`)
+          router.push(`/record/${props.testId}/${props.testResultId}`)
         }
       >
         <p>{props.title}</p>

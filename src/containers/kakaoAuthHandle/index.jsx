@@ -1,3 +1,4 @@
+"use client";
 import axios from "axios";
 import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -11,7 +12,7 @@ import {
 import { getHeaders } from "@/utils/util";
 
 export default function KakaoAuthHandle() {
-  const router = useNavigate();
+  const router = useRouter();
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
 

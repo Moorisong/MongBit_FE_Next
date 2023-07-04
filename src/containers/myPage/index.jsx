@@ -20,7 +20,7 @@ import {
   DOMAIN_BE_DEV,
 } from "../../constants/constant";
 import { Stroke } from "../../components/ButtonSets";
-import { decodeToken, getHeaders } from "../../util/util";
+import { decodeToken, getHeaders } from "@/utils/util";
 
 export default function MyPage() {
   const router = useRouter();
@@ -36,6 +36,7 @@ export default function MyPage() {
   let [clickSeeMore, setClickSeeMore] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  if (typeof sessionStorage === "undefined") return;
   if (!sessionStorage.getItem(USER_INFO + "registDate")) router.push("/login");
   const dateParts = sessionStorage
     .getItem(USER_INFO + "registDate")
@@ -148,7 +149,6 @@ export default function MyPage() {
   }
   return (
     <div className={styles.wrap}>
-      <NavigationBar />
       <TitleWithText type_1={TITLE_WITH_CONTENT} title="🦁 마이페이지" />
 
       <div className={styles.userInfoWrap}>

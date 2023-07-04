@@ -15,7 +15,7 @@ import {
   DOMAIN_BE_DEV,
   TYPE_COMMENT,
   COUPANG_VISIT,
-} from "../../constants/constant";
+} from "@/constants/constant";
 
 export default function CoupangClick(props) {
   const params = useParams();
