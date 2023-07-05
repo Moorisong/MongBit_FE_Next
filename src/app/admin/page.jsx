@@ -1,5 +1,5 @@
-import TestAdd from '@/components/TestAdd'
+import TestAdd from "@/components/TestAdd";
 
-export default function Page(){
-  return <TestAdd />
+export default function Page() {
+  return <TestAdd />;
 }

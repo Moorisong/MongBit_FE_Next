@@ -42,7 +42,10 @@ export default function Result() {
         `/record/${params.testId}/${sessionStorage.getItem("mbResultId")}`
       );
 
-    window.addEventListener("popstate", () => router.push("/exception"));
+    const popstateHandler = () => {
+      router.push("/exception");
+    };
+    window.addEventListener("popstate", popstateHandler);
 
     const headers = getHeaders();
 
@@ -88,8 +91,9 @@ export default function Result() {
     }, 3000);
 
     return () => {
+      popstateHandler();
       clearTimeout(timer);
-      window.removeEventListener("popstate", () => router.push("/exception"));
+      window.removeEventListener("popstate", popstateHandler);
     };
   }, []);
 

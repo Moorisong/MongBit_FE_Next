@@ -72,25 +72,35 @@ export default function NavigationBar() {
             <ul className={styles.ulWrap}>
               심리테스트
               <li>
-                <Link href="/test/latest" onClick={() => setMenuClicked(false)}>최신 보기</Link>
-                <Link href="/test/list" onClick={() => setMenuClicked(false)}>전체 보기</Link>
+                <Link href="/test/latest" onClick={() => setMenuClicked(false)}>
+                  최신 보기
+                </Link>
+                <Link href="/test/list" onClick={() => setMenuClicked(false)}>
+                  전체 보기
+                </Link>
               </li>
             </ul>
           </li>
           <li>
             <ul className={styles.ulWrap}>
               마이페이지
-              <li onClick={() => {
-                clickMypageBtn()
-                setMenuClicked(false)
-              }}>심테 기록 보기</li>
+              <li
+                onClick={() => {
+                  clickMypageBtn();
+                  setMenuClicked(false);
+                }}
+              >
+                심테 기록 보기
+              </li>
             </ul>
           </li>
           <li>
             <ul className={styles.ulWrap}>
               개발자 정보
               <li>
-                <Link href="/devinfo" onClick={() => setMenuClicked(false)}>몽뭉이 크루</Link>
+                <Link href="/devinfo" onClick={() => setMenuClicked(false)}>
+                  몽뭉이 크루
+                </Link>
               </li>
             </ul>
           </li>
@@ -100,7 +110,7 @@ export default function NavigationBar() {
                 className={styles.adminBtn}
                 onClick={() => {
                   router.push("/admin");
-                  setMenuClicked(false)
+                  setMenuClicked(false);
                 }}
               >
                 <p>관리자 페이지</p>
