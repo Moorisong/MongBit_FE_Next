@@ -103,7 +103,7 @@ export default function Result() {
     const currentDate = new Date();
 
     if (!coupangVisitDate || !isWithin24Hours(coupangVisitDate, currentDate))
-      router.push(`/before-result/${params.testId}`);
+      router.push(`/result/before/${params.testId}`);
   }
 
   return (
