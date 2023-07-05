@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --fix ./src",
+    "lint": "next lint",
     "format": "prettier --write ./src"
   },
   "dependencies": {

@@ -1,12 +1,13 @@
 import Link from "next/link";
 
-import styles from "./index.module.css";
 import {
   TYPE_LOGIN,
   TYPE_ON_TEST,
   TYPE_MYPAGE,
   TYPE_TEST_LIST,
 } from "@/constants/constant";
+
+import styles from "./index.module.css";
 
 export default function Footer(props) {
   const cn = () => {

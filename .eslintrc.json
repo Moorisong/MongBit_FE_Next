@@ -6,8 +6,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "prettier",
-    "next/core-web-vitals"
+    "prettier"
   ],
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -94,5 +93,8 @@
         "newlines-between": "always"
       }
     ]
+  },
+  "globals": {
+    "process": true
   }
 }

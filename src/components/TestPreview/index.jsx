@@ -5,6 +5,17 @@ import cx from "classnames";
 import lottie from "lottie-web";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
+import {
+  TYPE_ON_TEST,
+  TYPE_COMMENT,
+  TYPE_PLAY_CNT,
+  DOMAIN,
+  DOMAIN_BE_PROD,
+  DOMAIN_BE_DEV,
+  TYPE_TEST_PREVIEW,
+  COMMENT_TIME,
+} from "@/constants/constant";
+
 import animationData_1 from "./commentLoading.json";
 import animationData_2 from "./commentAreaLaoadingIcon.json";
 import { TestCard } from "../TestCard";
@@ -16,18 +27,9 @@ import {
   AddCommentButton,
   Comment,
 } from "../ButtonSets";
-import {
-  TYPE_ON_TEST,
-  TYPE_COMMENT,
-  TYPE_PLAY_CNT,
-  DOMAIN,
-  DOMAIN_BE_PROD,
-  DOMAIN_BE_DEV,
-  TYPE_TEST_PREVIEW,
-  COMMENT_TIME,
-} from "@/constants/constant";
-import { decodeToken, shareToKatalk, getHeaders } from "@/utils/util";
 import styles from "./index.module.css";
+
+import { decodeToken, shareToKatalk, getHeaders } from "@/utils/util";
 
 export default function TestPreview(props) {
   let [data, setData] = useState({

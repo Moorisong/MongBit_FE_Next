@@ -9,6 +9,7 @@ import TestPreview from "../../components/TestPreview";
 import Footer from "../../components/Footer";
 import styles from "./index.module.css";
 import { DOMAIN_BE_PROD, DOMAIN_BE_DEV } from "../../constants/constant";
+
 import { getHeaders } from "@/utils/util";
 
 export default function RandomTest() {

@@ -4,8 +4,10 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import cx from "classnames";
 
-import styles from "./index.module.css";
 import { TOKEN_NAME, USER_INFO } from "@/constants/constant";
+
+import styles from "./index.module.css";
+
 import { decodeToken } from "@/utils/util";
 
 export default function NavigationBar() {

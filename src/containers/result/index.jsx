@@ -3,13 +3,18 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter, usePathname } from "next/navigation";
 import axios from "axios";
 
+import {
+  COUPANG_VISIT,
+  DOMAIN_BE_PROD,
+  DOMAIN_BE_DEV,
+} from "@/constants/constant";
+
 import styles from "./index.module.css";
 import Footer from "@/components/Footer";
 import TestResult from "@/components/TestResult";
-import { decodeToken, getHeaders } from "@/utils/util";
-import { DOMAIN_BE_PROD, DOMAIN_BE_DEV } from "../../constants/constant";
-import { COUPANG_VISIT } from "@/constants/constant";
 import ResultLoading from "@/components/ResultLoading";
+
+import { decodeToken, getHeaders } from "@/utils/util";
 
 export default function Result() {
   const [resultData, SetResultData] = useState({
@@ -37,7 +42,7 @@ export default function Result() {
         `/record/${params.testId}/${sessionStorage.getItem("mbResultId")}`
       );
 
-    window.onpopstate = handlePopstate;
+    window.addEventListener("popstate", () => router.push("/exception"));
 
     const headers = getHeaders();
 
@@ -84,13 +89,9 @@ export default function Result() {
 
     return () => {
       clearTimeout(timer);
-      window.onpopstate = null;
+      window.removeEventListener("popstate", () => router.push("/exception"));
     };
   }, []);
-
-  function handlePopstate() {
-    router.push("/exception");
-  }
 
   function isWithin24Hours(date1, date2) {
     const oneDay = 24 * 60 * 60 * 1000;

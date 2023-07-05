@@ -3,13 +3,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import styles from "./index.module.css";
-import {
-  ImagePart,
-  InfoPart,
-  QuestionPart,
-  ResultPart,
-} from "../TestAddElements";
 import {
   ALL_FULLFILL,
   NUMBER_500,
@@ -18,6 +11,15 @@ import {
   DOMAIN_BE_DEV,
   TOKEN_NAME,
 } from "@/constants/constant";
+
+import styles from "./index.module.css";
+import {
+  ImagePart,
+  InfoPart,
+  QuestionPart,
+  ResultPart,
+} from "../TestAddElements";
+
 import { getHeaders } from "@/utils/util";
 
 export default function TestAdd() {

@@ -4,11 +4,13 @@ import lottie from "lottie-web";
 import { useState, useEffect, useRef } from "react";
 import { useRouter, useParams } from "next/navigation";
 
+import { DOMAIN_BE_PROD, DOMAIN_BE_DEV } from "@/constants/constant";
+
 import styles from "./index.module.css";
 import Footer from "@/components/Footer";
 import TestResult from "@/components/TestResult";
 import animationData from "./loading_1.json";
-import { DOMAIN_BE_PROD, DOMAIN_BE_DEV } from "@/constants/constant";
+
 import { getHeaders } from "@/utils/util";
 
 export default function ViewOldResult() {

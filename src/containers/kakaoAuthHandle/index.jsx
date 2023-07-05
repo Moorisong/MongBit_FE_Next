@@ -9,6 +9,7 @@ import {
   TOKEN_NAME,
   USER_INFO,
 } from "@/constants/constant";
+
 import { getHeaders } from "@/utils/util";
 
 export default function KakaoAuthHandle() {

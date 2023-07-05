@@ -5,20 +5,22 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import lottie from "lottie-web";
 import cx from "classnames";
 
-import styles from "./index.module.css";
-import CoupangAdv_1 from "../CoupangAdv_1";
-import { Stroke, Comment, AddCommentButton } from "../ButtonSets";
-import animationData_1 from "./commentLoading.json";
-import animationData_2 from "./commentAreaLaoadingIcon.json";
-import { TestButton, CardButton } from "../ButtonSets";
-import { decodeToken, shareToKatalk_result, getHeaders } from "@/utils/util";
 import {
   DOMAIN,
   DOMAIN_BE_PROD,
   DOMAIN_BE_DEV,
   TYPE_COMMENT,
   COMMENT_TIME,
-} from "../../constants/constant";
+} from "@/constants/constant";
+
+import styles from "./index.module.css";
+import CoupangAdv_1 from "../CoupangAdv_1";
+import { Stroke, Comment, AddCommentButton } from "../ButtonSets";
+import animationData_1 from "./commentLoading.json";
+import animationData_2 from "./commentAreaLaoadingIcon.json";
+import { TestButton, CardButton } from "../ButtonSets";
+
+import { decodeToken, shareToKatalk_result, getHeaders } from "@/utils/util";
 
 export default function TestResult(props) {
   const [commentIndex, setCommentIndex] = useState([0, false]);

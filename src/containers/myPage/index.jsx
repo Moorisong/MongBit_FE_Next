@@ -7,7 +7,6 @@ import lottie from "lottie-web";
 
 import animationData_1 from "./loading_2.json";
 import animationData_2 from "./seeMoreIcon.json";
-import NavigationBar from "../../components/NavigationBar";
 import Footer from "../../components/Footer";
 import styles from "./index.module.css";
 import { TestSetMyPage } from "../../components/TestSets";
@@ -20,6 +19,7 @@ import {
   DOMAIN_BE_DEV,
 } from "../../constants/constant";
 import { Stroke } from "../../components/ButtonSets";
+
 import { decodeToken, getHeaders } from "@/utils/util";
 
 export default function MyPage() {

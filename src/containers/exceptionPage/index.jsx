@@ -8,12 +8,13 @@ import Footer from "../../components/Footer";
 export default function ExceptionPage() {
   const router = useRouter();
   useEffect(() => {
-    window.onpopstate = handlePopstate;
+    window.addEventListener("popstate", () => router.push("/main"));
+
+    return () => {
+      window.removeEventListener("popstate", () => router.push("/main"));
+    };
   }, []);
 
-  function handlePopstate() {
-    router.push("/main");
-  }
   return (
     <div className={styles.wrap}>
       <div className={styles.textBox}>
