@@ -1,9 +1,9 @@
-import jwtDecode from "jwt-decode";
+import jwtDecode from 'jwt-decode';
 
-import { DOMAIN, TOKEN_NAME, USER_INFO } from "../constants/constant";
+import { DOMAIN, TOKEN_NAME, USER_INFO } from '../constants/constant';
 
 export function decodeToken() {
-  if (typeof sessionStorage === "undefined") return;
+  if (typeof sessionStorage === 'undefined') return;
   if (!sessionStorage.getItem(TOKEN_NAME)) {
     return {
       state: false,
@@ -58,11 +58,10 @@ export function formatTimeDifference(dateString) {
 }
 
 export function shareToKatalk(testId, title, description, testImgUri) {
-  if (!window.Kakao.isInitialized())
-    window.Kakao.init("ca73594b776443da06b27edae4131915");
+  if (!window.Kakao.isInitialized()) window.Kakao.init('ca73594b776443da06b27edae4131915');
   window.Kakao.Share.sendDefault({
-    objectType: "list",
-    headerTitle: "몽빗 테스트 공유해요 :)",
+    objectType: 'list',
+    headerTitle: '몽빗 테스트 공유해요 :)',
     headerLink: {
       // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
       mobileWebUrl: DOMAIN,
@@ -70,9 +69,9 @@ export function shareToKatalk(testId, title, description, testImgUri) {
     },
     contents: [
       {
-        title: "몽빗(MongBit)",
-        description: "MBTI 심테 공작소",
-        imageUrl: "/images/og/og_logo.png",
+        title: '몽빗(MongBit)',
+        description: 'MBTI 심테 공작소',
+        imageUrl: '/images/og/og_logo.png',
         link: {
           mobileWebUrl: DOMAIN,
           webUrl: DOMAIN,
@@ -90,7 +89,7 @@ export function shareToKatalk(testId, title, description, testImgUri) {
     ],
     buttons: [
       {
-        title: "테스트 하러 가기",
+        title: '테스트 하러 가기',
         link: {
           mobileWebUrl: `${DOMAIN}/test/preview/${testId}`,
           webUrl: `${DOMAIN}/test/preview/${testId}`,
@@ -100,21 +99,13 @@ export function shareToKatalk(testId, title, description, testImgUri) {
   });
 }
 
-export function shareToKatalk_result(
-  testId,
-  title,
-  description,
-  resultImgUri,
-  pathName,
-  likeCnt
-) {
-  if (!window.Kakao.isInitialized())
-    window.Kakao.init("ca73594b776443da06b27edae4131915");
+export function shareToKatalk_result(testId, title, description, resultImgUri, pathName, likeCnt) {
+  if (!window.Kakao.isInitialized()) window.Kakao.init('ca73594b776443da06b27edae4131915');
 
   window.Kakao.Share.sendDefault({
-    objectType: "feed",
+    objectType: 'feed',
     content: {
-      title: "몽빗 테스트 결과 공유해요 :)",
+      title: '몽빗 테스트 결과 공유해요 :)',
       description: title,
       imageUrl: resultImgUri,
       link: {
@@ -128,14 +119,14 @@ export function shareToKatalk_result(
     },
     buttons: [
       {
-        title: "테스트 하기",
+        title: '테스트 하기',
         link: {
           mobileWebUrl: `${DOMAIN}/test/preview/${testId}`,
           webUrl: `${DOMAIN}/test/preview/${testId}`,
         },
       },
       {
-        title: "결과 보기",
+        title: '결과 보기',
         link: {
           mobileWebUrl: `${DOMAIN}${pathName}`,
           webUrl: `${DOMAIN}${pathName}`,
@@ -146,15 +137,15 @@ export function shareToKatalk_result(
 }
 
 export function clearSessionStorage() {
-  sessionStorage.setItem(TOKEN_NAME, "");
-  sessionStorage.setItem(USER_INFO + "memeberId", "");
-  sessionStorage.setItem(USER_INFO + "thumbnail", "");
-  sessionStorage.setItem(USER_INFO + "registDate", "");
-  sessionStorage.setItem(USER_INFO + "username", "");
+  sessionStorage.setItem(TOKEN_NAME, '');
+  sessionStorage.setItem(USER_INFO + 'memeberId', '');
+  sessionStorage.setItem(USER_INFO + 'thumbnail', '');
+  sessionStorage.setItem(USER_INFO + 'registDate', '');
+  sessionStorage.setItem(USER_INFO + 'username', '');
 }
 
 export function getHeaders() {
-  if (typeof sessionStorage === "undefined") return;
+  if (typeof sessionStorage === 'undefined') return;
   return {
     Authorization: sessionStorage.getItem(TOKEN_NAME),
   };

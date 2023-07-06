@@ -1,17 +1,17 @@
-"use client";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+'use client';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
-import styles from "./index.module.css";
-import Footer from "../../components/Footer";
+import styles from './index.module.css';
+import Footer from '../../components/Footer';
 
 export default function ExceptionPage() {
   const router = useRouter();
   useEffect(() => {
-    window.addEventListener("popstate", () => router.push("/main"));
+    window.addEventListener('popstate', () => router.push('/main'));
 
     return () => {
-      window.removeEventListener("popstate", () => router.push("/main"));
+      window.removeEventListener('popstate', () => router.push('/main'));
     };
   }, []);
 
@@ -23,9 +23,7 @@ export default function ExceptionPage() {
 
       <div className={styles.logoImgWrap}>
         <img src="/images/logIn/loginLogo.svg" alt="Logo_image" />
-        <p className={styles.logoText}>
-          © 2023 MongMoongCrew. All rights reserved
-        </p>
+        <p className={styles.logoText}>© 2023 MongMoongCrew. All rights reserved</p>
       </div>
 
       <div className={`${styles.bgWhite} ${styles.footerWrap}`}>

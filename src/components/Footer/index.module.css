@@ -30,7 +30,7 @@
 }
 
 .under > a {
-  background-image: url("../../../public/images/footer/gitHub.svg");
+  background-image: url('../../../public/images/footer/gitHub.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;

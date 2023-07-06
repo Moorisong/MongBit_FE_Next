@@ -205,7 +205,7 @@
 .linkCopied {
   width: 2rem;
   height: 2rem;
-  background-image: url("../../../public/images/test/linkCopyIcon.svg");
+  background-image: url('../../../public/images/test/linkCopyIcon.svg');
   background-color: white;
   background-size: contain;
 }
@@ -213,7 +213,7 @@
 .noneLinkCopied {
   width: 2rem;
   height: 2rem;
-  background-image: url("../../../public/images/test/noneLinkCopyIcon.svg");
+  background-image: url('../../../public/images/test/noneLinkCopyIcon.svg');
   background-color: white;
   background-size: contain;
 }

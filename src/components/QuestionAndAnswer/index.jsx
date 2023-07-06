@@ -1,6 +1,6 @@
-import cx from "classnames";
+import cx from 'classnames';
 
-import styles from "./index.module.css";
+import styles from './index.module.css';
 
 export default function QuestionAndAnswer(props) {
   return (

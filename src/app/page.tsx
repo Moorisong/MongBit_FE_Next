@@ -1,4 +1,4 @@
-import Main from "@/containers/main";
+import Main from '@/containers/main';
 
 export default function Home() {
   return <Main />;

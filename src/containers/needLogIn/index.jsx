@@ -1,9 +1,9 @@
-"use client";
-import { useRouter } from "next/navigation";
+'use client';
+import { useRouter } from 'next/navigation';
 
-import styles from "./index.module.css";
-import Footer from "../../components/Footer";
-import { DOMAIN } from "../../constants/constant";
+import styles from './index.module.css';
+import Footer from '../../components/Footer';
+import { DOMAIN } from '../../constants/constant';
 
 export default function NeedLogIn() {
   const router = useRouter();
@@ -13,10 +13,10 @@ export default function NeedLogIn() {
         <p>3초만에 로그인하고</p>
         <p
           onClick={() => {
-            router.push("/login");
+            router.push('/login');
           }}
         >
-          {" "}
+          {' '}
           테스트 결과 보기
         </p>
         <button

@@ -1,7 +1,7 @@
-"use client";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+'use client';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import {
   ALL_FULLFILL,
@@ -10,23 +10,18 @@ import {
   DOMAIN_BE_PROD,
   DOMAIN_BE_DEV,
   TOKEN_NAME,
-} from "@/constants/constant";
+} from '@/constants/constant';
 
-import styles from "./index.module.css";
-import {
-  ImagePart,
-  InfoPart,
-  QuestionPart,
-  ResultPart,
-} from "../TestAddElements";
+import styles from './index.module.css';
+import { ImagePart, InfoPart, QuestionPart, ResultPart } from '../TestAddElements';
 
-import { getHeaders } from "@/utils/util";
+import { getHeaders } from '@/utils/util';
 
 export default function TestAdd() {
   const [data, setData] = useState({
-    title: "",
-    content: "",
-    imageUrl: "",
+    title: '',
+    content: '',
+    imageUrl: '',
     questions: [],
     results: [],
   });
@@ -43,12 +38,12 @@ export default function TestAdd() {
       axios
         .post(`${DOMAIN_BE_PROD}/api/v1/tests/test`, data, { headers })
         .then(() => {
-          alert("테스트 등록 완료. 고생 많으셨어요 :)");
-          router.push("/main");
+          alert('테스트 등록 완료. 고생 많으셨어요 :)');
+          router.push('/main');
         })
         .catch((err) => {
           alert(err.response.data);
-          router.push("/login");
+          router.push('/login');
         });
     }
   }, [imgUploading]);
@@ -56,50 +51,49 @@ export default function TestAdd() {
   const mapTarget = {
     question: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     result: [
-      "ENFJ",
-      "ENFP",
-      "ENTJ",
-      "ENTP",
-      "ESFJ",
-      "ESFP",
-      "ESTJ",
-      "ESTP",
-      "INFJ",
-      "INFP",
-      "INTJ",
-      "INTP",
-      "ISFJ",
-      "ISFP",
-      "ISTJ",
-      "ISTP",
+      'ENFJ',
+      'ENFP',
+      'ENTJ',
+      'ENTP',
+      'ESFJ',
+      'ESFP',
+      'ESTJ',
+      'ESTP',
+      'INFJ',
+      'INFP',
+      'INTJ',
+      'INTP',
+      'ISFJ',
+      'ISFP',
+      'ISTJ',
+      'ISTP',
     ],
   };
 
   const getAnswerTypeArr = () => {
     if (qstStageIdx === 1 || qstStageIdx === 2 || qstStageIdx === 3)
-      return ["[대답지 : +1 / E 속성]", "[대답지 : -1 / I 속성]"];
+      return ['[대답지 : +1 / E 속성]', '[대답지 : -1 / I 속성]'];
     if (qstStageIdx === 4 || qstStageIdx === 5 || qstStageIdx === 6)
-      return ["[대답지 : +1 / N 속성]", "[대답지 : -1 / S 속성]"];
+      return ['[대답지 : +1 / N 속성]', '[대답지 : -1 / S 속성]'];
     if (qstStageIdx === 7 || qstStageIdx === 8 || qstStageIdx === 9)
-      return ["[대답지 : +1 / F 속성]", "[대답지 : -1 / T 속성]"];
+      return ['[대답지 : +1 / F 속성]', '[대답지 : -1 / T 속성]'];
     if (qstStageIdx === 10 || qstStageIdx === 11 || qstStageIdx === 12)
-      return ["[대답지 : +1 / J 속성]", "[대답지 : -1 / P 속성]"];
+      return ['[대답지 : +1 / J 속성]', '[대답지 : -1 / P 속성]'];
   };
 
   function onClickNext() {
     switch (stage) {
       case 1:
         if (!data.title || !data.content) return alert(ALL_FULLFILL);
-        if (data.title.length > NUMBER_500 || data.content > NUMBER_500)
-          return alert(LENGTH_OVER_500);
+        if (data.title.length > NUMBER_500 || data.content > NUMBER_500) return alert(LENGTH_OVER_500);
         setStage(stage + 1);
         break;
       case 2:
         setData((prev) => {
           let copy = [...prev.questions];
-          const parsedObj = JSON.parse(sessionStorage.getItem("mbTest"));
+          const parsedObj = JSON.parse(sessionStorage.getItem('mbTest'));
           copy.push(parsedObj);
-          sessionStorage.setItem("mbTest", "");
+          sessionStorage.setItem('mbTest', '');
           return { ...prev, questions: copy };
         });
 
@@ -111,9 +105,9 @@ export default function TestAdd() {
       case 3:
         setData((prev) => {
           let copy = [...prev.results];
-          const parsedObj = JSON.parse(sessionStorage.getItem("mbResult"));
+          const parsedObj = JSON.parse(sessionStorage.getItem('mbResult'));
           copy.push(parsedObj);
-          sessionStorage.setItem("mbResult", "");
+          sessionStorage.setItem('mbResult', '');
           return { ...prev, results: copy };
         });
         setRstStageIdx(rstStageIdx + 1);
@@ -135,13 +129,12 @@ export default function TestAdd() {
 
   function imgUploadStart() {
     const isAllFormData = imgCntArr.every((item) => item instanceof FormData);
-    if (imgCntArr.length != 17 || !isAllFormData)
-      return alert("모든 항목에 이미지를 업로드 해주세요.");
+    if (imgCntArr.length != 17 || !isAllFormData) return alert('모든 항목에 이미지를 업로드 해주세요.');
 
     setImgUploading(true);
     const promiseArr = [];
     const headers = {
-      "Content-Type": "multipart/form-data",
+      'Content-Type': 'multipart/form-data',
       Authorization: sessionStorage.getItem(TOKEN_NAME),
     };
 
@@ -168,14 +161,14 @@ export default function TestAdd() {
       .catch((err) => {
         alert(err.response.data);
         setImgUploading(false);
-        router.push("/login");
+        router.push('/login');
       });
   }
 
   function makeFormData(evt) {
     const file = evt.target.files[0];
     const formData = new FormData();
-    formData.append("file", file);
+    formData.append('file', file);
 
     let copy = [...imgCntArr];
     copy[window.mbInputIndex] = formData;
@@ -190,7 +183,7 @@ export default function TestAdd() {
   }
 
   function onClickMain() {
-    router.push("/main");
+    router.push('/main');
   }
 
   return (
@@ -218,20 +211,14 @@ export default function TestAdd() {
                 data={data.questions.length > 0 && data.questions[i]}
                 getAnswerTypeArr={getAnswerTypeArr()}
               />
-            )
+            ),
         )}
       {stage === 3 &&
         mapTarget.result.map(
           (t, i) =>
             rstStageIdx - 1 === i && (
-              <ResultPart
-                key={t}
-                onClickNext={onClickNext}
-                onClickPrev={onClickPrev}
-                idx={i + 1}
-                resultName={t}
-              />
-            )
+              <ResultPart key={t} onClickNext={onClickNext} onClickPrev={onClickPrev} idx={i + 1} resultName={t} />
+            ),
         )}
       {stage === 4 && (
         <ImagePart

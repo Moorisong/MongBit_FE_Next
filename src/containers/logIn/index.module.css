@@ -28,7 +28,7 @@
 
 .kakaoLogInBtn {
   height: 3rem;
-  background-image: url("../../../public/images/logIn/kakaoLogInBtn.png");
+  background-image: url('../../../public/images/logIn/kakaoLogInBtn.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

@@ -108,7 +108,7 @@
 }
 
 .plyCntBtn {
-  background-image: url("../../../public/images/buttonSet/playCnt.svg");
+  background-image: url('../../../public/images/buttonSet/playCnt.svg');
   width: 15px;
   height: 15px;
   margin: 2px 0 0 2px;

@@ -1,23 +1,18 @@
-"use client";
-import axios from "axios";
-import { useEffect, useState, useRef } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import cx from "classnames";
-import lottie from "lottie-web";
+'use client';
+import axios from 'axios';
+import { useEffect, useState, useRef } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import cx from 'classnames';
+import lottie from 'lottie-web';
 
-import animationData_1 from "./loading_2.json";
-import { TitleWithText } from "@/components/Titles";
-import { TestSetComplete } from "@/components/TestSets";
-import styles from "./index.module.css";
-import {
-  TYPE_TEST_LIST,
-  TITLE_WITH_CONTENT,
-  DOMAIN_BE_PROD,
-  DOMAIN_BE_DEV,
-} from "../../constants/constant";
+import animationData_1 from './loading_2.json';
+import { TitleWithText } from '@/components/Titles';
+import { TestSetComplete } from '@/components/TestSets';
+import styles from './index.module.css';
+import { TYPE_TEST_LIST, TITLE_WITH_CONTENT, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '../../constants/constant';
 
-import { getHeaders } from "@/utils/util";
+import { getHeaders } from '@/utils/util';
 
 export default function TestList() {
   const [data, setData] = useState({
@@ -27,14 +22,14 @@ export default function TestList() {
   const containerRef_1 = useRef(null);
   const [slideIn, setSlideIn] = useState(false);
   let [page, setPage] = useState(0);
-  const titleStr = "💛  몽빗 심테";
-  const contentStr = "몽빗에 있는 모든 테스트는 이곳에!";
+  const titleStr = '💛  몽빗 심테';
+  const contentStr = '몽빗에 있는 모든 테스트는 이곳에!';
   const router = useRouter();
 
   useEffect(() => {
     const anim = lottie.loadAnimation({
       container: containerRef_1.current,
-      renderer: "svg",
+      renderer: 'svg',
       animationData: animationData_1,
       loop: true,
       autoplay: true,
@@ -59,7 +54,7 @@ export default function TestList() {
       })
       .catch((err) => {
         alert(err.response.data);
-        router.push("/login");
+        router.push('/login');
       });
     const timer = setTimeout(() => {
       setSlideIn(true);
@@ -88,7 +83,7 @@ export default function TestList() {
       })
       .catch((err) => {
         alert(err.response.data);
-        router.push("/login");
+        router.push('/login');
       });
   }
 
@@ -135,7 +130,7 @@ export default function TestList() {
           [styles.slideIn]: slideIn,
         })}
         onClick={() => {
-          router.push("/test/random");
+          router.push('/test/random');
         }}
       >
         <Link className={styles.goRandomStartBtn} href="/test/random">

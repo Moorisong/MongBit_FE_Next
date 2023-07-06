@@ -78,7 +78,7 @@
 .logoDog {
   width: 5rem;
   height: 5.5rem;
-  background-image: url("../../../public/images/navigationBar/logo_dog.svg");
+  background-image: url('../../../public/images/navigationBar/logo_dog.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -87,7 +87,7 @@
 .logoTitle {
   width: 7rem;
   height: 5.7rem;
-  background-image: url("../../../public/images/navigationBar/logo_title.svg");
+  background-image: url('../../../public/images/navigationBar/logo_title.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -98,7 +98,7 @@
   height: 15px;
   border-style: none;
   background-color: white;
-  background-image: url("../../../public/images/navigationBar/user.svg");
+  background-image: url('../../../public/images/navigationBar/user.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -115,7 +115,7 @@
   width: 1rem;
   height: 1rem;
   background-color: white;
-  background-image: url("../../../public/images/navigationBar/menuIcon.svg");
+  background-image: url('../../../public/images/navigationBar/menuIcon.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -234,7 +234,7 @@
   width: 20px;
   height: 22px;
   background-color: white;
-  background-image: url("../../../public/images/navigationBar/logOutIcon.svg");
+  background-image: url('../../../public/images/navigationBar/logOutIcon.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;

@@ -1,51 +1,45 @@
-"use client";
-import { useEffect, useState } from "react";
-import { useParams, useRouter, usePathname } from "next/navigation";
-import axios from "axios";
+'use client';
+import { useEffect, useState } from 'react';
+import { useParams, useRouter, usePathname } from 'next/navigation';
+import axios from 'axios';
 
-import {
-  COUPANG_VISIT,
-  DOMAIN_BE_PROD,
-  DOMAIN_BE_DEV,
-} from "@/constants/constant";
+import { COUPANG_VISIT, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '@/constants/constant';
 
-import styles from "./index.module.css";
-import Footer from "@/components/Footer";
-import TestResult from "@/components/TestResult";
-import ResultLoading from "@/components/ResultLoading";
+import styles from './index.module.css';
+import Footer from '@/components/Footer';
+import TestResult from '@/components/TestResult';
+import ResultLoading from '@/components/ResultLoading';
 
-import { decodeToken, getHeaders } from "@/utils/util";
+import { decodeToken, getHeaders } from '@/utils/util';
 
 export default function Result() {
   const [resultData, SetResultData] = useState({
-    titleStr: "",
+    titleStr: '',
     contentStrArr: [],
-    imgUri: "",
-    testResultId: "",
+    imgUri: '',
+    testResultId: '',
   });
   let [loading, setLoading] = useState(true);
 
   const router = useRouter();
   const pathName = usePathname();
   const params = useParams();
-  const memberId = sessionStorage.getItem("mongBitmemeberId");
+  const memberId = sessionStorage.getItem('mongBitmemeberId');
 
   useEffect(() => {
     if (!decodeToken().state) {
-      sessionStorage.setItem("ngb", pathName);
-      return router.push("/need_login");
+      sessionStorage.setItem('ngb', pathName);
+      return router.push('/need_login');
     }
     checkCoupnagSiteVisit();
 
-    if (!sessionStorage.getItem("mbScore"))
-      return router.push(
-        `/record/${params.testId}/${sessionStorage.getItem("mbResultId")}`
-      );
+    if (!sessionStorage.getItem('mbScore'))
+      return router.push(`/record/${params.testId}/${sessionStorage.getItem('mbResultId')}`);
 
     const popstateHandler = () => {
-      router.push("/exception");
+      router.push('/exception');
     };
-    window.addEventListener("popstate", popstateHandler);
+    window.addEventListener('popstate', popstateHandler);
 
     const headers = getHeaders();
 
@@ -58,18 +52,14 @@ export default function Result() {
       })
       .catch((err) => {
         alert(err.response.data);
-        router.push("/login");
+        router.push('/login');
       });
 
-    const score = JSON.parse(sessionStorage.getItem("mbScore"));
+    const score = JSON.parse(sessionStorage.getItem('mbScore'));
     axios
-      .post(
-        `${DOMAIN_BE_PROD}/api/v1/member-test-result/${params.testId}/${memberId}`,
-        score,
-        { headers }
-      )
+      .post(`${DOMAIN_BE_PROD}/api/v1/member-test-result/${params.testId}/${memberId}`, score, { headers })
       .then((res) => {
-        const contentArray = res.data.content.split("<br>");
+        const contentArray = res.data.content.split('<br>');
 
         SetResultData((prev) => ({
           ...prev,
@@ -78,12 +68,12 @@ export default function Result() {
           imgUri: res.data.imageUrl,
           testResultId: res.data.id,
         }));
-        sessionStorage.removeItem("mbScore");
-        sessionStorage.setItem("mbResultId", res.data.id);
+        sessionStorage.removeItem('mbScore');
+        sessionStorage.setItem('mbResultId', res.data.id);
       })
       .catch((err) => {
         alert(err.response.data);
-        router.push("/login");
+        router.push('/login');
       });
 
     const timer = setTimeout(() => {
@@ -93,7 +83,7 @@ export default function Result() {
     return () => {
       popstateHandler();
       clearTimeout(timer);
-      window.removeEventListener("popstate", popstateHandler);
+      window.removeEventListener('popstate', popstateHandler);
     };
   }, []);
 
