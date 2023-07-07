@@ -137,57 +137,57 @@
 }
 
 .playCnt {
-  background-image: url("../../../public/images/buttonSet/playCnt.svg");
+  background-image: url('../../../public/images/buttonSet/playCnt.svg');
   width: 17px;
   height: 17px;
   margin-top: 2px;
 }
 
 .likeCnt {
-  background-image: url("../../../public/images/buttonSet/likeCnt.svg");
+  background-image: url('../../../public/images/buttonSet/likeCnt.svg');
   width: 17px;
   height: 17px;
 }
 
 .commentCnt {
-  background-image: url("../../../public/images/buttonSet/commentCnt.svg");
+  background-image: url('../../../public/images/buttonSet/commentCnt.svg');
   width: 17px;
   height: 17px;
   margin-top: 3px;
 }
 
 .comment {
-  background-image: url("../../../public/images/test/comment.svg");
+  background-image: url('../../../public/images/test/comment.svg');
 }
 
 .linkCopied {
   width: 2rem;
   height: 2rem;
-  background-image: url("../../../public/images/test/linkCopyIcon.svg");
+  background-image: url('../../../public/images/test/linkCopyIcon.svg');
 }
 
 .noneLinkCopied {
   width: 2rem;
   height: 2rem;
-  background-image: url("../../../public/images/test/noneLinkCopyIcon.svg");
+  background-image: url('../../../public/images/test/noneLinkCopyIcon.svg');
 }
 
 .liked {
   width: 2rem;
   height: 2rem;
-  background-image: url("../../../public/images/test/liked.svg");
+  background-image: url('../../../public/images/test/liked.svg');
 }
 
 .noneLiked {
   width: 2rem;
   height: 2rem;
-  background-image: url("../../../public/images/test/noneLiked.svg");
+  background-image: url('../../../public/images/test/noneLiked.svg');
 }
 
 .share {
   width: 2rem;
   height: 2rem;
-  background-image: url("../../../public/images/test/shareIcon.svg");
+  background-image: url('../../../public/images/test/shareIcon.svg');
 }
 
 .testBtnWrap {
@@ -205,7 +205,7 @@
 .addCommentButton {
   width: 19px;
   height: 19px;
-  background-image: url("../../../public/images/test/addComment.svg");
+  background-image: url('../../../public/images/test/addComment.svg');
   background-color: #f1f1f1;
   position: absolute;
   top: 10px;

@@ -1,11 +1,7 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import styles from "./index.module.css";
-import {
-  ALL_FULLFILL,
-  NUMBER_500,
-  LENGTH_OVER_500,
-} from "../../constants/constant";
+import styles from './index.module.css';
+import { ALL_FULLFILL, NUMBER_500, LENGTH_OVER_500 } from '../../constants/constant';
 
 export function InfoPart(props) {
   return (
@@ -56,8 +52,7 @@ export function QuestionPart(props) {
   // const [resultObj, setResultObjt] = useState(initialState)
 
   function clickGoNext() {
-    if (!resultObj.question || !resultObj.answerPlus || !resultObj.answerMinus)
-      return alert(ALL_FULLFILL);
+    if (!resultObj.question || !resultObj.answerPlus || !resultObj.answerMinus) return alert(ALL_FULLFILL);
 
     if (
       resultObj.question.length > NUMBER_500 ||
@@ -66,7 +61,7 @@ export function QuestionPart(props) {
     )
       return alert(LENGTH_OVER_500);
     const jsonString = JSON.stringify(resultObj);
-    sessionStorage.setItem("mbTest", jsonString);
+    sessionStorage.setItem('mbTest', jsonString);
     props.onClickNext();
   }
   return (
@@ -121,21 +116,17 @@ export function QuestionPart(props) {
 
 export function ResultPart(props) {
   let [resultObj, setResultObj] = useState({
-    result: "",
-    content: "",
+    result: '',
+    content: '',
   });
 
   function clickGoNext() {
     if (!resultObj.result || !resultObj.content) {
       return alert(ALL_FULLFILL);
     }
-    if (
-      resultObj.result.length > NUMBER_500 ||
-      resultObj.content.length > NUMBER_500
-    )
-      return alert(LENGTH_OVER_500);
+    if (resultObj.result.length > NUMBER_500 || resultObj.content.length > NUMBER_500) return alert(LENGTH_OVER_500);
     const jsonString = JSON.stringify(resultObj);
-    sessionStorage.setItem("mbResult", jsonString);
+    sessionStorage.setItem('mbResult', jsonString);
     props.onClickNext();
   }
   return (
@@ -177,30 +168,30 @@ export function ResultPart(props) {
 
 export function ImagePart(props) {
   const mapTartet = [
-    "0",
-    "ENFJ",
-    "ENFP",
-    "ENTJ",
-    "ENTP",
-    "ESFJ",
-    "ESFP",
-    "ESTJ",
-    "ESTP",
-    "INFJ",
-    "INFP",
-    "INTJ",
-    "INTP",
-    "ISFJ",
-    "ISFP",
-    "ISTJ",
-    "ISTP",
+    '0',
+    'ENFJ',
+    'ENFP',
+    'ENTJ',
+    'ENTP',
+    'ESFJ',
+    'ESFP',
+    'ESTJ',
+    'ESTP',
+    'INFJ',
+    'INFP',
+    'INTJ',
+    'INTP',
+    'ISFJ',
+    'ISFP',
+    'ISTJ',
+    'ISTP',
   ];
 
   return (
     <div className={styles.wrap}>
       {mapTartet.map((t, i) => (
         <div key={i} className={styles.imageWrap}>
-          <p>{i === 0 ? "[테스트 이미지]" : `[${i}번째 결과] - ${t}`}</p>
+          <p>{i === 0 ? '[테스트 이미지]' : `[${i}번째 결과] - ${t}`}</p>
           <input
             type="file"
             className={styles.fileInput}

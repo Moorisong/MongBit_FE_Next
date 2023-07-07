@@ -1,29 +1,30 @@
-"use client";
-import axios from "axios";
-import { useEffect, useState, useRef } from "react";
-import { useRouter } from "next/navigation";
-import lottie from "lottie-web";
+'use client';
+import axios from 'axios';
+import { useEffect, useState, useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import lottie from 'lottie-web';
 
-import animationData_1 from "./loading_2.json";
-import TestPreview from "../../components/TestPreview";
-import Footer from "../../components/Footer";
-import styles from "./index.module.css";
-import { DOMAIN_BE_PROD, DOMAIN_BE_DEV } from "../../constants/constant";
-import { getHeaders } from "@/utils/util";
+import animationData_1 from './loading_2.json';
+import TestPreview from '../../components/TestPreview';
+import Footer from '../../components/Footer';
+import styles from './index.module.css';
+import { DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '../../constants/constant';
+
+import { getHeaders } from '@/utils/util';
 
 export default function RandomTest() {
-  const [thumbnailStr, setThumbnailStr] = useState("");
+  const [thumbnailStr, setThumbnailStr] = useState('');
   const [playCnt, setPlayCnt] = useState(0);
-  const [description, setDescription] = useState("");
-  const [thumbnailUri, setThumbnailUri] = useState("");
-  const [testId, setTestId] = useState("");
+  const [description, setDescription] = useState('');
+  const [thumbnailUri, setThumbnailUri] = useState('');
+  const [testId, setTestId] = useState('');
   const router = useRouter();
   const containerRef_1 = useRef(null);
 
   useEffect(() => {
     const anim = lottie.loadAnimation({
       container: containerRef_1.current,
-      renderer: "svg",
+      renderer: 'svg',
       animationData: animationData_1,
       loop: true,
       autoplay: true,
@@ -41,7 +42,7 @@ export default function RandomTest() {
       })
       .catch((err) => {
         alert(err.response.data);
-        router.push("/login");
+        router.push('/login');
       });
 
     return () => {

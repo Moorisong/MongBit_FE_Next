@@ -1,10 +1,10 @@
-import { useRef, useEffect } from "react";
-import lottie from "lottie-web";
+import { useRef, useEffect } from 'react';
+import lottie from 'lottie-web';
 
-import animationData from "./loadingIcon.json";
-import styles from "./index.module.css";
-import CoupangAdv_1 from "../CoupangAdv_1";
-import CoupangAdv_2 from "../CoupangAdv_2";
+import animationData from './loadingIcon.json';
+import styles from './index.module.css';
+import CoupangAdv_1 from '../CoupangAdv_1';
+import CoupangAdv_2 from '../CoupangAdv_2';
 
 export default function ResultLoading() {
   const containerRef = useRef(null);
@@ -12,7 +12,7 @@ export default function ResultLoading() {
   useEffect(() => {
     const anim = lottie.loadAnimation({
       container: containerRef.current,
-      renderer: "svg",
+      renderer: 'svg',
       animationData: animationData,
       loop: true,
       autoplay: true,

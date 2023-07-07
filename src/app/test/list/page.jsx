@@ -1,4 +1,4 @@
-import TestList from "@/containers/TestList";
+import TestList from '@/containers/TestList';
 
 export default function Page() {
   return <TestList />;

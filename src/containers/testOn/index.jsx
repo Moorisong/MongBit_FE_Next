@@ -1,20 +1,18 @@
-"use client";
-import axios from "axios";
-import { useEffect, useState, useRef } from "react";
-import cx from "classnames";
-import { useRouter, useParams } from "next/navigation";
-import lottie from "lottie-web";
+'use client';
+import axios from 'axios';
+import { useEffect, useState, useRef } from 'react';
+import cx from 'classnames';
+import { useRouter, useParams } from 'next/navigation';
+import lottie from 'lottie-web';
 
-import { getHeaders } from "@/utils/util";
-import animationData_1 from "./loading_1.json";
-import Footer from "../../components/Footer";
-import {
-  DOMAIN_BE_PROD,
-  TYPE_MYPAGE,
-  DOMAIN_BE_DEV,
-} from "@/constants/constant";
-import styles from "./index.module.css";
-import QuestionAndAnswer from "@/components/QuestionAndAnswer";
+import { DOMAIN_BE_PROD, TYPE_MYPAGE, DOMAIN_BE_DEV } from '@/constants/constant';
+
+import styles from './index.module.css';
+import QuestionAndAnswer from '@/components/QuestionAndAnswer';
+import Footer from '../../components/Footer';
+import animationData_1 from './loading_1.json';
+
+import { getHeaders } from '@/utils/util';
 
 export default function TestOn() {
   const router = useRouter();
@@ -41,12 +39,12 @@ export default function TestOn() {
       })
       .catch((err) => {
         alert(err.response.data);
-        router.push("/login");
+        router.push('/login');
       });
 
     const anim = lottie.loadAnimation({
       container: containerRef_1.current,
-      renderer: "svg",
+      renderer: 'svg',
       animationData: animationData_1,
       loop: true,
       autoplay: true,
@@ -72,7 +70,7 @@ export default function TestOn() {
 
   useEffect(() => {
     if (testDone.state) {
-      sessionStorage.setItem("mbScore", JSON.stringify(score));
+      sessionStorage.setItem('mbScore', JSON.stringify(score));
       return router.push(`/result/${params.testId}`);
     }
   }, [testDone.state]);
@@ -143,7 +141,7 @@ export default function TestOn() {
                 clickAnswer_minus={clickAnswer_minus}
                 clickGoBack={clickGoBack}
               />
-            )
+            ),
         )
       ) : (
         <div className={styles.loadImgWrap_1}>

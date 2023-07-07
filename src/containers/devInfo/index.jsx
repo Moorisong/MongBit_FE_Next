@@ -1,5 +1,5 @@
-import styles from "./index.module.css";
-import Footer from "../../components/Footer";
+import styles from './index.module.css';
+import Footer from '../../components/Footer';
 
 export default function DevInfo() {
   return (
@@ -17,9 +17,7 @@ export default function DevInfo() {
 
       <div className={styles.logoImgWrap}>
         <img src="/images/logIn/loginLogo.svg" alt="Logo_image" />
-        <p className={styles.logoText}>
-          © 2023 MongMoongCrew. All rights reserved
-        </p>
+        <p className={styles.logoText}>© 2023 MongMoongCrew. All rights reserved</p>
       </div>
 
       <div className={`${styles.bgWhite} ${styles.footerWrap}`}>

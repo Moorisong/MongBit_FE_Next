@@ -1,21 +1,18 @@
-"use client";
-import { useEffect, useState, useRef } from "react";
-import { useParams, useRouter } from "next/navigation";
-import axios from "axios";
-import lottie from "lottie-web";
+'use client';
+import { useEffect, useState, useRef } from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import axios from 'axios';
+import lottie from 'lottie-web';
 
-import Footer from "../Footer";
-import ResultLoading from "../ResultLoading";
-import styles from "./index.module.css";
-import { CardButton, CommentReadOnly } from "../ButtonSets";
-import { getHeaders } from "@/utils/util";
-import animationData_1 from "./commentAreaLaoadingIcon.json";
-import {
-  DOMAIN_BE_PROD,
-  DOMAIN_BE_DEV,
-  TYPE_COMMENT,
-  COUPANG_VISIT,
-} from "@/constants/constant";
+import { DOMAIN_BE_PROD, DOMAIN_BE_DEV, TYPE_COMMENT, COUPANG_VISIT } from '@/constants/constant';
+
+import Footer from '../Footer';
+import ResultLoading from '../ResultLoading';
+import styles from './index.module.css';
+import { CardButton, CommentReadOnly } from '../ButtonSets';
+import animationData_1 from './commentAreaLaoadingIcon.json';
+
+import { getHeaders } from '@/utils/util';
 
 export default function CoupangClick(props) {
   const params = useParams();
@@ -41,14 +38,14 @@ export default function CoupangClick(props) {
       })
       .catch((err) => {
         alert(err.response.data);
-        router.push("/login");
+        router.push('/login');
       });
   }, []);
 
   useEffect(() => {
     const anim = lottie.loadAnimation({
       container: containerRef_1.current,
-      renderer: "svg",
+      renderer: 'svg',
       animationData: animationData_1,
       loop: true,
       autoplay: true,
@@ -74,16 +71,13 @@ export default function CoupangClick(props) {
       }
     };
 
-    document.addEventListener("visibilitychange", handleDocVisibilitychange);
+    document.addEventListener('visibilitychange', handleDocVisibilitychange);
 
     return () => {
       if (timerRef.current) {
         clearTimeout(timerRef.current);
       }
-      document.removeEventListener(
-        "visibilitychange",
-        handleDocVisibilitychange
-      );
+      document.removeEventListener('visibilitychange', handleDocVisibilitychange);
     };
   }, []);
 
@@ -93,10 +87,10 @@ export default function CoupangClick(props) {
   }
 
   function clickLink() {
-    const link = "https://link.coupang.com/a/2s6aq";
+    const link = 'https://link.coupang.com/a/2s6aq';
     setShowLoading(true);
     saveCoupangVisitDate();
-    window.open(link, "_blank");
+    window.open(link, '_blank');
   }
 
   return (
@@ -118,12 +112,7 @@ export default function CoupangClick(props) {
           {data.comment.length > 0 ? (
             data.comment.map((com, i) => (
               <div key={i} className={styles.commentContentWrap}>
-                <CommentReadOnly
-                  data={com}
-                  memberId={data.memberId}
-                  testId={data.testId}
-                  id={com.id}
-                />
+                <CommentReadOnly data={com} memberId={data.memberId} testId={data.testId} id={com.id} />
               </div>
             ))
           ) : (

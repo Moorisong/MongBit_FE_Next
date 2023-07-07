@@ -1,23 +1,18 @@
-"use client";
+'use client';
 
-import { useEffect, useState, useRef } from "react";
-import { useRouter } from "next/navigation";
-import axios from "axios";
-import lottie from "lottie-web";
+import { useEffect, useState, useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import axios from 'axios';
+import lottie from 'lottie-web';
 
-import styles from "./index.module.css";
-import animationData_1 from "./loading_1.json";
-import Footer from "@/components/Footer";
-import { TitleWithText } from "@/components/Titles";
-import { TestCard } from "@/components/TestCard";
-import { GoRandomStartBtn } from "@/components/ButtonSets";
-import {
-  TITLE_WITH_CONTENT,
-  TYPE_LATEST_MAIN,
-  DOMAIN_BE_PROD,
-  DOMAIN_BE_DEV,
-} from "../../constants/constant";
-import { getHeaders } from "../../utils/util";
+import styles from './index.module.css';
+import animationData_1 from './loading_1.json';
+import Footer from '@/components/Footer';
+import { TitleWithText } from '@/components/Titles';
+import { TestCard } from '@/components/TestCard';
+import { GoRandomStartBtn } from '@/components/ButtonSets';
+import { TITLE_WITH_CONTENT, TYPE_LATEST_MAIN, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '../../constants/constant';
+import { getHeaders } from '../../utils/util';
 
 export default function main() {
   // Test 삭제
@@ -38,7 +33,7 @@ export default function main() {
   useEffect(() => {
     const anim = lottie.loadAnimation({
       container: containerRef_1.current,
-      renderer: "svg",
+      renderer: 'svg',
       animationData: animationData_1,
       loop: true,
       autoplay: true,
@@ -50,10 +45,8 @@ export default function main() {
   }, []);
 
   useEffect(() => {
-    sessionStorage.getItem("mbResult") === "" &&
-      sessionStorage.removeItem("mbResult");
-    sessionStorage.getItem("mbTest") === "" &&
-      sessionStorage.removeItem("mbTest");
+    sessionStorage.getItem('mbResult') === '' && sessionStorage.removeItem('mbResult');
+    sessionStorage.getItem('mbTest') === '' && sessionStorage.removeItem('mbTest');
 
     const headers = getHeaders();
     axios
@@ -66,7 +59,7 @@ export default function main() {
       })
       .catch((err) => {
         alert(err.response.data);
-        router.push("/login");
+        router.push('/login');
       });
   }, []);
   return (

@@ -1,11 +1,7 @@
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 
-import styles from "./index.module.css";
-import {
-  TYPE_LATEST_MAIN,
-  TYPE_MYPAGE,
-  TYPE_TEST_PREVIEW,
-} from "../../constants/constant";
+import styles from './index.module.css';
+import { TYPE_LATEST_MAIN, TYPE_MYPAGE, TYPE_TEST_PREVIEW } from '../../constants/constant';
 
 function TestCard(props) {
   const router = useRouter();
@@ -21,17 +17,13 @@ function TestCard(props) {
       : props.type === TYPE_MYPAGE
       ? `${styles.latest_thumbnail} ${styles.myPage}`
       : `${styles.normal_thumbnail}`;
-  const cn_3 =
-    props.type === TYPE_LATEST_MAIN
-      ? `${styles.latest_titleBox}`
-      : `${styles.normal_titleBox}`;
+  const cn_3 = props.type === TYPE_LATEST_MAIN ? `${styles.latest_titleBox}` : `${styles.normal_titleBox}`;
 
   return (
     <div
       className={cn_1}
       onClick={() => {
-        if (props.type === TYPE_MYPAGE)
-          return router.push(`/record/${props.testId}/${props.testResultId}`);
+        if (props.type === TYPE_MYPAGE) return router.push(`/record/${props.testId}/${props.testResultId}`);
         router.push(`/test/preview/${props.testId}`);
       }}
     >

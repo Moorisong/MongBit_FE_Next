@@ -1,14 +1,13 @@
-import React from "react";
-import "./globals.css";
-import "./font.css";
+import './globals.css';
+import './font.css';
 
-import NavigationBar from "@/components/NavigationBar";
+import NavigationBar from '@/components/NavigationBar';
 
-const inter = "Noto Sans";
+const inter = 'Noto Sans';
 
 export const metadata = {
-  title: "몽빗(MongBit)",
-  description: "MBTI 심테 공작소",
+  title: '몽빗(MongBit)',
+  description: 'MBTI 심테 공작소',
 };
 
 export default function RootLayout({ children }) {

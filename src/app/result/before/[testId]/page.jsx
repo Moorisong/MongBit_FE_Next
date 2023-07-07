@@ -1,4 +1,4 @@
-import CoupangClick from "@/components/CoupangClick";
+import CoupangClick from '@/components/CoupangClick';
 
 export default function Page() {
   return <CoupangClick />;

@@ -1,15 +1,17 @@
-"use client";
-import axios from "axios";
-import lottie from "lottie-web";
-import { useState, useEffect, useRef } from "react";
-import { useRouter, useParams } from "next/navigation";
+'use client';
+import axios from 'axios';
+import lottie from 'lottie-web';
+import { useState, useEffect, useRef } from 'react';
+import { useRouter, useParams } from 'next/navigation';
 
-import styles from "./index.module.css";
-import Footer from "@/components/Footer";
-import TestResult from "@/components/TestResult";
-import animationData from "./loading_1.json";
-import { DOMAIN_BE_PROD, DOMAIN_BE_DEV } from "@/constants/constant";
-import { getHeaders } from "@/utils/util";
+import { DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '@/constants/constant';
+
+import styles from './index.module.css';
+import Footer from '@/components/Footer';
+import TestResult from '@/components/TestResult';
+import animationData from './loading_1.json';
+
+import { getHeaders } from '@/utils/util';
 
 export default function ViewOldResult() {
   const [testData, setTestData] = useState(null);
@@ -22,7 +24,7 @@ export default function ViewOldResult() {
   useEffect(() => {
     const anim = lottie.loadAnimation({
       container: containerRef.current,
-      renderer: "svg",
+      renderer: 'svg',
       animationData: animationData,
       loop: true,
       autoplay: true,
@@ -38,17 +40,14 @@ export default function ViewOldResult() {
   useEffect(() => {
     const headers = getHeaders();
     axios
-      .get(
-        `${DOMAIN_BE_PROD}/api/v1/tests/test/test-result/${params.testId}/${params.testResultId}`,
-        { headers }
-      )
+      .get(`${DOMAIN_BE_PROD}/api/v1/tests/test/test-result/${params.testId}/${params.testResultId}`, { headers })
       .then((res) => {
         setTestData(res.data);
         setLoading(false);
       })
       .catch((err) => {
         alert(err.response.data);
-        router.push("/login");
+        router.push('/login');
       });
   }, []);
   return (
@@ -62,7 +61,7 @@ export default function ViewOldResult() {
       {loading || (
         <TestResult
           titleStr={testData.title}
-          contentStrArr={testData.content.split("<br>")}
+          contentStrArr={testData.content.split('<br>')}
           likeCnt={testData.likeCnt}
           testId={params.testId}
           imgUri={testData.imageUrl}

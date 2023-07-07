@@ -1,21 +1,10 @@
-import axios from "axios";
-import { useEffect, useState, useRef } from "react";
-import { useRouter, usePathname } from "next/navigation";
-import cx from "classnames";
-import lottie from "lottie-web";
-import { CopyToClipboard } from "react-copy-to-clipboard";
+import axios from 'axios';
+import { useEffect, useState, useRef } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
+import cx from 'classnames';
+import lottie from 'lottie-web';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-import animationData_1 from "./commentLoading.json";
-import animationData_2 from "./commentAreaLaoadingIcon.json";
-import { TestCard } from "../TestCard";
-import {
-  CardButton,
-  Stroke,
-  GoRandomStartBtn,
-  TestButton,
-  AddCommentButton,
-  Comment,
-} from "../ButtonSets";
 import {
   TYPE_ON_TEST,
   TYPE_COMMENT,
@@ -25,9 +14,15 @@ import {
   DOMAIN_BE_DEV,
   TYPE_TEST_PREVIEW,
   COMMENT_TIME,
-} from "@/constants/constant";
-import { decodeToken, shareToKatalk, getHeaders } from "@/utils/util";
-import styles from "./index.module.css";
+} from '@/constants/constant';
+
+import animationData_1 from './commentLoading.json';
+import animationData_2 from './commentAreaLaoadingIcon.json';
+import { TestCard } from '../TestCard';
+import { CardButton, Stroke, GoRandomStartBtn, TestButton, AddCommentButton, Comment } from '../ButtonSets';
+import styles from './index.module.css';
+
+import { decodeToken, shareToKatalk, getHeaders } from '@/utils/util';
 
 export default function TestPreview(props) {
   let [data, setData] = useState({
@@ -35,7 +30,7 @@ export default function TestPreview(props) {
     thumbnailStr: props.thumbnailStr,
     thumbnailUri: props.thumbnailUri,
     playCnt: props.playCnt,
-    conentArr: props.description.split("<br>"),
+    conentArr: props.description.split('<br>'),
     likeState: false,
     likeCnt: 0,
     comment: [],
@@ -46,7 +41,7 @@ export default function TestPreview(props) {
   const [commentIndex, setCommentIndex] = useState([0, false]);
   const [commentLoading, setCommentLoading] = useState(true);
   const [commentChanged, setCommentChanged] = useState(true);
-  let [commentValue, setCommentValue] = useState("");
+  let [commentValue, setCommentValue] = useState('');
   const [commentCnt, setCommentCnt] = useState(0);
   let [commentSeeMoreLoading, setCommentSeeMoreLoading] = useState(false);
   const [canAddComment, setCanAddComment] = useState(true);
@@ -58,12 +53,12 @@ export default function TestPreview(props) {
   const containerRef_1 = useRef(null);
   const containerRef_2 = useRef(null);
 
-  const memberId = sessionStorage.getItem("mongBitmemeberId");
+  const memberId = sessionStorage.getItem('mongBitmemeberId');
 
   useEffect(() => {
     const anim = lottie.loadAnimation({
       container: containerRef_1.current,
-      renderer: "svg",
+      renderer: 'svg',
       animationData: animationData_1,
       loop: true,
       autoplay: true,
@@ -77,7 +72,7 @@ export default function TestPreview(props) {
   useEffect(() => {
     const anim = lottie.loadAnimation({
       container: containerRef_2.current,
-      renderer: "svg",
+      renderer: 'svg',
       animationData: animationData_2,
       loop: true,
       autoplay: true,
@@ -99,7 +94,7 @@ export default function TestPreview(props) {
       })
       .catch((err) => {
         alert(err.response.data);
-        router.push("/login");
+        router.push('/login');
       });
   }, [commentChanged]);
 
@@ -109,10 +104,7 @@ export default function TestPreview(props) {
     const fetchLikeDataLogIned = async () => {
       try {
         const [stateResponse, cntResponse] = await Promise.all([
-          axios.get(
-            `${DOMAIN_BE_PROD}/api/v1/test/${data.testId}/${memberId}/like`,
-            { headers }
-          ),
+          axios.get(`${DOMAIN_BE_PROD}/api/v1/test/${data.testId}/${memberId}/like`, { headers }),
           axios.get(`${DOMAIN_BE_PROD}/api/v1/test/${data.testId}/like/count`, {
             headers,
           }),
@@ -125,7 +117,7 @@ export default function TestPreview(props) {
         }));
       } catch (err) {
         alert(err.response.data);
-        router.push("/login");
+        router.push('/login');
       }
     };
 
@@ -143,7 +135,7 @@ export default function TestPreview(props) {
         })
         .catch((err) => {
           alert(err.response.data);
-          router.push("/login");
+          router.push('/login');
         });
     };
 
@@ -158,10 +150,7 @@ export default function TestPreview(props) {
     const headers = getHeaders();
 
     axios
-      .get(
-        `${DOMAIN_BE_PROD}/api/v1/test/comments/${data.testId}/page/${commentIndex[0]}`,
-        { headers }
-      )
+      .get(`${DOMAIN_BE_PROD}/api/v1/test/comments/${data.testId}/page/${commentIndex[0]}`, { headers })
       .then((res) => {
         setData((prev) => ({ ...prev, comment: res.data.commentDTOList }));
         setCommentLoading(false);
@@ -169,7 +158,7 @@ export default function TestPreview(props) {
       })
       .catch((err) => {
         alert(err.response.data);
-        router.push("/login");
+        router.push('/login');
       });
   }, [commentChanged]);
 
@@ -189,9 +178,7 @@ export default function TestPreview(props) {
     };
   }, [canAddComment]);
 
-  data.comment.sort(
-    (a, b) => new Date(b.commentDate) - new Date(a.commentDate)
-  );
+  data.comment.sort((a, b) => new Date(b.commentDate) - new Date(a.commentDate));
 
   function addComment() {
     const headers = getHeaders();
@@ -200,11 +187,11 @@ export default function TestPreview(props) {
       .post(
         `${DOMAIN_BE_PROD}/api/v1/test/comments`,
         {
-          memberId: sessionStorage.getItem("mongBitmemeberId"),
+          memberId: sessionStorage.getItem('mongBitmemeberId'),
           testId: data.testId,
           content: commentValue,
         },
-        { headers }
+        { headers },
       )
       .then((res) => {
         setCommentIndex([0, res.data.hasNextPage]);
@@ -212,15 +199,15 @@ export default function TestPreview(props) {
       })
       .catch((err) => {
         alert(err.response.data);
-        router.push("/login");
+        router.push('/login');
       });
     setIsSubmittingComment(false);
   }
 
   async function clickLikeBtn() {
     if (!decodeToken().state) {
-      sessionStorage.setItem("ngb", pathName);
-      return router.push("/login");
+      sessionStorage.setItem('ngb', pathName);
+      return router.push('/login');
     }
     const headers = getHeaders();
 
@@ -232,15 +219,10 @@ export default function TestPreview(props) {
         likeCnt: prev.likeCnt - 1,
         likeState: false,
       }));
-      await axios
-        .delete(
-          `${DOMAIN_BE_PROD}/api/v1/test/${data.testId}/${memberId}/like`,
-          { headers }
-        )
-        .catch((err) => {
-          alert(err.response.data);
-          router.push("/login");
-        });
+      await axios.delete(`${DOMAIN_BE_PROD}/api/v1/test/${data.testId}/${memberId}/like`, { headers }).catch((err) => {
+        alert(err.response.data);
+        router.push('/login');
+      });
       setLikeChanged(!likeChanged);
     } else {
       setData((prev) => ({
@@ -252,11 +234,11 @@ export default function TestPreview(props) {
         .post(
           `${DOMAIN_BE_PROD}/api/v1/test/${data.testId}/${memberId}/like`,
           { testId: data.testId, memberId: memberId },
-          { headers }
+          { headers },
         )
         .catch((err) => {
           alert(err.response.data);
-          router.push("/login");
+          router.push('/login');
         });
       setLikeChanged(!likeChanged);
     }
@@ -264,28 +246,23 @@ export default function TestPreview(props) {
   }
   function clickTestShare() {
     if (!decodeToken().state) {
-      sessionStorage.setItem("ngb", location.pathname);
-      return router.push("/login");
+      sessionStorage.setItem('ngb', location.pathname);
+      return router.push('/login');
     }
 
-    shareToKatalk(
-      data.testId,
-      data.thumbnailStr,
-      data.conentArr.join(),
-      data.thumbnailUri
-    );
+    shareToKatalk(data.testId, data.thumbnailStr, data.conentArr.join(), data.thumbnailUri);
   }
 
   function clickAddCommentBtn() {
     if (!canAddComment) alert(COMMENT_TIME);
     if (canAddComment) {
       if (!decodeToken().state) {
-        sessionStorage.setItem("ngb", location.pathname);
-        return router.push("/login");
+        sessionStorage.setItem('ngb', location.pathname);
+        return router.push('/login');
       }
 
       if (!commentValue) return;
-      setCommentValue("");
+      setCommentValue('');
       addComment();
 
       setCanAddComment(false);
@@ -293,17 +270,17 @@ export default function TestPreview(props) {
   }
 
   function commentAddWithEnter(evt) {
-    if (evt.key === "Enter") {
+    if (evt.key === 'Enter') {
       if (!canAddComment) alert(COMMENT_TIME);
       if (canAddComment) {
         if (!decodeToken().state) {
-          sessionStorage.setItem("ngb", location.pathname);
-          return router.push("/login");
+          sessionStorage.setItem('ngb', location.pathname);
+          return router.push('/login');
         }
 
         if (!evt.currentTarget.value) return;
 
-        setCommentValue("");
+        setCommentValue('');
         setIsSubmittingComment(true);
 
         //댓글 추가 요청이 진행 중일때 추가로 등록하지 못하도록 조치함
@@ -323,10 +300,7 @@ export default function TestPreview(props) {
     setCommentSeeMoreLoading(true);
     const headers = getHeaders();
     axios
-      .get(
-        `${DOMAIN_BE_PROD}/api/v1/test/comments/${data.testId}/page/${commentIndex[0]}`,
-        { headers }
-      )
+      .get(`${DOMAIN_BE_PROD}/api/v1/test/comments/${data.testId}/page/${commentIndex[0]}`, { headers })
       .then((res) => {
         let newArr = [...data.comment];
         res.data.commentDTOList.forEach((d) => {
@@ -339,7 +313,7 @@ export default function TestPreview(props) {
       })
       .catch((err) => {
         alert(err.response.data);
-        router.push("/login");
+        router.push('/login');
       });
   }
   return (
@@ -383,22 +357,14 @@ export default function TestPreview(props) {
               }}
             >
               <CopyToClipboard text={`${DOMAIN}${location.pathname}`}>
-                <button
-                  className={
-                    linkCopyState ? styles.linkCopied : styles.noneLinkCopied
-                  }
-                ></button>
+                <button className={linkCopyState ? styles.linkCopied : styles.noneLinkCopied}></button>
               </CopyToClipboard>
-              <p>{linkCopyState ? "링크 복사됨" : "링크 복사"}</p>
+              <p>{linkCopyState ? '링크 복사됨' : '링크 복사'}</p>
             </div>
           </li>
 
           <li className={styles.likeWrap} onClick={clickLikeBtn}>
-            <TestButton
-              btnType="like"
-              str="재밌당"
-              likeState={data.likeState}
-            />
+            <TestButton btnType="like" str="재밌당" likeState={data.likeState} />
             <p className={styles.likeCntNum}>{data.likeCnt}</p>
           </li>
 
@@ -412,9 +378,7 @@ export default function TestPreview(props) {
         <CardButton type={TYPE_COMMENT} data={commentCnt} />
 
         <div className={styles.commentInputWrap}>
-          <span
-            className={styles.charsLimit}
-          >{`${commentValue.length} / 100`}</span>
+          <span className={styles.charsLimit}>{`${commentValue.length} / 100`}</span>
           <input
             maxLength="100"
             type="text"
@@ -452,7 +416,7 @@ export default function TestPreview(props) {
                       const headers = getHeaders();
                       const data = {
                         id: com.id,
-                        memberId: sessionStorage.getItem("mongBitmemeberId"),
+                        memberId: sessionStorage.getItem('mongBitmemeberId'),
                       };
                       axios
                         .delete(`${DOMAIN_BE_PROD}/api/v1/test/comments/`, {
@@ -465,7 +429,7 @@ export default function TestPreview(props) {
                         })
                         .catch((err) => {
                           alert(err.response.data);
-                          router.push("/login");
+                          router.push('/login');
                         });
                     }}
                     modifyComment={() => {
