@@ -19,6 +19,19 @@ export default function Footer(props) {
         <p>서울 관악구 신림역 인근 카페 3층 스터디존에서 만듦</p>
         <p>채용문의 &nbsp; | &nbsp; 채용되고 싶다.</p>
       </div>
+      <div className={styles.docs}>
+        <span>
+          <Link href="/terms" target="_blank">
+            <p>이용약관</p>
+          </Link>
+        </span>
+
+        <span>
+          <Link href="/policy" target="_blank">
+            <p>개인정보처리방침</p>
+          </Link>
+        </span>
+      </div>
       <div className={styles.under}>
         <Link href="https://github.com/WillNeiman/MongBit_Backend" />
         <p>© 2023 MongMoongCrew. All rights reserved </p>
