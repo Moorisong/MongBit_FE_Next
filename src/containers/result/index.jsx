@@ -37,7 +37,8 @@ export default function Result() {
       return router.push(`/record/${params.testId}/${sessionStorage.getItem('mbResultId')}`);
 
     const popstateHandler = (evt) => {
-      if (event.state === null) {
+      // 뒤로 가기 했을 때 익셉션 페이지로 이동시키기
+      if (evt && evt.state) {
         router.push('/exception');
       }
     };
