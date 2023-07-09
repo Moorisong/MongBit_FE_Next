@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { useParams, useRouter, usePathname } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import axios from 'axios';
 import cx from 'classnames';
 
@@ -11,7 +11,7 @@ import Footer from '@/components/Footer';
 import TestResult from '@/components/TestResult';
 import ResultLoading from '@/components/ResultLoading';
 
-import { decodeToken, getHeaders } from '@/utils/util';
+import { getHeaders } from '@/utils/util';
 
 export default function Result() {
   const [resultData, SetResultData] = useState({
@@ -23,24 +23,27 @@ export default function Result() {
   let [loading, setLoading] = useState(true);
 
   const router = useRouter();
-  const pathName = usePathname();
   const params = useParams();
   const memberId = sessionStorage.getItem('mongBitmemeberId');
 
   useEffect(() => {
-    if (!decodeToken().state) {
-      sessionStorage.setItem('ngb', pathName);
-      return router.push('/need_login');
-    }
+    // if (!decodeToken().state) {
+    //   sessionStorage.setItem('ngb', pathName);
+    //   return router.push('/need_login');
+    // }
     checkCoupnagSiteVisit();
 
     if (!sessionStorage.getItem('mbScore'))
       return router.push(`/record/${params.testId}/${sessionStorage.getItem('mbResultId')}`);
 
-    const popstateHandler = () => {
-      router.push('/exception');
+    const popstateHandler = (evt) => {
+      if (event.state === null) {
+        router.push('/exception');
+      }
     };
-    window.addEventListener('popstate', popstateHandler);
+    window.addEventListener('popstate', (evt) => {
+      popstateHandler(evt);
+    });
 
     const headers = getHeaders();
 
@@ -82,7 +85,7 @@ export default function Result() {
     }, 3000);
 
     return () => {
-      // popstateHandler();
+      popstateHandler();
       clearTimeout(timer);
       window.removeEventListener('popstate', popstateHandler);
     };
