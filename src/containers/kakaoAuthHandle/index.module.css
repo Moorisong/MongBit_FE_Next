@@ -1,0 +1,39 @@
+@media (max-width: 375px) {
+  .footerWrap {
+    width: 375px;
+  }
+  .content {
+    width: 375px;
+  }
+}
+
+@media (min-width: 376px) {
+  .footerWrap {
+    width: 400px;
+  }
+  .content {
+    width: 400px;
+  }
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+.content {
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.content > div {
+  width: 100px;
+}
+.footerWrap {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 60px;
+}

@@ -1,16 +1,36 @@
 'use client';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import lottie from 'lottie-web';
 
 import { DOMAIN_BE_PROD, DOMAIN_BE_DEV, TOKEN_NAME, USER_INFO } from '@/constants/constant';
+
+import animationData_1 from './loading_1.json';
+import Footer from '@/components/Footer';
+import styles from './index.module.css';
 
 import { getHeaders } from '@/utils/util';
 
 export default function KakaoAuthHandle() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const containerRef_1 = useRef(null);
   const code = searchParams.get('code');
+
+  useEffect(() => {
+    const anim = lottie.loadAnimation({
+      container: containerRef_1.current,
+      renderer: 'svg',
+      animationData: animationData_1,
+      loop: true,
+      autoplay: true,
+    });
+
+    return () => {
+      anim.destroy();
+    };
+  }, []);
 
   useEffect(() => {
     const headers = getHeaders();
@@ -43,8 +63,13 @@ export default function KakaoAuthHandle() {
   }, []);
 
   return (
-    <div>
-      <button></button>
+    <div className={styles.wrap}>
+      <div className={styles.content}>
+        <div ref={containerRef_1}></div>
+      </div>
+      <div className={`${styles.bgWhite} ${styles.footerWrap}`}>
+        <Footer />
+      </div>
     </div>
   );
 }
