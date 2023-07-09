@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useRouter, usePathname } from 'next/navigation';
 import axios from 'axios';
+import cx from 'classnames';
 
 import { COUPANG_VISIT, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '@/constants/constant';
 
@@ -81,7 +82,7 @@ export default function Result() {
     }, 3000);
 
     return () => {
-      popstateHandler();
+      // popstateHandler();
       clearTimeout(timer);
       window.removeEventListener('popstate', popstateHandler);
     };
@@ -104,17 +105,23 @@ export default function Result() {
   return (
     <div className={styles.wrap}>
       {loading && <ResultLoading />}
-      {loading ||
-        (resultData.titleStr && (
-          <TestResult
-            titleStr={resultData.titleStr}
-            contentStrArr={resultData.contentStrArr}
-            likeCnt={resultData.likeCnt && resultData.likeCnt}
-            testId={params.testId}
-            imgUri={resultData.imgUri}
-            testResultId={resultData.testResultId}
-          />
-        ))}
+
+      <div
+        className={cx(styles.resultWrap, {
+          [styles.displayNone]: loading,
+        })}
+      >
+        <TestResult
+          loadingState={loading}
+          titleStr={resultData.titleStr}
+          contentStrArr={resultData.contentStrArr}
+          likeCnt={resultData.likeCnt && resultData.likeCnt}
+          testId={params.testId}
+          imgUri={resultData.imgUri}
+          testResultId={resultData.testResultId}
+        />
+      </div>
+
       <div className={`${styles.bgWhite} ${styles.footerWrap}`}>
         <Footer />
       </div>
