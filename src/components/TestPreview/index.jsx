@@ -317,13 +317,6 @@ export default function TestPreview(props) {
   }
   return (
     <div className={styles.wrap}>
-      {/* SEO-- ksh
-      <Helmet>
-        <title>{`몽빗 : ${props.thumbnailStr}`}</title>
-        <meta property="og:url" content={DOMAIN + location.pathname} />
-        <meta property="og:image" content={props.thumbnailUri} />
-      </Helmet> */}
-
       {/* 테스트  */}
       <div className={styles.contentWrap}>
         <div>

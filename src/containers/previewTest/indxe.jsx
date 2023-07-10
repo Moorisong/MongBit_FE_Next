@@ -1,34 +1,20 @@
 'use client';
 import { useEffect, useState, useRef } from 'react';
-import { useRouter, useParams } from 'next/navigation';
-import axios from 'axios';
+import { useParams } from 'next/navigation';
 import lottie from 'lottie-web';
 
 import animationData from './loadingIcon.json';
 import Footer from '../../components/Footer';
 import TestPreview from '../../components/TestPreview';
 import styles from './index.module.css';
-import { DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '../../constants/constant';
 
-import { getHeaders } from '@/utils/util';
-
-export default function PreviewTest() {
+export default function PreviewTest(props) {
   const params = useParams();
   const [data, setData] = useState({});
   const containerRef = useRef(null);
-  const router = useRouter();
-  const headers = getHeaders();
 
   useEffect(() => {
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/tests/test/${params.testId}`, { headers })
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
-      });
+    setData(props.data);
   }, []);
 
   useEffect(() => {
