@@ -271,23 +271,22 @@ export default function TestPreview(props) {
 
   function commentAddWithEnter(evt) {
     if (evt.key === 'Enter') {
-      if (!canAddComment) alert(COMMENT_TIME);
-      if (canAddComment) {
-        if (!decodeToken().state) {
-          sessionStorage.setItem('ngb', location.pathname);
-          return router.push('/login');
-        }
+      if (!canAddComment) return alert(COMMENT_TIME);
 
-        if (!evt.currentTarget.value) return;
-
-        setCommentValue('');
-        setIsSubmittingComment(true);
-
-        //댓글 추가 요청이 진행 중일때 추가로 등록하지 못하도록 조치함
-        if (isSubmittingComment) return;
-        addComment();
-        setCanAddComment(false);
+      if (!decodeToken().state) {
+        sessionStorage.setItem('ngb', location.pathname);
+        return router.push('/login');
       }
+
+      if (!evt.currentTarget.value) return;
+
+      setCommentValue('');
+      setIsSubmittingComment(true);
+
+      //댓글 추가 요청이 진행 중일때 추가로 등록하지 못하도록 조치함
+      if (isSubmittingComment) return;
+      addComment();
+      setCanAddComment(false);
 
       // 일정 시간이 지난 후에 다시 추가할 수 있도록 타이머 설정
       setTimeout(() => {
@@ -318,13 +317,6 @@ export default function TestPreview(props) {
   }
   return (
     <div className={styles.wrap}>
-      {/* SEO-- ksh
-      <Helmet>
-        <title>{`몽빗 : ${props.thumbnailStr}`}</title>
-        <meta property="og:url" content={DOMAIN + location.pathname} />
-        <meta property="og:image" content={props.thumbnailUri} />
-      </Helmet> */}
-
       {/* 테스트  */}
       <div className={styles.contentWrap}>
         <div>

@@ -14,8 +14,10 @@ export default function NavigationBar() {
   const router = useRouter();
   const pathname = usePathname();
   const [menuClicked, setMenuClicked] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     if (!decodeToken().state) {
       sessionStorage.setItem(USER_INFO + 'memeberId', '');
       sessionStorage.setItem(USER_INFO + 'thumbnail', '');
@@ -61,68 +63,70 @@ export default function NavigationBar() {
           [styles.menuMoveToRight]: menuClicked,
         })}
       >
-        <ul className={styles.menuUlWrapper}>
-          <li>
-            <ul className={styles.ulWrap}>
-              심리테스트
-              <li>
-                <Link href="/test/latest" onClick={() => setMenuClicked(false)}>
-                  최신 보기
-                </Link>
-                <Link href="/test/list" onClick={() => setMenuClicked(false)}>
-                  전체 보기
-                </Link>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <ul className={styles.ulWrap}>
-              마이페이지
-              <li
-                onClick={() => {
-                  clickMypageBtn();
-                  setMenuClicked(false);
-                }}
-              >
-                심테 기록 보기
-              </li>
-            </ul>
-          </li>
-          <li>
-            <ul className={styles.ulWrap}>
-              개발자 정보
-              <li>
-                <Link href="/devinfo" onClick={() => setMenuClicked(false)}>
-                  몽뭉이 크루
-                </Link>
-              </li>
-            </ul>
-          </li>
-          {decodeToken()?.role === 'ROLE_ADMIN' && (
+        {isMounted && (
+          <ul className={styles.menuUlWrapper}>
             <li>
-              <button
-                className={styles.adminBtn}
-                onClick={() => {
-                  router.push('/admin');
-                  setMenuClicked(false);
-                }}
-              >
-                <p>관리자 페이지</p>
-              </button>
-            </li>
-          )}
-          <li>
-            <ul>
-              {decodeToken()?.state && (
-                <li className={styles.logOutWrap}>
-                  <p onClick={clickLogOut}>로그아웃</p>
-                  <button className={styles.logOutBtn} onClick={clickLogOut}></button>
-                  <img src="/images/navigationBar/logo_dog.svg" alt="logo" />
+              <ul className={styles.ulWrap}>
+                심리테스트
+                <li>
+                  <Link href="/test/latest" onClick={() => setMenuClicked(false)}>
+                    최신 보기
+                  </Link>
+                  <Link href="/test/list" onClick={() => setMenuClicked(false)}>
+                    전체 보기
+                  </Link>
                 </li>
-              )}
-            </ul>
-          </li>
-        </ul>
+              </ul>
+            </li>
+            <li>
+              <ul className={styles.ulWrap}>
+                마이페이지
+                <li
+                  onClick={() => {
+                    clickMypageBtn();
+                    setMenuClicked(false);
+                  }}
+                >
+                  심테 기록 보기
+                </li>
+              </ul>
+            </li>
+            <li>
+              <ul className={styles.ulWrap}>
+                개발자 정보
+                <li>
+                  <Link href="/devinfo" onClick={() => setMenuClicked(false)}>
+                    몽뭉이 크루
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            {decodeToken()?.role === 'ROLE_ADMIN' && (
+              <li>
+                <button
+                  className={styles.adminBtn}
+                  onClick={() => {
+                    router.push('/admin');
+                    setMenuClicked(false);
+                  }}
+                >
+                  <p>관리자 페이지</p>
+                </button>
+              </li>
+            )}
+            <li>
+              <ul>
+                {decodeToken()?.state && (
+                  <li className={styles.logOutWrap}>
+                    <p onClick={clickLogOut}>로그아웃</p>
+                    <button className={styles.logOutBtn} onClick={clickLogOut}></button>
+                    <img src="/images/navigationBar/logo_dog.svg" alt="logo" />
+                  </li>
+                )}
+              </ul>
+            </li>
+          </ul>
+        )}
       </div>
       <div className={styles.fixModal}></div>
       <div
