@@ -151,9 +151,28 @@ export function getHeaders() {
   };
 }
 
-export const getData = async (testId) => {
+// OG 이미지 세팅할때 사용
+
+export const getTestData = async (url) => {
   const headers = getHeaders();
-  return await fetch(`${DOMAIN_BE_PROD}/api/v1/tests/test/${testId}`, { headers })
+  return await fetch(url, { headers })
+    .then((response) => response.json())
+    .then((res) => res)
+    .catch(() => 'https://i.ibb.co/pwj20tf/cover.png');
+};
+
+export const getTestResultData = async () => {
+  const headers = getHeaders();
+  const mbScore = sessionStorage.getItem('mbScore');
+  const requestBody = {
+    score: mbScore,
+  };
+
+  return fetch(`${DOMAIN_BE_PROD}/api/v1/member-test-result/${sessionStorage.getItem('mongBitmemeberId')}`, {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(requestBody),
+  })
     .then((response) => response.json())
     .then((res) => res)
     .catch(() => 'https://i.ibb.co/pwj20tf/cover.png');

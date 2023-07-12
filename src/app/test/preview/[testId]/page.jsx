@@ -1,6 +1,6 @@
 import { DOMAIN_BE_PROD } from '@/constants/constant';
 
-import { getData } from '@/utils/util';
+import { getTestData } from '@/utils/util';
 import PreviewTest from '@/containers/previewTest/indxe';
 
 export async function generateMetadata({ params: { testId } }) {
@@ -29,9 +29,7 @@ export async function generateMetadata({ params: { testId } }) {
 
 export default async function Page({ params }) {
   const { testId } = params;
-  // const headers = getHeaders();
-  // let getData = axios.get(`${DOMAIN_BE_PROD}/api/v1/tests/test/${testId}`, { headers }).then((res) => res.data);
+  const [data] = await Promise.all([getTestData(`${DOMAIN_BE_PROD}/api/v1/tests/test/${testId}`)]);
 
-  const [data] = await Promise.all([getData(testId)]);
   return <PreviewTest data={data} />;
 }

@@ -1,8 +1,6 @@
 import { ImageResponse } from 'next/server';
 
-import { DOMAIN_BE_PROD } from '@/constants/constant';
-
-import { getTestData } from '@/utils/util';
+import { getTestResultData } from '@/utils/util';
 
 export const size = {
   width: 1200,
@@ -11,11 +9,10 @@ export const size = {
 export const contentType = 'image/png';
 export const runtime = 'edge';
 
-export default async function Image({ params: { testId } }) {
+export default async function Image() {
   try {
     let imgUrl;
-
-    await getTestData(`${DOMAIN_BE_PROD}/api/v1/tests/test/${testId}`).then((r) => (imgUrl = r.imageUrl));
+    await getTestResultData().then((r) => (imgUrl = r.imageUrl));
 
     return new ImageResponse(
       (
