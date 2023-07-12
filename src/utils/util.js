@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode';
 
-import { DOMAIN, TOKEN_NAME, USER_INFO } from '../constants/constant';
+import { DOMAIN, DOMAIN_BE_PROD, TOKEN_NAME, USER_INFO } from '../constants/constant';
 
 export function decodeToken() {
   if (typeof sessionStorage === 'undefined') return;
@@ -150,3 +150,11 @@ export function getHeaders() {
     Authorization: sessionStorage.getItem(TOKEN_NAME),
   };
 }
+
+export const getData = async (testId) => {
+  const headers = getHeaders();
+  return await fetch(`${DOMAIN_BE_PROD}/api/v1/tests/test/${testId}`, { headers })
+    .then((response) => response.json())
+    .then((res) => res)
+    .catch(() => 'https://i.ibb.co/pwj20tf/cover.png');
+};

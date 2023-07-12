@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/server';
 
-import { getData } from './util';
+import { getData } from '@/utils/util';
 
 export const size = {
   width: 1200,

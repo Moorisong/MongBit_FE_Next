@@ -1,7 +1,6 @@
 import { DOMAIN_BE_PROD } from '@/constants/constant';
 
-import { getData } from './util';
-
+import { getData } from '@/utils/util';
 import PreviewTest from '@/containers/previewTest/indxe';
 
 export async function generateMetadata({ params: { testId } }) {
