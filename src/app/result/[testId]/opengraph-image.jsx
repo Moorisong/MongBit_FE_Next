@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/server';
 
-import { OG_STANDARD_IMAGE } from '@/constants/constant';
+import { OG_TEST_RESULT } from '@/constants/constant';
 
 export const size = {
   width: 1200,
@@ -13,7 +13,7 @@ export default async function Image() {
   try {
     let imgUrl;
 
-    imgUrl = OG_STANDARD_IMAGE;
+    imgUrl = OG_TEST_RESULT;
 
     return new ImageResponse(
       (
@@ -42,6 +42,6 @@ export default async function Image() {
       },
     );
   } catch (err) {
-    return OG_STANDARD_IMAGE;
+    return null;
   }
 }
