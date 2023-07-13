@@ -1,4 +1,4 @@
-import { DOMAIN, OG_RANDOM_IMAGE } from '@/constants/constant';
+import { DOMAIN } from '@/constants/constant';
 
 import RandomTest from '@/containers/randomTest';
 
@@ -19,7 +19,7 @@ export async function generateMetadata() {
       images: [
         {
           url: imageUrl,
-          alt: '이미지 설명',
+          alt: 'og_image',
         },
       ],
     },

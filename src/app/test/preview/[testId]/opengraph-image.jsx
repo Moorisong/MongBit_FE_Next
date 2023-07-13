@@ -44,6 +44,6 @@ export default async function Image({ params: { testId } }) {
       },
     );
   } catch (err) {
-    return OG_STANDARD_IMAGE;
+    return null;
   }
 }

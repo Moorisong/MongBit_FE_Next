@@ -1,9 +1,9 @@
 import { DOMAIN } from '@/constants/constant';
 
-import ViewOldResult from '@/containers/ViewOldResult';
+import ViewOldResult from '@/containers/viewOldResults';
 
 export async function generateMetadata({ params: { testId, testResultId } }) {
-  const url = `${DOMAIN}/test/preview/${testId}`;
+  const url = `${DOMAIN}/record/${testId}/${testResultId}`;
   const title = '몽빗(MongBit)';
   let description = 'MBTI 심리테스트 공작소';
   let imageUrl = `${DOMAIN}/record/${testId}/${testResultId}/opengraph-image`;
@@ -19,7 +19,7 @@ export async function generateMetadata({ params: { testId, testResultId } }) {
       images: [
         {
           url: imageUrl,
-          alt: '이미지 설명',
+          alt: 'og_image',
         },
       ],
     },

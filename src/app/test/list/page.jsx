@@ -19,7 +19,7 @@ export async function generateMetadata({ params: { testId, testResultId } }) {
       images: [
         {
           url: imageUrl,
-          alt: '이미지 설명',
+          alt: 'og_image',
         },
       ],
     },
