@@ -33,4 +33,5 @@ export const LENGTH_OVER_500 = '500자 이상으로 작성한 항목이 존재�
 export const COMMENT_TIME = '코멘트 등록은 20초 간격으로 가능합니다.';
 
 //OG Image url
-export const STANDARD_IMAGE = 'https://i.ibb.co/pwj20tf/cover.png';
+export const OG_STANDARD_IMAGE = 'https://i.ibb.co/pwj20tf/cover.png';
+export const OG_RANDOM_IMAGE = 'https://i.ibb.co/bQ6nyRg/og-random.png';

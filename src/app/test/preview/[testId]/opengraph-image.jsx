@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/server';
 
-import { DOMAIN_BE_PROD, STANDARD_IMAGE } from '@/constants/constant';
+import { DOMAIN_BE_PROD, OG_STANDARD_IMAGE } from '@/constants/constant';
 
 import { getTestData } from '@/utils/util';
 
@@ -44,6 +44,6 @@ export default async function Image({ params: { testId } }) {
       },
     );
   } catch (err) {
-    return STANDARD_IMAGE;
+    return OG_STANDARD_IMAGE;
   }
 }

@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/server';
 
-import { STANDARD_IMAGE } from '@/constants/constant';
+import { OG_RANDOM_IMAGE } from '@/constants/constant';
 
 export const size = {
   width: 1200,
@@ -13,7 +13,7 @@ export default async function Image() {
   try {
     let imgUrl;
 
-    imgUrl = STANDARD_IMAGE;
+    imgUrl = OG_RANDOM_IMAGE;
 
     return new ImageResponse(
       (
@@ -42,6 +42,6 @@ export default async function Image() {
       },
     );
   } catch (err) {
-    return STANDARD_IMAGE;
+    return null;
   }
 }

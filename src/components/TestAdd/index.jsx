@@ -188,6 +188,17 @@ export default function TestAdd() {
 
   return (
     <div className={styles.resultWrap}>
+      {/* 이미지 업로드  */}
+      {/* <input type='file' onChange={(evt)=>{
+        const file = evt.target.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const headers = getHeaders()
+        axios.post(`${DOMAIN_BE_PROD}/upload`, formData, {
+          headers,
+        });
+      }} /> */}
       {stage === 1 && (
         <InfoPart
           data={data}

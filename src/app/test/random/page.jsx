@@ -1,4 +1,4 @@
-import { DOMAIN } from '@/constants/constant';
+import { DOMAIN, OG_RANDOM_IMAGE } from '@/constants/constant';
 
 import RandomTest from '@/containers/randomTest';
 
