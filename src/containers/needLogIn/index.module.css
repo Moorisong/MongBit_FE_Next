@@ -1,0 +1,42 @@
+.wrap {
+  background-color: white;
+  max-height: 700px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footerWrap {
+  width: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.kakaoLogInBtn {
+  width: 100%;
+  max-width: 370px;
+  height: 3rem;
+  background-image: url('../../../public/images/logIn/kakaoLogInBtn.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-top: 50px;
+}
+
+.textBox {
+  width: 100%;
+  color: black;
+  font-size: 1.4rem;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 200px 0 200px 0;
+}
+
+.textBox > p:first-child {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  font-weight: 400;
+}

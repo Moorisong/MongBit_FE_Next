@@ -1,0 +1,78 @@
+@media (max-width: 375px) {
+  .contentWrap {
+    width: 345px;
+  }
+
+  .contentWrap > p,
+  .contentWrap > textarea,
+  .contentWrap > input {
+    width: 345px;
+  }
+}
+@media (min-width: 376px) {
+  .contentWrap {
+    width: 370px;
+  }
+
+  .contentWrap > p,
+  .contentWrap > textarea,
+  .contentWrap > input {
+    width: 370px;
+  }
+}
+.contentWrap {
+  margin-bottom: 30px;
+}
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+}
+
+.show {
+  display: flex;
+}
+
+.notShow {
+  display: none;
+}
+
+.stepWrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+  margin-top: 50px;
+}
+
+.stepWrap > button {
+  margin: 0 60px;
+  background-color: #979797;
+  color: white;
+  font-weight: 300;
+  padding: 3px 8px 3px 8px;
+  border-radius: 8px;
+}
+
+.contentWrap > p {
+  font-size: 1rem;
+  font-weight: 350;
+  margin-bottom: 5px;
+}
+
+.contentWrap > input {
+  border: 0.5px solid #979797;
+}
+
+.imageWrap {
+  margin: 30px 0 10px 0;
+}
+.imageWrap > input {
+  width: 300px;
+  padding: 10px 0 10px 0;
+}
+.fileInput {
+  color: navy;
+}

@@ -1,0 +1,317 @@
+@media (max-width: 375px) {
+  .goRandomStartBtn {
+    width: 100%;
+    max-width: 345px;
+  }
+
+  .commentWrapper {
+    width: 345px;
+  }
+
+  .wrap_comment {
+    width: 345px;
+  }
+
+  .comment_onTest {
+    width: 345px;
+  }
+
+  .stroke {
+    width: 345px;
+  }
+}
+
+@media (min-width: 376px) {
+  .goRandomStartBtn {
+    width: 100%;
+    max-width: 370px;
+  }
+
+  .commentWrapper {
+    width: 370px;
+  }
+
+  .wrap_comment {
+    width: 370px;
+  }
+
+  .comment_onTest {
+    width: 370px;
+  }
+
+  .stroke {
+    width: 370px;
+  }
+}
+
+.goRandomStartBtn {
+  height: 2.5rem;
+  font-size: 1rem;
+  border-radius: 1rem;
+  background-color: #ffc52f;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 10px 0;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.commentWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 15px 10px 0 0;
+  position: relative;
+}
+
+.wrap_comment {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 15px 0 10px 0;
+}
+
+.comment_onTest {
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.stroke {
+  height: 1px;
+  border-bottom: 1px solid #f1f1f1;
+  margin: 10px 0 20px 0;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px 10px 15px 0;
+}
+
+.wrap > button {
+  cursor: default;
+}
+
+.wrap > span {
+  margin-left: 2px;
+}
+
+.wrap_comment > span:last-child {
+  color: #979797;
+}
+
+.stroke_onTest_top {
+  margin-bottom: 0.3rem;
+}
+
+.commentText_onTest {
+  color: black;
+  font-weight: normal;
+  font-size: 14px;
+  margin-left: 3px;
+}
+
+.button {
+  width: 18px;
+  height: 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border-style: none;
+  background-color: white;
+}
+
+.count {
+  color: #8f8f8f;
+  font-weight: normal;
+
+  left: 0.3rem;
+  font-size: 14px;
+}
+
+.playCnt {
+  background-image: url('../../../public/images/buttonSet/playCnt.svg');
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+}
+
+.likeCnt {
+  background-image: url('../../../public/images/buttonSet/likeCnt.svg');
+  width: 17px;
+  height: 17px;
+}
+
+.commentCnt {
+  background-image: url('../../../public/images/buttonSet/commentCnt.svg');
+  width: 17px;
+  height: 17px;
+  margin-top: 3px;
+}
+
+.comment {
+  background-image: url('../../../public/images/test/comment.svg');
+}
+
+.linkCopied {
+  width: 2rem;
+  height: 2rem;
+  background-image: url('../../../public/images/test/linkCopyIcon.svg');
+}
+
+.noneLinkCopied {
+  width: 2rem;
+  height: 2rem;
+  background-image: url('../../../public/images/test/noneLinkCopyIcon.svg');
+}
+
+.liked {
+  width: 2rem;
+  height: 2rem;
+  background-image: url('../../../public/images/test/liked.svg');
+}
+
+.noneLiked {
+  width: 2rem;
+  height: 2rem;
+  background-image: url('../../../public/images/test/noneLiked.svg');
+}
+
+.share {
+  width: 2rem;
+  height: 2rem;
+  background-image: url('../../../public/images/test/shareIcon.svg');
+}
+
+.testBtnWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.commentBtnWrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.addCommentButton {
+  width: 19px;
+  height: 19px;
+  background-image: url('../../../public/images/test/addComment.svg');
+  background-color: #f1f1f1;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.userImg {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 10px;
+  border-radius: 15.5px;
+  position: absolute;
+  left: 0;
+  top: 2px;
+}
+
+.userAndDate {
+  width: 100%;
+  max-width: 315px;
+  margin: -5px 0 0 47px;
+  word-wrap: break-word;
+}
+
+.modifyWrap {
+  position: absolute;
+  top: -4px;
+  right: 5px;
+}
+
+.modifyWrap > button:first-child {
+  margin-right: 5px;
+}
+
+.modifyWrap > button {
+  color: #979797;
+  background-color: white;
+  font-size: 12.5px;
+  font-weight: 300;
+}
+
+.modifyInputWrap {
+  position: relative;
+}
+
+.charsLimit {
+  position: absolute;
+  right: 5px;
+  top: 8px;
+  font-size: 11px !important;
+}
+
+.newCommRightBtn_apply {
+  position: absolute;
+  right: 25px;
+  top: -19px;
+  background-color: white;
+  color: #ffc01f;
+  font-size: 12.5px;
+  font-weight: 300;
+}
+
+.newCommRightBtn_cancel {
+  position: absolute;
+  right: -5px;
+  top: -19px;
+  background-color: white;
+  color: #ffc01f;
+  font-size: 12.5px;
+  font-weight: 300;
+}
+
+.modifyInput {
+  width: 320px;
+  color: black;
+  font-size: 0.8rem;
+  border-bottom: 1px solid #cdcdcd;
+  padding: 0 57px 0 3px;
+  height: 25px;
+}
+
+.modifyInputBoderBottomRed {
+  border-bottom: 1.5px solid red;
+}
+
+.modifyInput:focus {
+  outline: none;
+}
+
+.goRandomStartBtn:hover {
+  background-color: #f8b713;
+}
+.userAndDateReadOnly {
+  width: 100%;
+  max-width: 315px;
+  margin: -5px 0 0 47px;
+  word-wrap: break-word;
+}
+.userAndDateReadOnly > div span {
+  color: #979797;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+.userAndDateReadOnly > p {
+  width: 100%;
+  color: black;
+  font-size: 0.8rem;
+  font-weight: 350;
+  margin: 3px 0 0 3px;
+}

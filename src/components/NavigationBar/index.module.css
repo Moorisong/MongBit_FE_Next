@@ -1,0 +1,247 @@
+@media (max-width: 375px) {
+  .fixedWrap {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .wrap {
+    width: 375px;
+  }
+
+  .menuWrap {
+    width: 180px;
+    height: 100%;
+    left: calc(50% - 400px);
+    top: -1px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .menuMoveToRight {
+    left: calc(50% - 190px);
+  }
+}
+
+@media (min-width: 376px) {
+  .fixedWrap {
+    width: 100%;
+    max-width: 370px;
+  }
+
+  .wrap {
+    width: 400px;
+  }
+
+  .menuWrap {
+    width: 200px;
+    height: 100%;
+    left: calc(50% - 400px);
+    top: -1px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .menuMoveToRight {
+    left: calc(50% - 200px);
+  }
+}
+
+.fixedWrap {
+  background-color: white;
+  height: 5rem;
+}
+
+.navWrap {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+}
+
+.menuWrap {
+  border: 1px solid rgb(242, 242, 242);
+  background-color: white;
+  position: fixed;
+  z-index: 2;
+}
+
+.wrap {
+  z-index: 1;
+}
+
+.logoWrap {
+  display: flex;
+  flex-direction: row;
+  padding: 0 30px 0 30px;
+}
+
+.logoDog {
+  width: 5rem;
+  height: 5.5rem;
+  background-image: url('../../../public/images/navigationBar/logo_dog.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.logoTitle {
+  width: 7rem;
+  height: 5.7rem;
+  background-image: url('../../../public/images/navigationBar/logo_title.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.myPageBtn {
+  width: 15px;
+  height: 15px;
+  border-style: none;
+  background-color: white;
+  background-image: url('../../../public/images/navigationBar/user.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.myPageBtnNone {
+  width: 1rem;
+  height: 1rem;
+  background-color: white;
+  pointer-events: none;
+}
+
+.menuIcon {
+  width: 1rem;
+  height: 1rem;
+  background-color: white;
+  background-image: url('../../../public/images/navigationBar/menuIcon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.menuWrap > ul {
+  padding-top: 30px;
+}
+
+.menuWrap > ul > li li,
+.menuWrap > ul > li a {
+  padding: 3px 0 0 5px;
+}
+
+.fixModal {
+  width: 300px;
+  height: 100%;
+  position: fixed;
+  left: calc(50% - 500px);
+  top: -1px;
+  z-index: 2;
+  background-color: #f4f4f4;
+}
+
+.blackModal {
+  width: 400px;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: -3;
+}
+
+.modalMoveToRight {
+  display: block;
+  height: 100%;
+  opacity: 0.5;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1;
+  background-color: black;
+  position: fixed;
+}
+
+.menuWrap > ul {
+  margin: 10px 0 0 10px;
+  height: 100%;
+}
+
+.menuWrap > ul > li {
+  margin-bottom: 20px;
+}
+
+.ulWrap > a {
+  font-weight: 400;
+}
+
+.ulWrap > li {
+  cursor: pointer;
+}
+
+.menuUlWrapper {
+  font-weight: bold;
+}
+
+.menuUlWrapper > li {
+  list-style: none;
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+.strokeWrap {
+  width: 100%;
+}
+
+.logOutWrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: -10px;
+  position: absolute;
+  bottom: 10px;
+}
+
+.logOutWrap > p {
+  padding-right: 5px;
+  color: #979797;
+}
+
+.logOutWrap > p,
+.logOutWrap > button {
+  cursor: pointer;
+}
+
+.adminBtn {
+  position: absolute;
+  bottom: 60px;
+  left: -6px;
+  background-color: white;
+}
+
+.adminBtn > p {
+  padding-right: 5px;
+  color: #979797;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 350;
+}
+
+.menuWrap > ul:last-child {
+  position: relative;
+}
+
+.logOutBtn {
+  width: 20px;
+  height: 22px;
+  background-color: white;
+  background-image: url('../../../public/images/navigationBar/logOutIcon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.logOutWrap > img {
+  width: 60px;
+  height: 40px;
+  margin-left: 30px;
+}

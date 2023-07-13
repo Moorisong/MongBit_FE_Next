@@ -1,0 +1,27 @@
+@media (max-width: 375px) {
+  .wrap {
+    max-width: 345px;
+    width: 100%;
+  }
+}
+@media (min-width: 376px) {
+  .wrap {
+    max-width: 370px;
+    width: 100%;
+  }
+}
+.wrap {
+  background-color: white;
+  margin: 10px 0 10px 0;
+}
+.title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.content {
+  font-size: 0.9rem;
+  color: #8f8f8f;
+  margin-top: 5px;
+}
