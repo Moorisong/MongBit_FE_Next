@@ -15,7 +15,7 @@ export default async function Image() {
   try {
     let imgUrl;
 
-    await getTestData(`${DOMAIN_BE_PROD}/api/v1/tests/random`).then((r) => (imgUrl = r.imageUrl));
+    imgUrl = STANDARD_IMAGE;
 
     return new ImageResponse(
       (
