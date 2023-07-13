@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode';
 
-import { DOMAIN, DOMAIN_BE_PROD, TOKEN_NAME, USER_INFO } from '../constants/constant';
+import { DOMAIN, TOKEN_NAME, USER_INFO, STANDARD_IMAGE } from '../constants/constant';
 
 export function decodeToken() {
   if (typeof sessionStorage === 'undefined') return;
@@ -158,22 +158,5 @@ export const getTestData = async (url) => {
   return await fetch(url, { headers })
     .then((response) => response.json())
     .then((res) => res)
-    .catch(() => 'https://i.ibb.co/pwj20tf/cover.png');
-};
-
-export const getTestResultData = async () => {
-  const headers = getHeaders();
-  const mbScore = sessionStorage.getItem('mbScore');
-  const requestBody = {
-    score: mbScore,
-  };
-
-  return fetch(`${DOMAIN_BE_PROD}/api/v1/member-test-result/${sessionStorage.getItem('mongBitmemeberId')}`, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(requestBody),
-  })
-    .then((response) => response.json())
-    .then((res) => res)
-    .catch(() => 'https://i.ibb.co/pwj20tf/cover.png');
+    .catch(() => STANDARD_IMAGE);
 };

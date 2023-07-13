@@ -22,6 +22,7 @@ export default function MyPage() {
   const containerRef_1 = useRef(null);
   const containerRef_2 = useRef(null);
 
+  const [isMounted, setIsMounted] = useState(false);
   const [testData, setTestData] = useState({
     resultArr: [],
     hasNextPage: false,
@@ -39,6 +40,7 @@ export default function MyPage() {
   const registerDate = `${dateParts[0]}.${dateParts[1]}.${dateParts[2]}`;
 
   useEffect(() => {
+    setIsMounted(true);
     const anim = lottie.loadAnimation({
       container: containerRef_1.current,
       renderer: 'svg',
@@ -142,66 +144,70 @@ export default function MyPage() {
       });
   }
   return (
-    <div className={styles.wrap}>
-      <TitleWithText type_1={TITLE_WITH_CONTENT} title="🦁 마이페이지" />
+    <>
+      {isMounted && (
+        <div className={styles.wrap}>
+          <TitleWithText type_1={TITLE_WITH_CONTENT} title="🦁 마이페이지" />
 
-      <div className={styles.userInfoWrap}>
-        <img src={sessionStorage.getItem(USER_INFO + 'thumbnail')} alt="user_img" className={styles.userImg} />
-        <div className={styles.spanWrap}>
-          <p>{sessionStorage.getItem(USER_INFO + 'username')}</p>
-          <p>{registerDate} 가입</p>
-        </div>
-      </div>
-      <Stroke type_1={TYPE_MYPAGE} type_2="1" />
-      <TitleWithText type_1={TITLE_WITH_CONTENT} type_2={TYPE_MYPAGE} title=" 🐭 최근 테스트 결과(10개)" />
-      {loading && (
-        <div>
-          <div ref={containerRef_1} className={styles.loadImg}></div>
-        </div>
-      )}
-      {!loading && testData.resultArr.length == 0 ? (
-        <div className={styles.noResultWrap}>
-          <p>최근 테스트 결과가 없습니다.</p>
-          <Link href="/test/list" className={styles.goTestLink}>
-            테스트 보러 가기
-          </Link>
-        </div>
-      ) : (
-        testData.resultArr.map((t, i) => (
-          <TestSetMyPage
-            key={i}
-            title={t.title}
-            testId={t.testId}
-            testResultId={t.testResultId}
-            content={{
-              description: t.content,
-              date: t.testData,
-            }}
-            type={TYPE_MYPAGE}
-            imgUri={t.imageUrl}
-            hasNextPage={testData.hasNextPage}
-          />
-        ))
-      )}
-
-      {testData.hasNextPage && (
-        <div className={styles.seeMoreWrap} onClick={clickSeeMoreResult}>
-          {clickSeeMore ? (
-            <div className={styles.loadImgWrap_2}>
-              <div ref={containerRef_2}></div>
+          <div className={styles.userInfoWrap}>
+            <img src={sessionStorage.getItem(USER_INFO + 'thumbnail')} alt="user_img" className={styles.userImg} />
+            <div className={styles.spanWrap}>
+              <p>{sessionStorage.getItem(USER_INFO + 'username')}</p>
+              <p>{registerDate} 가입</p>
+            </div>
+          </div>
+          <Stroke type_1={TYPE_MYPAGE} type_2="1" />
+          <TitleWithText type_1={TITLE_WITH_CONTENT} type_2={TYPE_MYPAGE} title=" 🐭 최근 테스트 결과(10개)" />
+          {loading && (
+            <div>
+              <div ref={containerRef_1} className={styles.loadImg}></div>
+            </div>
+          )}
+          {!loading && testData.resultArr.length == 0 ? (
+            <div className={styles.noResultWrap}>
+              <p>최근 테스트 결과가 없습니다.</p>
+              <Link href="/test/list" className={styles.goTestLink}>
+                테스트 보러 가기
+              </Link>
             </div>
           ) : (
-            <>
-              <button>더보기</button>
-              <img src="/images/test/seeMoreIcon.svg" alt="see_more" />
-            </>
+            testData.resultArr.map((t, i) => (
+              <TestSetMyPage
+                key={i}
+                title={t.title}
+                testId={t.testId}
+                testResultId={t.testResultId}
+                content={{
+                  description: t.content,
+                  date: t.testData,
+                }}
+                type={TYPE_MYPAGE}
+                imgUri={t.imageUrl}
+                hasNextPage={testData.hasNextPage}
+              />
+            ))
           )}
+
+          {testData.hasNextPage && (
+            <div className={styles.seeMoreWrap} onClick={clickSeeMoreResult}>
+              {clickSeeMore ? (
+                <div className={styles.loadImgWrap_2}>
+                  <div ref={containerRef_2}></div>
+                </div>
+              ) : (
+                <>
+                  <button>더보기</button>
+                  <img src="/images/test/seeMoreIcon.svg" alt="see_more" />
+                </>
+              )}
+            </div>
+          )}
+
+          <div className={styles.footerWrap}>
+            <Footer type={TYPE_MYPAGE} />
+          </div>
         </div>
       )}
-
-      <div className={styles.footerWrap}>
-        <Footer type={TYPE_MYPAGE} />
-      </div>
-    </div>
+    </>
   );
 }

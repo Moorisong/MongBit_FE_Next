@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/server';
 
-import { DOMAIN_BE_PROD } from '@/constants/constant';
+import { DOMAIN_BE_PROD, STANDARD_IMAGE } from '@/constants/constant';
 
 import { getTestData } from '@/utils/util';
 
@@ -44,6 +44,6 @@ export default async function Image({ params: { testId } }) {
       },
     );
   } catch (err) {
-    return 'https://i.ibb.co/pwj20tf/cover.png';
+    return STANDARD_IMAGE;
   }
 }
