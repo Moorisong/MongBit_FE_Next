@@ -1,13 +1,13 @@
-import { DOMAIN_BE_PROD } from '@/constants/constant';
+import { DOMAIN, DOMAIN_BE_PROD } from '@/constants/constant';
 
 import { getTestData } from '@/utils/util';
 import PreviewTest from '@/containers/previewTest/indxe';
 
 export async function generateMetadata({ params: { testId } }) {
-  const url = `${DOMAIN_BE_PROD}/test/preview/${testId}`;
+  const url = `${DOMAIN}/test/preview/${testId}`;
   const title = '몽빗(MongBit)';
   let description = 'MBTI 심리테스트 공작소';
-  let imageUrl = `https://mong-bit-fe-next.vercel.app/test/preview/${testId}/opengraph-image`;
+  let imageUrl = `${DOMAIN}/test/preview/${testId}/opengraph-image`;
 
   return {
     title,
