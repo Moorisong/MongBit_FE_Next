@@ -1,8 +1,6 @@
 import { ImageResponse } from 'next/server';
 
-import { DOMAIN_BE_PROD, STANDARD_IMAGE } from '@/constants/constant';
-
-import { getTestData } from '@/utils/util';
+import { STANDARD_IMAGE } from '@/constants/constant';
 
 export const size = {
   width: 1200,
@@ -15,7 +13,7 @@ export default async function Image() {
   try {
     let imgUrl;
 
-    await getTestData(`${DOMAIN_BE_PROD}/api/v1/tests/random`).then((r) => (imgUrl = r.imageUrl));
+    imgUrl = STANDARD_IMAGE;
 
     return new ImageResponse(
       (
