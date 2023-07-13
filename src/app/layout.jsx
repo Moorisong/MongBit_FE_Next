@@ -7,7 +7,34 @@ const inter = 'Noto Sans';
 
 export const metadata = {
   title: '몽빗(MongBit)',
-  description: 'MBTI 심테 공작소',
+  description: 'MBTI 심리테스트 공작소',
+  keywords: [
+    'MBTI',
+    'MBTI 심테',
+    'MBTI 심리테스트',
+    '심리테스트',
+    '심테',
+    '연애 심테',
+    '연애 심리테스트',
+    'MongBit',
+    '몽빗',
+    'INFP',
+    'ISFP',
+    'INFJ',
+    'INTJ',
+    'INTP',
+    'ISTP',
+    'ISTJ',
+    'ISFJ',
+    'ENFP',
+    'ESFP',
+    'ENFJ',
+    'ENTJ',
+    'ENTP',
+    'ESTP',
+    'ESTJ',
+    'ESFJ',
+  ],
 };
 
 export default function RootLayout({ children }) {

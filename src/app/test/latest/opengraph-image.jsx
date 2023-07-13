@@ -42,6 +42,6 @@ export default async function Image() {
       },
     );
   } catch (err) {
-    return OG_STANDARD_IMAGE;
+    return null;
   }
 }
