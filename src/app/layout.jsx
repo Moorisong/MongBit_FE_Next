@@ -10,6 +10,8 @@ export const metadata = {
   description: 'MBTI 심리테스트 공작소',
   keywords: [
     'MBTI',
+    'MBTI 연애',
+    'MBTI 궁합',
     'MBTI 심테',
     'MBTI 심리테스트',
     '심리테스트',

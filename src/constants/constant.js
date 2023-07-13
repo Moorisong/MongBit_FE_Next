@@ -1,5 +1,5 @@
 // Domain
-export const DOMAIN = 'https://mong-bit-fe-next.vercel.app';
+export const DOMAIN = 'https://mongbit.vercel.app';
 export const DOMAIN_BE_DEV = 'https://mongbit-willneiman.koyeb.app';
 export const DOMAIN_BE_PROD = 'https://mongbit.site';
 // export const DOMAIN_BE_PROD = 'http://3.39.194.200:8080';
