@@ -14,7 +14,7 @@ import animationData_1 from './commentLoading.json';
 import animationData_2 from './commentAreaLaoadingIcon.json';
 import { TestButton, CardButton } from '../ButtonSets';
 
-import { decodeToken, shareToKatalk_result, getHeaders } from '@/utils/util';
+import { decodeToken, shareToKakaotalk_result, getHeaders } from '@/utils/util';
 
 export default function TestResult(props) {
   const [commentIndex, setCommentIndex] = useState([0, false]);
@@ -262,7 +262,7 @@ export default function TestResult(props) {
     }
 
     const likeCntNum = location.pathname.indexOf('result') > -1 ? props.likeCnt : likeData.likeCnt;
-    shareToKatalk_result(
+    shareToKakaotalk_result(
       props.testId,
       props.titleStr,
       props.contentStrArr.join(),
