@@ -5,6 +5,8 @@ import { useRouter, usePathname } from 'next/navigation';
 import axios from 'axios';
 import lottie from 'lottie-web';
 
+import { decodeToken, getHeaders } from '@/utils/util';
+
 import animationData_1 from './loading_2.json';
 import animationData_2 from './seeMoreIcon.json';
 import Footer from '../../components/Footer';
@@ -13,8 +15,6 @@ import { TestSetMyPage } from '../../components/TestSets';
 import { TitleWithText } from '../../components/Titles';
 import { TITLE_WITH_CONTENT, TYPE_MYPAGE, USER_INFO, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '../../constants/constant';
 import { Stroke } from '../../components/ButtonSets';
-
-import { decodeToken, getHeaders } from '@/utils/util';
 
 export default function MyPage() {
   const router = useRouter();

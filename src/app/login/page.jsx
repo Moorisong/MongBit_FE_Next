@@ -1,5 +1,4 @@
 import { DOMAIN } from '@/constants/constant';
-
 import LogIn from '@/containers/logIn';
 
 export async function generateMetadata() {

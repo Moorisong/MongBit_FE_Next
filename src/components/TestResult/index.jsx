@@ -6,6 +6,7 @@ import lottie from 'lottie-web';
 import cx from 'classnames';
 
 import { DOMAIN, DOMAIN_BE_PROD, DOMAIN_BE_DEV, TYPE_COMMENT, COMMENT_TIME } from '@/constants/constant';
+import { decodeToken, shareToKakaotalk_result, getHeaders } from '@/utils/util';
 
 import styles from './index.module.css';
 import CoupangAdv_1 from '../CoupangAdv_1';
@@ -13,8 +14,6 @@ import { Stroke, Comment, AddCommentButton } from '../ButtonSets';
 import animationData_1 from './commentLoading.json';
 import animationData_2 from './commentAreaLaoadingIcon.json';
 import { TestButton, CardButton } from '../ButtonSets';
-
-import { decodeToken, shareToKakaotalk_result, getHeaders } from '@/utils/util';
 
 export default function TestResult(props) {
   const [commentIndex, setCommentIndex] = useState([0, false]);
@@ -262,14 +261,17 @@ export default function TestResult(props) {
     }
 
     const likeCntNum = location.pathname.indexOf('result') > -1 ? props.likeCnt : likeData.likeCnt;
-    shareToKakaotalk_result(
-      props.testId,
-      props.titleStr,
-      props.contentStrArr.join(),
-      props.imgUri,
-      resultPathName,
-      likeCntNum,
-    );
+    console.log('2222--> ', window.Kakao);
+    if (window) {
+      shareToKakaotalk_result(
+        props.testId,
+        props.titleStr,
+        props.contentStrArr.join(),
+        props.imgUri,
+        resultPathName,
+        likeCntNum,
+      );
+    }
   }
 
   function clickAddCommentBtn() {

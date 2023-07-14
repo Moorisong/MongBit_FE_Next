@@ -5,14 +5,13 @@ import axios from 'axios';
 import lottie from 'lottie-web';
 
 import { DOMAIN_BE_PROD, DOMAIN_BE_DEV, TYPE_COMMENT, COUPANG_VISIT } from '@/constants/constant';
+import { getHeaders } from '@/utils/util';
 
 import Footer from '../Footer';
 import ResultLoading from '../ResultLoading';
 import styles from './index.module.css';
 import { CardButton, CommentReadOnly } from '../ButtonSets';
 import animationData_1 from './commentAreaLaoadingIcon.json';
-
-import { getHeaders } from '@/utils/util';
 
 export default function CoupangClick(props) {
   const params = useParams();

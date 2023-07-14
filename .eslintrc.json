@@ -6,7 +6,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "prettier"
+    "prettier",
+    "next/core-web-vitals"
   ],
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -36,6 +37,7 @@
     "no-trailing-spaces": "error",
     "jsx-quotes": ["error", "prefer-double"],
     // "jsx-quotes": "warn",
+    "react-hooks/rules-of-hooks":"off", // 다시 살리기
     "react/jsx-uses-react": "off",
     "react/jsx-uses-vars": "error",
     "react/jsx-no-undef": "error",

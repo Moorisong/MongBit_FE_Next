@@ -1,5 +1,4 @@
 import { DOMAIN, DOMAIN_BE_PROD } from '@/constants/constant';
-
 import { getTestData } from '@/utils/util';
 import PreviewTest from '@/containers/previewTest/indxe';
 

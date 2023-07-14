@@ -32,7 +32,7 @@ export default async function Image() {
             style={{
               objectFit: 'cover',
             }}
-            alt=""
+            alt="og_imgage"
           />
         </div>
       ),
