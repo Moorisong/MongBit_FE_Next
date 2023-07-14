@@ -57,36 +57,23 @@ export function formatTimeDifference(dateString) {
   }
 }
 
-export function shareToKatalk(testId, title, description, testImgUri) {
+export function shareToKakaotalk_test(testId, title, description, testImgUri, likeCnt) {
   if (!window.Kakao.isInitialized()) window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_APP_KEY);
+
   window.Kakao.Share.sendDefault({
-    objectType: 'list',
-    headerTitle: '몽빗 테스트 공유해요 :)',
-    headerLink: {
-      // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
-      mobileWebUrl: DOMAIN,
-      webUrl: DOMAIN,
+    objectType: 'feed',
+    content: {
+      title: '몽빗 테스트 공유해요 :)',
+      description: title,
+      imageUrl: testImgUri,
+      link: {
+        mobileWebUrl: `${DOMAIN}/test/preview/${testId}`,
+        webUrl: `${DOMAIN}/test/preview/${testId}`,
+      },
     },
-    contents: [
-      {
-        title: '몽빗(MongBit)',
-        description: 'MBTI 심테 공작소',
-        imageUrl: '/images/og/og_logo.png',
-        link: {
-          mobileWebUrl: DOMAIN,
-          webUrl: DOMAIN,
-        },
-      },
-      {
-        title: title,
-        description: description,
-        imageUrl: testImgUri,
-        link: {
-          mobileWebUrl: `${DOMAIN}/test/preview/${testId}`,
-          webUrl: `${DOMAIN}/test/preview/${testId}`,
-        },
-      },
-    ],
+    social: {
+      likeCount: likeCnt,
+    },
     buttons: [
       {
         title: '테스트 하러 가기',
@@ -99,7 +86,7 @@ export function shareToKatalk(testId, title, description, testImgUri) {
   });
 }
 
-export function shareToKatalk_result(testId, title, description, resultImgUri, pathName, likeCnt) {
+export function shareToKakaotalk_result(testId, title, description, resultImgUri, pathName, likeCnt) {
   if (!window.Kakao.isInitialized()) window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_APP_KEY);
 
   window.Kakao.Share.sendDefault({
