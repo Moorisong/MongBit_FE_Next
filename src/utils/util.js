@@ -63,7 +63,7 @@ export function shareToKakaotalk_test(testId, title, description, testImgUri, li
   window.Kakao.Share.sendDefault({
     objectType: 'feed',
     content: {
-      title: '몽빗 테스트 공유해요 :)',
+      title: 'MBTI 심테는 "몽빗"에서✨',
       description: title,
       imageUrl: testImgUri,
       link: {
@@ -92,7 +92,7 @@ export function shareToKakaotalk_result(testId, title, description, resultImgUri
   window.Kakao.Share.sendDefault({
     objectType: 'feed',
     content: {
-      title: '몽빗 테스트 결과 공유해요 :)',
+      title: '나의 심테 결과는.. 🤔',
       description: title,
       imageUrl: resultImgUri,
       link: {
