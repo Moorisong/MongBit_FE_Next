@@ -34,7 +34,7 @@ export default async function Image({ params: { testId } }) {
             style={{
               objectFit: 'cover',
             }}
-            alt=""
+            alt="og_imgage"
           />
         </div>
       ),

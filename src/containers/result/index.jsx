@@ -33,8 +33,11 @@ export default function Result() {
     // }
     checkCoupnagSiteVisit();
 
-    if (!sessionStorage.getItem('mbScore'))
+    if (!sessionStorage.getItem('mbScore')) {
+      //링크 타고 결과지 페이지에 진입했을 때
+      if (!sessionStorage.getItem('mongBitmemeberId')) return router.push(`/main`);
       return router.push(`/record/${params.testId}/${sessionStorage.getItem('mbResultId')}`);
+    }
 
     const popstateHandler = (evt) => {
       // 뒤로 가기 했을 때 익셉션 페이지로 이동시키기
