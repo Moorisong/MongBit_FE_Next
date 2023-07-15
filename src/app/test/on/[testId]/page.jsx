@@ -1,5 +1,4 @@
 import { DOMAIN } from '@/constants/constant';
-
 import TestOn from '@/containers/testOn';
 
 export async function generateMetadata({ params: { testId } }) {

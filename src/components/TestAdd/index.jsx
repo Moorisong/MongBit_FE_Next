@@ -11,11 +11,10 @@ import {
   DOMAIN_BE_DEV,
   TOKEN_NAME,
 } from '@/constants/constant';
+import { getHeaders } from '@/utils/util';
 
 import styles from './index.module.css';
 import { ImagePart, InfoPart, QuestionPart, ResultPart } from '../TestAddElements';
-
-import { getHeaders } from '@/utils/util';
 
 export default function TestAdd() {
   const [data, setData] = useState({

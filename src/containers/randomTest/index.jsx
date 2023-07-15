@@ -4,13 +4,13 @@ import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import lottie from 'lottie-web';
 
+import { getHeaders } from '@/utils/util';
+
 import animationData_1 from './loading_2.json';
 import TestPreview from '../../components/TestPreview';
 import Footer from '../../components/Footer';
 import styles from './index.module.css';
 import { DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '../../constants/constant';
-
-import { getHeaders } from '@/utils/util';
 
 export default function RandomTest() {
   const [thumbnailStr, setThumbnailStr] = useState('');

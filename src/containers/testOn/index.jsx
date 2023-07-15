@@ -6,13 +6,12 @@ import { useRouter, useParams } from 'next/navigation';
 import lottie from 'lottie-web';
 
 import { DOMAIN_BE_PROD, TYPE_MYPAGE, DOMAIN_BE_DEV } from '@/constants/constant';
+import { getHeaders } from '@/utils/util';
 
 import styles from './index.module.css';
 import QuestionAndAnswer from '@/components/QuestionAndAnswer';
 import Footer from '../../components/Footer';
 import animationData_1 from './loading_1.json';
-
-import { getHeaders } from '@/utils/util';
 
 export default function TestOn() {
   const router = useRouter();

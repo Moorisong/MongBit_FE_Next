@@ -1,7 +1,6 @@
 import { ImageResponse } from 'next/server';
 
 import { DOMAIN_BE_PROD } from '@/constants/constant';
-
 import { getTestData } from '@/utils/util';
 
 export const size = {

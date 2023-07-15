@@ -5,13 +5,12 @@ import axios from 'axios';
 import cx from 'classnames';
 
 import { COUPANG_VISIT, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '@/constants/constant';
+import { getHeaders } from '@/utils/util';
 
 import styles from './index.module.css';
 import Footer from '@/components/Footer';
 import TestResult from '@/components/TestResult';
 import ResultLoading from '@/components/ResultLoading';
-
-import { getHeaders } from '@/utils/util';
 
 export default function Result() {
   const [resultData, SetResultData] = useState({
