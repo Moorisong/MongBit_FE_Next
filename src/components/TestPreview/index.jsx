@@ -248,7 +248,6 @@ export default function TestPreview(props) {
       sessionStorage.setItem('ngb', location.pathname);
       return router.push('/login');
     }
-    console.log('111--> ', window.Kakao);
     if (window)
       shareToKakaotalk_test(data.testId, data.thumbnailStr, data.conentArr.join(), data.thumbnailUri, data.likeCnt);
   }

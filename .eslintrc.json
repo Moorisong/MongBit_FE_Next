@@ -36,12 +36,13 @@
     "no-debugger": "error",
     "no-trailing-spaces": "error",
     "jsx-quotes": ["error", "prefer-double"],
-    // "jsx-quotes": "warn",
-    "react-hooks/rules-of-hooks":"off", // 다시 살리기
+    "react-hooks/rules-of-hooks":"off",
+    "react-hooks/exhaustive-deps": "off",
     "react/jsx-uses-react": "off",
     "react/jsx-uses-vars": "error",
     "react/jsx-no-undef": "error",
     "react/prop-types": "off",
+    "@next/next/no-img-element": "off",
     "import/order": [
       "error",
       {

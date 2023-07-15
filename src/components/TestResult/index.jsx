@@ -261,7 +261,6 @@ export default function TestResult(props) {
     }
 
     const likeCntNum = location.pathname.indexOf('result') > -1 ? props.likeCnt : likeData.likeCnt;
-    console.log('2222--> ', window.Kakao);
     if (window) {
       shareToKakaotalk_result(
         props.testId,
@@ -355,7 +354,7 @@ export default function TestResult(props) {
   }
   return (
     <div className={styles.resultWrap}>
-      <img className={styles.resultImg} src={props.imgUri} />
+      <img className={styles.resultImg} src={props.imgUri} alt="test_result_image" />
       <p>{[props.titleStr]}</p>
       <ul className={styles.resultStrList}>
         {props.contentStrArr.map((str, i) => (
