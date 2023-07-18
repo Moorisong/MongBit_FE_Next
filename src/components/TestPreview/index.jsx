@@ -5,6 +5,7 @@ import cx from 'classnames';
 import lottie from 'lottie-web';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
+import { decodeToken, shareToKakaotalk_test, getHeaders } from '@/utils/util';
 import {
   TYPE_ON_TEST,
   TYPE_COMMENT,
@@ -21,8 +22,6 @@ import animationData_2 from './commentAreaLaoadingIcon.json';
 import { TestCard } from '../TestCard';
 import { CardButton, Stroke, GoRandomStartBtn, TestButton, AddCommentButton, Comment } from '../ButtonSets';
 import styles from './index.module.css';
-
-import { decodeToken, shareToKatalk, getHeaders } from '@/utils/util';
 
 export default function TestPreview(props) {
   let [data, setData] = useState({
@@ -249,8 +248,8 @@ export default function TestPreview(props) {
       sessionStorage.setItem('ngb', location.pathname);
       return router.push('/login');
     }
-
-    shareToKatalk(data.testId, data.thumbnailStr, data.conentArr.join(), data.thumbnailUri);
+    if (window)
+      shareToKakaotalk_test(data.testId, data.thumbnailStr, data.conentArr.join(), data.thumbnailUri, data.likeCnt);
   }
 
   function clickAddCommentBtn() {

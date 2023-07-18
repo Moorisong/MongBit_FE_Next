@@ -1,5 +1,4 @@
 import { DOMAIN } from '@/constants/constant';
-
 import ViewOldResult from '@/containers/viewOldResults';
 
 export async function generateMetadata({ params: { testId, testResultId } }) {

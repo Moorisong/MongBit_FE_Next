@@ -12,10 +12,11 @@ export const metadata = {
     'MBTI',
     'MBTI 연애',
     'MBTI 궁합',
-    'MBTI 심테',
     'MBTI 심리테스트',
+    '무료 심테',
+    'MBTI 검사',
+    'MBTI 무료',
     '심리테스트',
-    '심테',
     '연애 심테',
     '연애 심리테스트',
     'MongBit',
@@ -44,6 +45,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <script
+          async
           src="https://t1.kakaocdn.net/kakao_js_sdk/2.2.0/kakao.min.js"
           integrity="sha384-x+WG2i7pOR+oWb6O5GV5f1KN2Ko6N7PTGPS7UlasYWNxZMKQA63Cj/B2lbUmUfuC"
           crossOrigin="anonymous"

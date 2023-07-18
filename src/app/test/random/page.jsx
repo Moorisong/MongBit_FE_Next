@@ -1,5 +1,4 @@
 import { DOMAIN } from '@/constants/constant';
-
 import RandomTest from '@/containers/randomTest';
 
 export async function generateMetadata() {

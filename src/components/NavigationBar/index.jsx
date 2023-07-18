@@ -5,10 +5,9 @@ import { usePathname, useRouter } from 'next/navigation';
 import cx from 'classnames';
 
 import { TOKEN_NAME, USER_INFO } from '@/constants/constant';
+import { decodeToken } from '@/utils/util';
 
 import styles from './index.module.css';
-
-import { decodeToken } from '@/utils/util';
 
 export default function NavigationBar() {
   const router = useRouter();

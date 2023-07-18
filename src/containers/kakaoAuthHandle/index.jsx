@@ -4,13 +4,12 @@ import { useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import lottie from 'lottie-web';
 
+import { getHeaders } from '@/utils/util';
 import { DOMAIN_BE_PROD, DOMAIN_BE_DEV, TOKEN_NAME, USER_INFO } from '@/constants/constant';
 
 import animationData_1 from './loading_1.json';
 import Footer from '@/components/Footer';
 import styles from './index.module.css';
-
-import { getHeaders } from '@/utils/util';
 
 export default function KakaoAuthHandle() {
   const router = useRouter();

@@ -1,7 +1,6 @@
 import { ImageResponse } from 'next/server';
 
 import { DOMAIN_BE_PROD } from '@/constants/constant';
-
 import { getTestData } from '@/utils/util';
 
 export const size = {
@@ -34,7 +33,7 @@ export default async function Image({ params: { testId } }) {
             style={{
               objectFit: 'cover',
             }}
-            alt=""
+            alt="og_imgage"
           />
         </div>
       ),

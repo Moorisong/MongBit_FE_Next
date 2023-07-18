@@ -1,5 +1,5 @@
-import TestAdd from '@/components/TestAdd';
+import Admin from '@/containers/admin';
 
 export default function Page() {
-  return <TestAdd />;
+  return <Admin />;
 }
