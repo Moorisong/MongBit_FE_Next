@@ -70,6 +70,7 @@ export default function TestOn() {
   useEffect(() => {
     if (testDone.state) {
       sessionStorage.setItem('mbScore', JSON.stringify(score));
+      sessionStorage.setItem('mbTestDone', true);
       return router.push(`/result/${params.testId}`);
     }
   }, [testDone.state]);

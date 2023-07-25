@@ -26,18 +26,14 @@ export default function Result() {
   const memberId = sessionStorage.getItem('mongBitmemeberId');
 
   useEffect(() => {
-    // if (!decodeToken().state) {
-    //   sessionStorage.setItem('ngb', pathName);
-    //   return router.push('/need_login');
-    // }
+    // 다른 플랫폼에서 URI 클릭해서 페이지 진입한 경우
+    if (!sessionStorage.getItem('mbTestDone')) return router.push('/main');
+
     checkCoupnagSiteVisit();
 
     if (!sessionStorage.getItem('mbScore')) {
-      //링크 타고 결과지 페이지에 진입했을 때
-      if (!sessionStorage.getItem('mongBitmemeberId')) return router.push(`/main`);
       return router.push(`/record/${params.testId}/${sessionStorage.getItem('mbResultId')}`);
     }
-
     const popstateHandler = (evt) => {
       // 뒤로 가기 했을 때 익셉션 페이지로 이동시키기
       if (evt && evt.state) {
