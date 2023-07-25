@@ -5,14 +5,15 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import lottie from 'lottie-web';
 
+import { getHeaders } from '@/utils/util';
+import { TITLE_WITH_CONTENT, TYPE_LATEST_MAIN, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '@/constants/constant';
+
 import styles from './index.module.css';
 import animationData_1 from './loading_1.json';
 import Footer from '@/components/Footer';
 import { TitleWithText } from '@/components/Titles';
 import { TestCard } from '@/components/TestCard';
 import { GoRandomStartBtn } from '@/components/ButtonSets';
-import { TITLE_WITH_CONTENT, TYPE_LATEST_MAIN, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '../../constants/constant';
-import { getHeaders } from '../../utils/util';
 
 export default function main() {
   // Test 삭제
