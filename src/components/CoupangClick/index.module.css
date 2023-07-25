@@ -67,6 +67,10 @@
 .commentWrap > div {
   padding-left: 10px;
 }
+.commentWrap > div > p {
+  color: #979797;
+  font-size: 0.7rem;
+}
 
 .loadImgWrap_1 {
   display: flex;

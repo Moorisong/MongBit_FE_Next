@@ -108,7 +108,11 @@ export default function CoupangClick(props) {
         <div className={styles.commentWrap}>
           <CardButton type={TYPE_COMMENT} />
 
-          {data.comment.length > 0 ? (
+          {data.comment.length === 0 ? (
+            <div>
+              <p>댓글이 없습니다</p>
+            </div>
+          ) : data.comment.length > 0 ? (
             data.comment.map((com, i) => (
               <div key={i} className={styles.commentContentWrap}>
                 <CommentReadOnly data={com} memberId={data.memberId} testId={data.testId} id={com.id} />
