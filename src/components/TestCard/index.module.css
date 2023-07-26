@@ -10,7 +10,7 @@
     width: 345px;
   }
   .latest_thumbnail {
-    width: 110px !important;
+    width: 170px !important;
   }
 }
 @media (min-width: 376px) {
@@ -28,7 +28,7 @@
     width: 370px;
   }
   .latest_thumbnail {
-    width: 120px !important;
+    width: 180px !important;
   }
 }
 .inline {
@@ -58,7 +58,7 @@
 }
 
 .latest_thumbnail {
-  height: 15rem;
+  height: 7rem;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -94,6 +94,7 @@
   text-overflow: ellipsis;
 }
 .p_2 {
+  width: 160px;
   color: black;
   font-size: 0.8rem;
   padding-left: 3px;
@@ -105,6 +106,9 @@
 .playCntWrap {
   display: flex;
   flex-direction: row;
+}
+.paddingBottomLatest {
+  padding-bottom: 10px;
 }
 
 .plyCntBtn {

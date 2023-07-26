@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 
 import { decodeToken } from '@/utils/util';
 
-import Footer from '@/components/Footer';
 import TestAdd from '@/components/TestAdd';
 
 export default function Admin() {
