@@ -54,14 +54,19 @@
   border-radius: 0 0 1rem 1rem;
 }
 
+.mypage_thumbnail {
+  width: 120px !important;
+  height: 7rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-right: 35px;
+}
 .latest_thumbnail {
   height: 7rem;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-}
-.myPageImgWidth {
-  width: 150px;
 }
 .myPage {
   height: 13rem;
