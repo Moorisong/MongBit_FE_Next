@@ -36,7 +36,7 @@ function TestCard(props) {
             <p className={styles.p_1}>{props.thumbnailStr}</p>
           )}
           {props.type === TYPE_LATEST_MAIN && (
-            <div className={styles.playCntWrap}>
+            <div className={`${styles.playCntWrap} ${styles.paddingBottomLatest}`}>
               <button className={styles.plyCntBtn} />
               <p className={styles.playCntText}>{props.playCnt}</p>
             </div>
