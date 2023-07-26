@@ -44,7 +44,7 @@ export default function TestLatest() {
   useEffect(() => {
     const headers = getHeaders();
     axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/tests/0/10`, { headers })
+      .get(`${DOMAIN_BE_PROD}/api/v1/tests/0/5`, { headers })
       .then((res) => {
         setData((prev) => ({
           ...prev,

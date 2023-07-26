@@ -1,6 +1,7 @@
 @media (max-width: 375px) {
   .latesCardWrap {
     padding-left: 10px;
+    width: 345px;
   }
   .testWrap {
     width: 375px;
@@ -10,6 +11,9 @@
   }
 }
 @media (min-width: 376px) {
+  .latesCardWrap {
+    width: 370px;
+  }
   .testWrap {
     width: 400px;
   }
@@ -18,8 +22,8 @@
   }
 }
 .latesCardWrap {
-  display: flex;
-  flex-direction: row;
+  /* display: flex;
+  flex-direction: row; */
 }
 
 .containerWrap {
