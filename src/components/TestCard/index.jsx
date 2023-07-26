@@ -7,7 +7,7 @@ function TestCard(props) {
   const router = useRouter();
   const cn_1 =
     props.type === TYPE_MYPAGE
-      ? `${styles.inline} ${styles.myPageImgWidth}`
+      ? `${styles.inline}`
       : props.type === TYPE_TEST_PREVIEW
       ? `${styles.inline} ${styles.preview}`
       : `${styles.inline}`;
@@ -15,7 +15,7 @@ function TestCard(props) {
     props.type === TYPE_LATEST_MAIN
       ? `${styles.latest_thumbnail}`
       : props.type === TYPE_MYPAGE
-      ? `${styles.latest_thumbnail} ${styles.myPage}`
+      ? `${styles.mypage_thumbnail} ${styles.myPage}`
       : `${styles.normal_thumbnail}`;
   const cn_3 = props.type === TYPE_LATEST_MAIN ? `${styles.latest_titleBox}` : `${styles.normal_titleBox}`;
 
