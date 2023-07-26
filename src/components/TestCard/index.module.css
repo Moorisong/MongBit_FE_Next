@@ -14,9 +14,6 @@
   }
 }
 @media (min-width: 376px) {
-  .inline {
-    padding-right: 5px;
-  }
   .inline > img {
     width: 370px;
   }
