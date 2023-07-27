@@ -270,6 +270,31 @@ export default function TestResult(props) {
         resultPathName,
         likeCntNum,
       );
+
+      const shareInfo = {
+        memberId: sessionStorage.getItem('mongBitmemeberId'),
+        testId: data.testId,
+      };
+
+      const headers = getHeaders();
+
+      const queryParams = {
+        memberId: shareInfo.memberId,
+      };
+
+      axios
+        .post(
+          `${DOMAIN_BE_PROD}/api/v1/tests/${shareInfo.testId}/shares`,
+          {},
+          {
+            headers,
+            params: queryParams,
+          },
+        )
+        .then((res) => {
+          console.log('testPreview---> ', res);
+          // ksh
+        });
     }
   }
 

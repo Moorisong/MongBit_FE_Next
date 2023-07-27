@@ -250,6 +250,31 @@ export default function TestPreview(props) {
     }
     if (window)
       shareToKakaotalk_test(data.testId, data.thumbnailStr, data.conentArr.join(), data.thumbnailUri, data.likeCnt);
+
+    const shareInfo = {
+      memberId: sessionStorage.getItem('mongBitmemeberId'),
+      testId: data.testId,
+    };
+
+    const headers = getHeaders();
+
+    const queryParams = {
+      memberId: shareInfo.memberId,
+    };
+
+    axios
+      .post(
+        `${DOMAIN_BE_PROD}/api/v1/tests/${shareInfo.testId}/shares`,
+        {},
+        {
+          headers,
+          params: queryParams,
+        },
+      )
+      .then((res) => {
+        console.log('testPreview---> ', res);
+        // ksh
+      });
   }
 
   function clickAddCommentBtn() {
