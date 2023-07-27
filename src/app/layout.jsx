@@ -50,6 +50,21 @@ export default function RootLayout({ children }) {
           integrity="sha384-x+WG2i7pOR+oWb6O5GV5f1KN2Ko6N7PTGPS7UlasYWNxZMKQA63Cj/B2lbUmUfuC"
           crossOrigin="anonymous"
         ></script>
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-4H08GDCJMY"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_GA_ID}');
+            `,
+          }}
+        />
+
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-4H08GDCJMY"></script>
       </head>
       <body className={inter.className}>
         <NavigationBar />
