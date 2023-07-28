@@ -280,6 +280,7 @@ export default function TestResult(props) {
 
       const queryParams = {
         memberId: shareInfo.memberId,
+        type: 'KAKAO'
       };
 
       axios
