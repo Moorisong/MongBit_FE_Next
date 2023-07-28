@@ -28,6 +28,7 @@ export default function TestOn() {
   let [putArr, setPutArr] = useState([]);
 
   const barClassName = styles[`gaugeBar_${qstStageIdx}`];
+  const totalQuestionNumber = testData.questions ? testData.questions.length : ' loading'
 
   useEffect(() => {
     const headers = getHeaders();
@@ -95,15 +96,15 @@ export default function TestOn() {
   function clickAnswer_plus() {
     putArr[qstStageIdx] = 1;
     setPutArr([...putArr]);
-    if (qstStageIdx !== 12) setQstStageIdx(qstStageIdx + 1);
-    if (qstStageIdx === 12) makeScore();
+    if (qstStageIdx !== totalQuestionNumber) setQstStageIdx(qstStageIdx + 1);
+    if (qstStageIdx === totalQuestionNumber) makeScore();
   }
 
   function clickAnswer_minus() {
     putArr[qstStageIdx] = -1;
     setPutArr([...putArr]);
-    if (qstStageIdx !== 12) setQstStageIdx(qstStageIdx + 1);
-    if (qstStageIdx === 12) makeScore();
+    if (qstStageIdx !== totalQuestionNumber) setQstStageIdx(qstStageIdx + 1);
+    if (qstStageIdx === totalQuestionNumber) makeScore();
   }
 
   return (
@@ -123,7 +124,7 @@ export default function TestOn() {
             ></div>
           </div>
           <span>{`질문 ${qstStageIdx} /`}</span>
-          <span>12</span>
+          <span>{totalQuestionNumber}</span>
         </div>
       </div>
 
