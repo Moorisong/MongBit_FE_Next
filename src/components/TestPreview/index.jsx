@@ -261,6 +261,7 @@ export default function TestPreview(props) {
 
     const queryParams = {
       memberId: shareInfo.memberId,
+      type: 'KAKAO'
     };
 
     axios
