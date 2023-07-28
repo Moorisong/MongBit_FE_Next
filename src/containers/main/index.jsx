@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import lottie from 'lottie-web';
 
-import { getHeaders } from '@/utils/util';
+import { getHeaders, setUTMParameter } from '@/utils/util';
 import { TITLE_WITH_CONTENT, TYPE_LATEST_MAIN, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '@/constants/constant';
 
 import styles from './index.module.css';
@@ -46,6 +46,7 @@ export default function main() {
   }, []);
 
   useEffect(() => {
+    setUTMParameter(router);
     sessionStorage.getItem('mbResult') === '' && sessionStorage.removeItem('mbResult');
     sessionStorage.getItem('mbTest') === '' && sessionStorage.removeItem('mbTest');
 

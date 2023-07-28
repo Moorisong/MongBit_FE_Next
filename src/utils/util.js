@@ -147,3 +147,23 @@ export const getTestData = async (url) => {
     .then((res) => res)
     .catch(() => OG_STANDARD_IMAGE);
 };
+
+export function setUTMParameter(router) {
+  const userAgent = navigator.userAgent.toLowerCase();
+  let utmSource = '';
+
+  if (userAgent.includes('facebook')) {
+    utmSource = 'facebook';
+  } else if (userAgent.includes('kakaotalk')) {
+    utmSource = 'kakao_mb';
+  } else if (userAgent.includes('twitter')) {
+    utmSource = 'twitter';
+  } else if (userAgent.includes('instagram')) {
+    utmSource = 'instagram_mb';
+  } else {
+    utmSource = 'other_mb';
+  }
+
+  const utmUrl = `${window.location.href}/?utm_source=${utmSource}`;
+  router.push(utmUrl);
+}

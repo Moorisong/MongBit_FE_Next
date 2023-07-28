@@ -5,7 +5,7 @@ import cx from 'classnames';
 import lottie from 'lottie-web';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-import { decodeToken, shareToKakaotalk_test, getHeaders } from '@/utils/util';
+import { decodeToken, shareToKakaotalk_test, getHeaders, setUTMParameter } from '@/utils/util';
 import {
   TYPE_ON_TEST,
   TYPE_COMMENT,
@@ -83,6 +83,7 @@ export default function TestPreview(props) {
   }, [commentLoading]);
 
   useEffect(() => {
+    setUTMParameter(router);
     const headers = getHeaders();
     axios
       .get(`${DOMAIN_BE_PROD}/api/v1/test/${data.testId}/comments/count`, {
