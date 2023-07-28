@@ -264,38 +264,14 @@ export default function TestResult(props) {
     if (window) {
       shareToKakaotalk_result(
         props.testId,
+        sessionStorage.getItem('mongBitmemeberId'),
+        'KAKAO',
         props.titleStr,
         props.contentStrArr.join(),
         props.imgUri,
         resultPathName,
         likeCntNum,
       );
-
-      const shareInfo = {
-        memberId: sessionStorage.getItem('mongBitmemeberId'),
-        testId: data.testId,
-      };
-
-      const headers = getHeaders();
-
-      const queryParams = {
-        memberId: shareInfo.memberId,
-        type: 'KAKAO',
-      };
-
-      axios
-        .post(
-          `${DOMAIN_BE_PROD}/api/v1/tests/${shareInfo.testId}/shares`,
-          {},
-          {
-            headers,
-            params: queryParams,
-          },
-        )
-        .then((res) => {
-          console.log('testPreview---> ', res);
-          // ksh
-        });
     }
   }
 
