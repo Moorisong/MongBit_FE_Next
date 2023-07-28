@@ -57,7 +57,7 @@ export function formatTimeDifference(dateString) {
   }
 }
 
-export function shareToKakaotalk_test(testId, title, description, testImgUri, likeCnt) {
+export function shareToKakaotalk_test(testId, memberId, type, title, description, testImgUri, likeCnt) {
   if (!window.Kakao.isInitialized()) window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_APP_KEY);
 
   window.Kakao.Share.sendDefault({
@@ -83,10 +83,11 @@ export function shareToKakaotalk_test(testId, title, description, testImgUri, li
         },
       },
     ],
+    serverCallbackArgs: `{"testId": "${testId}", "memberId": "${memberId}", "type": "${type}"}`,
   });
 }
 
-export function shareToKakaotalk_result(testId, title, description, resultImgUri, pathName, likeCnt) {
+export function shareToKakaotalk_result(testId, memberId, type, title, description, resultImgUri, pathName, likeCnt) {
   if (!window.Kakao.isInitialized()) window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_APP_KEY);
 
   window.Kakao.Share.sendDefault({
@@ -120,6 +121,7 @@ export function shareToKakaotalk_result(testId, title, description, resultImgUri
         },
       },
     ],
+    serverCallbackArgs: `{"testId": "${testId}", "memberId": "${memberId}", "type": "${type}"}`,
   });
 }
 
