@@ -28,7 +28,7 @@ export default function TestOn() {
   let [putArr, setPutArr] = useState([]);
 
   const barClassName = styles[`gaugeBar_${qstStageIdx}`];
-  const totalQuestionNumber = testData.questions ? testData.questions.length : ' loading'
+  const totalQuestionNumber = testData.questions ? testData.questions.length : ' loading';
 
   useEffect(() => {
     const headers = getHeaders();

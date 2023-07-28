@@ -10,6 +10,7 @@
     max-width: 370px;
   }
 }
+
 .wrap {
   color: #979797;
   font-size: 0.7rem;
@@ -25,12 +26,24 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  position: relative;
 }
 .upper > p:first-child {
   margin-bottom: 5px;
+  bottom: 0;
+  right: 0;
 }
 
-.under > a {
+.under > div:first-child {
+  display: flex;
+  flex-direction: row;
+}
+
+.under .gitHub {
+  margin-right: 8px;
+}
+
+.under .gitHub > a {
   background-image: url('../../../public/images/footer/gitHub.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -38,15 +51,27 @@
   width: 20px;
   height: 20px;
 }
+
+.under .instagram > a {
+  background-image: url('../../../public/images/footer/instagram.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+}
+
 .docs {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-top: 10px;
+  margin: 10px 0 -4px 0;
 }
+
 .docs > span:first-child {
   margin-right: 10px;
 }
+
 .docs p {
   color: #979797;
 }

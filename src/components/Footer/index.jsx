@@ -33,7 +33,14 @@ export default function Footer(props) {
         </span>
       </div>
       <div className={styles.under}>
-        <Link href="https://github.com/WillNeiman/MongBit_Backend" />
+        <div>
+          <div className={styles.gitHub}>
+            <Link className={styles.gitHub} href="https://github.com/WillNeiman/MongBit_Backend" />
+          </div>
+          <div className={styles.instagram}>
+            <Link className={styles.instagramIcon} href="https://www.instagram.com/mongbit_" />
+          </div>
+        </div>
         <p>© 2023 MongMoongCrew. All rights reserved </p>
       </div>
     </div>
