@@ -51,7 +51,10 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
         ></script>
 
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-4H08GDCJMY"></script>
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_GA_ID}`}
+        ></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -64,7 +67,7 @@ export default function RootLayout({ children }) {
         />
 
         {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-4H08GDCJMY"></script>
+        {/* <script async src="https://www.googletagmanager.com/gtag/js?id=G-4H08GDCJMY"></script> */}
       </head>
       <body className={inter.className}>
         <NavigationBar />
