@@ -27,7 +27,6 @@ export default function TestOn() {
   });
   let [putArr, setPutArr] = useState([]);
 
-  const barClassName = styles[`gaugeBar_${qstStageIdx}`];
   const totalQuestionNumber = testData.questions ? testData.questions.length : ' loading';
 
   useEffect(() => {
@@ -107,6 +106,14 @@ export default function TestOn() {
     if (qstStageIdx === totalQuestionNumber) makeScore();
   }
 
+  function calculateWidth(index) {
+    if (index === 1) return '0%';
+    if (testDone.lastClick) return '100%';
+
+    const percentage = ((index - 1) / totalQuestionNumber) * 100;
+    return `${percentage}%`;
+  }
+
   return (
     <div
       className={cx(styles.wrap, {
@@ -117,11 +124,7 @@ export default function TestOn() {
         <div className={styles.progressWrap}>
           <div className={styles.barWrap}>
             <div></div>
-            <div
-              className={cx(barClassName, {
-                [styles.gaugeBar_13]: testDone.lastClick,
-              })}
-            ></div>
+            <div className={styles.gaugeBar} style={{ width: calculateWidth(qstStageIdx) }}></div>
           </div>
           <span>{`질문 ${qstStageIdx} /`}</span>
           <span>{totalQuestionNumber}</span>
