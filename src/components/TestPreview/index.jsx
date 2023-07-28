@@ -323,6 +323,33 @@ export default function TestPreview(props) {
         router.push('/login');
       });
   }
+
+  function clickLinkCopy() {
+    const headers = getHeaders();
+    const memeberId = sessionStorage.getItem('mongBitmemeberId') || 'anonymous';
+
+    axios
+      .post(
+        `${DOMAIN_BE_PROD}/api/v1/tests/share`,
+        {
+          testId: data.testId,
+          memberId: memeberId,
+          type: 'LINK',
+        },
+        { headers },
+      )
+      .then((res) => {
+        setCommentIndex([0, res.data.hasNextPage]);
+        setCommentChanged(!commentChanged);
+      })
+      .catch((err) => {
+        alert(err.response.data);
+        router.push('/login');
+      });
+
+    setLinkCopyState(true);
+  }
+
   return (
     <div className={styles.wrap}>
       {/* 테스트  */}
@@ -350,12 +377,7 @@ export default function TestPreview(props) {
         <GoRandomStartBtn url={`/test/on/${data.testId}`} str="테스트 시작" />
         <ul className={styles.buttonSet}>
           <li>
-            <div
-              className={styles.linkCopyWrap}
-              onClick={() => {
-                setLinkCopyState(true);
-              }}
-            >
+            <div className={styles.linkCopyWrap} onClick={clickLinkCopy}>
               <CopyToClipboard text={`${DOMAIN}${location.pathname}`}>
                 <button className={linkCopyState ? styles.linkCopied : styles.noneLinkCopied}></button>
               </CopyToClipboard>
