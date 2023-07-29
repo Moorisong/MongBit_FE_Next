@@ -15,6 +15,7 @@ import { getHeaders } from '@/utils/util';
 
 import styles from './index.module.css';
 import { ImagePart, InfoPart, QuestionPart, ResultPart } from '../TestAddElements';
+import MarketingInfo from '@/components/MarketingInfo';
 
 export default function TestAdd() {
   const [data, setData] = useState({
@@ -198,6 +199,9 @@ export default function TestAdd() {
           headers,
         });
       }} /> */}
+
+      <MarketingInfo />
+
       {stage === 1 && (
         <InfoPart
           data={data}
