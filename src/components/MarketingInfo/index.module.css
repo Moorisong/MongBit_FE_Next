@@ -1,0 +1,21 @@
+.readPart > div > span:first-child {
+  padding-right: 10px;
+}
+
+.readPart > div > span:last-child {
+  color: blue;
+  font-weight: 500;
+}
+
+.inputPart input {
+  border: 1px solid #979797;
+  margin: 20px 0 0 5px;
+}
+.inputPart button {
+  margin-right: 5px;
+  padding: 5px;
+}
+.inputPart > div > div > p {
+  color: blue;
+  font-weight: 500;
+}
