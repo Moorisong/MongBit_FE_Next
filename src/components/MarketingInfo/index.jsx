@@ -12,7 +12,7 @@ export default function MarketingInfo() {
   const [data, setData] = useState({
     logInCount: 'loading',
     shareCount: 'loading',
-    linkCopyCount: 'api 없음',
+    linkCopyCount: 'loading',
     resultCountMemberId: [null, null],
   });
   const [memberId, setMemberId] = useState('');
@@ -31,9 +31,19 @@ export default function MarketingInfo() {
       });
 
     axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/shares/count`, { headers })
+      .get(`${DOMAIN_BE_PROD}/api/v1/shares/count/type?type=KAKAO`, { headers })
       .then((res) => {
         setData((prev) => ({ ...prev, shareCount: res.data }));
+      })
+      .catch((err) => {
+        alert(err.response.data);
+        router.push('/login');
+      });
+
+    axios
+      .get(`${DOMAIN_BE_PROD}/api/v1/shares/count/type?type=LINK`, { headers })
+      .then((res) => {
+        setData((prev) => ({ ...prev, linkCopyCount: res.data }));
       })
       .catch((err) => {
         alert(err.response.data);
