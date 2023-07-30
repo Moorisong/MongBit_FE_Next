@@ -52,7 +52,7 @@ export default function KakaoAuthHandle() {
           headers = getHeaders();
 
           // 로그인 트랙킹 api 호출
-          if (decodeToken().role === 'ROLE_USER') {
+          if (!decodeToken().role || decodeToken().role === 'ROLE_USER') {
             axios
               .post(`${DOMAIN_BE_PROD}/api/v1/loginTracker/${response.data.memberId}/track`, {}, { headers })
               .catch((err) => {

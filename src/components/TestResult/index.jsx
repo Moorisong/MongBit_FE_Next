@@ -358,7 +358,7 @@ export default function TestResult(props) {
     const headers = getHeaders();
     const memeberId = sessionStorage.getItem('mongBitmemeberId') || 'anonymous';
 
-    if (decodeToken().role === 'ROLE_USER') {
+    if (!decodeToken().role || decodeToken().role === 'ROLE_USER') {
       axios
         .post(
           `${DOMAIN_BE_PROD}/api/v1/tests/share`,
