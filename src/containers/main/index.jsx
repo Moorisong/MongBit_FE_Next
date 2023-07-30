@@ -79,7 +79,7 @@ export default function main() {
         <TestCard
           thumbnailStr="신속하고 아마도 정확한 퀵 MBTI!"
           testId="649a7bccaa04db61384808c5"
-          thumbnailUri="https://i.ibb.co/b34jpRx/quick-mbti-cover.png"
+          thumbnailUri="https://i.ibb.co/GJ08BC3/quick-mbti-cover.png"
         />
 
         <div className={styles.miniTestWrap}>
