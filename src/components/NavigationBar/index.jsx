@@ -46,9 +46,15 @@ export default function NavigationBar() {
     <div className={styles.wrap}>
       <div className={styles.navWrap}>
         <div className={styles.menuIcon} onClick={() => setMenuClicked(true)}></div>
-        <div className={styles.logoWrap} onClick={() => setMenuClicked(false)}>
-          <Link href="/main" className={styles.logoDog}></Link>
-          <Link href="/main" className={styles.logoTitle}></Link>
+        <div
+          className={styles.logoWrap}
+          onClick={() => {
+            setMenuClicked(false);
+            router.push('/main');
+          }}
+        >
+          <span className={styles.logoDog}></span>
+          <span className={styles.logoTitle}></span>
         </div>
         {pathname === '/mypage' ? (
           <button className={styles.myPageBtnNone}></button>
