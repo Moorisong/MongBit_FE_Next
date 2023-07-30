@@ -76,9 +76,9 @@ export default function main() {
       <div className={styles.testWrap}>
         <TitleWithText title="🌟 심테의 근본, MBTI 검사" />
         <TestCard
-          thumbnailStr="겁나 빠르게 끝내는 퀵 MBTI"
+          thumbnailStr="신속하고 아마도 정확한 퀵 MBTI!"
           testId="649a7bccaa04db61384808c5"
-          thumbnailUri="https://i.ibb.co/pwj20tf/cover.png"
+          thumbnailUri="https://i.ibb.co/b34jpRx/quick-mbti-cover.png"
         />
 
         <div className={styles.miniTestWrap}>
