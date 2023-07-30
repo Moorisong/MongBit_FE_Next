@@ -47,6 +47,7 @@ export default function main() {
 
   useEffect(() => {
     setUTMParameter(router);
+
     sessionStorage.getItem('mbResult') === '' && sessionStorage.removeItem('mbResult');
     sessionStorage.getItem('mbTest') === '' && sessionStorage.removeItem('mbTest');
 

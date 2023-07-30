@@ -6,7 +6,7 @@ import { useRouter, useParams } from 'next/navigation';
 import lottie from 'lottie-web';
 
 import { DOMAIN_BE_PROD, TYPE_MYPAGE, DOMAIN_BE_DEV } from '@/constants/constant';
-import { getHeaders } from '@/utils/util';
+import { getHeaders, setUTMParameter } from '@/utils/util';
 
 import styles from './index.module.css';
 import QuestionAndAnswer from '@/components/QuestionAndAnswer';
@@ -30,6 +30,8 @@ export default function TestOn() {
   const totalQuestionNumber = testData.questions ? testData.questions.length : ' loading';
 
   useEffect(() => {
+    setUTMParameter(router);
+
     const headers = getHeaders();
     axios
       .get(`${DOMAIN_BE_PROD}/api/v1/tests/test/${params.testId}`, { headers })

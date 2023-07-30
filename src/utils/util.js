@@ -157,15 +157,20 @@ export function setUTMParameter(router) {
   if (userAgent.includes('facebook')) {
     utmSource = 'facebook';
   } else if (userAgent.includes('kakaotalk')) {
-    utmSource = 'kakao_mb';
+    utmSource = 'kakao';
   } else if (userAgent.includes('twitter')) {
     utmSource = 'twitter';
   } else if (userAgent.includes('instagram')) {
-    utmSource = 'instagram_mb';
+    utmSource = 'instagram';
   } else {
-    utmSource = 'other_mb';
+    utmSource = 'other';
   }
 
-  const utmUrl = `${window.location.href}/?utm_source=${utmSource}`;
-  router.push(utmUrl);
+  function getUtmUrl() {
+    const param = `/?utm_source=${utmSource}`;
+    // 새로고침 시 UTM 파라미터가 늘어나지 않도록 조치
+    if (!window.location.href.includes('utm_')) return window.location.href + param;
+    return window.location.href;
+  }
+  router.push(getUtmUrl());
 }
