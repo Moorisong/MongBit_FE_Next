@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import lottie from 'lottie-web';
 
-import { getHeaders } from '@/utils/util';
+import { getHeaders, decodeToken } from '@/utils/util';
 import { DOMAIN_BE_PROD, DOMAIN_BE_DEV, TOKEN_NAME, USER_INFO } from '@/constants/constant';
 
 import animationData_1 from './loading_1.json';
@@ -52,12 +52,14 @@ export default function KakaoAuthHandle() {
           headers = getHeaders();
 
           // 로그인 트랙킹 api 호출
-          axios
-            .post(`${DOMAIN_BE_PROD}/api/v1/loginTracker/${response.data.memberId}/track`, {}, { headers })
-            .catch((err) => {
-              alert(err.response.data);
-              router.push('/login');
-            });
+          if (decodeToken().role === 'ROLE_USER') {
+            axios
+              .post(`${DOMAIN_BE_PROD}/api/v1/loginTracker/${response.data.memberId}/track`, {}, { headers })
+              .catch((err) => {
+                alert(err.response.data);
+                router.push('/login');
+              });
+          }
 
           if (prev) {
             // 직전 페이지로 이동이 필요한 경우

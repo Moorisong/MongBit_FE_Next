@@ -358,24 +358,26 @@ export default function TestResult(props) {
     const headers = getHeaders();
     const memeberId = sessionStorage.getItem('mongBitmemeberId') || 'anonymous';
 
-    axios
-      .post(
-        `${DOMAIN_BE_PROD}/api/v1/tests/share`,
-        {
-          testId: data.testId,
-          memberId: memeberId,
-          type: 'LINK',
-        },
-        { headers },
-      )
-      .then((res) => {
-        setCommentIndex([0, res.data.hasNextPage]);
-        setCommentChanged(!commentChanged);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
-      });
+    if (decodeToken().role === 'ROLE_USER') {
+      axios
+        .post(
+          `${DOMAIN_BE_PROD}/api/v1/tests/share`,
+          {
+            testId: data.testId,
+            memberId: memeberId,
+            type: 'LINK',
+          },
+          { headers },
+        )
+        .then((res) => {
+          setCommentIndex([0, res.data.hasNextPage]);
+          setCommentChanged(!commentChanged);
+        })
+        .catch((err) => {
+          alert(err.response.data);
+          router.push('/login');
+        });
+    }
 
     setLinkCopyState(true);
   }
