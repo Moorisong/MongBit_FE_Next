@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 
 import { DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '@/constants/constant';
-import { getHeaders } from '@/utils/util';
+import { getHeaders, setUTMParameter } from '@/utils/util';
 
 import styles from './index.module.css';
 import Footer from '@/components/Footer';
@@ -37,6 +37,8 @@ export default function ViewOldResult() {
   }, []);
 
   useEffect(() => {
+    setUTMParameter(router);
+
     const headers = getHeaders();
     axios
       .get(`${DOMAIN_BE_PROD}/api/v1/tests/test/test-result/${params.testId}/${params.testResultId}`, { headers })

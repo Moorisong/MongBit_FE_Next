@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import cx from 'classnames';
 import lottie from 'lottie-web';
 
-import { getHeaders } from '@/utils/util';
+import { getHeaders, setUTMParameter } from '@/utils/util';
 
 import animationData_1 from './loading_2.json';
 import { TitleWithText } from '@/components/Titles';
@@ -41,6 +41,8 @@ export default function TestList() {
   }, []);
 
   useEffect(() => {
+    setUTMParameter(router);
+
     const headers = getHeaders();
     axios
       .get(`${DOMAIN_BE_PROD}/api/v1/tests/${page}/10`, { headers })

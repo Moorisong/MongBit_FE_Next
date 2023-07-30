@@ -84,6 +84,7 @@ export default function TestPreview(props) {
 
   useEffect(() => {
     setUTMParameter(router);
+
     const headers = getHeaders();
     axios
       .get(`${DOMAIN_BE_PROD}/api/v1/test/${data.testId}/comments/count`, {
