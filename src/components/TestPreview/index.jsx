@@ -5,7 +5,7 @@ import cx from 'classnames';
 import lottie from 'lottie-web';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-import { decodeToken, shareToKakaotalk_test, getHeaders } from '@/utils/util';
+import { decodeToken, shareToKakaotalk_test, getHeaders, setUTMParameter } from '@/utils/util';
 import {
   TYPE_ON_TEST,
   TYPE_COMMENT,
@@ -83,6 +83,8 @@ export default function TestPreview(props) {
   }, [commentLoading]);
 
   useEffect(() => {
+    setUTMParameter(router);
+
     const headers = getHeaders();
     axios
       .get(`${DOMAIN_BE_PROD}/api/v1/test/${data.testId}/comments/count`, {
@@ -249,7 +251,15 @@ export default function TestPreview(props) {
       return router.push('/login');
     }
     if (window)
-      shareToKakaotalk_test(data.testId, data.thumbnailStr, data.conentArr.join(), data.thumbnailUri, data.likeCnt);
+      shareToKakaotalk_test(
+        data.testId,
+        sessionStorage.getItem('mongBitmemeberId'),
+        'KAKAO',
+        data.thumbnailStr,
+        data.conentArr.join(),
+        data.thumbnailUri,
+        data.likeCnt,
+      );
   }
 
   function clickAddCommentBtn() {
@@ -314,6 +324,35 @@ export default function TestPreview(props) {
         router.push('/login');
       });
   }
+
+  function clickLinkCopy() {
+    const headers = getHeaders();
+    const memeberId = sessionStorage.getItem('mongBitmemeberId') || 'anonymous';
+
+    if (!decodeToken().role || decodeToken().role === 'ROLE_USER') {
+      axios
+        .post(
+          `${DOMAIN_BE_PROD}/api/v1/tests/share`,
+          {
+            testId: data.testId,
+            memberId: memeberId,
+            type: 'LINK',
+          },
+          { headers },
+        )
+        .then((res) => {
+          setCommentIndex([0, res.data.hasNextPage]);
+          setCommentChanged(!commentChanged);
+        })
+        .catch((err) => {
+          alert(err.response.data);
+          router.push('/login');
+        });
+    }
+
+    setLinkCopyState(true);
+  }
+
   return (
     <div className={styles.wrap}>
       {/* 테스트  */}
@@ -341,12 +380,7 @@ export default function TestPreview(props) {
         <GoRandomStartBtn url={`/test/on/${data.testId}`} str="테스트 시작" />
         <ul className={styles.buttonSet}>
           <li>
-            <div
-              className={styles.linkCopyWrap}
-              onClick={() => {
-                setLinkCopyState(true);
-              }}
-            >
+            <div className={styles.linkCopyWrap} onClick={clickLinkCopy}>
               <CopyToClipboard text={`${DOMAIN}${location.pathname}`}>
                 <button className={linkCopyState ? styles.linkCopied : styles.noneLinkCopied}></button>
               </CopyToClipboard>

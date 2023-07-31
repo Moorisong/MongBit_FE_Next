@@ -264,6 +264,8 @@ export default function TestResult(props) {
     if (window) {
       shareToKakaotalk_result(
         props.testId,
+        sessionStorage.getItem('mongBitmemeberId'),
+        'KAKAO',
         props.titleStr,
         props.contentStrArr.join(),
         props.imgUri,
@@ -352,6 +354,33 @@ export default function TestResult(props) {
         router.push('/login');
       });
   }
+  function clickLinkCopy() {
+    const headers = getHeaders();
+    const memeberId = sessionStorage.getItem('mongBitmemeberId') || 'anonymous';
+
+    if (!decodeToken().role || decodeToken().role === 'ROLE_USER') {
+      axios
+        .post(
+          `${DOMAIN_BE_PROD}/api/v1/tests/share`,
+          {
+            testId: data.testId,
+            memberId: memeberId,
+            type: 'LINK',
+          },
+          { headers },
+        )
+        .then((res) => {
+          setCommentIndex([0, res.data.hasNextPage]);
+          setCommentChanged(!commentChanged);
+        })
+        .catch((err) => {
+          alert(err.response.data);
+          router.push('/login');
+        });
+    }
+
+    setLinkCopyState(true);
+  }
   return (
     <div className={styles.resultWrap}>
       <img className={styles.resultImg} src={props.imgUri} alt="test_result_image" />
@@ -369,12 +398,7 @@ export default function TestResult(props) {
 
       <div className={styles.buttonsWrap}>
         <div className={styles.partWrap}>
-          <div
-            className={styles.linkCopyWrap}
-            onClick={() => {
-              setLinkCopyState(true);
-            }}
-          >
+          <div className={styles.linkCopyWrap} onClick={clickLinkCopy}>
             <CopyToClipboard text={`${DOMAIN}${resultPathName}`}>
               <button className={linkCopyState ? styles.linkCopied : styles.noneLinkCopied}></button>
             </CopyToClipboard>

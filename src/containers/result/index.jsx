@@ -5,7 +5,7 @@ import axios from 'axios';
 import cx from 'classnames';
 
 import { COUPANG_VISIT, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '@/constants/constant';
-import { getHeaders } from '@/utils/util';
+import { decodeToken, getHeaders } from '@/utils/util';
 
 import styles from './index.module.css';
 import Footer from '@/components/Footer';
@@ -26,18 +26,14 @@ export default function Result() {
   const memberId = sessionStorage.getItem('mongBitmemeberId');
 
   useEffect(() => {
-    // if (!decodeToken().state) {
-    //   sessionStorage.setItem('ngb', pathName);
-    //   return router.push('/need_login');
-    // }
+    // 다른 플랫폼에서 URI 클릭해서 페이지 진입한 경우
+    if (!sessionStorage.getItem('mbTestDone')) return router.push('/main');
+
     checkCoupnagSiteVisit();
 
     if (!sessionStorage.getItem('mbScore')) {
-      //링크 타고 결과지 페이지에 진입했을 때
-      if (!sessionStorage.getItem('mongBitmemeberId')) return router.push(`/main`);
       return router.push(`/record/${params.testId}/${sessionStorage.getItem('mbResultId')}`);
     }
-
     const popstateHandler = (evt) => {
       // 뒤로 가기 했을 때 익셉션 페이지로 이동시키기
       if (evt && evt.state) {
@@ -63,25 +59,48 @@ export default function Result() {
       });
 
     const score = JSON.parse(sessionStorage.getItem('mbScore'));
-    axios
-      .post(`${DOMAIN_BE_PROD}/api/v1/member-test-result/${params.testId}/${memberId}`, score, { headers })
-      .then((res) => {
-        const contentArray = res.data.content.split('<br>');
+    // 토큰이 유효한지 검증 후에 회원/비회원 결과 보기 API 호출 진행
+    if (decodeToken().state) {
+      axios
+        .post(`${DOMAIN_BE_PROD}/api/v1/member-test-result/${params.testId}/${memberId}`, score, { headers })
+        .then((res) => {
+          const contentArray = res.data.content.split('<br>');
 
-        SetResultData((prev) => ({
-          ...prev,
-          titleStr: res.data.title,
-          contentStrArr: contentArray,
-          imgUri: res.data.imageUrl,
-          testResultId: res.data.id,
-        }));
-        sessionStorage.removeItem('mbScore');
-        sessionStorage.setItem('mbResultId', res.data.id);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
-      });
+          SetResultData((prev) => ({
+            ...prev,
+            titleStr: res.data.title,
+            contentStrArr: contentArray,
+            imgUri: res.data.imageUrl,
+            testResultId: res.data.id,
+          }));
+          sessionStorage.removeItem('mbScore');
+          sessionStorage.setItem('mbResultId', res.data.id);
+        })
+        .catch((err) => {
+          alert(err.response.data);
+          router.push('/login');
+        });
+    } else {
+      axios
+        .post(`${DOMAIN_BE_PROD}/api/v1/member-test-result/${params.testId}`, score, { headers })
+        .then((res) => {
+          const contentArray = res.data.content.split('<br>');
+
+          SetResultData((prev) => ({
+            ...prev,
+            titleStr: res.data.title,
+            contentStrArr: contentArray,
+            imgUri: res.data.imageUrl,
+            testResultId: res.data.id,
+          }));
+          sessionStorage.removeItem('mbScore');
+          sessionStorage.setItem('mbResultId', res.data.id);
+        })
+        .catch((err) => {
+          alert(err.response.data);
+          router.push('/login');
+        });
+    }
 
     const timer = setTimeout(() => {
       setLoading(false);

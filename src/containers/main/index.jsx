@@ -5,14 +5,15 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import lottie from 'lottie-web';
 
+import { getHeaders, setUTMParameter } from '@/utils/util';
+import { TITLE_WITH_CONTENT, TYPE_LATEST_MAIN, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '@/constants/constant';
+
 import styles from './index.module.css';
 import animationData_1 from './loading_1.json';
 import Footer from '@/components/Footer';
 import { TitleWithText } from '@/components/Titles';
 import { TestCard } from '@/components/TestCard';
 import { GoRandomStartBtn } from '@/components/ButtonSets';
-import { TITLE_WITH_CONTENT, TYPE_LATEST_MAIN, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '../../constants/constant';
-import { getHeaders } from '../../utils/util';
 
 export default function main() {
   // Test 삭제
@@ -45,12 +46,14 @@ export default function main() {
   }, []);
 
   useEffect(() => {
+    setUTMParameter(router);
+
     sessionStorage.getItem('mbResult') === '' && sessionStorage.removeItem('mbResult');
     sessionStorage.getItem('mbTest') === '' && sessionStorage.removeItem('mbTest');
 
     const headers = getHeaders();
     axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/tests/0/3`, { headers })
+      .get(`${DOMAIN_BE_PROD}/api/v1/tests/0/4`, { headers })
       .then((res) => {
         setLatestTestData((prev) => ({
           ...prev,
@@ -74,9 +77,9 @@ export default function main() {
       <div className={styles.testWrap}>
         <TitleWithText title="🌟 심테의 근본, MBTI 검사" />
         <TestCard
-          thumbnailStr="겁나 빠르게 끝내는 퀵 MBTI"
+          thumbnailStr="신속하고 아마도 정확한 퀵 MBTI!"
           testId="649a7bccaa04db61384808c5"
-          thumbnailUri="https://i.ibb.co/pwj20tf/cover.png"
+          thumbnailUri="https://i.ibb.co/GJ08BC3/quick-mbti-cover.png"
         />
 
         <div className={styles.miniTestWrap}>

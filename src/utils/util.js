@@ -57,7 +57,7 @@ export function formatTimeDifference(dateString) {
   }
 }
 
-export function shareToKakaotalk_test(testId, title, description, testImgUri, likeCnt) {
+export function shareToKakaotalk_test(testId, memberId, type, title, description, testImgUri, likeCnt) {
   if (!window.Kakao.isInitialized()) window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_APP_KEY);
 
   window.Kakao.Share.sendDefault({
@@ -83,10 +83,11 @@ export function shareToKakaotalk_test(testId, title, description, testImgUri, li
         },
       },
     ],
+    serverCallbackArgs: `{"testId": "${testId}", "memberId": "${memberId}", "type": "${type}"}`,
   });
 }
 
-export function shareToKakaotalk_result(testId, title, description, resultImgUri, pathName, likeCnt) {
+export function shareToKakaotalk_result(testId, memberId, type, title, description, resultImgUri, pathName, likeCnt) {
   if (!window.Kakao.isInitialized()) window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_APP_KEY);
 
   window.Kakao.Share.sendDefault({
@@ -120,6 +121,7 @@ export function shareToKakaotalk_result(testId, title, description, resultImgUri
         },
       },
     ],
+    serverCallbackArgs: `{"testId": "${testId}", "memberId": "${memberId}", "type": "${type}"}`,
   });
 }
 
@@ -147,3 +149,28 @@ export const getTestData = async (url) => {
     .then((res) => res)
     .catch(() => OG_STANDARD_IMAGE);
 };
+
+export function setUTMParameter(router) {
+  const userAgent = navigator.userAgent.toLowerCase();
+  let utmSource = '';
+
+  if (userAgent.includes('facebook')) {
+    utmSource = 'facebook';
+  } else if (userAgent.includes('kakaotalk')) {
+    utmSource = 'kakao';
+  } else if (userAgent.includes('twitter')) {
+    utmSource = 'twitter';
+  } else if (userAgent.includes('instagram')) {
+    utmSource = 'instagram';
+  } else {
+    utmSource = 'other';
+  }
+
+  function getUtmUrl() {
+    const param = `/?utm_source=${utmSource}`;
+    // 새로고침 시 UTM 파라미터가 늘어나지 않도록 조치
+    if (!window.location.href.includes('utm_')) return window.location.href + param;
+    return window.location.href;
+  }
+  router.push(getUtmUrl());
+}

@@ -6,7 +6,7 @@ import { useRouter, useParams } from 'next/navigation';
 import lottie from 'lottie-web';
 
 import { DOMAIN_BE_PROD, TYPE_MYPAGE, DOMAIN_BE_DEV } from '@/constants/constant';
-import { getHeaders } from '@/utils/util';
+import { getHeaders, setUTMParameter } from '@/utils/util';
 
 import styles from './index.module.css';
 import QuestionAndAnswer from '@/components/QuestionAndAnswer';
@@ -27,9 +27,11 @@ export default function TestOn() {
   });
   let [putArr, setPutArr] = useState([]);
 
-  const barClassName = styles[`gaugeBar_${qstStageIdx}`];
+  const totalQuestionNumber = testData.questions ? testData.questions.length : ' loading';
 
   useEffect(() => {
+    setUTMParameter(router);
+
     const headers = getHeaders();
     axios
       .get(`${DOMAIN_BE_PROD}/api/v1/tests/test/${params.testId}`, { headers })
@@ -70,6 +72,7 @@ export default function TestOn() {
   useEffect(() => {
     if (testDone.state) {
       sessionStorage.setItem('mbScore', JSON.stringify(score));
+      sessionStorage.setItem('mbTestDone', true);
       return router.push(`/result/${params.testId}`);
     }
   }, [testDone.state]);
@@ -94,15 +97,23 @@ export default function TestOn() {
   function clickAnswer_plus() {
     putArr[qstStageIdx] = 1;
     setPutArr([...putArr]);
-    if (qstStageIdx !== 12) setQstStageIdx(qstStageIdx + 1);
-    if (qstStageIdx === 12) makeScore();
+    if (qstStageIdx !== totalQuestionNumber) setQstStageIdx(qstStageIdx + 1);
+    if (qstStageIdx === totalQuestionNumber) makeScore();
   }
 
   function clickAnswer_minus() {
     putArr[qstStageIdx] = -1;
     setPutArr([...putArr]);
-    if (qstStageIdx !== 12) setQstStageIdx(qstStageIdx + 1);
-    if (qstStageIdx === 12) makeScore();
+    if (qstStageIdx !== totalQuestionNumber) setQstStageIdx(qstStageIdx + 1);
+    if (qstStageIdx === totalQuestionNumber) makeScore();
+  }
+
+  function calculateWidth(index) {
+    if (index === 1) return '0%';
+    if (testDone.lastClick) return '100%';
+
+    const percentage = ((index - 1) / totalQuestionNumber) * 100;
+    return `${percentage}%`;
   }
 
   return (
@@ -115,14 +126,10 @@ export default function TestOn() {
         <div className={styles.progressWrap}>
           <div className={styles.barWrap}>
             <div></div>
-            <div
-              className={cx(barClassName, {
-                [styles.gaugeBar_13]: testDone.lastClick,
-              })}
-            ></div>
+            <div className={styles.gaugeBar} style={{ width: calculateWidth(qstStageIdx) }}></div>
           </div>
           <span>{`질문 ${qstStageIdx} /`}</span>
-          <span>12</span>
+          <span>{totalQuestionNumber}</span>
         </div>
       </div>
 

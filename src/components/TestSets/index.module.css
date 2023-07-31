@@ -54,6 +54,6 @@
 }
 
 .myPageDescription {
-  height: 13rem;
-  overflow-y: auto;
+  height: 11rem;
+  overflow-y: hidden;
 }
