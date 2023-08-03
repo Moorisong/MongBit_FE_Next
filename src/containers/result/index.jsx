@@ -26,6 +26,7 @@ export default function Result() {
   const memberId = sessionStorage.getItem('mongBitmemeberId');
 
   useEffect(() => {
+    const currLocation = window.location.href;
     // 다른 플랫폼에서 URI 클릭해서 페이지 진입한 경우
     if (!sessionStorage.getItem('mbTestDone')) return router.push('/main');
 
@@ -35,9 +36,9 @@ export default function Result() {
       return router.push(`/record/${params.testId}/${sessionStorage.getItem('mbResultId')}`);
     }
     const popstateHandler = (evt) => {
-      // 뒤로 가기 했을 때 익셉션 페이지로 이동시키기
+      // 뒤로 가기 했을 때 결과 페이지로 가도록
       if (evt && evt.state) {
-        router.push('/exception');
+        router.push(currLocation);
       }
     };
     window.addEventListener('popstate', (evt) => {
