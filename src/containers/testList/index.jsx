@@ -123,7 +123,7 @@ export default function TestList() {
       {data.hasNextPage && (
         <div className={styles.seeMoreWrap} onClick={clickSeeMoreBtn}>
           <button>더보기</button>
-          <img src="/images/test/seeMoreIcon.svg" alt="see_more" />
+          <img src="/images/test/seeMoreIcon.svg" alt="몽빗 MBTI 심리테스트 목록 더보기 이미지" />
         </div>
       )}
 
@@ -138,7 +138,7 @@ export default function TestList() {
         <Link className={styles.goRandomStartBtn} href="/test/random">
           아무거나 시작
         </Link>
-        <img src="/images/test/nextIcon.svg" alt="next_icon" />
+        <img src="/images/test/nextIcon.svg" alt="몽빗 MBTI 심리테스트 목록 더보기 이미지" />
       </div>
     </div>
   );

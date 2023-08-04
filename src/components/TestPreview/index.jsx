@@ -480,7 +480,7 @@ export default function TestPreview(props) {
           ) : (
             <>
               <button onClick={clikeSeeMoreBtn}>더보기</button>
-              <img src="/images/test/seeMoreIcon.svg" alt="see_more" />
+              <img src="/images/test/seeMoreIcon.svg" alt="몽빗 MBTI 심리테스트 사이트 코멘트 더보기 아이콘" />
             </>
           )}
         </div>

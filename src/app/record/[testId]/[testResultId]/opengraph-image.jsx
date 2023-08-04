@@ -8,12 +8,11 @@ export const size = {
 };
 export const contentType = 'image/png';
 export const runtime = 'edge';
+export const alt = '몽빗 MBTI 심리테스트 결과 페이지';
 
 export default async function Image() {
   try {
-    let imgUrl;
-
-    imgUrl = OG_TEST_RESULT;
+    const imgUrl = OG_TEST_RESULT;
 
     return new ImageResponse(
       (

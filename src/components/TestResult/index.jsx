@@ -383,12 +383,12 @@ export default function TestResult(props) {
   }
   return (
     <div className={styles.resultWrap}>
-      <img className={styles.resultImg} src={props.imgUri} alt="test_result_image" />
+      <img className={styles.resultImg} src={props.imgUri} alt="몽빗 MBTI 심리테스트 결과 이미지" />
       <p>{[props.titleStr]}</p>
       <ul className={styles.resultStrList}>
         {props.contentStrArr.map((str, i) => (
           <li key={i}>
-            <img src="/images/test/circleIcon.svg" alt="circle" />
+            <img src="/images/test/circleIcon.svg" alt="몽빗 MBTI 심리테스트 결과 목록 인덱스 이미지" />
             <p>{str}</p>
           </li>
         ))}
@@ -410,7 +410,7 @@ export default function TestResult(props) {
           <div className={styles.retryDiv} onClick={clickRetry}>
             <p>다시 해보기</p>
           </div>
-          <img src="/images/test/retryIcon.svg" alt="retry" />
+          <img src="/images/test/retryIcon.svg" alt="몽빗 MBTI 심리테스트 다시 해보기 버튼 이미지" />
         </div>
 
         <div className={styles.partWrap} onClick={clickLikeBtn}>
@@ -481,7 +481,7 @@ export default function TestResult(props) {
           ) : (
             <>
               <button onClick={clikeSeeMoreBtn}>더보기</button>
-              <img src="/images/test/seeMoreIcon.svg" alt="see_more" />
+              <img src="/images/test/seeMoreIcon.svg" alt="몽빗 MBTI 심리테스트 코멘트 더보기 이미지" />
             </>
           )}
         </div>

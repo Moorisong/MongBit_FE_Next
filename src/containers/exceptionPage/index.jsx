@@ -22,7 +22,7 @@ export default function ExceptionPage() {
       </div>
 
       <div className={styles.logoImgWrap}>
-        <img src="/images/logIn/loginLogo.svg" alt="Logo_image" />
+        <img src="/images/logIn/loginLogo.svg" alt="몽빗 MBTI 심리테스트 사이트 로고 이미지" />
         <p className={styles.logoText}>© 2023 MongMoongCrew. All rights reserved</p>
       </div>
 

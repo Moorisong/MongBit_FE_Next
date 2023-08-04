@@ -31,7 +31,7 @@ export function InfoPart(props) {
       </div>
 
       <div className={`${styles.contentWrap} ${styles.stepWrap}`}>
-        <button onClick={props.onClickMain}>메인</button>
+        <button onClick={props.onClickMain}>돌아가기</button>
         <button
           onClick={() => {
             // if (props.imgUploading) return alert('이미지를 업로드 중입니다.');

@@ -125,7 +125,7 @@ export default function NavigationBar() {
                   <li className={styles.logOutWrap}>
                     <p onClick={clickLogOut}>로그아웃</p>
                     <button className={styles.logOutBtn} onClick={clickLogOut}></button>
-                    <img src="/images/navigationBar/logo_dog.svg" alt="logo" />
+                    <img src="/images/navigationBar/logo_dog.svg" alt="몽빗 MBTI 심리테스트 사이트 로고" />
                   </li>
                 )}
               </ul>

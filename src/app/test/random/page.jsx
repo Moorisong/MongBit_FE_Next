@@ -4,7 +4,7 @@ import RandomTest from '@/containers/randomTest';
 export async function generateMetadata() {
   const url = `${DOMAIN}/test/random`;
   const title = '몽빗(MongBit)';
-  let description = 'MBTI 심리테스트 공작소';
+  const description = 'MBTI 심리테스트 공작소';
   let imageUrl = `${DOMAIN}/test/random/opengraph-image`;
 
   return {

@@ -150,7 +150,11 @@ export default function MyPage() {
           <TitleWithText type_1={TITLE_WITH_CONTENT} title="🦁 마이페이지" />
 
           <div className={styles.userInfoWrap}>
-            <img src={sessionStorage.getItem(USER_INFO + 'thumbnail')} alt="user_img" className={styles.userImg} />
+            <img
+              src={sessionStorage.getItem(USER_INFO + 'thumbnail')}
+              alt="몽빗 MBTI 심리테스트 사이트 유저 이미지"
+              className={styles.userImg}
+            />
             <div className={styles.spanWrap}>
               <p>{sessionStorage.getItem(USER_INFO + 'username')}</p>
               <p>{registerDate} 가입</p>
@@ -197,7 +201,7 @@ export default function MyPage() {
               ) : (
                 <>
                   <button>더보기</button>
-                  <img src="/images/test/seeMoreIcon.svg" alt="see_more" />
+                  <img src="/images/test/seeMoreIcon.svg" alt="몽빗 MBTI 심리테스트 마이페이지 더보기 아이콘" />
                 </>
               )}
             </div>

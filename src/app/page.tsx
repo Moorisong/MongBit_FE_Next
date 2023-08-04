@@ -4,9 +4,10 @@ import Main from '@/containers/main';
 export async function generateMetadata() {
   const url = `${DOMAIN}`;
   const title = '몽빗(MongBit)';
-  let description = 'MBTI 심리테스트 공작소';
-  let imageUrl = `${DOMAIN}/main/opengraph-image`;
+  const description = 'MBTI 심리테스트 공작소';
+  const imageUrl = `${DOMAIN}/main/opengraph-image`;
   // main의 opengraph-image.jsx 파일을 사용하도록 함
+  const alt = '몽빗 MBTI 심리테스트 메인 페이지';
 
   return {
     title,
@@ -19,7 +20,7 @@ export async function generateMetadata() {
       images: [
         {
           url: imageUrl,
-          alt: 'og_image',
+          alt: alt,
         },
       ],
     },
