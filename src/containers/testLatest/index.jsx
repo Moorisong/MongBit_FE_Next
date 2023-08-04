@@ -109,7 +109,7 @@ export default function TestLatest() {
         <Link className={styles.goRandomStartBtn} href="/test/random">
           아무거나 시작
         </Link>
-        <img src="/images/test/nextIcon.svg" alt="next_icon" />
+        <img src="/images/test/nextIcon.svg" alt="몽빗 MBTI 심리테스트 아무거나 시작 화살표 이미지" />
       </div>
     </div>
   );

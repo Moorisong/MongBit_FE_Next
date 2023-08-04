@@ -28,7 +28,7 @@ export default function QuestionAndAnswer(props) {
       {props.q_idx === 0 || (
         <div onClick={props.clickGoBack} className={styles.clickGoBack}>
           <button>이전 질문</button>
-          <img src="/images/test/leftArrowIcon.svg" alt="leftArrow" />
+          <img src="/images/test/leftArrowIcon.svg" alt="몽빗 MBTI 심리테스트 사이트 화살표 아이콘" />
         </div>
       )}
     </div>

@@ -48,7 +48,7 @@ export function CommentReadOnly(props) {
 
   return (
     <div className={styles.commentWrapper}>
-      <img src={props.data.thumbnailImage} className={`${styles.userImg}`} alt="comment" />
+      <img src={props.data.thumbnailImage} className={`${styles.userImg}`} alt="몽빗 MBTI 심리테스트 코멘트" />
       <div className={styles.userAndDateReadOnly}>
         <div>
           <span>{`${props.data.username} · `}</span>
@@ -115,7 +115,7 @@ export function Comment(props) {
   }
   return (
     <div className={styles.commentWrapper}>
-      <img src={props.data.thumbnailImage} className={`${styles.userImg}`} alt="comment"></img>
+      <img src={props.data.thumbnailImage} className={`${styles.userImg}`} alt="몽빗 MBTI 심리테스트 코멘트"></img>
       <div className={styles.userAndDate}>
         <div>
           <span>{`${props.data.username} · `}</span>

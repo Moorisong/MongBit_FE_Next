@@ -27,7 +27,7 @@ function TestCard(props) {
         router.push(`/test/preview/${props.testId}`);
       }}
     >
-      <img src={props.thumbnailUri} className={cn_2} alt="test_image" />
+      <img src={props.thumbnailUri} className={cn_2} alt="몽빗 MBTI 심리테스트 이미지" />
       {props.type === TYPE_MYPAGE || (
         <div className={cn_3}>
           {props.type === TYPE_LATEST_MAIN ? (
