@@ -16,7 +16,7 @@ export default function ExceptionPage() {
   }, []);
 
   return (
-    <div className={styles.wrap}>
+    <div>
       <div className={styles.textBox}>
         <p>세션이 만료되었습니다.</p>
       </div>

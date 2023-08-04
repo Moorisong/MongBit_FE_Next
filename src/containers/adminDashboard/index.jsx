@@ -1,3 +1,21 @@
+'use client';
+import { useRouter } from 'next/navigation';
+
+import styles from './index.module.css';
+
 export default function AdminDashboard() {
-  return <div>어드민 대시보드 페이지</div>;
+  const router = useRouter();
+
+  function onClickGoMain() {
+    router.push('/main');
+  }
+  return (
+    <div className={styles.wrap}>
+      <div>
+        <div onClick={onClickGoMain}>메인으로</div>
+      </div>
+      <div className={styles.menuBar}></div>
+      <div className={styles.contentWrap}></div>
+    </div>
+  );
 }

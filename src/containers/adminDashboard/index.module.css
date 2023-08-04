@@ -1,0 +1,21 @@
+.wrap {
+  width: 100%;
+  background-color: #f7f4ff;
+  display: flex;
+  flex-direction: row;
+}
+.wrap > div:first-child {
+  width: 5%;
+  height: 100vh;
+  background-color: #582fff;
+}
+.wrap > div:first-child > div {
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+}
+.menuBar {
+  width: 15%;
+  height: 100vh;
+  background-color: white;
+}
