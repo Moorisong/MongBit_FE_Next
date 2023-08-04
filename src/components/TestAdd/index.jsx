@@ -183,7 +183,7 @@ export default function TestAdd() {
   }
 
   function onClickMain() {
-    router.push('/main');
+    router.push('/admin');
   }
 
   return (
