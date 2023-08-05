@@ -3,7 +3,7 @@ import Main from '@/containers/main';
 
 export async function generateMetadata() {
   const url = `${DOMAIN}`;
-  const title = '몽빗(MongBit)';
+  const title = '몽빗 | MBTI 심리테스트 공작소';
   const description = 'MBTI 심리테스트 공작소';
   const imageUrl = `${DOMAIN}/main/opengraph-image`;
   // main의 opengraph-image.jsx 파일을 사용하도록 함

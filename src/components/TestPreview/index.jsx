@@ -12,7 +12,6 @@ import {
   TYPE_PLAY_CNT,
   DOMAIN,
   DOMAIN_BE_PROD,
-  DOMAIN_BE_DEV,
   TYPE_TEST_PREVIEW,
   COMMENT_TIME,
 } from '@/constants/constant';

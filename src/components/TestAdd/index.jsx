@@ -3,14 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-import {
-  ALL_FULLFILL,
-  NUMBER_500,
-  LENGTH_OVER_500,
-  DOMAIN_BE_PROD,
-  DOMAIN_BE_DEV,
-  TOKEN_NAME,
-} from '@/constants/constant';
+import { ALL_FULLFILL, NUMBER_500, LENGTH_OVER_500, DOMAIN_BE_PROD, TOKEN_NAME } from '@/constants/constant';
 import { getHeaders } from '@/utils/util';
 
 import styles from './index.module.css';

@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import lottie from 'lottie-web';
 
 import { getHeaders, decodeToken } from '@/utils/util';
-import { DOMAIN_BE_PROD, DOMAIN_BE_DEV, TOKEN_NAME, USER_INFO } from '@/constants/constant';
+import { DOMAIN_BE_PROD, TOKEN_NAME, USER_INFO } from '@/constants/constant';
 
 import animationData_1 from './loading_1.json';
 import Footer from '@/components/Footer';

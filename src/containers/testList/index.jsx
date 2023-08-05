@@ -12,7 +12,7 @@ import animationData_1 from './loading_2.json';
 import { TitleWithText } from '@/components/Titles';
 import { TestSetComplete } from '@/components/TestSets';
 import styles from './index.module.css';
-import { TYPE_TEST_LIST, TITLE_WITH_CONTENT, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '../../constants/constant';
+import { TYPE_TEST_LIST, TITLE_WITH_CONTENT, DOMAIN_BE_PROD } from '../../constants/constant';
 
 export default function TestList() {
   const [data, setData] = useState({
