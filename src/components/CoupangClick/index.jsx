@@ -4,7 +4,7 @@ import { useParams, useRouter } from 'next/navigation';
 import axios from 'axios';
 import lottie from 'lottie-web';
 
-import { DOMAIN_BE_PROD, DOMAIN_BE_DEV, TYPE_COMMENT, COUPANG_VISIT } from '@/constants/constant';
+import { DOMAIN_BE_PROD, TYPE_COMMENT, COUPANG_VISIT } from '@/constants/constant';
 import { getHeaders } from '@/utils/util';
 
 import Footer from '../Footer';

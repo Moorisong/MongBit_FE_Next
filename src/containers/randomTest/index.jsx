@@ -10,7 +10,7 @@ import animationData_1 from './loading_2.json';
 import TestPreview from '../../components/TestPreview';
 import Footer from '../../components/Footer';
 import styles from './index.module.css';
-import { DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '../../constants/constant';
+import { DOMAIN_BE_PROD } from '../../constants/constant';
 
 export default function RandomTest() {
   const [thumbnailStr, setThumbnailStr] = useState('');

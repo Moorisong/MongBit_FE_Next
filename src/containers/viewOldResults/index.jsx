@@ -4,7 +4,7 @@ import lottie from 'lottie-web';
 import { useState, useEffect, useRef } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 
-import { DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '@/constants/constant';
+import { DOMAIN_BE_PROD } from '@/constants/constant';
 import { getHeaders, setUTMParameter } from '@/utils/util';
 
 import styles from './index.module.css';

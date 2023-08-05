@@ -5,7 +5,7 @@ import cx from 'classnames';
 import { useRouter, useParams } from 'next/navigation';
 import lottie from 'lottie-web';
 
-import { DOMAIN_BE_PROD, TYPE_MYPAGE, DOMAIN_BE_DEV } from '@/constants/constant';
+import { DOMAIN_BE_PROD, TYPE_MYPAGE } from '@/constants/constant';
 import { getHeaders, setUTMParameter } from '@/utils/util';
 
 import styles from './index.module.css';

@@ -13,7 +13,7 @@ import Footer from '../../components/Footer';
 import styles from './index.module.css';
 import { TestSetMyPage } from '../../components/TestSets';
 import { TitleWithText } from '../../components/Titles';
-import { TITLE_WITH_CONTENT, TYPE_MYPAGE, USER_INFO, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '../../constants/constant';
+import { TITLE_WITH_CONTENT, TYPE_MYPAGE, USER_INFO, DOMAIN_BE_PROD } from '../../constants/constant';
 import { Stroke } from '../../components/ButtonSets';
 
 export default function MyPage() {

@@ -4,7 +4,7 @@ import { useParams, useRouter } from 'next/navigation';
 import axios from 'axios';
 import cx from 'classnames';
 
-import { COUPANG_VISIT, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '@/constants/constant';
+import { COUPANG_VISIT, DOMAIN_BE_PROD } from '@/constants/constant';
 import { decodeToken, getHeaders } from '@/utils/util';
 
 import styles from './index.module.css';
