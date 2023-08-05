@@ -3,7 +3,7 @@ import LogIn from '@/containers/logIn';
 
 export async function generateMetadata() {
   const url = `${DOMAIN}/login`;
-  const title = '몽빗(MongBit)';
+  const title = '몽빗 | MBTI 심리테스트 공작소';
   const description = 'MBTI 심리테스트 공작소';
   let imageUrl = `${DOMAIN}/login/opengraph-image`;
 
