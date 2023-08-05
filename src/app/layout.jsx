@@ -6,7 +6,7 @@ import NavigationBar from '@/components/NavigationBar';
 const inter = 'Noto Sans';
 
 export const metadata = {
-  title: '몽빗(MongBit)',
+  title: '몽빗 | MBTI 심리테스트 공작소',
   description: 'MBTI 심리테스트 공작소',
   keywords: [
     'MBTI',

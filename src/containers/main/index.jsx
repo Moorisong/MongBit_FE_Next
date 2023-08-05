@@ -6,7 +6,7 @@ import axios from 'axios';
 import lottie from 'lottie-web';
 
 import { getHeaders, setUTMParameter } from '@/utils/util';
-import { TITLE_WITH_CONTENT, TYPE_LATEST_MAIN, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '@/constants/constant';
+import { TITLE_WITH_CONTENT, TYPE_LATEST_MAIN, DOMAIN_BE_PROD } from '@/constants/constant';
 
 import styles from './index.module.css';
 import animationData_1 from './loading_1.json';

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-import { TYPE_ON_TEST, TYPE_MYPAGE, TYPE_COMMENT, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '../../constants/constant';
+import { TYPE_ON_TEST, TYPE_MYPAGE, TYPE_COMMENT, DOMAIN_BE_PROD } from '../../constants/constant';
 import { decodeToken, formatTimeDifference, getHeaders } from '../../utils/util';
 import styles from './index.module.css';
 

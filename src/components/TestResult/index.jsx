@@ -5,7 +5,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import lottie from 'lottie-web';
 import cx from 'classnames';
 
-import { DOMAIN, DOMAIN_BE_PROD, DOMAIN_BE_DEV, TYPE_COMMENT, COMMENT_TIME } from '@/constants/constant';
+import { DOMAIN, DOMAIN_BE_PROD, TYPE_COMMENT, COMMENT_TIME } from '@/constants/constant';
 import { decodeToken, shareToKakaotalk_result, getHeaders } from '@/utils/util';
 
 import styles from './index.module.css';
