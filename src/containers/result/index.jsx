@@ -3,12 +3,11 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import axios from 'axios';
 import cx from 'classnames';
-import { styled } from 'styled-components';
 
-import CoupangAdv_3 from '@/components/CoupangAdv_3';
 import { COUPANG_VISIT, DOMAIN_BE_PROD } from '@/constants/constant';
 import { decodeToken, getHeaders } from '@/utils/util';
 
+import CoupangAdv_3 from '@/components/CoupangAdv_3';
 import styles from './index.module.css';
 import Footer from '@/components/Footer';
 import TestResult from '@/components/TestResult';
@@ -23,7 +22,7 @@ export default function Result() {
   });
   const [loading, setLoading] = useState(true);
   const [showCoupangBox, setShowCoupangBox] = useState(false);
-  const [secondNumber, setSecondNumber] = useState(1);
+  const [secondNumber, setSecondNumber] = useState(5);
 
   const router = useRouter();
   const params = useParams();
@@ -62,7 +61,6 @@ export default function Result() {
             imgUri: res.data.imageUrl,
             testResultId: res.data.id,
           }));
-          sessionStorage.removeItem('mbScore');
           sessionStorage.setItem('mbResultId', res.data.id);
         })
         .catch((err) => {
@@ -110,13 +108,12 @@ export default function Result() {
   }, []);
 
   useEffect(() => {
+    // 1~5초 카운트 인터벌 세팅
     let interval;
-    console.log('111');
     if (!loading && showCoupangBox) {
-      console.log('222');
       interval = setInterval(() => {
-        if (secondNumber < 5) {
-          setSecondNumber(secondNumber + 1);
+        if (secondNumber > 0) {
+          setSecondNumber(secondNumber - 1);
         } else {
           return clearInterval(interval);
         }
@@ -128,21 +125,21 @@ export default function Result() {
     };
   }, [loading, secondNumber]);
 
-  // useEffect(() => {
-  //   const handleDocVisibilitychange = () => {
-  //     // 쿠팡 광고 페이지에서 몽빗 페이지로 돌아올때마다 실행되도록 함
+  useEffect(() => {
+    const handleDocVisibilitychange = () => {
+      // 쿠팡 광고 페이지에서 몽빗 페이지로 돌아올때마다 실행되도록 함
 
-  //     if (localStorage.getItem(COUPANG_VISIT)) {
-  //       console.log('돌아옴---')
-  //     }
-  //   };
+      if (localStorage.getItem(COUPANG_VISIT)) {
+        setShowCoupangBox(false);
+      }
+    };
 
-  //   document.addEventListener('visibilitychange', handleDocVisibilitychange);
+    document.addEventListener('visibilitychange', handleDocVisibilitychange);
 
-  //   return () => {
-  //     document.removeEventListener('visibilitychange', handleDocVisibilitychange);
-  //   };
-  // }, []);
+    return () => {
+      document.removeEventListener('visibilitychange', handleDocVisibilitychange);
+    };
+  }, []);
 
   function isWithin12Hours(date1, date2) {
     const halfDay = 12 * 60 * 60 * 1000;
@@ -168,18 +165,19 @@ export default function Result() {
     const link = 'https://link.coupang.com/a/2s6aq';
 
     saveCoupangVisitDate();
+    sessionStorage.removeItem('mbScore');
     window.open(link, '_blank');
   }
 
   function onClickCancelIcon() {
-    console.log('cancel');
+    setShowCoupangBox(false);
   }
 
   return (
     <div className={styles.wrap}>
       {loading && <ResultLoading />}
 
-      {loading || (
+      {!loading && showCoupangBox && (
         <div className={styles.coupangBox}>
           <div className={styles.coupangContent}>
             <p>
@@ -189,16 +187,16 @@ export default function Result() {
             <div className={styles.bannerWrap}>
               <div className={styles.overlayBanner} onClick={onClickAdv}></div>
               <CoupangAdv_3 />
-              {secondNumber !== 5 ? (
-                <div>
-                  <p>{secondNumber}</p>
-                </div>
-              ) : (
+              {secondNumber === 0 ? (
                 <img
                   src="/images/coupangAdv/closeButton.svg"
                   alt="몽빗 MBTI 심리테스트 사이트 배너 닫기 아이콘"
                   onClick={onClickCancelIcon}
                 />
+              ) : (
+                <div>
+                  <p>{secondNumber}</p>
+                </div>
               )}
             </div>
             <div>
