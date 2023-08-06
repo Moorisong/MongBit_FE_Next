@@ -37,7 +37,7 @@ export default function AdminDashboard() {
 
       {/* 본문 콘텐츠 */}
       <div className={styles.contentWrap}>
-      <div></div>
+        <div></div>
       </div>
     </div>
   );
