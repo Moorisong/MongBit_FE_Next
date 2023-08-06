@@ -16,6 +16,10 @@
   }
 }
 
+.wrap {
+  position: relative;
+}
+
 .bgWhite {
   background-color: white;
   display: flex;
@@ -30,4 +34,92 @@
 
 .displayNone {
   display: none;
+}
+
+.wrap {
+  height: 100%;
+}
+.coupangBox {
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.2) 5%,
+    rgba(113, 47, 255, 0.5) 20%,
+    rgba(0, 0, 0, 1) 55%
+  );
+  width: 400px;
+  height: 700px;
+  position: fixed;
+  top: 90px;
+  left: calc(50% - 200px);
+}
+.coupangContent {
+  width: 100%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.coupangContent > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.coupangContent p,
+.coupangContent strong {
+  color: white;
+}
+
+.coupangContent > div > p {
+  font-size: 0.7rem;
+}
+
+.coupangContent > div > strong {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.noScroll {
+  position: fixed;
+  top: 90px;
+  left: calc(50% - 200px);
+  width: 400px;
+  opacity: 0.5;
+  /* filter: blur(5px); */
+}
+
+.bannerWrap {
+  position: relative;
+}
+
+.overlayBanner {
+  width: 350px !important;
+  height: 100px !important;
+  z-index: 11 !important;
+  opacity: 0;
+}
+
+.bannerWrap > div {
+  width: 15px;
+  height: 15px;
+  background-color: #712fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bannerWrap > img,
+.bannerWrap > div {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  width: 15px;
+  height: 15px;
+}
+.bannerWrap > img {
+  z-index: 12;
+}
+.bannerWrap p {
+  color: white;
+  font-size: 0.8rem;
 }

@@ -19,16 +19,16 @@ export default function TestResult(props) {
   const [commentIndex, setCommentIndex] = useState([0, false]);
   const [commentLoading, setCommentLoading] = useState(true);
   const [commentChanged, setCommentChanged] = useState(true);
-  let [commentValue, setCommentValue] = useState('');
+  const [commentValue, setCommentValue] = useState('');
   const [commentCnt, setCommentCnt] = useState(0);
-  let [commentSeeMoreLoading, setCommentSeeMoreLoading] = useState(false);
+  const [commentSeeMoreLoading, setCommentSeeMoreLoading] = useState(false);
   const [canAddComment, setCanAddComment] = useState(true);
-  let [isSubmittingComment, setIsSubmittingComment] = useState(false);
+  const [isSubmittingComment, setIsSubmittingComment] = useState(false);
 
   // const [likeLoading, setLikeLoading] = useState(true);
   const [likeChanged, setLikeChanged] = useState(true);
-  let [linkCopyState, setLinkCopyState] = useState(false);
-  let [isSubmittingLike, setIsSubmittingLike] = useState(false);
+  const [linkCopyState, setLinkCopyState] = useState(false);
+  const [isSubmittingLike, setIsSubmittingLike] = useState(false);
 
   const [slideIn, setSlideIn] = useState(false);
   const [likeData, setLikeData] = useState({
@@ -36,7 +36,7 @@ export default function TestResult(props) {
     likeCnt: 0,
   });
 
-  let [data, setData] = useState({
+  const [data, setData] = useState({
     testId: props.testId,
     thumbnailStr: props.thumbnailStr,
     thumbnailUri: props.thumbnailUri,

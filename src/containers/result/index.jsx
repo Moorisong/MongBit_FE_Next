@@ -3,7 +3,9 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import axios from 'axios';
 import cx from 'classnames';
+import { styled } from 'styled-components';
 
+import CoupangAdv_3 from '@/components/CoupangAdv_3';
 import { COUPANG_VISIT, DOMAIN_BE_PROD } from '@/constants/constant';
 import { decodeToken, getHeaders } from '@/utils/util';
 
@@ -19,7 +21,9 @@ export default function Result() {
     imgUri: '',
     testResultId: '',
   });
-  let [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [showCoupangBox, setShowCoupangBox] = useState(false);
+  const [secondNumber, setSecondNumber] = useState(1);
 
   const router = useRouter();
   const params = useParams();
@@ -35,12 +39,38 @@ export default function Result() {
     if (!sessionStorage.getItem('mbScore')) {
       return router.push(`/record/${params.testId}/${sessionStorage.getItem('mbResultId')}`);
     }
+
     const popstateHandler = (evt) => {
       // 뒤로 가기 했을 때 결과 페이지로 가도록
       if (evt && evt.state) {
         router.push(currLocation);
       }
     };
+
+    function getResult(url) {
+      const headers = getHeaders();
+
+      axios
+        .post(url, score, { headers })
+        .then((res) => {
+          const contentArray = res.data.content.split('<br>');
+
+          SetResultData((prev) => ({
+            ...prev,
+            titleStr: res.data.title,
+            contentStrArr: contentArray,
+            imgUri: res.data.imageUrl,
+            testResultId: res.data.id,
+          }));
+          sessionStorage.removeItem('mbScore');
+          sessionStorage.setItem('mbResultId', res.data.id);
+        })
+        .catch((err) => {
+          alert(err.response.data);
+          router.push('/login');
+        });
+    }
+
     window.addEventListener('popstate', (evt) => {
       popstateHandler(evt);
     });
@@ -60,47 +90,12 @@ export default function Result() {
       });
 
     const score = JSON.parse(sessionStorage.getItem('mbScore'));
+
     // 토큰이 유효한지 검증 후에 회원/비회원 결과 보기 API 호출 진행
     if (decodeToken().state) {
-      axios
-        .post(`${DOMAIN_BE_PROD}/api/v1/member-test-result/${params.testId}/${memberId}`, score, { headers })
-        .then((res) => {
-          const contentArray = res.data.content.split('<br>');
-
-          SetResultData((prev) => ({
-            ...prev,
-            titleStr: res.data.title,
-            contentStrArr: contentArray,
-            imgUri: res.data.imageUrl,
-            testResultId: res.data.id,
-          }));
-          sessionStorage.removeItem('mbScore');
-          sessionStorage.setItem('mbResultId', res.data.id);
-        })
-        .catch((err) => {
-          alert(err.response.data);
-          router.push('/login');
-        });
+      getResult(`${DOMAIN_BE_PROD}/api/v1/member-test-result/${params.testId}/${memberId}`);
     } else {
-      axios
-        .post(`${DOMAIN_BE_PROD}/api/v1/member-test-result/${params.testId}`, score, { headers })
-        .then((res) => {
-          const contentArray = res.data.content.split('<br>');
-
-          SetResultData((prev) => ({
-            ...prev,
-            titleStr: res.data.title,
-            contentStrArr: contentArray,
-            imgUri: res.data.imageUrl,
-            testResultId: res.data.id,
-          }));
-          sessionStorage.removeItem('mbScore');
-          sessionStorage.setItem('mbResultId', res.data.id);
-        })
-        .catch((err) => {
-          alert(err.response.data);
-          router.push('/login');
-        });
+      getResult(`${DOMAIN_BE_PROD}/api/v1/member-test-result/${params.testId}`);
     }
 
     const timer = setTimeout(() => {
@@ -114,27 +109,110 @@ export default function Result() {
     };
   }, []);
 
-  function isWithin24Hours(date1, date2) {
-    const oneDay = 24 * 60 * 60 * 1000;
+  useEffect(() => {
+    let interval;
+    console.log('111');
+    if (!loading && showCoupangBox) {
+      console.log('222');
+      interval = setInterval(() => {
+        if (secondNumber < 5) {
+          setSecondNumber(secondNumber + 1);
+        } else {
+          return clearInterval(interval);
+        }
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [loading, secondNumber]);
+
+  // useEffect(() => {
+  //   const handleDocVisibilitychange = () => {
+  //     // 쿠팡 광고 페이지에서 몽빗 페이지로 돌아올때마다 실행되도록 함
+
+  //     if (localStorage.getItem(COUPANG_VISIT)) {
+  //       console.log('돌아옴---')
+  //     }
+  //   };
+
+  //   document.addEventListener('visibilitychange', handleDocVisibilitychange);
+
+  //   return () => {
+  //     document.removeEventListener('visibilitychange', handleDocVisibilitychange);
+  //   };
+  // }, []);
+
+  function isWithin12Hours(date1, date2) {
+    const halfDay = 12 * 60 * 60 * 1000;
     const diff = Math.abs(new Date(date1) - new Date(date2));
-    return diff < oneDay;
+    return diff < halfDay;
   }
 
   function checkCoupnagSiteVisit() {
     const coupangVisitDate = localStorage.getItem(COUPANG_VISIT);
     const currentDate = new Date();
 
-    if (!coupangVisitDate || !isWithin24Hours(coupangVisitDate, currentDate))
-      router.push(`/result/before/${params.testId}`);
+    if (!coupangVisitDate || !isWithin12Hours(coupangVisitDate, currentDate))
+      // router.push(`/result/before/${params.testId}`);
+      setShowCoupangBox(true);
+  }
+
+  function saveCoupangVisitDate() {
+    const currentDate = new Date();
+    localStorage.setItem(COUPANG_VISIT, currentDate);
+  }
+
+  function onClickAdv() {
+    const link = 'https://link.coupang.com/a/2s6aq';
+
+    saveCoupangVisitDate();
+    window.open(link, '_blank');
+  }
+
+  function onClickCancelIcon() {
+    console.log('cancel');
   }
 
   return (
     <div className={styles.wrap}>
       {loading && <ResultLoading />}
 
+      {loading || (
+        <div className={styles.coupangBox}>
+          <div className={styles.coupangContent}>
+            <p>
+              <strong>쿠팡 &nbsp; </strong>
+              <span>다녀와서 결과 확인하기!</span>
+            </p>
+            <div className={styles.bannerWrap}>
+              <div className={styles.overlayBanner} onClick={onClickAdv}></div>
+              <CoupangAdv_3 />
+              {secondNumber !== 5 ? (
+                <div>
+                  <p>{secondNumber}</p>
+                </div>
+              ) : (
+                <img
+                  src="/images/coupangAdv/closeButton.svg"
+                  alt="몽빗 MBTI 심리테스트 사이트 배너 닫기 아이콘"
+                  onClick={onClickCancelIcon}
+                />
+              )}
+            </div>
+            <div>
+              <p>쿠팡 다녀오면</p>
+              <strong>12시간 동안 광고 안봐도 됨!</strong>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div
-        className={cx(styles.resultWrap, {
+        className={cx(styles.resultWrapper, {
           [styles.displayNone]: loading,
+          [styles.noScroll]: showCoupangBox,
         })}
       >
         <TestResult
@@ -148,9 +226,11 @@ export default function Result() {
         />
       </div>
 
-      <div className={`${styles.bgWhite} ${styles.footerWrap}`}>
-        <Footer />
-      </div>
+      {loading && (
+        <div className={`${styles.bgWhite} ${styles.footerWrap}`}>
+          <Footer />
+        </div>
+      )}
     </div>
   );
 }

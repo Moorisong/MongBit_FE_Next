@@ -33,30 +33,51 @@
 }
 
 .content > div {
+  background-color: #712fff;
+  height: 150px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  border-radius: 13px;
+  padding: 10px 15px 10px 15px;
+  box-shadow: 3px 3px 10px 4px rgba(82, 82, 82, 0.2);
+}
+
+.content > div > div {
+  background-color: white;
+  width: 28px;
+  height: 25px;
+  border-radius: 0 10px 0 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cancelButton {
+  width: 10px;
+  height: 10px;
 }
 
 .content > div > button {
   background-color: #712fff;
   color: white;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
-  padding: 10px 35px 35px 35px;
-  border-radius: 13px;
+  height: 30px;
 }
 
 .content > div > p {
   color: white;
-  font-size: 0.7rem;
-  position: absolute;
-  bottom: 10px;
-  font-weight: 300;
+  font-size: 0.8rem;
+  font-weight: 400;
   opacity: 0.5;
+  margin-top: 15px;
+  text-align: center;
 }
 
 .commentWrap {
