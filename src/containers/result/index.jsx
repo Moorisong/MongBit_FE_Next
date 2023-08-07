@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import axios from 'axios';
 import cx from 'classnames';
+import { useRecoilState } from 'recoil';
+
+import { showCoupangClickWrap } from '/atom.js';
 
 import { COUPANG_VISIT, DOMAIN_BE_PROD } from '@/constants/constant';
 import { decodeToken, getHeaders } from '@/utils/util';
@@ -23,6 +26,7 @@ export default function Result() {
   const [loading, setLoading] = useState(true);
   const [showCoupangBox, setShowCoupangBox] = useState(false);
   const [secondNumber, setSecondNumber] = useState(5);
+  const [, setGlobalCoupangState] = useRecoilState(showCoupangClickWrap);
 
   const router = useRouter();
   const params = useParams();
@@ -126,11 +130,16 @@ export default function Result() {
   }, [loading, secondNumber]);
 
   useEffect(() => {
+    if (!loading && showCoupangBox) setGlobalCoupangState(true);
+  }, [loading, showCoupangBox]);
+
+  useEffect(() => {
     const handleDocVisibilitychange = () => {
       // 쿠팡 광고 페이지에서 몽빗 페이지로 돌아올때마다 실행되도록 함
 
       if (localStorage.getItem(COUPANG_VISIT)) {
         setShowCoupangBox(false);
+        setGlobalCoupangState(false);
       }
     };
 
@@ -171,6 +180,7 @@ export default function Result() {
 
   function onClickCancelIcon() {
     setShowCoupangBox(false);
+    setGlobalCoupangState(false);
   }
 
   return (
