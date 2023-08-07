@@ -3,9 +3,11 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import cx from 'classnames';
+import { useRecoilValue } from 'recoil';
 
 import { TOKEN_NAME, USER_INFO } from '@/constants/constant';
 import { decodeToken } from '@/utils/util';
+import {showCoupangClickWrap} from '/atom.js'
 
 import styles from './index.module.css';
 
@@ -24,6 +26,9 @@ export default function NavigationBar() {
       sessionStorage.setItem(USER_INFO + 'username', '');
     }
   }, []);
+
+  const ksh = useRecoilValue(showCoupangClickWrap)
+  console.log('2233--> ', ksh)
 
   function clickMypageBtn() {
     if (!sessionStorage.getItem(TOKEN_NAME) || !decodeToken().state) {

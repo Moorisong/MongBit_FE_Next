@@ -66,6 +66,7 @@ export default function RootLayout({ children }) {
           }}
         />
 
+        {/* Naver 웹마스터 등록 */}
         <meta name="naver-site-verification" content="3080d0760387b27d34081c736da49231b2f2112b" />
 
       </head>
