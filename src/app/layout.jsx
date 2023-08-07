@@ -2,6 +2,7 @@ import './globals.css';
 import './font.css';
 
 import NavigationBar from '@/components/NavigationBar';
+import GlobalStateRoot from './GlobalStateRoot';
 
 const inter = 'Noto Sans';
 
@@ -66,12 +67,14 @@ export default function RootLayout({ children }) {
           }}
         />
 
+        {/* Naver 웹마스터 등록 */}
         <meta name="naver-site-verification" content="3080d0760387b27d34081c736da49231b2f2112b" />
-
       </head>
       <body className={inter.className}>
-        <NavigationBar />
-        {children}
+        <GlobalStateRoot>
+          <NavigationBar />
+          {children}
+        </GlobalStateRoot>
       </body>
     </html>
   );

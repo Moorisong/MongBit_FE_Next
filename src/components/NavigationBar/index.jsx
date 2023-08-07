@@ -3,9 +3,12 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import cx from 'classnames';
+import { useRecoilValue } from 'recoil';
 
 import { TOKEN_NAME, USER_INFO } from '@/constants/constant';
 import { decodeToken } from '@/utils/util';
+
+import { showCoupangClickWrap } from '/atom.js';
 
 import styles from './index.module.css';
 
@@ -14,6 +17,7 @@ export default function NavigationBar() {
   const pathname = usePathname();
   const [menuClicked, setMenuClicked] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const coupangClickWrap = useRecoilValue(showCoupangClickWrap);
 
   useEffect(() => {
     setIsMounted(true);
@@ -32,6 +36,7 @@ export default function NavigationBar() {
     }
     router.push('/mypage');
   }
+
   function clickLogOut() {
     sessionStorage.setItem(TOKEN_NAME, '');
     sessionStorage.setItem(USER_INFO + 'memeberId', '');
@@ -47,7 +52,14 @@ export default function NavigationBar() {
       pathname.includes('dashboard') || (
         <div className={styles.wrap}>
           <div className={styles.navWrap}>
-            <div className={styles.menuIcon} onClick={() => setMenuClicked(true)}></div>
+            <div
+              className={cx(styles.menuIcon, {
+                [styles.cursorPointer]: coupangClickWrap,
+              })}
+              onClick={() => {
+                if (!coupangClickWrap) setMenuClicked(true);
+              }}
+            ></div>
             <div
               className={styles.logoWrap}
               onClick={() => {
@@ -61,7 +73,14 @@ export default function NavigationBar() {
             {pathname === '/mypage' ? (
               <button className={styles.myPageBtnNone}></button>
             ) : (
-              <button className={styles.myPageBtn} onClick={clickMypageBtn}></button>
+              <button
+                className={cx(styles.myPageBtn, {
+                  [styles.cursorPointer]: coupangClickWrap,
+                })}
+                onClick={() => {
+                  if (!coupangClickWrap) clickMypageBtn();
+                }}
+              ></button>
             )}
           </div>
 
