@@ -1,5 +1,5 @@
 .footerWrap {
-  width: 400px;
+  width: 420px;
   display: flex;
   justify-content: center;
   padding-bottom: 60px;
@@ -7,7 +7,7 @@
 }
 
 .loadImgWrap {
-  width: 400px;
+  width: 420px;
   height: 660px;
   background-color: white;
   display: flex;

@@ -7,6 +7,7 @@
   .goRandomBtnWrap {
     width: 375px;
   }
+
   .containerWrap {
     width: 375px;
   }
@@ -19,10 +20,11 @@
   }
 
   .goRandomBtnWrap {
-    width: 400px;
+    width: 420px;
   }
+
   .containerWrap {
-    width: 400px;
+    width: 420px;
   }
 }
 
@@ -63,7 +65,7 @@
 
 .goRandomStartBtn {
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
   height: 50px;
   font-size: 17px;
   font-weight: 500;
@@ -86,6 +88,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 .loadImgWrap_1 > div {
   width: 200px;
   margin-top: 200px;

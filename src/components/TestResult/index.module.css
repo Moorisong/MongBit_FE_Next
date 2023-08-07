@@ -25,10 +25,11 @@
     width: 345px;
   }
 }
+
 @media (min-width: 376px) {
   .shareBtn {
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
   }
 
   .buttonsWrap {
@@ -128,6 +129,7 @@
   width: 340px;
   text-align: center;
 }
+
 .resultImg {
   width: 340px;
   height: 450px;
@@ -147,9 +149,11 @@
   flex-direction: row;
   align-items: baseline;
 }
+
 .resultStrList img {
   padding-bottom: 2px;
 }
+
 .resultStrList p {
   font-size: 1rem;
   padding: 0 0 0 10px;
@@ -168,6 +172,7 @@
   border-radius: 15px;
   cursor: pointer;
 }
+
 .retryDiv > p {
   font-size: 0.9rem;
   font-weight: 500;
@@ -177,13 +182,16 @@
   font-size: 0.9rem;
   margin-top: 3px;
 }
+
 .likeCnt {
   color: #979797;
 }
+
 .retryWrap {
   position: relative;
   padding-top: 10px;
 }
+
 .retryWrap > img {
   width: 18px;
   height: 18px;
@@ -202,6 +210,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 .linkCopied {
   width: 2rem;
   height: 2rem;
@@ -296,6 +305,7 @@
   align-items: center;
   margin-top: 30px;
 }
+
 .loadImgWrap_2 > div {
   width: 100px;
 }

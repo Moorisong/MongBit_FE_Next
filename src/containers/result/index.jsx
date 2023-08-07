@@ -26,7 +26,7 @@ export default function Result() {
 
   const router = useRouter();
   const params = useParams();
-  const memberId = typeof(window) !== 'undefined' ? sessionStorage.getItem('mongBitmemeberId') : ''
+  const memberId = typeof window !== 'undefined' ? sessionStorage.getItem('mongBitmemeberId') : '';
 
   useEffect(() => {
     const currLocation = window.location.href;

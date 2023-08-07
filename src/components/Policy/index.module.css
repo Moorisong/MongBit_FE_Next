@@ -1,8 +1,9 @@
 .wrap {
-  width: 400px;
+  width: 420px;
   background-color: white;
   padding: 0 20px 0 20px;
 }
+
 .text {
   white-space: pre-line;
   font-size: 0.9rem;

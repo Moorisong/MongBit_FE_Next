@@ -2,17 +2,19 @@
   .bgWhite {
     width: 375px;
   }
+
   .footerWrap {
     width: 375px;
   }
 }
+
 @media (min-width: 376px) {
   .bgWhite {
-    width: 400px;
+    width: 420px;
   }
 
   .footerWrap {
-    width: 400px;
+    width: 420px;
   }
 }
 
@@ -39,14 +41,16 @@
 .wrap {
   height: 100%;
 }
+
 .coupangBox {
   z-index: 1;
-  width: 400px;
+  width: 420px;
   height: 1000px;
   position: fixed;
   top: 90px;
-  left: calc(50% - 200px);
+  left: calc(50% - 210px);
 }
+
 .coupangContent {
   height: 85%;
   background: linear-gradient(
@@ -60,11 +64,13 @@
   justify-content: center;
   align-items: center;
 }
+
 .coupangContent > div {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .coupangContent p,
 .coupangContent strong {
   color: white;
@@ -82,8 +88,8 @@
 .noScroll {
   position: fixed;
   top: 90px;
-  left: calc(50% - 200px);
-  width: 400px;
+  left: calc(50% - 210px);
+  width: 420px;
   opacity: 0.5;
   filter: blur(5px);
 }
@@ -108,6 +114,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .bannerWrap > img,
 .bannerWrap > div {
   position: absolute;
@@ -116,10 +123,12 @@
   width: 15px;
   height: 15px;
 }
+
 .bannerWrap > img {
   z-index: 12;
   cursor: pointer;
 }
+
 .bannerWrap p {
   color: white;
   font-size: 0.8rem;

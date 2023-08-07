@@ -78,7 +78,7 @@ export default function TestResult(props) {
 
   data.comment.sort((a, b) => new Date(b.commentDate) - new Date(a.commentDate));
 
-  const memberId = sessionStorage.getItem('mongBitmemeberId');
+  const memberId = typeof window !== 'undefined' ? sessionStorage.getItem('mongBitmemeberId') : '';
   const resultPathName =
     location.pathname.indexOf('record') > -1 ? location.pathname : `/record/${props.testId}/${props.testResultId}`;
   const router = useRouter();

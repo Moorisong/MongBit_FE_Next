@@ -6,22 +6,26 @@
   .footerWrap {
     width: 375px;
   }
+
   .loadImgWrap {
     width: 375px;
   }
 }
+
 @media (min-width: 376px) {
   .wrap {
-    width: 400px;
+    width: 420px;
   }
 
   .footerWrap {
-    width: 400px;
+    width: 420px;
   }
+
   .loadImgWrap {
-    width: 400px;
+    width: 420px;
   }
 }
+
 .wrap {
   background-color: white;
   display: flex;
@@ -37,6 +41,7 @@
   align-self: center;
   background-color: white;
 }
+
 .loadImgWrap {
   height: 500px;
   padding: 250px 0 350px 0;
@@ -45,6 +50,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 .loadImgWrap > div {
   width: 200px;
 }
