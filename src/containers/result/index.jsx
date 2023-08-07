@@ -26,7 +26,7 @@ export default function Result() {
 
   const router = useRouter();
   const params = useParams();
-  const memberId = sessionStorage.getItem('mongBitmemeberId');
+  const memberId = typeof(window) !== 'undefined' ? sessionStorage.getItem('mongBitmemeberId') : ''
 
   useEffect(() => {
     const currLocation = window.location.href;
@@ -181,7 +181,7 @@ export default function Result() {
         <div className={styles.coupangBox}>
           <div className={styles.coupangContent}>
             <p>
-              <strong>쿠팡 &nbsp; </strong>
+              <strong>쿠팡&nbsp;</strong>
               <span>다녀와서 결과 확인하기!</span>
             </p>
             <div className={styles.bannerWrap}>
@@ -201,7 +201,7 @@ export default function Result() {
             </div>
             <div>
               <p>쿠팡 다녀오면</p>
-              <strong>12시간 동안 광고 안봐도 됨!</strong>
+              <strong>12시간 동안 광고없이 무제한 이용</strong>
             </div>
           </div>
         </div>
