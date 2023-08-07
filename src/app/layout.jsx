@@ -66,8 +66,8 @@ export default function RootLayout({ children }) {
           }}
         />
 
-        {/* Google tag (gtag.js) */}
-        {/* <script async src="https://www.googletagmanager.com/gtag/js?id=G-4H08GDCJMY"></script> */}
+        <meta name="naver-site-verification" content="3080d0760387b27d34081c736da49231b2f2112b" />
+
       </head>
       <body className={inter.className}>
         <NavigationBar />
