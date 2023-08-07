@@ -41,12 +41,6 @@
 }
 .coupangBox {
   z-index: 1;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.2) 5%,
-    rgba(113, 47, 255, 0.5) 20%,
-    rgba(0, 0, 0, 1) 55%
-  );
   width: 400px;
   height: 1000px;
   position: fixed;
@@ -54,8 +48,13 @@
   left: calc(50% - 200px);
 }
 .coupangContent {
-  width: 100%;
   height: 85%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.2) 5%,
+    rgba(113, 47, 255, 0.5) 20%,
+    rgba(0, 0, 0, 1) 55%
+  );
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -98,6 +97,7 @@
   height: 100px !important;
   z-index: 11 !important;
   opacity: 0;
+  cursor: pointer;
 }
 
 .bannerWrap > div {
@@ -118,6 +118,7 @@
 }
 .bannerWrap > img {
   z-index: 12;
+  cursor: pointer;
 }
 .bannerWrap p {
   color: white;
