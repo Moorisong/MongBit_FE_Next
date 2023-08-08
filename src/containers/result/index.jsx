@@ -190,10 +190,11 @@ export default function Result() {
       {!loading && showCoupangBox && (
         <div className={styles.coupangBox}>
           <div className={styles.coupangContent}>
-            <p>
+            <div onClick={onClickAdv}>
               <strong>쿠팡&nbsp;</strong>
               <span>다녀와서 결과 확인하기!</span>
-            </p>
+              <img src="/images/coupangAdv/clickFinger.svg" alt="몽빗 MBTI 심리테스트 사이트 클릭하기 아이콘" />
+            </div>
             <div className={styles.bannerWrap}>
               <div className={styles.overlayBanner} onClick={onClickAdv}></div>
               <CoupangAdv_3 />
@@ -204,12 +205,12 @@ export default function Result() {
                   onClick={onClickCancelIcon}
                 />
               ) : (
-                <div>
+                <div className={styles.secondNumber}>
                   <p>{secondNumber}</p>
                 </div>
               )}
             </div>
-            <div>
+            <div className={styles.aboveBannerText}>
               <p>쿠팡 다녀오면</p>
               <strong>12시간 동안 광고없이 무제한 이용</strong>
             </div>

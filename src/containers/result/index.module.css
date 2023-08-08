@@ -52,7 +52,7 @@
 }
 
 .coupangContent {
-  height: 85%;
+  height: 75%;
   background: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 0.2) 5%,
@@ -69,20 +69,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 10px 35px 10px 35px;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
-.coupangContent p,
-.coupangContent strong {
+.coupangContent > div:first-child {
+  background-color: #712fff;
   color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
-.coupangContent > div > p {
-  font-size: 0.7rem;
-}
-
-.coupangContent > div > strong {
-  font-size: 0.8rem;
-  font-weight: 500;
+.coupangContent > div:first-child > img {
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
 }
 
 .noScroll {
@@ -118,8 +125,8 @@
 .bannerWrap > img,
 .bannerWrap > div {
   position: absolute;
-  top: 10px;
-  right: 0;
+  top: 20px;
+  right: 35px;
   width: 15px;
   height: 15px;
 }
@@ -129,7 +136,19 @@
   cursor: pointer;
 }
 
-.bannerWrap p {
+.aboveBannerText {
   color: white;
+}
+
+.aboveBannerText > p {
   font-size: 0.8rem;
+}
+
+.aboveBannerText > strong {
+  font-size: 0.9rem;
+}
+
+.secondNumber {
+  font-size: 0.7rem;
+  color: white;
 }
