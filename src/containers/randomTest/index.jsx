@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import lottie from 'lottie-web';
 
-import { getHeaders } from '@/utils/util';
+import { getHeaders, addDailyVisitCount } from '@/utils/util';
 
 import animationData_1 from './loading_2.json';
 import TestPreview from '../../components/TestPreview';
@@ -20,6 +20,10 @@ export default function RandomTest() {
   const [testId, setTestId] = useState('');
   const router = useRouter();
   const containerRef_1 = useRef(null);
+
+  useEffect(() => {
+    addDailyVisitCount();
+  }, []);
 
   useEffect(() => {
     const anim = lottie.loadAnimation({

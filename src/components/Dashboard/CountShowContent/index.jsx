@@ -17,3 +17,7 @@ export function CountCardWithColor(props) {
       </div>
     );
 }
+
+export function CountTopContents() {
+  return <div>hello</div>;
+}

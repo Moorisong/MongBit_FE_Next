@@ -8,7 +8,7 @@ import { useRecoilState } from 'recoil';
 import { showCoupangClickWrap } from '/atom.js';
 
 import { COUPANG_VISIT, DOMAIN_BE_PROD } from '@/constants/constant';
-import { decodeToken, getHeaders } from '@/utils/util';
+import { decodeToken, getHeaders, addDailyVisitCount } from '@/utils/util';
 
 import CoupangAdv_3 from '@/components/CoupangAdv_3';
 import styles from './index.module.css';
@@ -31,6 +31,10 @@ export default function Result() {
   const router = useRouter();
   const params = useParams();
   const memberId = typeof window !== 'undefined' ? sessionStorage.getItem('mongBitmemeberId') : '';
+
+  useEffect(() => {
+    addDailyVisitCount();
+  }, []);
 
   useEffect(() => {
     const currLocation = window.location.href;

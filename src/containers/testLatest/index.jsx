@@ -7,7 +7,7 @@ import axios from 'axios';
 import cx from 'classnames';
 import lottie from 'lottie-web';
 
-import { getHeaders, setUTMParameter } from '@/utils/util';
+import { getHeaders, setUTMParameter, addDailyVisitCount } from '@/utils/util';
 
 import animationData_1 from './loading_2.json';
 import { TitleWithText } from '@/components/Titles';
@@ -26,6 +26,10 @@ export default function TestLatest() {
   const titleStr = '😜 최신 심테';
   const contentStr = '몽빗 최신 심테들 여기 다 모여있어요!';
   const router = useRouter();
+
+  useEffect(() => {
+    addDailyVisitCount();
+  }, []);
 
   useEffect(() => {
     const anim = lottie.loadAnimation({

@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 
 import { DOMAIN_BE_PROD } from '@/constants/constant';
-import { getHeaders, setUTMParameter } from '@/utils/util';
+import { getHeaders, setUTMParameter, addDailyVisitCount } from '@/utils/util';
 
 import styles from './index.module.css';
 import Footer from '@/components/Footer';
@@ -19,6 +19,10 @@ export default function ViewOldResult() {
   const router = useRouter();
 
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    addDailyVisitCount();
+  }, []);
 
   useEffect(() => {
     const anim = lottie.loadAnimation({

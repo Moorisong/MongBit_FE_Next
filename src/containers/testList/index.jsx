@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import cx from 'classnames';
 import lottie from 'lottie-web';
 
-import { getHeaders, setUTMParameter } from '@/utils/util';
+import { getHeaders, setUTMParameter, addDailyVisitCount } from '@/utils/util';
 
 import animationData_1 from './loading_2.json';
 import { TitleWithText } from '@/components/Titles';
@@ -25,6 +25,10 @@ export default function TestList() {
   const titleStr = '💛  몽빗 심테';
   const contentStr = '몽빗에 있는 모든 테스트는 이곳에!';
   const router = useRouter();
+
+  useEffect(() => {
+    addDailyVisitCount();
+  }, []);
 
   useEffect(() => {
     const anim = lottie.loadAnimation({

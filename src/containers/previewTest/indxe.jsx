@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import lottie from 'lottie-web';
 import { useRouter } from 'next/navigation';
 
-import { getHeaders } from '@/utils/util';
+import { getHeaders, addDailyVisitCount } from '@/utils/util';
 import { DOMAIN_BE_PROD } from '@/constants/constant';
 
 import animationData from './loadingIcon.json';
@@ -18,6 +18,10 @@ export default function PreviewTest() {
   const router = useRouter();
   const [data, setData] = useState({});
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    addDailyVisitCount();
+  }, []);
 
   useEffect(() => {
     const headers = getHeaders();

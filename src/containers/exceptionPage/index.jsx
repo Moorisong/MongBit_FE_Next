@@ -2,11 +2,18 @@
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
+import { addDailyVisitCount } from '@/utils/util';
+
 import styles from './index.module.css';
-import Footer from '../../components/Footer';
+import Footer from '@/components/Footer';
 
 export default function ExceptionPage() {
   const router = useRouter();
+
+  useEffect(() => {
+    addDailyVisitCount();
+  }, []);
+
   useEffect(() => {
     window.addEventListener('popstate', () => router.push('/main'));
 
