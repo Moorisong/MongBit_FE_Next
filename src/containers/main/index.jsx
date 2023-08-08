@@ -4,6 +4,9 @@ import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import lottie from 'lottie-web';
+import { useRecoilState } from 'recoil';
+
+import { showCoupangClickWrap } from '/atom.js';
 
 import { getHeaders, setUTMParameter } from '@/utils/util';
 import { TITLE_WITH_CONTENT, TYPE_LATEST_MAIN, DOMAIN_BE_PROD } from '@/constants/constant';
@@ -30,6 +33,7 @@ export default function main() {
   const [latestTestData, setLatestTestData] = useState({
     testArr: [],
   });
+  const [, setGlobalCoupangState] = useRecoilState(showCoupangClickWrap);
 
   useEffect(() => {
     const anim = lottie.loadAnimation({
@@ -47,6 +51,7 @@ export default function main() {
 
   useEffect(() => {
     setUTMParameter(router);
+    setGlobalCoupangState(false);
 
     sessionStorage.getItem('mbResult') === '' && sessionStorage.removeItem('mbResult');
     sessionStorage.getItem('mbTest') === '' && sessionStorage.removeItem('mbTest');
@@ -65,6 +70,7 @@ export default function main() {
         router.push('/login');
       });
   }, []);
+
   return (
     <div className={styles.containerWrap}>
       <TitleWithText
