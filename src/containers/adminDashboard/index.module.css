@@ -4,6 +4,11 @@
   display: flex;
   justify-content: center;
 }
+
+.wrap > div {
+  display: flex;
+  flex-direction: row;
+}
 .wrap > div:first-child {
   width: 90%;
   height: 100vh;
@@ -22,7 +27,7 @@
 }
 .menuBar > p {
   color: #582fff;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 .menuBar > ul {
@@ -48,4 +53,29 @@
 .menuBar > ul > li > span {
   color: #582fff;
   font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* contentWrap */
+
+.contentWrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 26px 0 0 20px;
+}
+
+.contentWrap > div:first-child {
+  margin-left: 20px;
+}
+
+.contentWrap > div:last-child {
+  margin-right: 20px;
+}
+
+.countCardWithColorArea {
+  display: flex;
+  flex-direction: row;
+  height: 80px;
+  margin-top: 20px;
 }

@@ -1,10 +1,36 @@
 'use client';
-// import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
+import { apiBe } from '@/services';
+import { getHeaders } from '@/utils/util';
+
+import { CountCardWithColor } from '@/components/Dashboard/CountShowContent';
+import { TitleInDashboard } from '@/components/Titles';
 import styles from './index.module.css';
 
+const colorArr = ['#FF3F3F', '#3F80FF', '#3FDCFF', '#FF9B3F', '#FF3FD5', '#93FF3F', '#7C3FFF'];
+const countCardWithColorNames = [
+  'Total Visits',
+  'Total Plays',
+  'Total Logins',
+  'Total Shares',
+  'Total Link Copies',
+  'Total Likes',
+  'Total Commnets',
+];
+
 export default function AdminDashboard() {
-  // const router = useRouter();
+  const [countCardWithColorData, setCountCardWithColorData] = useState([]);
+
+  const headers = getHeaders();
+
+  useEffect(() => {
+    apiBe.get('/api/v2/metrics/total', { headers }).then((res) => {
+      const keyArr = Object.keys(res.data);
+      const resultArr = keyArr.map((d) => ({ count: res.data[d] }));
+      setCountCardWithColorData(resultArr);
+    });
+  }, []);
 
   return (
     // 배경, 사이드 바
@@ -33,11 +59,26 @@ export default function AdminDashboard() {
             </li>
           </ul>
         </div>
-      </div>
 
-      {/* 본문 콘텐츠 */}
-      <div className={styles.contentWrap}>
-        <div></div>
+        {/* 콘텐츠 내용 */}
+        <div className={styles.contentWrap}>
+          <div>
+            <TitleInDashboard text="Dashboard" />
+          </div>
+          <div>
+            <div className={styles.countCardWithColorArea}>
+              {countCardWithColorData &&
+                countCardWithColorData.map((d, i) => (
+                  <CountCardWithColor
+                    key={i}
+                    title={countCardWithColorNames[i]}
+                    count={d.count}
+                    borderColor={colorArr[i]}
+                  />
+                ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

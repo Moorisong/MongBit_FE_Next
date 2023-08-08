@@ -25,3 +25,9 @@
   color: #8f8f8f;
   margin-top: 5px;
 }
+
+/* titleInDashboard */
+.titleInDashboard {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
