@@ -1,8 +1,15 @@
+import { useEffect } from 'react';
 import Link from 'next/link';
+
+import { addDailyVisitCount } from '@/utils/util';
 
 import styles from './index.module.css';
 
 export default function DevInfo() {
+  useEffect(() => {
+    addDailyVisitCount();
+  }, []);
+
   return (
     <div className={styles.wrap}>
       <div className={styles.textBox}>

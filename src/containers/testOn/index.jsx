@@ -6,7 +6,7 @@ import { useRouter, useParams } from 'next/navigation';
 import lottie from 'lottie-web';
 
 import { DOMAIN_BE_PROD, TYPE_MYPAGE } from '@/constants/constant';
-import { getHeaders, setUTMParameter } from '@/utils/util';
+import { getHeaders, setUTMParameter, addDailyVisitCount } from '@/utils/util';
 
 import styles from './index.module.css';
 import QuestionAndAnswer from '@/components/QuestionAndAnswer';
@@ -28,6 +28,10 @@ export default function TestOn() {
   let [putArr, setPutArr] = useState([]);
 
   const totalQuestionNumber = testData.questions ? testData.questions.length : ' loading';
+
+  useEffect(() => {
+    addDailyVisitCount();
+  }, []);
 
   useEffect(() => {
     setUTMParameter(router);

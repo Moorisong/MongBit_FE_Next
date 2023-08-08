@@ -5,7 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import axios from 'axios';
 import lottie from 'lottie-web';
 
-import { decodeToken, getHeaders } from '@/utils/util';
+import { decodeToken, getHeaders, addDailyVisitCount } from '@/utils/util';
 
 import animationData_1 from './loading_2.json';
 import animationData_2 from './seeMoreIcon.json';
@@ -67,6 +67,10 @@ export default function MyPage() {
       anim.destroy();
     };
   }, [clickSeeMore]);
+
+  useEffect(() => {
+    addDailyVisitCount();
+  }, []);
 
   useEffect(() => {
     // 토큰 없는 경우

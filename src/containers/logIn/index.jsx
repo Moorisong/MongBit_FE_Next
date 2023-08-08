@@ -1,4 +1,8 @@
 'use client';
+import { useEffect } from 'react';
+
+import { addDailyVisitCount } from '@/utils/util';
+
 import styles from './index.module.css';
 import Footer from '../../components/Footer';
 import { DOMAIN, TYPE_LOGIN } from '../../constants/constant';
@@ -13,6 +17,10 @@ export default function Login() {
   const kakaoLogin = () => {
     window.location.href = url;
   };
+
+  useEffect(() => {
+    addDailyVisitCount();
+  }, []);
 
   return (
     <div className={styles.wrap}>

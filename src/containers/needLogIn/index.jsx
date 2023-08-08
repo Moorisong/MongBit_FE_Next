@@ -1,12 +1,20 @@
 'use client';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+
+import { addDailyVisitCount } from '@/utils/util';
+import { DOMAIN } from '@/constants/constant';
 
 import styles from './index.module.css';
-import Footer from '../../components/Footer';
-import { DOMAIN } from '../../constants/constant';
+import Footer from '@/components/Footer';
 
 export default function NeedLogIn() {
   const router = useRouter();
+
+  useEffect(() => {
+    addDailyVisitCount();
+  }, []);
+
   return (
     <div className={styles.wrap}>
       <div className={styles.textBox}>

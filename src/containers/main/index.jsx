@@ -8,7 +8,7 @@ import { useRecoilState } from 'recoil';
 
 import { showCoupangClickWrap } from '/atom.js';
 
-import { getHeaders, setUTMParameter } from '@/utils/util';
+import { getHeaders, setUTMParameter, addDailyVisitCount } from '@/utils/util';
 import { TITLE_WITH_CONTENT, TYPE_LATEST_MAIN, DOMAIN_BE_PROD } from '@/constants/constant';
 
 import styles from './index.module.css';
@@ -34,6 +34,10 @@ export default function main() {
     testArr: [],
   });
   const [, setGlobalCoupangState] = useRecoilState(showCoupangClickWrap);
+
+  useEffect(() => {
+    addDailyVisitCount();
+  }, []);
 
   useEffect(() => {
     const anim = lottie.loadAnimation({
