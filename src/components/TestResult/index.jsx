@@ -175,14 +175,18 @@ export default function TestResult(props) {
   }, [commentChanged]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setSlideIn(true);
-    }, 2000);
+    let timer;
+
+    if (!props.loadingState) {
+      timer = setTimeout(() => {
+        setSlideIn(true);
+      }, 2000);
+    }
 
     return () => {
-      clearTimeout(timer);
+      if (timer) clearTimeout(timer);
     };
-  }, []);
+  }, [props.loadingState]);
 
   function clickRetry() {
     router.push(`/test/preview/${props.testId}`);
@@ -445,7 +449,11 @@ export default function TestResult(props) {
         <AddCommentButton onClick={clickAddCommentBtn} />
       </div>
 
-      <div className={styles.commentWrap}>
+      <div
+        className={cx(styles.commentWrap, {
+          [styles.commentWrapInResult_paddingBottom]: location.pathname.includes('result'),
+        })}
+      >
         {commentLoading ? (
           <div className={styles.loadImgWrap_2}>
             <div ref={containerRef_2}></div>

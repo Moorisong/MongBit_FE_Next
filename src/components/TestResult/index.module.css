@@ -110,6 +110,10 @@
   align-items: flex-start;
 }
 
+.commentWrapInResult_paddingBottom {
+  padding-bottom: 50px;
+}
+
 .resultWrap {
   display: flex;
   flex-direction: column;
