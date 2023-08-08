@@ -8,7 +8,7 @@ export const apiBe = axios.create({
 
 apiBe.interceptors.response.use(
   (response) => response,
-  (error) => Promise.reject(error),
+  (error) => alert(error.response.data),
 );
 
 // export const axiosGet = (url) => {

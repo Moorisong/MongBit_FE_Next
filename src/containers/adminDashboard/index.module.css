@@ -4,6 +4,11 @@
   display: flex;
   justify-content: center;
 }
+
+.wrap > div {
+  display: flex;
+  flex-direction: row;
+}
 .wrap > div:first-child {
   width: 90%;
   height: 100vh;

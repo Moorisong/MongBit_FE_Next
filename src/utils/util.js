@@ -174,3 +174,7 @@ export function setUTMParameter(router) {
   }
   router.push(getUtmUrl());
 }
+
+export function numberFormatToKoreanStyle(number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
