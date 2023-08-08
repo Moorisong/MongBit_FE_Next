@@ -1,16 +1,37 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { apiBe } from '@/services';
 import { getHeaders } from '@/utils/util';
 
 import { CountCardWithColor } from '@/components/Dashboard/CountShowContent';
+import { TitleInDashboard } from '@/components/Titles';
 import styles from './index.module.css';
 
+const colorArr = ['#FF3F3F', '#3F80FF', '#3FDCFF', '#FF9B3F', '#FF3FD5', '#93FF3F', '#7C3FFF'];
+const countCardWithColorNames = [
+  'Total Visits',
+  'Total Plays',
+  'Total Logins',
+  'Total Shares',
+  'Total Link Copies',
+  'Total Likes',
+  'Total Commnets',
+];
+
 export default function AdminDashboard() {
+  const [countCardWithColorData, setCountCardWithColorData] = useState([]);
+
   const headers = getHeaders();
-  // apiBe.get('/api/v2/metrics/visits/count', {headers})
-  // .then((r)=> console.log('aa--> ', r.data))
+
+  useEffect(() => {
+    apiBe.get('/api/v2/metrics/total', { headers }).then((res) => {
+      const keyArr = Object.keys(res.data);
+      const resultArr = keyArr.map((d) => ({ count: res.data[d] }));
+      setCountCardWithColorData(resultArr);
+    });
+  }, []);
+
   return (
     // 배경, 사이드 바
     <div className={styles.wrap}>
@@ -40,8 +61,23 @@ export default function AdminDashboard() {
         </div>
 
         {/* 콘텐츠 내용 */}
-        <div>
-          <CountCardWithColor title="Total Visits" count="1000" borderColor="green" />
+        <div className={styles.contentWrap}>
+          <div>
+            <TitleInDashboard text="Dashboard" />
+          </div>
+          <div>
+            <div className={styles.countCardWithColorArea}>
+              {countCardWithColorData &&
+                countCardWithColorData.map((d, i) => (
+                  <CountCardWithColor
+                    key={i}
+                    title={countCardWithColorNames[i]}
+                    count={d.count}
+                    borderColor={colorArr[i]}
+                  />
+                ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

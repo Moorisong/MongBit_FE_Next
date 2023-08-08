@@ -9,7 +9,7 @@ export function CountCardWithColor(props) {
       <div
         className={styles.countCardWithColorWrap}
         style={{
-          borderLeft: `3px solid ${props.borderColor};`,
+          borderLeft: `3px solid ${props.borderColor}`,
         }}
       >
         <p>{props.title}</p>
