@@ -62,7 +62,7 @@ export default function main() {
 
     const headers = getHeaders();
     axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/tests/0/4`, { headers })
+      .get(`${DOMAIN_BE_PROD}/api/v1/tests/0/6`, { headers })
       .then((res) => {
         setLatestTestData((prev) => ({
           ...prev,
