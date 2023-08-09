@@ -1,5 +1,6 @@
 import { DOMAIN } from '@/constants/constant';
 import Main from '@/containers/main';
+
 import sitemap from './sitemap';
 
 export async function generateMetadata() {
