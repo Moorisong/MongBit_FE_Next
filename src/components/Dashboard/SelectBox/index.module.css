@@ -1,0 +1,10 @@
+.select {
+  color: #787878;
+  font-size: 0.7rem;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url('/images/adminDashboard/selectBoxArrow.svg') no-repeat right center;
+  background-size: 10px 10px;
+  padding-right: 15px;
+}
