@@ -39,7 +39,7 @@ export default function Result() {
   useEffect(() => {
     const currLocation = window.location.href;
     // 다른 플랫폼에서 URI 클릭해서 페이지 진입한 경우
-    if (!sessionStorage.getItem('mbTestDone')) return router.push('/main');
+    if (!sessionStorage.getItem('mbTestDone')) return router.push('/');
 
     checkCoupnagSiteVisit();
 

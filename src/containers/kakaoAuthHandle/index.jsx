@@ -66,7 +66,7 @@ export default function KakaoAuthHandle() {
             sessionStorage.setItem('ngb', false);
             prev.indexOf('need_login') > -1 ? router.back() : router.push(prev);
           } else {
-            router.push('/main');
+            router.push('/');
           }
         })
         .catch((err) => {

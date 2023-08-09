@@ -15,10 +15,10 @@ export default function ExceptionPage() {
   }, []);
 
   useEffect(() => {
-    window.addEventListener('popstate', () => router.push('/main'));
+    window.addEventListener('popstate', () => router.push('/'));
 
     return () => {
-      window.removeEventListener('popstate', () => router.push('/main'));
+      window.removeEventListener('popstate', () => router.push('/'));
     };
   }, []);
 

@@ -32,7 +32,7 @@ export default function TestAdd() {
         .post(`${DOMAIN_BE_PROD}/api/v1/tests/test`, data, { headers })
         .then(() => {
           alert('테스트 등록 완료. 고생 많으셨어요 :)');
-          router.push('/main');
+          router.push('/');
         })
         .catch((err) => {
           alert(err.response.data);

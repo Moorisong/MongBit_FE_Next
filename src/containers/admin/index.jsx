@@ -18,7 +18,7 @@ export default function Admin() {
   }
 
   useEffect(() => {
-    if (decodeToken().role !== 'ROLE_ADMIN') return router.push('/main');
+    if (decodeToken().role !== 'ROLE_ADMIN') return router.push('/');
   }, []);
 
   return (

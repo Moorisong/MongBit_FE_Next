@@ -44,7 +44,7 @@ export default function NavigationBar() {
     sessionStorage.setItem(USER_INFO + 'registDate', '');
     sessionStorage.setItem(USER_INFO + 'username', '');
     setMenuClicked(false);
-    router.push('/main');
+    router.push('/');
   }
 
   if (!pathname.includes('dashboard'))
@@ -64,7 +64,7 @@ export default function NavigationBar() {
               className={styles.logoWrap}
               onClick={() => {
                 setMenuClicked(false);
-                router.push('/main');
+                router.push('/');
               }}
             >
               <span className={styles.logoDog}></span>
