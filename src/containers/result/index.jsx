@@ -178,7 +178,7 @@ export default function Result() {
     const link = 'https://link.coupang.com/a/2s6aq';
 
     saveCoupangVisitDate();
-    sessionStorage.removeItem('mbScore');
+    // sessionStorage.removeItem('mbScore');
     window.open(link, '_blank');
   }
 

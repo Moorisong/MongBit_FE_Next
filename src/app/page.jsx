@@ -1,5 +1,6 @@
 import { DOMAIN } from '@/constants/constant';
 import Main from '@/containers/main';
+import sitemap from './sitemap';
 
 export async function generateMetadata() {
   const url = `${DOMAIN}`;
@@ -8,6 +9,8 @@ export async function generateMetadata() {
   const imageUrl = `${DOMAIN}/main/opengraph-image`;
   // main의 opengraph-image.jsx 파일을 사용하도록 함
   const alt = '몽빗 MBTI 심리테스트 메인 페이지';
+
+  sitemap();
 
   return {
     title,
