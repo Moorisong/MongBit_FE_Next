@@ -183,15 +183,15 @@ export function numberFormatToKoreanStyle(number) {
 
 export function resetVisitStateInMidnihgt() {
   // 일일 방문자 수 체크를 위해 자정이 되면 로컬 스토리지의 mg_visitCounted 값을 false로 업데이트
-  function isMidnight(date) {
-    return date.getHours() === 0 && date.getMinutes() === 0 && date.getSeconds() === 0;
-  }
-
   const now = new Date();
+  const storedDate = new Date(localStorage.getItem('mg_visitCounted'));
 
-  if (isMidnight(now) && localStorage.getItem('mg_visitCounted')) {
-    localStorage.setItem('mg_visitCounted', 'n');
+  function needToresetState(nowDate) {
+    if (!storedDate || storedDate.setHours(0, 0, 0, 0) < nowDate.setHours(0, 0, 0, 0)) return true;
+    return false;
   }
+
+  if (storedDate !== 'n' && needToresetState(now)) localStorage.setItem('mg_visitCounted', 'n');
 }
 
 export function addDailyVisitCount() {
@@ -207,7 +207,7 @@ export function addDailyVisitCount() {
   if (localStorage.getItem('mg_visitCounted') === null) localStorage.setItem('mg_visitCounted', 'n');
   if (localStorage.getItem('mg_visitCounted') === 'n') {
     apiBe.post('/api/v1/visits/', null, { headers, params }).then(() => {
-      localStorage.setItem('mg_visitCounted', 'y');
+      localStorage.setItem('mg_visitCounted', new Date());
     });
   }
 }
