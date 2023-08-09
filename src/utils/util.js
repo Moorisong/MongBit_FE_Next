@@ -2,7 +2,7 @@ import jwtDecode from 'jwt-decode';
 
 import { apiBe } from '@/services';
 
-import { DOMAIN, TOKEN_NAME, USER_INFO, OG_STANDARD_IMAGE } from '../constants/constant';
+import { DOMAIN, TOKEN_NAME, USER_INFO } from '../constants/constant';
 
 export function decodeToken() {
   if (typeof sessionStorage === 'undefined') return;
@@ -141,16 +141,6 @@ export function getHeaders() {
     Authorization: sessionStorage.getItem(TOKEN_NAME),
   };
 }
-
-// OG 이미지 세팅할때 사용
-
-export const getTestData = async (url) => {
-  const headers = getHeaders();
-  return await fetch(url, { headers })
-    .then((response) => response.json())
-    .then((res) => res)
-    .catch(() => OG_STANDARD_IMAGE);
-};
 
 export function setUTMParameter(router) {
   const userAgent = navigator.userAgent.toLowerCase();
