@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { apiBe } from '@/services';
 import { getHeaders } from '@/utils/util';
 
-import { CountCardWithColor } from '@/components/Dashboard/CountShowContent';
+import { CountCardWithColor, CountTopContents } from '@/components/Dashboard/CountShowContent';
 import { TitleInDashboard } from '@/components/Titles';
 import styles from './index.module.css';
 
@@ -65,6 +65,7 @@ export default function AdminDashboard() {
           <div>
             <TitleInDashboard text="Dashboard" />
           </div>
+          
           <div>
             <div className={styles.countCardWithColorArea}>
               {countCardWithColorData &&
