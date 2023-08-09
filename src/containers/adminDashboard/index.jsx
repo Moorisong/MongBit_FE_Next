@@ -65,7 +65,7 @@ export default function AdminDashboard() {
           <div>
             <TitleInDashboard text="Dashboard" />
           </div>
-          
+
           <div>
             <div className={styles.countCardWithColorArea}>
               {countCardWithColorData &&
