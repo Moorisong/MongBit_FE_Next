@@ -1,3 +1,5 @@
+/* CountCardWithColor */
+
 .countCardWithColorWrap {
   background-color: white;
   padding: 10px 20px 10px 20px;
@@ -8,6 +10,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-shadow: 5px 5px 10px rgba(147, 147, 147, 0.1);
 }
 
 .countCardWithColorWrap > p:first-child {
@@ -20,5 +23,43 @@
 
 .countCardWithColorWrap > p:last-child {
   font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* CountTopContents */
+.countTopContentsWrap {
+  width: 50%;
+  background-color: white;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 5px 10px rgba(147, 147, 147, 0.1);
+}
+.titleArea {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 25px;
+}
+
+.contentBodyWrap {
+  display: flex;
+  flex-direction: column;
+  padding: 0 25px 20px 25px;
+}
+
+.contentBodyWrap > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 8px 0 8px 0;
+}
+
+.contentBodyWrap > div > span:first-child {
+  font-size: 0.8rem;
+}
+
+.contentBodyWrap > div > span:last-child {
+  font-size: 0.8rem;
   font-weight: 600;
 }

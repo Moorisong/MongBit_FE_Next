@@ -78,6 +78,11 @@ export default function AdminDashboard() {
                   />
                 ))}
             </div>
+
+            <div>
+              <CountTopContents />
+              {/* 여기에 메트릭스 차트 넣기 */}
+            </div>
           </div>
         </div>
       </div>
