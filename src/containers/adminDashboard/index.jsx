@@ -5,6 +5,7 @@ import { apiBe } from '@/services';
 import { getHeaders } from '@/utils/util';
 
 import { CountCardWithColor, CountTopContents } from '@/components/Dashboard/CountShowContent';
+import { MetricsBarChartDashboard } from '@/components/Dashboard/BarChart'
 import { TitleInDashboard } from '@/components/Titles';
 import styles from './index.module.css';
 
@@ -79,9 +80,9 @@ export default function AdminDashboard() {
                 ))}
             </div>
 
-            <div>
+            <div className={styles.flexDirRow}>
+              <MetricsBarChartDashboard />
               <CountTopContents />
-              {/* 여기에 메트릭스 차트 넣기 */}
             </div>
           </div>
         </div>

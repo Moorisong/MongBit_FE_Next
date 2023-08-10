@@ -56,6 +56,11 @@
   font-size: 1.2rem;
 }
 
+.flexDirRow {
+  display: flex;
+  flex-direction: row;
+}
+
 /* contentWrap */
 
 .contentWrap {
@@ -64,9 +69,6 @@
   flex-direction: column;
   margin: 26px 0 0 20px;
 }
-/* .contentWrap > div {
-  position: relative;
-} */
 
 .contentWrap > div:first-child {
   margin-left: 20px;
