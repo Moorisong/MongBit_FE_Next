@@ -1,4 +1,7 @@
 .wrap {
-  width: 500px;
-  height: 400px;
+  width: 60%;
+  background-color: white;
+  margin: 30px 20px 0 20px;
+  padding: 20px;
+  box-shadow: 5px 5px 10px rgba(147, 147, 147, 0.1);
 }

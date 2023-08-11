@@ -27,8 +27,7 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
-    "@nivo/bar": "^0.83.0",
-    "@nivo/core": "^0.83.0",
+    "chart.js": "^4.3.3",
     "eslint-config-next": "^13.4.8",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",

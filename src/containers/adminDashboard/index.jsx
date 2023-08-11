@@ -5,7 +5,7 @@ import { apiBe } from '@/services';
 import { getHeaders } from '@/utils/util';
 
 import { CountCardWithColor, CountTopContents } from '@/components/Dashboard/CountShowContent';
-import { MetricsBarChartDashboard } from '@/components/Dashboard/BarChart'
+import { MetricsBarChartDashboard } from '@/components/Dashboard/BarChart';
 import { TitleInDashboard } from '@/components/Titles';
 import styles from './index.module.css';
 
