@@ -1,26 +1,10 @@
-/* 작은 테블릿 크기 */
-@media (min-width: 768px) {
-  /* 여기에 작은 테블릿 크기에 대한 스타일을 추가합니다 */
-}
-
-/* 중간 테블릿 크기 */
-@media (min-width: 992px) {
-  /* 여기에 중간 테블릿 크기에 대한 스타일을 추가합니다 */
-}
-
-/* 큰 테블릿 크기*/
-@media (min-width: 1200px) {
-  /* 여기에 큰 테블릿 크기에 대한 스타일을 추가합니다 */
-}
-
-
 /* CountCardWithColor */
 
 .countCardWithColorWrap {
   background-color: white;
   padding: 10px 20px 10px 20px;
-  width: 12%;
-  height: 60px;
+  width: 12.5%;
+  height: 70px;
   margin-left: 20px;
   display: flex;
   flex-direction: column;
@@ -28,32 +12,32 @@
   box-shadow: 5px 5px 10px rgba(147, 147, 147, 0.1);
 }
 
-.countCardWithColorWrap>div {
+.countCardWithColorWrap > div {
   display: flex;
   justify-content: space-between;
 }
 
-.countCardWithColorWrap>div>p:first-child {
+.countCardWithColorWrap > div > p:first-child {
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 1rem;
   letter-spacing: 0.5px;
 }
 
-.countCardWithColorWrap>div>p:last-child {
+.countCardWithColorWrap > div > p:last-child {
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   letter-spacing: 0.5px;
   color: #787878;
 }
 
-.countCardWithColorWrap>p:last-child {
+.countCardWithColorWrap > p:last-child {
   font-size: 1rem;
   font-weight: 600;
 }
 
 /* CountTopContents */
 .countTopContentsWrap {
-  width: 40%;
+  width: 30.5%;
   background-color: white;
   margin-top: 30px;
   display: flex;
@@ -74,18 +58,18 @@
   padding: 0 25px 20px 25px;
 }
 
-.contentBodyWrap>div {
+.contentBodyWrap > div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 8px 0 8px 0;
 }
 
-.contentBodyWrap>div>span:first-child {
+.contentBodyWrap > div > span:first-child {
   font-size: 0.8rem;
 }
 
-.contentBodyWrap>div>span:last-child {
+.contentBodyWrap > div > span:last-child {
   font-size: 0.8rem;
   font-weight: 600;
 }
