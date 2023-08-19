@@ -57,7 +57,7 @@ export function CountTopContents() {
     return (
       <div className={styles.countTopContentsWrap}>
         <div className={styles.titleArea}>
-          <TitleInDashboard text="Top Contents" />
+          <TitleInDashboard text="탑 컨텐츠" />
           <SelectBoxDashboard valueArr={topContentsSelectArr} name="topContent" onChange={onChangeSelectValue} />
         </div>
 

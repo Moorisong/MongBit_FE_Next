@@ -46,7 +46,7 @@ export function MetricsBarChartDashboard() {
   return (
     <div className={styles.wrap}>
       <div>
-        <TitleInDashboard text="Metrics" />
+        <TitleInDashboard text="메트릭스" />
       </div>
 
       <canvas ref={chartRef}></canvas>
