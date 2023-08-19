@@ -5,7 +5,7 @@
   padding: 10px 20px 10px 20px;
   /* width: 185px; */
   width: 12.5%;
-  height: 80px;
+  height: 60px;
   margin-left: 20px;
   display: flex;
   flex-direction: column;
@@ -13,28 +13,36 @@
   box-shadow: 5px 5px 10px rgba(147, 147, 147, 0.1);
 }
 
-.countCardWithColorWrap > p:first-child {
+.countCardWithColorWrap > div > p:first-child {
   width: 100%;
-  color: #787878;
-  font-weight: 350;
+  font-weight: 600;
   font-size: 0.8rem;
   letter-spacing: 0.5px;
 }
 
+.countCardWithColorWrap > div > p:last-child {
+  width: 100%;
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  color: #787878;
+}
+
 .countCardWithColorWrap > p:last-child {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 
 /* CountTopContents */
 .countTopContentsWrap {
-  width: 50%;
+  width: 40%;
   background-color: white;
   margin-top: 30px;
   display: flex;
   flex-direction: column;
   box-shadow: 5px 5px 10px rgba(147, 147, 147, 0.1);
 }
+
 .titleArea {
   display: flex;
   flex-direction: row;

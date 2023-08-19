@@ -5,18 +5,19 @@ import { apiBe } from '@/services';
 import { getHeaders } from '@/utils/util';
 
 import { CountCardWithColor, CountTopContents } from '@/components/Dashboard/CountShowContent';
+import { MetricsBarChartDashboard } from '@/components/Dashboard/BarChart';
 import { TitleInDashboard } from '@/components/Titles';
 import styles from './index.module.css';
 
 const colorArr = ['#FF3F3F', '#3F80FF', '#3FDCFF', '#FF9B3F', '#FF3FD5', '#93FF3F', '#7C3FFF'];
 const countCardWithColorNames = [
-  'Total Visits',
-  'Total Plays',
-  'Total Logins',
-  'Total Shares',
-  'Total Link Copies',
-  'Total Likes',
-  'Total Commnets',
+  '방문',
+  '플레이',
+  '로그인',
+  '공유',
+  '링크복사',
+  '좋아요',
+  '댓글',
 ];
 
 export default function AdminDashboard() {
@@ -79,9 +80,9 @@ export default function AdminDashboard() {
                 ))}
             </div>
 
-            <div>
+            <div className={styles.flexDirRow}>
+              <MetricsBarChartDashboard />
               <CountTopContents />
-              {/* 여기에 메트릭스 차트 넣기 */}
             </div>
           </div>
         </div>
