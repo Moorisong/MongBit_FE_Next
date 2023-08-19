@@ -63,7 +63,7 @@ export default async function sitemap() {
   }));
 
   const testPreview = allTestData.map((d) => ({
-    url: `${DOMAIN}/preview/${d.id}`,
+    url: `${DOMAIN}/test/preview/${d.id}`,
     lastModified: new Date(),
   }));
 
