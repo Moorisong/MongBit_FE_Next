@@ -10,15 +10,7 @@ import { TitleInDashboard } from '@/components/Titles';
 import styles from './index.module.css';
 
 const colorArr = ['#FF3F3F', '#3F80FF', '#3FDCFF', '#FF9B3F', '#FF3FD5', '#93FF3F', '#7C3FFF'];
-const countCardWithColorNames = [
-  '방문',
-  '플레이',
-  '로그인',
-  '공유',
-  '링크복사',
-  '좋아요',
-  '댓글',
-];
+const countCardWithColorNames = ['방문', '플레이', '로그인', '공유', '링크복사', '좋아요', '댓글'];
 
 export default function AdminDashboard() {
   const [countCardWithColorData, setCountCardWithColorData] = useState([]);
@@ -38,25 +30,25 @@ export default function AdminDashboard() {
     <div className={styles.wrap}>
       <div>
         <div className={styles.menuBar}>
-          <p>ADMIN</p>
+          <p>몽빗 어드민</p>
           <ul>
             <li>
               <img src="/images/adminDashboard/menuBar_dashboard.svg" alt="" />
-              <span>Dashboard</span>
+              <span>대시보드</span>
             </li>
             <li>
               <img src="/images/adminDashboard/menuBar_contents.svg" alt="" />
-              <span>Contents</span>
+              <span>컨텐츠</span>
             </li>
             <li>
               <img src="/images/adminDashboard/menuBar_members.svg" alt="" />
 
-              <span>Members</span>
+              <span>유저</span>
             </li>
             <li>
               <img src="/images/adminDashboard/menuBar_insight.svg" alt="" />
 
-              <span>Insight</span>
+              <span>인사이트</span>
             </li>
           </ul>
         </div>
@@ -64,7 +56,7 @@ export default function AdminDashboard() {
         {/* 콘텐츠 내용 */}
         <div className={styles.contentWrap}>
           <div>
-            <TitleInDashboard text="Dashboard" />
+            <TitleInDashboard text="대시보드" />
           </div>
 
           <div>

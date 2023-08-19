@@ -16,7 +16,7 @@
 }
 
 .menuBar {
-  width: 15%;
+  width: 12%;
   height: 100vh;
   background-color: white;
   display: flex;
@@ -53,7 +53,7 @@
 .menuBar > ul > li > span {
   color: #582fff;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
 }
 
 .flexDirRow {
