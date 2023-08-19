@@ -19,7 +19,11 @@ export function CountCardWithColor(props) {
           borderLeft: `3px solid ${props.borderColor}`,
         }}
       >
-        <p>{props.title}</p>
+        <div>
+          <p>{props.title}</p>
+          <p>Today / Total</p>
+        </div>
+
         <p>{contentNumber}</p>
       </div>
     );
