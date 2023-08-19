@@ -18,10 +18,6 @@ export default async function sitemap() {
       lastModified: new Date(),
     },
     {
-      url: `${DOMAIN}/main`,
-      lastModified: new Date(),
-    },
-    {
       url: `${DOMAIN}/mypage`,
       lastModified: new Date(),
     },
