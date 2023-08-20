@@ -1,3 +1,64 @@
+/* 아이패드 프로 11 및 비슷한 화면 크기 */
+@media (min-width: 768px) and (max-width: 1366px) {
+  .contentWrap {
+    width: 82%;
+  }
+  .menuBar {
+    width: 13%;
+  }
+  .menuBar > p {
+    color: #582fff;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+  .menuBar > ul > li > span {
+    color: #582fff;
+    font-weight: 500;
+    font-size: 0.7rem;
+  }
+}
+
+/* 노트북 크기 */
+@media (min-width: 1367px) and (max-width: 1440px) {
+  .contentWrap {
+    width: 87%;
+  }
+  .menuBar {
+    width: 13%;
+  }
+  .menuBar > p {
+    color: #582fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .menuBar > ul > li > span {
+    color: #582fff;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+}
+
+/* PC 화면 크기 */
+@media (min-width: 1441px) {
+  /* ksh 여기 수정 */
+  .contentWrap {
+    width: 88%;
+  }
+  .menuBar {
+    width: 12%;
+  }
+  .menuBar > p {
+    color: #582fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .menuBar > ul > li > span {
+    color: #582fff;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+}
+
 .wrap {
   width: 100%;
   background-color: #582fff;
@@ -16,7 +77,6 @@
 }
 
 .menuBar {
-  width: 12%;
   height: 100vh;
   background-color: white;
   display: flex;
@@ -25,11 +85,7 @@
   padding-top: 20px;
   box-shadow: 10px 0px 10px rgba(147, 147, 147, 0.1);
 }
-.menuBar > p {
-  color: #582fff;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
+
 .menuBar > ul {
   display: flex;
   flex-direction: column;
@@ -50,12 +106,6 @@
   margin-right: 13px;
 }
 
-.menuBar > ul > li > span {
-  color: #582fff;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
 .flexDirRow {
   display: flex;
   flex-direction: row;
@@ -64,18 +114,10 @@
 /* contentWrap */
 
 .contentWrap {
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   flex-direction: column;
   margin: 26px 0 0 20px;
-}
-
-.contentWrap > div:first-child {
-  margin-left: 20px;
-}
-
-.contentWrap > div:last-child {
-  margin-right: 20px;
 }
 
 .countCardWithColorArea {
