@@ -1,9 +1,96 @@
+/* 아이패드 프로 11 및 비슷한 화면 크기 */
+@media (min-width: 768px) and (max-width: 1366px) {
+  .countCardWithColorWrap {
+    width: 11.8%;
+    padding: 10px 10px 10px 10px;
+  }
+
+  .countCardWithColorWrap > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 110px;
+  }
+
+  /* 미니 카드 타이틀 텍스트 */
+  .countCardWithColorWrap > div > p:first-child {
+    font-size: 0.6rem;
+  }
+
+  .countCardWithColorWrap > div > p:last-child {
+    font-size: 0.4rem;
+  }
+
+  /* 미니 카드 수치 텍스트 */
+  .countCardWithColorWrap > p:last-child {
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+}
+
+/* 노트북 크기 */
+@media (min-width: 1367px) and (max-width: 1440px) {
+  .countCardWithColorWrap {
+    width: 12.2%;
+    padding: 10px 10px 10px 10px;
+  }
+
+  .countCardWithColorWrap > div {
+    display: flex;
+    justify-content: space-between;
+    width: 110px;
+  }
+
+  /* 미니 카드 타이틀 텍스트 */
+  .countCardWithColorWrap > div > p:first-child {
+    font-size: 0.7rem;
+  }
+
+  .countCardWithColorWrap > div > p:last-child {
+    font-size: 0.6rem;
+  }
+
+  /* 미니 카드 수치 텍스트 */
+  .countCardWithColorWrap > p:last-child {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
+
+/* PC 화면 크기 */
+@media (min-width: 1441px) {
+  .countCardWithColorWrap {
+    width: 12.5%;
+    padding: 10px 20px 10px 20px;
+  }
+
+  .countCardWithColorWrap > div {
+    display: flex;
+    justify-content: space-between;
+    width: 110px;
+  }
+
+  /* 미니 카드 타이틀 텍스트 */
+  .countCardWithColorWrap > div > p:first-child {
+    font-size: 1rem;
+  }
+
+  .countCardWithColorWrap > div > p:last-child {
+    font-size: 0.9rem;
+  }
+
+  /* 미니 카드 수치 텍스트 */
+  .countCardWithColorWrap > p:last-child {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
+
 /* CountCardWithColor */
 
 .countCardWithColorWrap {
   background-color: white;
-  padding: 10px 20px 10px 20px;
-  width: 12.5%;
+  /* padding: 10px 20px 10px 20px; */
   height: 70px;
   margin-left: 20px;
   display: flex;
@@ -12,27 +99,14 @@
   box-shadow: 5px 5px 10px rgba(147, 147, 147, 0.1);
 }
 
-.countCardWithColorWrap > div {
-  display: flex;
-  justify-content: space-between;
-}
-
 .countCardWithColorWrap > div > p:first-child {
   font-weight: 600;
-  font-size: 1rem;
-  letter-spacing: 0.5px;
 }
 
 .countCardWithColorWrap > div > p:last-child {
   font-weight: 400;
-  font-size: 0.9rem;
   letter-spacing: 0.5px;
   color: #787878;
-}
-
-.countCardWithColorWrap > p:last-child {
-  font-size: 1rem;
-  font-weight: 600;
 }
 
 /* CountTopContents */
