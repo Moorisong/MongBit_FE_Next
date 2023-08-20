@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 
 import { apiBe } from '@/services';
-import { getHeaders } from '@/utils/util';
+import { getHeaders, formatCurrentDateTime } from '@/utils/util';
 
 import { CountCardWithColor, CountTopContents } from '@/components/Dashboard/CountShowContent';
 import { MetricsBarChartDashboard } from '@/components/Dashboard/BarChart';
@@ -13,15 +13,31 @@ const colorArr = ['#FF3F3F', '#3F80FF', '#3FDCFF', '#FF9B3F', '#FF3FD5', '#93FF3
 const countCardWithColorNames = ['방문', '플레이', '로그인', '공유', '링크복사', '좋아요', '댓글'];
 
 export default function AdminDashboard() {
-  const [countCardWithColorData, setCountCardWithColorData] = useState([]);
+  const [totalCountCardWithColorData, setTotalCountCardWithColorData] = useState([]);
+  const [todayCountCardWithColorData, setTodayCountCardWithColorData] = useState([]);
 
   const headers = getHeaders();
 
   useEffect(() => {
     apiBe.get('/api/v2/metrics/total', { headers }).then((res) => {
       const keyArr = Object.keys(res.data);
-      const resultArr = keyArr.map((d) => ({ count: res.data[d] }));
-      setCountCardWithColorData(resultArr);
+      const resultArr = keyArr.map((d) => ({ totalCount: res.data[d] }));
+      setTotalCountCardWithColorData(resultArr);
+    });
+  }, []);
+
+  useEffect(() => {
+    const todayTimeRange = formatCurrentDateTime();
+    const params = {
+      startDate: todayTimeRange.startDate,
+      endDate: todayTimeRange.endDate,
+    };
+
+    apiBe.get('/api/v2/metrics/total/date-range', { headers, params }).then((res) => {
+      const keyArr = Object.keys(res.data[0]);
+      const resultArr = keyArr.map((d) => ({ todayCount: res.data[0][d] }));
+      resultArr.splice(0, 1);
+      setTodayCountCardWithColorData(resultArr);
     });
   }, []);
 
@@ -61,12 +77,13 @@ export default function AdminDashboard() {
 
           <div>
             <div className={styles.countCardWithColorArea}>
-              {countCardWithColorData &&
-                countCardWithColorData.map((d, i) => (
+              {totalCountCardWithColorData &&
+                totalCountCardWithColorData.map((d, i) => (
                   <CountCardWithColor
                     key={i}
                     title={countCardWithColorNames[i]}
-                    count={d.count}
+                    totalCount={d.totalCount}
+                    todayCount={todayCountCardWithColorData[i].todayCount}
                     borderColor={colorArr[i]}
                   />
                 ))}

@@ -25,6 +25,7 @@
   .countCardWithColorWrap > p:last-child {
     font-size: 0.8rem;
     font-weight: 600;
+    padding-right: 8px;
   }
 }
 
@@ -54,6 +55,7 @@
   .countCardWithColorWrap > p:last-child {
     font-size: 1rem;
     font-weight: 600;
+    padding-right: 1px;
   }
 }
 
@@ -107,6 +109,9 @@
   font-weight: 400;
   letter-spacing: 0.5px;
   color: #787878;
+}
+.countCardWithColorWrap > p:last-child {
+  text-align: right;
 }
 
 /* CountTopContents */

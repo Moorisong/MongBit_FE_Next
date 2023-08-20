@@ -10,7 +10,7 @@ import { SelectBoxDashboard } from '../SelectBox';
 const topContentsSelectArr = ['Plays', 'Shares', 'Likes'];
 
 export function CountCardWithColor(props) {
-  const contentNumber = numberFormatToKoreanStyle(props.count);
+  const contentNumber = numberFormatToKoreanStyle(props.totalCount);
   if (props.borderColor)
     return (
       <div
@@ -24,7 +24,7 @@ export function CountCardWithColor(props) {
           <p>Today / Total</p>
         </div>
 
-        <p>{contentNumber}</p>
+        <p>{`${props.todayCount}/${contentNumber}`}</p>
       </div>
     );
 }
