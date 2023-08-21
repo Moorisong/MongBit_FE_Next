@@ -89,7 +89,8 @@ export default function AdminDashboard() {
 
             <div>
               <div className={styles.countCardWithColorArea}>
-                {totalCountCardWithColorData && todayCountCardWithColorData &&
+                {totalCountCardWithColorData &&
+                  todayCountCardWithColorData.length > 0 &&
                   totalCountCardWithColorData.map((d, i) => (
                     <CountCardWithColor
                       key={i}
