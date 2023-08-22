@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { apiBe } from '@/services';
-import { getHeaders, formatCurrentDateTime, decodeToken } from '@/utils/util';
+import { getHeaders, formatTodayDateTimeRange, formatTimeRangeFromToday, decodeToken } from '@/utils/util';
 
 import { CountCardWithColor, CountTopContents } from '@/components/Dashboard/CountShowContent';
 import { MetricsBarChartDashboard } from '@/components/Dashboard/BarChart';
@@ -12,6 +12,9 @@ import styles from './index.module.css';
 
 const colorArr = ['#FF3F3F', '#3F80FF', '#3FDCFF', '#FF9B3F', '#FF3FD5', '#93FF3F', '#7C3FFF'];
 const countCardWithColorNames = ['방문', '플레이', '로그인', '공유', '링크복사', '좋아요', '댓글'];
+const metricsChartType = ['방문'];
+
+const METRICS_TIME_RANGE = 10;
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -37,7 +40,7 @@ export default function AdminDashboard() {
       });
 
       // 상단 미니 카드 Today 수치
-      const todayTimeRange = formatCurrentDateTime();
+      const todayTimeRange = formatTodayDateTimeRange();
       const params = {
         startDate: todayTimeRange.startDate,
         endDate: todayTimeRange.endDate,
@@ -55,10 +58,10 @@ export default function AdminDashboard() {
   useEffect(() => {
     if (hasRole) {
       // 메트릭스 차트
-      const todayTimeRange = formatCurrentDateTime();
+      const dateData = formatTimeRangeFromToday(METRICS_TIME_RANGE);
       const params = {
-        startDate: '2023-08-01 00:00:00',
-        endDate: '2023-08-12 00:00:00',
+        startDate: dateData.startDate,
+        endDate: dateData.endDate,
       };
 
       apiBe.get('/api/v2/metrics/visits/count/date-range', { headers, params }).then((res) => {
@@ -118,7 +121,15 @@ export default function AdminDashboard() {
               </div>
 
               <div className={styles.flexDirRow}>
-                <MetricsBarChartDashboard data={chartData} />
+                {chartData.length && (
+                  <MetricsBarChartDashboard
+                    data={chartData}
+                    selectBoxData={{
+                      valueArr: metricsChartType,
+                      onChange: null,
+                    }}
+                  />
+                )}
                 <CountTopContents />
               </div>
             </div>

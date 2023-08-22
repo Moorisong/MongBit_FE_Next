@@ -202,7 +202,9 @@ export function addDailyVisitCount() {
   }
 }
 
-export function formatCurrentDateTime() {
+// ----------- Date 포맷 관련 함수들
+
+export function formatTodayDateTimeRange() {
   const now = new Date();
   const year = now.getFullYear();
   const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -215,4 +217,39 @@ export function formatCurrentDateTime() {
     startDate,
     endDate,
   };
+}
+
+export function formatTimeRangeFromToday(days) {
+  // days만큼 이전 날짜와 오늘 날짜를 리턴함
+
+  const now = new Date();
+  const pastDate = new Date(now);
+  pastDate.setDate(now.getDate() - days);
+
+  const pastYear = pastDate.getFullYear();
+  const pastMonth = String(pastDate.getMonth() + 1).padStart(2, '0');
+  const pastDay = String(pastDate.getDate()).padStart(2, '0');
+
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+
+  const startDate = `${pastYear}-${pastMonth}-${pastDay} 00:00:00`;
+  const endDate = `${year}-${month}-${day} 23:59:59`;
+
+  return {
+    startDate,
+    endDate,
+  };
+}
+
+export function formatDateToShort(dateString) {
+  // yyyy-MM-dd HH:mm:ss -> mm/dd 변환
+
+  const date = new Date(dateString);
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const shortDate = `${month}/${day}`;
+
+  return shortDate;
 }
