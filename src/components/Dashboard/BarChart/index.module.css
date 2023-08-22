@@ -7,4 +7,9 @@
 }
 .wrap > div {
   margin-bottom: 15px;
+  display: flex;
+}
+
+.wrap > div > p {
+  margin-right: 20px;
 }
