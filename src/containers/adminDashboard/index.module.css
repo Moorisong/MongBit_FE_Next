@@ -1,5 +1,5 @@
 /* 아이패드 프로 11 및 비슷한 화면 크기 */
-@media (min-width: 768px) and (max-width: 1366px) {
+/* @media (min-width: 768px) and (max-width: 1366px) {
   .contentWrap {
     width: 82%;
   }
@@ -16,10 +16,10 @@
     font-weight: 500;
     font-size: 0.7rem;
   }
-}
+} */
 
 /* 노트북 크기 */
-@media (min-width: 1367px) and (max-width: 1440px) {
+@media (max-width: 1440px) {
   .contentWrap {
     width: 87%;
   }
