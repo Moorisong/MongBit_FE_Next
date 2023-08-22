@@ -24,7 +24,7 @@ export function CountCardWithColor(props) {
           <p>Today / Total</p>
         </div>
 
-        <p>{`${props.todayCount}/${contentNumber}`}</p>
+        <p>{`${props.todayCount} / ${contentNumber}`}</p>
       </div>
     );
 }

@@ -1,7 +1,7 @@
 /* 아이패드 프로 11 및 비슷한 화면 크기 */
 @media (min-width: 768px) and (max-width: 1366px) {
   .countCardWithColorWrap {
-    width: 11.8%;
+    width: 11.5%;
     padding: 10px 10px 10px 10px;
   }
 
@@ -9,7 +9,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 110px;
   }
 
   /* 미니 카드 타이틀 텍스트 */
@@ -19,6 +18,7 @@
 
   .countCardWithColorWrap > div > p:last-child {
     font-size: 0.4rem;
+    align-items: right;
   }
 
   /* 미니 카드 수치 텍스트 */
@@ -26,6 +26,11 @@
     font-size: 0.8rem;
     font-weight: 600;
     padding-right: 8px;
+  }
+
+  /* 탑 콘텐츠 */
+  .countTopContentsWrap {
+    width: 32.5%;
   }
 }
 
@@ -38,17 +43,17 @@
 
   .countCardWithColorWrap > div {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    width: 110px;
   }
 
   /* 미니 카드 타이틀 텍스트 */
   .countCardWithColorWrap > div > p:first-child {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 
   .countCardWithColorWrap > div > p:last-child {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
 
   /* 미니 카드 수치 텍스트 */
@@ -56,6 +61,12 @@
     font-size: 1rem;
     font-weight: 600;
     padding-right: 1px;
+    text-align: left;
+  }
+
+  /* 탑 콘텐츠 */
+  .countTopContentsWrap {
+    width: 30%;
   }
 }
 
@@ -63,28 +74,34 @@
 @media (min-width: 1441px) {
   .countCardWithColorWrap {
     width: 12.5%;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 10px 10px 10px;
   }
 
   .countCardWithColorWrap > div {
     display: flex;
     justify-content: space-between;
-    width: 110px;
   }
 
   /* 미니 카드 타이틀 텍스트 */
   .countCardWithColorWrap > div > p:first-child {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .countCardWithColorWrap > div > p:last-child {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    align-items: right;
   }
 
   /* 미니 카드 수치 텍스트 */
   .countCardWithColorWrap > p:last-child {
     font-size: 1rem;
     font-weight: 600;
+    text-align: right;
+  }
+
+  /* 탑 콘텐츠 */
+  .countTopContentsWrap {
+    width: 30.5%;
   }
 }
 
@@ -110,13 +127,9 @@
   letter-spacing: 0.5px;
   color: #787878;
 }
-.countCardWithColorWrap > p:last-child {
-  text-align: right;
-}
 
 /* CountTopContents */
 .countTopContentsWrap {
-  width: 30.5%;
   background-color: white;
   margin-top: 30px;
   display: flex;
