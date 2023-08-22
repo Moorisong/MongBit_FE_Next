@@ -15,10 +15,12 @@ const countCardWithColorNames = ['방문', '플레이', '로그인', '공유', '
 
 export default function AdminDashboard() {
   const router = useRouter();
+  const headers = getHeaders();
+
   const [hasRole, setHasRole] = useState(false);
   const [totalCountCardWithColorData, setTotalCountCardWithColorData] = useState([]);
   const [todayCountCardWithColorData, setTodayCountCardWithColorData] = useState([]);
-  const headers = getHeaders();
+  const [chartData, setChartData] = useState([])
 
   useEffect(() => {
     if (decodeToken().role !== 'ROLE_ADMIN') return router.push('/');
@@ -27,16 +29,14 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     if (hasRole) {
+      // 상단 미니 카드 Total 수치
       apiBe.get('/api/v2/metrics/total', { headers }).then((res) => {
         const keyArr = Object.keys(res.data);
         const resultArr = keyArr.map((d) => ({ totalCount: res.data[d] }));
         setTotalCountCardWithColorData(resultArr);
       });
-    }
-  }, [hasRole]);
 
-  useEffect(() => {
-    if (hasRole) {
+      // 상단 미니 카드 Today 수치
       const todayTimeRange = formatCurrentDateTime();
       const params = {
         startDate: todayTimeRange.startDate,
@@ -49,6 +49,22 @@ export default function AdminDashboard() {
         resultArr.splice(0, 1);
         setTodayCountCardWithColorData(resultArr);
       });
+    }
+  }, [hasRole]);
+
+  useEffect(() => {
+    if (hasRole) {
+      // 메트릭스 차트
+      const todayTimeRange = formatCurrentDateTime();
+      const params = {
+        startDate: '2023-08-01 00:00:00',
+        endDate: '2023-08-12 00:00:00',
+      };
+
+      apiBe.get('/api/v2/metrics/visits/count/date-range', { headers, params }).then((res) => {
+        setChartData(res.data)
+      });
+
     }
   }, [hasRole]);
 
@@ -103,7 +119,9 @@ export default function AdminDashboard() {
               </div>
 
               <div className={styles.flexDirRow}>
-                <MetricsBarChartDashboard />
+                <MetricsBarChartDashboard
+                  data={chartData}
+                />
                 <CountTopContents />
               </div>
             </div>
