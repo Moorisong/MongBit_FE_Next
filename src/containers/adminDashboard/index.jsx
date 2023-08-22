@@ -20,7 +20,7 @@ export default function AdminDashboard() {
   const [hasRole, setHasRole] = useState(false);
   const [totalCountCardWithColorData, setTotalCountCardWithColorData] = useState([]);
   const [todayCountCardWithColorData, setTodayCountCardWithColorData] = useState([]);
-  const [chartData, setChartData] = useState([])
+  const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
     if (decodeToken().role !== 'ROLE_ADMIN') return router.push('/');
@@ -62,9 +62,8 @@ export default function AdminDashboard() {
       };
 
       apiBe.get('/api/v2/metrics/visits/count/date-range', { headers, params }).then((res) => {
-        setChartData(res.data)
+        setChartData(res.data);
       });
-
     }
   }, [hasRole]);
 
@@ -119,9 +118,7 @@ export default function AdminDashboard() {
               </div>
 
               <div className={styles.flexDirRow}>
-                <MetricsBarChartDashboard
-                  data={chartData}
-                />
+                <MetricsBarChartDashboard data={chartData} />
                 <CountTopContents />
               </div>
             </div>
