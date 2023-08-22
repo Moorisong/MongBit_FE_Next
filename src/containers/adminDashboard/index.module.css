@@ -36,11 +36,13 @@
     font-weight: 500;
     font-size: 0.9rem;
   }
+  .countCardWithColorArea {
+    width: 97%;
+  }
 }
 
 /* PC 화면 크기 */
 @media (min-width: 1441px) {
-  /* ksh 여기 수정 */
   .contentWrap {
     width: 88%;
   }
@@ -49,13 +51,16 @@
   }
   .menuBar > p {
     color: #582fff;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 600;
   }
   .menuBar > ul > li > span {
     color: #582fff;
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
+  }
+  .countCardWithColorArea {
+    width: 97%;
   }
 }
 
@@ -123,6 +128,7 @@
 .countCardWithColorArea {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   height: 80px;
   margin-top: 20px;
 }
