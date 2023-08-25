@@ -12,7 +12,7 @@ import styles from './index.module.css';
 
 const colorArr = ['#FF3F3F', '#3F80FF', '#3FDCFF', '#FF9B3F', '#FF3FD5', '#93FF3F', '#7C3FFF'];
 const countCardWithColorNames = ['방문', '플레이', '로그인', '공유', '링크복사', '좋아요', '댓글'];
-const metricsChartType = ['방문'];
+const metricsChartType = ['플레이', '공유', '링크복사', '좋아요', '방문', '로그인', '댓글'];
 
 const METRICS_TIME_RANGE = 10;
 
@@ -24,6 +24,7 @@ export default function AdminDashboard() {
   const [totalCountCardWithColorData, setTotalCountCardWithColorData] = useState([]);
   const [todayCountCardWithColorData, setTodayCountCardWithColorData] = useState([]);
   const [chartData, setChartData] = useState([]);
+  const [metricsSelectValue, setMetricsSelectValue] = useState('plays');
 
   useEffect(() => {
     if (decodeToken().role !== 'ROLE_ADMIN') return router.push('/');
@@ -59,16 +60,35 @@ export default function AdminDashboard() {
     if (hasRole) {
       // 메트릭스 차트
       const dateData = formatTimeRangeFromToday(METRICS_TIME_RANGE);
-      const params = {
+      let params = {
         startDate: dateData.startDate,
         endDate: dateData.endDate,
       };
 
-      apiBe.get('/api/v2/metrics/visits/count/date-range', { headers, params }).then((res) => {
+      // 카카오 공유하기, 링크 복사 구분을 위해 params와 api url 포함 문자 식별
+      if (metricsSelectValue === 'linkCopies') params.type = 'LINK';
+      if (metricsSelectValue === 'shares') params.type = 'KAKAO';
+
+      const apiValue = metricsSelectValue === 'linkCopies' ? 'shares' : metricsSelectValue;
+
+      apiBe.get(`/api/v2/metrics/${apiValue}/count/date-range`, { headers, params }).then((res) => {
         setChartData(res.data);
       });
     }
-  }, [hasRole]);
+  }, [hasRole, metricsSelectValue]);
+
+  function onChangeMetricsSelectValue(evt) {
+    let getResultValue = () => {
+      if (evt.currentTarget.value === '플레이') return 'plays';
+      if (evt.currentTarget.value === '공유') return 'shares';
+      if (evt.currentTarget.value === '링크복사') return 'linkCopies';
+      if (evt.currentTarget.value === '좋아요') return 'likes';
+      if (evt.currentTarget.value === '방문') return 'visits';
+      if (evt.currentTarget.value === '로그인') return 'logins';
+      if (evt.currentTarget.value === '댓글') return 'comments';
+    };
+    setMetricsSelectValue(getResultValue());
+  }
 
   if (hasRole)
     return (
@@ -124,10 +144,8 @@ export default function AdminDashboard() {
                 {chartData.length && (
                   <MetricsBarChartDashboard
                     data={chartData}
-                    selectBoxData={{
-                      valueArr: metricsChartType,
-                      onChange: null,
-                    }}
+                    selectValueArr={metricsChartType}
+                    onChange={onChangeMetricsSelectValue}
                   />
                 )}
                 <CountTopContents />
