@@ -7,7 +7,7 @@ import styles from './index.module.css';
 import { TitleInDashboard } from '@/components/Titles';
 import { SelectBoxDashboard } from '../SelectBox';
 
-const topContentsSelectArr = ['Plays', 'Shares', 'Likes'];
+const topContentsSelectArr = ['플레이', '공유', '좋아요'];
 
 export function CountCardWithColor(props) {
   const contentNumber = numberFormatToKoreanStyle(props.totalCount);
@@ -49,8 +49,12 @@ export function CountTopContents() {
   }, [selectValue]);
 
   function onChangeSelectValue(evt) {
-    let resultValue = evt.currentTarget.value === 'Plays' ? 'tests' : evt.currentTarget.value.toLowerCase();
-    setSelectValue(resultValue);
+    let getResultValue = () => {
+      if (evt.currentTarget.value === '플레이') return 'tests';
+      if (evt.currentTarget.value === '공유') return 'shares';
+      if (evt.currentTarget.value === '좋아요') return 'likes';
+    };
+    setSelectValue(getResultValue());
   }
 
   if (contentData)
