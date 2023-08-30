@@ -6,7 +6,7 @@ export default async function sitemap() {
   // 정적 라우트
   const staticPages = [
     {
-      url: `${DOMAIN}`,
+      url: `${DOMAIN}/`,
       lastModified: new Date(),
     },
     {
