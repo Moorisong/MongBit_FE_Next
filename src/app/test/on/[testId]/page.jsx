@@ -10,6 +10,9 @@ export async function generateMetadata({ params: { testId } }) {
   return {
     title,
     description,
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       description,
       type: 'website',
