@@ -1,5 +1,7 @@
 User-agent: Yeti
 User-agent: Googlebot
 User-agent: Daumoa
+Disallow: /admin/*
 Allow: /
-Disallow: /admin/
+Allow: https://mongbit.vercel.app/
+Sitemap: https://mongbit.vercel.app/sitemap.xml
