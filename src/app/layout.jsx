@@ -12,11 +12,11 @@ export const metadata = {
   keywords: [
     'MBTI',
     'MBTI 연애',
-    'MBTI 궁합',
+    '궁합',
     'MBTI 심리테스트',
     '무료 심테',
     'MBTI 검사',
-    'MBTI 무료',
+    '무료 심리테스트',
     '심리테스트',
     '연애 심테',
     '연애 심리테스트',
