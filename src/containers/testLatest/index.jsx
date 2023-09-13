@@ -3,17 +3,17 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
 import cx from 'classnames';
 import lottie from 'lottie-web';
 
 import { getHeaders, setUTMParameter, addDailyVisitCount } from '@/utils/util';
+import { apiBe } from '@/services';
 
 import animationData_1 from './loading_2.json';
 import { TitleWithText } from '@/components/Titles';
 import { TestSetComplete } from '@/components/TestSets';
 import styles from './index.module.css';
-import { TYPE_TEST_LIST, TITLE_WITH_CONTENT, DOMAIN_BE_PROD } from '../../constants/constant';
+import { TYPE_TEST_LIST, TITLE_WITH_CONTENT } from '../../constants/constant';
 
 export default function TestLatest() {
   const [data, setData] = useState({
@@ -49,19 +49,14 @@ export default function TestLatest() {
     setUTMParameter(router);
 
     const headers = getHeaders();
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/tests/0/5`, { headers })
-      .then((res) => {
-        setData((prev) => ({
-          ...prev,
-          testArr: res.data.testCoverDTOList,
-          hasNextPage: res.data.hasNextPage,
-        }));
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
-      });
+    apiBe.get(`/api/v1/tests/0/5`, { headers }).then((res) => {
+      setData((prev) => ({
+        ...prev,
+        testArr: res.data.testCoverDTOList,
+        hasNextPage: res.data.hasNextPage,
+      }));
+    });
+
     const timer = setTimeout(() => {
       setSlideIn(true);
     }, 3000);

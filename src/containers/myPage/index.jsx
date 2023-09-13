@@ -2,10 +2,10 @@
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
-import axios from 'axios';
 import lottie from 'lottie-web';
 
 import { decodeToken, getHeaders, addDailyVisitCount } from '@/utils/util';
+import { apiBe } from '@/services';
 
 import animationData_1 from './loading_2.json';
 import animationData_2 from './seeMoreIcon.json';
@@ -13,7 +13,7 @@ import Footer from '../../components/Footer';
 import styles from './index.module.css';
 import { TestSetMyPage } from '../../components/TestSets';
 import { TitleWithText } from '../../components/Titles';
-import { TITLE_WITH_CONTENT, TYPE_MYPAGE, USER_INFO, DOMAIN_BE_PROD } from '../../constants/constant';
+import { TITLE_WITH_CONTENT, TYPE_MYPAGE, USER_INFO } from '../../constants/constant';
 import { Stroke } from '../../components/ButtonSets';
 
 export default function MyPage() {
@@ -87,8 +87,8 @@ export default function MyPage() {
     };
     const headers = getHeaders();
 
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/member-test-result/${memberId}`, {
+    apiBe
+      .get(`/api/v1/member-test-result/${memberId}`, {
         params: params,
         headers: headers,
       })
@@ -100,10 +100,6 @@ export default function MyPage() {
         }));
         setLoading(false);
         setPage(page + 1);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
       });
   }, []);
 
@@ -120,9 +116,9 @@ export default function MyPage() {
       size: 10,
     };
     const headers = getHeaders();
-    axios
+    apiBe
       .get(
-        `${DOMAIN_BE_PROD}/api/v1/member-test-result/${memberId}`,
+        `/api/v1/member-test-result/${memberId}`,
         {
           params,
         },
@@ -141,10 +137,6 @@ export default function MyPage() {
         setLoading(false);
         setPage(page + 1);
         setClickSeeMore(false);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
       });
   }
   return (

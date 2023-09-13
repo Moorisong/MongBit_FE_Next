@@ -1,12 +1,12 @@
-import axios from 'axios';
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import lottie from 'lottie-web';
 import cx from 'classnames';
 
-import { DOMAIN, DOMAIN_BE_PROD, TYPE_COMMENT, COMMENT_TIME } from '@/constants/constant';
+import { DOMAIN, TYPE_COMMENT, COMMENT_TIME } from '@/constants/constant';
 import { decodeToken, shareToKakaotalk_result, getHeaders } from '@/utils/util';
+import { apiBe } from '@/services';
 
 import styles from './index.module.css';
 import CoupangAdv_1 from '../CoupangAdv_1';
@@ -47,17 +47,11 @@ export default function TestResult(props) {
 
   useEffect(() => {
     const headers = getHeaders();
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/test/comments/${data.testId}/page/${commentIndex[0]}`, { headers })
-      .then((res) => {
-        setData((prev) => ({ ...prev, comment: res.data.commentDTOList }));
-        setCommentLoading(false);
-        setCommentIndex([commentIndex[0] + 1, res.data.hasNextPage]);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
-      });
+    apiBe.get(`/api/v1/test/comments/${data.testId}/page/${commentIndex[0]}`, { headers }).then((res) => {
+      setData((prev) => ({ ...prev, comment: res.data.commentDTOList }));
+      setCommentLoading(false);
+      setCommentIndex([commentIndex[0] + 1, res.data.hasNextPage]);
+    });
   }, [commentChanged]);
 
   useEffect(() => {
@@ -116,38 +110,29 @@ export default function TestResult(props) {
   useEffect(() => {
     const headers = getHeaders();
     const fetchLikeDataLogIned = async () => {
-      try {
-        const [stateResponse, cntResponse] = await Promise.all([
-          axios.get(`${DOMAIN_BE_PROD}/api/v1/test/${props.testId}/${memberId}/like`, { headers }),
-          axios.get(`${DOMAIN_BE_PROD}/api/v1/test/${props.testId}/like/count`, {
-            headers,
-          }),
-        ]);
+      const [stateResponse, cntResponse] = await Promise.all([
+        apiBe.get(`/api/v1/test/${props.testId}/${memberId}/like`, { headers }),
+        apiBe.get(`/api/v1/test/${props.testId}/like/count`, {
+          headers,
+        }),
+      ]);
 
-        setLikeData((prev) => ({
-          ...prev,
-          likeState: stateResponse.data,
-          likeCnt: cntResponse.data,
-        }));
-        // setLikeLoading(false);
-      } catch (err) {
-        alert(err.response.data);
-        router.push('/login');
-      }
+      setLikeData((prev) => ({
+        ...prev,
+        likeState: stateResponse.data,
+        likeCnt: cntResponse.data,
+      }));
+      // setLikeLoading(false);
     };
 
     const fetchLikeDataNoLogined = async () => {
       const headers = getHeaders();
-      axios
-        .get(`${DOMAIN_BE_PROD}/api/v1/test/${props.testId}/like/count`, {
+      apiBe
+        .get(`/api/v1/test/${props.testId}/like/count`, {
           headers,
         })
         .then((res) => {
           setLikeData((prev) => ({ ...prev, likeCnt: res.data }));
-        })
-        .catch((err) => {
-          alert(err.response.data);
-          router.push('/login');
         });
       // setLikeLoading(false);
     };
@@ -161,16 +146,12 @@ export default function TestResult(props) {
 
   useEffect(() => {
     const headers = getHeaders();
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/test/${data.testId}/comments/count`, {
+    apiBe
+      .get(`/api/v1/test/${data.testId}/comments/count`, {
         headers,
       })
       .then((res) => {
         setCommentCnt(res.data);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
       });
   }, [commentChanged]);
 
@@ -209,10 +190,7 @@ export default function TestResult(props) {
         likeState: false,
         likeCnt: prev.likeCnt - 1,
       }));
-      await axios.delete(`${DOMAIN_BE_PROD}/api/v1/test/${props.testId}/${memberId}/like`, { headers }).catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
-      });
+      await apiBe.delete(`/api/v1/test/${props.testId}/${memberId}/like`, { headers });
       setLikeChanged(!likeChanged);
     } else {
       setLikeData((prev) => ({
@@ -220,16 +198,11 @@ export default function TestResult(props) {
         likeState: true,
         likeCnt: prev.likeCnt + 1,
       }));
-      await axios
-        .post(
-          `${DOMAIN_BE_PROD}/api/v1/test/${props.testId}/${memberId}/like`,
-          { testId: props.testId, memberId: memberId },
-          { headers },
-        )
-        .catch((err) => {
-          alert(err.response.data);
-          router.push('/login');
-        });
+      await apiBe.post(
+        `/api/v1/test/${props.testId}/${memberId}/like`,
+        { testId: props.testId, memberId: memberId },
+        { headers },
+      );
       setLikeChanged(!likeChanged);
     }
     setIsSubmittingLike(false);
@@ -237,9 +210,9 @@ export default function TestResult(props) {
 
   async function addComment() {
     const headers = getHeaders();
-    axios
+    apiBe
       .post(
-        `${DOMAIN_BE_PROD}/api/v1/test/comments`,
+        `/api/v1/test/comments`,
         {
           memberId: sessionStorage.getItem('mongBitmemeberId'),
           testId: data.testId,
@@ -250,10 +223,6 @@ export default function TestResult(props) {
       .then((res) => {
         setCommentIndex([0, res.data.hasNextPage]);
         setCommentChanged(!commentChanged);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
       });
     setIsSubmittingComment(false);
   }
@@ -323,22 +292,16 @@ export default function TestResult(props) {
   function clikeSeeMoreBtn() {
     setCommentSeeMoreLoading(true);
     const headers = getHeaders();
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/test/comments/${data.testId}/page/${commentIndex[0]}`, { headers })
-      .then((res) => {
-        let newArr = [...data.comment];
-        res.data.commentDTOList.forEach((d) => {
-          newArr.push(d);
-        });
-        setData((prev) => ({ ...prev, comment: newArr }));
-        setCommentLoading(false);
-        setCommentIndex([commentIndex[0] + 1, res.data.hasNextPage]);
-        setCommentSeeMoreLoading(false);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
+    apiBe.get(`/api/v1/test/comments/${data.testId}/page/${commentIndex[0]}`, { headers }).then((res) => {
+      let newArr = [...data.comment];
+      res.data.commentDTOList.forEach((d) => {
+        newArr.push(d);
       });
+      setData((prev) => ({ ...prev, comment: newArr }));
+      setCommentLoading(false);
+      setCommentIndex([commentIndex[0] + 1, res.data.hasNextPage]);
+      setCommentSeeMoreLoading(false);
+    });
   }
 
   function deleteCommnet(com) {
@@ -347,25 +310,19 @@ export default function TestResult(props) {
       id: com.id,
       memberId: sessionStorage.getItem('mongBitmemeberId'),
     };
-    axios
-      .delete(`${DOMAIN_BE_PROD}/api/v1/test/comments`, { headers, data })
-      .then(() => {
-        setCommentIndex((prev) => [0, prev[1]]);
-        setCommentChanged(!commentChanged);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
-      });
+    apiBe.delete(`/api/v1/test/comments`, { headers, data }).then(() => {
+      setCommentIndex((prev) => [0, prev[1]]);
+      setCommentChanged(!commentChanged);
+    });
   }
   function clickLinkCopy() {
     const headers = getHeaders();
     const memeberId = sessionStorage.getItem('mongBitmemeberId') || 'anonymous';
 
     if (!decodeToken().role || decodeToken().role === 'ROLE_USER') {
-      axios
+      apiBe
         .post(
-          `${DOMAIN_BE_PROD}/api/v1/tests/share`,
+          `/api/v1/tests/share`,
           {
             testId: data.testId,
             memberId: memeberId,
@@ -376,10 +333,6 @@ export default function TestResult(props) {
         .then((res) => {
           setCommentIndex([0, res.data.hasNextPage]);
           setCommentChanged(!commentChanged);
-        })
-        .catch((err) => {
-          alert(err.response.data);
-          router.push('/login');
         });
     }
 

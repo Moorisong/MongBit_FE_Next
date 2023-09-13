@@ -2,14 +2,14 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import axios from 'axios';
 import lottie from 'lottie-web';
 import { useRecoilState } from 'recoil';
 
 import { showCoupangClickWrap } from '/atom.js';
 
 import { getHeaders, setUTMParameter, addDailyVisitCount } from '@/utils/util';
-import { TITLE_WITH_CONTENT, TYPE_LATEST_MAIN, DOMAIN_BE_PROD } from '@/constants/constant';
+import { TITLE_WITH_CONTENT, TYPE_LATEST_MAIN } from '@/constants/constant';
+import { apiBe } from '@/services';
 
 import styles from './index.module.css';
 import animationData_1 from './loading_1.json';
@@ -22,7 +22,7 @@ export default function main() {
   // Test 삭제
   // useEffect(()=>{
   //   const headers = getHeaders()
-  //   axios.delete(`${DOMAIN_BE_PROD}/api/v1/tests/test/649e4baa11bc25457a51f534`, {headers})
+  //   apiBe.delete(`/api/v1/tests/test/649e4baa11bc25457a51f534`, {headers})
   //   .then((res)=>{
   //     console.log('r--> ', res)
   //   })
@@ -61,18 +61,12 @@ export default function main() {
     sessionStorage.getItem('mbTest') === '' && sessionStorage.removeItem('mbTest');
 
     const headers = getHeaders();
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/tests/0/6`, { headers })
-      .then((res) => {
-        setLatestTestData((prev) => ({
-          ...prev,
-          testArr: res.data.testCoverDTOList,
-        }));
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
-      });
+    apiBe.get(`/api/v1/tests/0/6`, { headers }).then((res) => {
+      setLatestTestData((prev) => ({
+        ...prev,
+        testArr: res.data.testCoverDTOList,
+      }));
+    });
   }, []);
 
   return (

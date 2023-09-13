@@ -1,14 +1,14 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import axios from 'axios';
 import cx from 'classnames';
 import { useRecoilState } from 'recoil';
 
 import { showCoupangClickWrap } from '/atom.js';
 
-import { COUPANG_VISIT, DOMAIN_BE_PROD } from '@/constants/constant';
+import { COUPANG_VISIT } from '@/constants/constant';
 import { decodeToken, getHeaders, addDailyVisitCount } from '@/utils/util';
+import { apiBe } from '@/services';
 
 import CoupangAdv_3 from '@/components/CoupangAdv_3';
 import styles from './index.module.css';
@@ -57,24 +57,18 @@ export default function Result() {
     function getResult(url) {
       const headers = getHeaders();
 
-      axios
-        .post(url, score, { headers })
-        .then((res) => {
-          const contentArray = res.data.content.split('<br>');
+      apiBe.post(url, score, { headers }).then((res) => {
+        const contentArray = res.data.content.split('<br>');
 
-          SetResultData((prev) => ({
-            ...prev,
-            titleStr: res.data.title,
-            contentStrArr: contentArray,
-            imgUri: res.data.imageUrl,
-            testResultId: res.data.id,
-          }));
-          sessionStorage.setItem('mbResultId', res.data.id);
-        })
-        .catch((err) => {
-          alert(err.response.data);
-          router.push('/login');
-        });
+        SetResultData((prev) => ({
+          ...prev,
+          titleStr: res.data.title,
+          contentStrArr: contentArray,
+          imgUri: res.data.imageUrl,
+          testResultId: res.data.id,
+        }));
+        sessionStorage.setItem('mbResultId', res.data.id);
+      });
     }
 
     window.addEventListener('popstate', (evt) => {
@@ -83,25 +77,21 @@ export default function Result() {
 
     const headers = getHeaders();
 
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/test/${params.testId}/like/count`, {
+    apiBe
+      .get(`/api/v1/test/${params.testId}/like/count`, {
         headers,
       })
       .then((res) => {
         SetResultData((prev) => ({ ...prev, likeCnt: res.data }));
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
       });
 
     const score = JSON.parse(sessionStorage.getItem('mbScore'));
 
     // 토큰이 유효한지 검증 후에 회원/비회원 결과 보기 API 호출 진행
     if (decodeToken().state) {
-      getResult(`${DOMAIN_BE_PROD}/api/v1/member-test-result/${params.testId}/${memberId}`);
+      getResult(`/api/v1/member-test-result/${params.testId}/${memberId}`);
     } else {
-      getResult(`${DOMAIN_BE_PROD}/api/v1/member-test-result/${params.testId}`);
+      getResult(`/api/v1/member-test-result/${params.testId}`);
     }
 
     const timer = setTimeout(() => {
