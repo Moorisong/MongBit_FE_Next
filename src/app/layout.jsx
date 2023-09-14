@@ -7,8 +7,6 @@ import GlobalStateRoot from './GlobalStateRoot';
 const inter = 'Noto Sans';
 
 export const metadata = {
-  title: '몽빗 | MBTI 심리테스트 공작소',
-  description: 'MBTI 심리테스트 공작소',
   keywords: [
     'MBTI',
     'MBTI 연애',
@@ -45,6 +43,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        {/* For Naver SEO(네이버 메인페이지 노출을 위한 디스크립션 정의) */}
+        <meta name="description" content="조심스런 우리의 과감한 커뮤니케이션, MBTI 심리테스트 사이트 몽빗에 어서와!" />
+
+        {/* Naver 웹마스터 등록 */}
+        <meta name="naver-site-verification" content="3080d0760387b27d34081c736da49231b2f2112b" />
+
         <script
           async
           src="https://t1.kakaocdn.net/kakao_js_sdk/2.2.0/kakao.min.js"
@@ -66,9 +70,6 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
-
-        {/* Naver 웹마스터 등록 */}
-        <meta name="naver-site-verification" content="3080d0760387b27d34081c736da49231b2f2112b" />
       </head>
       <body className={inter.className}>
         <GlobalStateRoot>
