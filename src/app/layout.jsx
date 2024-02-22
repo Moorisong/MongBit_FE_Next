@@ -1,7 +1,7 @@
 import './globals.css';
 import './font.css';
 
-import NavigationBar from '@/components/NavigationBar';
+import MyHeader from '@/components/base/MyHeader';
 import GlobalStateRoot from './GlobalStateRoot';
 
 const inter = 'Noto Sans';
@@ -73,7 +73,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={inter.className}>
         <GlobalStateRoot>
-          <NavigationBar />
+          <MyHeader />
           {children}
         </GlobalStateRoot>
       </body>

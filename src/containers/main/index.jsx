@@ -11,12 +11,11 @@ import { getHeaders, setUTMParameter, addDailyVisitCount } from '@/utils/util';
 import { TITLE_WITH_CONTENT, TYPE_LATEST_MAIN } from '@/constants/constant';
 import { apiBe } from '@/services';
 
-import styles from './index.module.css';
 import animationData_1 from './loading_1.json';
-import Footer from '@/components/Footer';
-import { TitleWithText } from '@/components/Titles';
-import { TestCard } from '@/components/TestCard';
-import { GoRandomStartBtn } from '@/components/ButtonSets';
+// import Header from '@/components/base/header';
+// import { TitleWithText } from '@/components/Titles';
+// import { TestCard } from '@/components/TestCard';
+// import { GoRandomStartBtn } from '@/components/ButtonSets';
 
 export default function main() {
   // Test 삭제
@@ -69,46 +68,48 @@ export default function main() {
     });
   }, []);
 
-  return (
-    <div className={styles.containerWrap}>
-      <TitleWithText
-        title="👀 랜덤 심리테스트"
-        content="고민할 틈은 안줄테니 일단 플레이하고 생각하기"
-        type_1={TITLE_WITH_CONTENT}
-      />
+  return <></>;
 
-      <GoRandomStartBtn url="/test/random" str="아무거나 시작" />
-      <div className={styles.testWrap}>
-        <TitleWithText title="🌟 심테의 근본, MBTI 검사" />
-        <TestCard
-          thumbnailStr="신속하고 아마도 정확한 퀵 MBTI!"
-          testId="649a7bccaa04db61384808c5"
-          thumbnailUri="https://i.ibb.co/GJ08BC3/quick-mbti-cover.png"
-        />
+  // return (
+  //   <div className={styles.containerWrap}>
+  //     <TitleWithText
+  //       title="👀 랜덤 심리테스트"
+  //       content="고민할 틈은 안줄테니 일단 플레이하고 생각하기"
+  //       type_1={TITLE_WITH_CONTENT}
+  //     />
 
-        <div className={styles.miniTestWrap}>
-          <TitleWithText title="💙 최신 심테" />
-          <div className={styles.latesCardWrap}>
-            {latestTestData.testArr.length > 0 ? (
-              latestTestData.testArr.map((t, i) => (
-                <TestCard
-                  key={i}
-                  thumbnailStr={t.title}
-                  type={TYPE_LATEST_MAIN}
-                  testId={t.id}
-                  thumbnailUri={t.imageUrl}
-                  playCnt={t.playCount}
-                />
-              ))
-            ) : (
-              <div className={styles.loadImgWrap_1}>
-                <div ref={containerRef_1}></div>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-      <Footer />
-    </div>
-  );
+  //     <GoRandomStartBtn url="/test/random" str="아무거나 시작" />
+  //     <div className={styles.testWrap}>
+  //       <TitleWithText title="🌟 심테의 근본, MBTI 검사" />
+  //       <TestCard
+  //         thumbnailStr="신속하고 아마도 정확한 퀵 MBTI!"
+  //         testId="649a7bccaa04db61384808c5"
+  //         thumbnailUri="https://i.ibb.co/GJ08BC3/quick-mbti-cover.png"
+  //       />
+
+  //       <div className={styles.miniTestWrap}>
+  //         <TitleWithText title="💙 최신 심테" />
+  //         <div className={styles.latesCardWrap}>
+  //           {latestTestData.testArr.length > 0 ? (
+  //             latestTestData.testArr.map((t, i) => (
+  //               <TestCard
+  //                 key={i}
+  //                 thumbnailStr={t.title}
+  //                 type={TYPE_LATEST_MAIN}
+  //                 testId={t.id}
+  //                 thumbnailUri={t.imageUrl}
+  //                 playCnt={t.playCount}
+  //               />
+  //             ))
+  //           ) : (
+  //             <div className={styles.loadImgWrap_1}>
+  //               <div ref={containerRef_1}></div>
+  //             </div>
+  //           )}
+  //         </div>
+  //       </div>
+  //     </div>
+  //     <Footer />
+  //   </div>
+  // );
 }
