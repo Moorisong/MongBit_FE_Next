@@ -1,21 +1,34 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
-import { useRouter } from 'next/navigation';
 import lottie from 'lottie-web';
-import { useRecoilState } from 'recoil';
+import styled from 'styled-components';
 
-import { showCoupangClickWrap } from '/atom.js';
+import { CONST_MAIN_PAGE, TEST_IMAGE_URL } from '@/constants/constant';
 
-import { getHeaders, setUTMParameter, addDailyVisitCount } from '@/utils/util';
-import { TITLE_WITH_CONTENT, TYPE_LATEST_MAIN } from '@/constants/constant';
-import { apiBe } from '@/services';
+import { TitleAndText, TitleAndTest } from '@/components/base/TestContent';
+import { YellowButton } from '@/components/ui/button/Button';
+import { WhiteWrapWithFlex } from '@/components/ui/wrap/Wrap';
 
-import animationData_1 from './loading_1.json';
-// import Header from '@/components/base/header';
-// import { TitleWithText } from '@/components/Titles';
-// import { TestCard } from '@/components/TestCard';
-// import { GoRandomStartBtn } from '@/components/ButtonSets';
+// Element
+const RandomStartYellowButton = styled(YellowButton)`
+  margin: 1rem 0;
+  border-radius: 1rem;
+  width: 95%;
+  height: 2.5rem;
+`;
+
+// Detail
+const mainTitleText = {
+  titleText: CONST_MAIN_PAGE.MAIN_TITLE_TEXT.TITLE,
+  contentText: CONST_MAIN_PAGE.MAIN_TITLE_TEXT.CONTENT,
+};
+
+const mainTestDetail = {
+  titleText: CONST_MAIN_PAGE.TITLE_TEXT.MAIN_TEST,
+  imageUrl: TEST_IMAGE_URL.MAIN_TEST,
+};
+
+const wrapStyle = { flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }; // 메인페이지 Wrap element
 
 export default function main() {
   // Test 삭제
@@ -27,89 +40,11 @@ export default function main() {
   //   })
   // }, [])
 
-  const router = useRouter();
-  const containerRef_1 = useRef(null);
-  const [latestTestData, setLatestTestData] = useState({
-    testArr: [],
-  });
-  const [, setGlobalCoupangState] = useRecoilState(showCoupangClickWrap);
-
-  useEffect(() => {
-    addDailyVisitCount();
-  }, []);
-
-  useEffect(() => {
-    const anim = lottie.loadAnimation({
-      container: containerRef_1.current,
-      renderer: 'svg',
-      animationData: animationData_1,
-      loop: true,
-      autoplay: true,
-    });
-
-    return () => {
-      anim.destroy();
-    };
-  }, []);
-
-  useEffect(() => {
-    setUTMParameter(router);
-    setGlobalCoupangState(false);
-
-    sessionStorage.getItem('mbResult') === '' && sessionStorage.removeItem('mbResult');
-    sessionStorage.getItem('mbTest') === '' && sessionStorage.removeItem('mbTest');
-
-    const headers = getHeaders();
-    apiBe.get(`/api/v1/tests/0/6`, { headers }).then((res) => {
-      setLatestTestData((prev) => ({
-        ...prev,
-        testArr: res.data.testCoverDTOList,
-      }));
-    });
-  }, []);
-
-  return <></>;
-
-  // return (
-  //   <div className={styles.containerWrap}>
-  //     <TitleWithText
-  //       title="👀 랜덤 심리테스트"
-  //       content="고민할 틈은 안줄테니 일단 플레이하고 생각하기"
-  //       type_1={TITLE_WITH_CONTENT}
-  //     />
-
-  //     <GoRandomStartBtn url="/test/random" str="아무거나 시작" />
-  //     <div className={styles.testWrap}>
-  //       <TitleWithText title="🌟 심테의 근본, MBTI 검사" />
-  //       <TestCard
-  //         thumbnailStr="신속하고 아마도 정확한 퀵 MBTI!"
-  //         testId="649a7bccaa04db61384808c5"
-  //         thumbnailUri="https://i.ibb.co/GJ08BC3/quick-mbti-cover.png"
-  //       />
-
-  //       <div className={styles.miniTestWrap}>
-  //         <TitleWithText title="💙 최신 심테" />
-  //         <div className={styles.latesCardWrap}>
-  //           {latestTestData.testArr.length > 0 ? (
-  //             latestTestData.testArr.map((t, i) => (
-  //               <TestCard
-  //                 key={i}
-  //                 thumbnailStr={t.title}
-  //                 type={TYPE_LATEST_MAIN}
-  //                 testId={t.id}
-  //                 thumbnailUri={t.imageUrl}
-  //                 playCnt={t.playCount}
-  //               />
-  //             ))
-  //           ) : (
-  //             <div className={styles.loadImgWrap_1}>
-  //               <div ref={containerRef_1}></div>
-  //             </div>
-  //           )}
-  //         </div>
-  //       </div>
-  //     </div>
-  //     <Footer />
-  //   </div>
-  // );
+  return (
+    <WhiteWrapWithFlex style={wrapStyle}>
+      <TitleAndText text={mainTitleText} />
+      <RandomStartYellowButton>{CONST_MAIN_PAGE.RANDOM_START_BUTTON_TEXT}</RandomStartYellowButton>
+      <TitleAndTest style={mainTestDetail} />
+    </WhiteWrapWithFlex>
+  );
 }

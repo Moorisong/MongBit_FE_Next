@@ -36,3 +36,20 @@ export const OG_STANDARD_IMAGE = 'https://i.ibb.co/mvVsyTr/Frame-17.png';
 export const OG_RANDOM_IMAGE = 'https://i.ibb.co/N9ntw7s/og-random.png';
 export const OG_TEST_RESULT = 'https://i.ibb.co/tQWt0dF/image.png';
 export const OG_TEST_GO = 'https://i.ibb.co/P4KyxjF/image.png'; // 이건 아직 사용하는 곳 없음
+
+// refacor_ksh
+export const CONST_MAIN_PAGE = {
+  MAIN_TITLE_TEXT: {
+    TITLE: '👀 랜덤 심리테스트',
+    CONTENT: '고민할 틈은 안줄테니 일단 플레이하고 생각하기',
+  },
+  RANDOM_START_BUTTON_TEXT: '아무거나 시작 >',
+  TITLE_TEXT: {
+    MAIN_TEST: '🌟 심테의 근본, MBTI 검사',
+    LATEST_TEST: '💙 최신 심테',
+  },
+};
+
+export const TEST_IMAGE_URL = {
+  MAIN_TEST: 'https://i.ibb.co/GJ08BC3/quick-mbti-cover.png',
+};

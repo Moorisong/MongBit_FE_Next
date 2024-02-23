@@ -1,6 +1,7 @@
 'use client';
-import Button from '@/components/ui/button/Button';
-import styled from 'styled-components';
+
+import { HeaderButton } from '@/components/ui/button/Button';
+import { WhiteWrapWithFlex } from '@/components/ui/wrap/Wrap';
 
 const buttonArray = [
   {
@@ -23,25 +24,15 @@ const buttonArray = [
   },
 ];
 
-const Wrap = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  width: 420px;
-  background-color: white;
-
-  @media (max-width: 375px) {
-    width: 375px;
-  }
-`;
+const wrapStyle = { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' };
+const combinedStyle = { ...wrapStyle, paddingTop: '1.1rem;' };
 
 export default function MyHeader() {
   return (
-    <Wrap>
+    <WhiteWrapWithFlex style={combinedStyle}>
       {buttonArray.map((e, i) => (
-        <Button key={i + e.name} style={e} />
+        <HeaderButton key={i + e.name} style={e} />
       ))}
-    </Wrap>
+    </WhiteWrapWithFlex>
   );
 }
