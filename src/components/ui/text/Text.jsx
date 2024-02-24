@@ -1,20 +1,47 @@
 import styled from 'styled-components';
 
+import { CONST_FONT } from '@/constants/constant';
+
 const Title = styled.p`
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 0.3rem;
+  font-size: ${CONST_FONT.SIZE.SECTION_TITLE};
+  font-weight: ${CONST_FONT.BOLD_SCALE.FIRST};
+  margin: 0 0 0 1.5rem;
 `;
 
-const Content = styled.p`
-  color: #8f8f8f;
-  font-size: 0.9rem;
+const TitleContent = styled.p`
+  color: ${CONST_FONT.COLOR.GRAY_1};
+  font-size: ${CONST_FONT.SIZE.BIG_TEST_BLACK_SQUARE_TEXT};
+`;
+
+const SmallTestContent = styled.p`
+  color: ${CONST_FONT.COLOR.GRAY_1};
+  width: 150px;
+  padding-left: 3px;
+  font-size: ${CONST_FONT.SIZE.SMALL_TEST_SET_TEXT};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const IconText = styled.p`
+  font-size: ${(props) => props.style.fontSize};
+  color: ${CONST_FONT.COLOR.GRAY_1};
+  display: inline-block;
+  margin-left: 3px;
 `;
 
 export function TitleText({ text }) {
   return <Title>{text}</Title>;
 }
 
-export function ContentText({ text }) {
-  return <Content>{text}</Content>;
+export function BigTestContentText({ text }) {
+  return <TitleContent>{text}</TitleContent>;
+}
+
+export function SmallTestContentText({ text }) {
+  return <SmallTestContent>{text}</SmallTestContent>;
+}
+
+export function TestIconText({ style, text }) {
+  return <IconText style={style}>{text}</IconText>;
 }

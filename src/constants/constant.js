@@ -37,7 +37,54 @@ export const OG_RANDOM_IMAGE = 'https://i.ibb.co/N9ntw7s/og-random.png';
 export const OG_TEST_RESULT = 'https://i.ibb.co/tQWt0dF/image.png';
 export const OG_TEST_GO = 'https://i.ibb.co/P4KyxjF/image.png'; // 이건 아직 사용하는 곳 없음
 
-// refacor_ksh
+// refacor_ksh -----------------------------------------------------
+// 화면, 폰트
+export const MEDIAQUERY = {
+  WIDTH_420: '420px',
+  WIDTH_345: '345px',
+  WIDTH_375: '375px',
+  WIDTH_370: '370px',
+};
+
+export const CONST_FONT = {
+  COLOR: {
+    GRAY_1: '#8f8f8f',
+    WHITE: 'white',
+    BLACK: 'black',
+  },
+  SIZE: {
+    SECTION_TITLE: '1.2rem',
+    BIG_TEST_BLACK_SQUARE_TEXT: '0.9rem',
+    SMALL_TEST_SET_TEXT: '0.8rem',
+  },
+  BOLD_SCALE: {
+    FIRST: '700',
+  },
+};
+
+// UI 컴포넌트 별
+export const TEST_ICON = {
+  URL: {
+    PLAY_COUNT: '/images/testButton/playCnt.svg',
+  },
+  SIZE: {
+    WIDTH: '15px',
+    HEIGHT: '15px',
+  },
+};
+
+export const YELLOW_BUTTON = {
+  BACKGROUND_COLOR: '#ffc52f',
+  TRANSITION: 'background-color 0.3s ease-in-out',
+  FONT_COLOR: 'white',
+};
+
+export const TEST_IMAGE_URL = {
+  MAIN_TEST: 'https://i.ibb.co/GJ08BC3/quick-mbti-cover.png',
+};
+
+
+// 페이지 별
 export const CONST_MAIN_PAGE = {
   MAIN_TITLE_TEXT: {
     TITLE: '👀 랜덤 심리테스트',
@@ -46,10 +93,7 @@ export const CONST_MAIN_PAGE = {
   RANDOM_START_BUTTON_TEXT: '아무거나 시작 >',
   TITLE_TEXT: {
     MAIN_TEST: '🌟 심테의 근본, MBTI 검사',
+    MAIN_TEST_SQUARE: '신속하고 아마도 정확한 퀵 MBTI!',
     LATEST_TEST: '💙 최신 심테',
   },
-};
-
-export const TEST_IMAGE_URL = {
-  MAIN_TEST: 'https://i.ibb.co/GJ08BC3/quick-mbti-cover.png',
 };

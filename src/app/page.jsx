@@ -3,6 +3,13 @@ import Main from '@/containers/main';
 
 import sitemap from './sitemap';
 
+async function getData() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BE_URL_PROD}/api/v1/tests/0/6`);
+
+  if (!res.ok) throw new Error('Failed to fetch data');
+  return res.json();
+}
+
 export async function generateMetadata() {
   const url = `${DOMAIN}`;
   const title = '몽빗 | MBTI 심리테스트 공작소';
@@ -32,6 +39,7 @@ export async function generateMetadata() {
   };
 }
 
-export default function Home() {
-  return <Main />;
+export default async function Home() {
+  const data = await getData();
+  return <Main data={data} />;
 }
