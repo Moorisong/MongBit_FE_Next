@@ -12,6 +12,7 @@ const TestImageBig = styled.img`
   height: 240px;
   border-radius: 1rem;
   margin: 0.5rem 0;
+  cursor: pointer;
 
   @media (max-width: ${MEDIAQUERY.WIDTH_375}) {
     width: ${MEDIAQUERY.WIDTH_345};

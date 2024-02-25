@@ -12,6 +12,7 @@ const TestTitleBlackSquare = styled.div`
   bottom: 1.5rem;
   display: flex;
   align-items: center;
+  cursor: pointer;
   @media (max-width: ${MEDIAQUERY.WIDTH_375}) {
     width: ${MEDIAQUERY.WIDTH_345};
   }

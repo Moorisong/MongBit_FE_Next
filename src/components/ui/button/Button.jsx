@@ -17,6 +17,7 @@ const HeaderBtn = styled.button`
 const ImageIcon = styled.img`
   width: ${TEST_ICON.SIZE.WIDTH};
   height: ${TEST_ICON.SIZE.HEIGHT};
+  cursor: pointer;
 `;
 
 // export

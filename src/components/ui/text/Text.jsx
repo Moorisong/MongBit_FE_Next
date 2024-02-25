@@ -21,6 +21,7 @@ const SmallTestContent = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: pointer;
 `;
 
 const IconText = styled.p`
@@ -28,6 +29,7 @@ const IconText = styled.p`
   color: ${CONST_FONT.COLOR.GRAY_1};
   display: inline-block;
   margin-left: 3px;
+  cursor: pointer;
 `;
 
 export function TitleText({ text }) {
