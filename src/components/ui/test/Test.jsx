@@ -67,7 +67,7 @@ export function TestVersionBig({ imageUrl, squareText }) {
 }
 
 export function TestVersionSmallForSeveral({ testData }) {
-  const testIconTextStyle = { fontSize: CONST_FONT.SIZE.SMALL_TEST_SET_TEXT };
+  const testIconTextStyle = { fontSize: CONST_FONT.SIZE.FONT_SIZE_SMALL_1 };
   return (
     <>
       <TitleText text={CONST_MAIN_PAGE.TITLE_TEXT.LATEST_TEST} />

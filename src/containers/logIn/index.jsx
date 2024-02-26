@@ -4,8 +4,7 @@ import { useEffect } from 'react';
 import { addDailyVisitCount } from '@/utils/util';
 
 import styles from './index.module.css';
-import Footer from '../../components/Footer';
-import { DOMAIN, TYPE_LOGIN } from '../../constants/constant';
+import { DOMAIN } from '../../constants/constant';
 
 export default function Login() {
   // console.log(process.env.NEXT_PUBLIC_FE_URL);
@@ -45,7 +44,6 @@ export default function Login() {
           <p>개인정보처리방침</p>
         </span>
       </div>
-      <Footer type={TYPE_LOGIN} />
     </div>
   );
 }

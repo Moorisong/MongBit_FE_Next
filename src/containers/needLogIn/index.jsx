@@ -6,7 +6,6 @@ import { addDailyVisitCount } from '@/utils/util';
 import { DOMAIN } from '@/constants/constant';
 
 import styles from './index.module.css';
-import Footer from '@/components/Footer';
 
 export default function NeedLogIn() {
   const router = useRouter();
@@ -38,9 +37,7 @@ export default function NeedLogIn() {
           }}
         />
       </div>
-      <div className={`${styles.bgWhite} ${styles.footerWrap}`}>
-        <Footer />
-      </div>
+      <div className={`${styles.bgWhite} ${styles.footerWrap}`}></div>
     </div>
   );
 }

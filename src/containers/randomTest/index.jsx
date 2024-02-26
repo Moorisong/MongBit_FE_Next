@@ -7,7 +7,6 @@ import { apiBe } from '@/services';
 
 import animationData_1 from './loading_2.json';
 import TestPreview from '../../components/TestPreview';
-import Footer from '../../components/Footer';
 import styles from './index.module.css';
 
 export default function RandomTest() {
@@ -60,7 +59,6 @@ export default function RandomTest() {
           <div ref={containerRef_1}></div>
         </div>
       )}
-      <Footer />
     </div>
   );
 }

@@ -3,21 +3,21 @@ import styled from 'styled-components';
 import { CONST_FONT } from '@/constants/constant';
 
 const Title = styled.p`
-  font-size: ${CONST_FONT.SIZE.SECTION_TITLE};
+  font-size: ${CONST_FONT.SIZE.FONT_SIZE_BIG};
   font-weight: ${CONST_FONT.BOLD_SCALE.FIRST};
   margin: 0 0 0 1.5rem;
 `;
 
 const TitleContent = styled.p`
   color: ${CONST_FONT.COLOR.GRAY_1};
-  font-size: ${CONST_FONT.SIZE.BIG_TEST_BLACK_SQUARE_TEXT};
+  font-size: ${CONST_FONT.SIZE.FONT_SIZE_REGULAR};
 `;
 
 const SmallTestContent = styled.p`
   color: ${CONST_FONT.COLOR.GRAY_1};
   width: 150px;
   padding-left: 3px;
-  font-size: ${CONST_FONT.SIZE.SMALL_TEST_SET_TEXT};
+  font-size: ${CONST_FONT.SIZE.FONT_SIZE_SMALL_1};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

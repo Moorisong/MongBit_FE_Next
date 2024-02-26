@@ -2,6 +2,7 @@ import './globals.css';
 import './font.css';
 
 import MyHeader from '@/components/base/MyHeader';
+import MyFooter from '@/components/base/MyFooter';
 import GlobalStateRoot from './GlobalStateRoot';
 
 const inter = 'Noto Sans';
@@ -75,6 +76,7 @@ export default function RootLayout({ children }) {
         <GlobalStateRoot>
           <MyHeader />
           {children}
+          <MyFooter />
         </GlobalStateRoot>
       </body>
     </html>

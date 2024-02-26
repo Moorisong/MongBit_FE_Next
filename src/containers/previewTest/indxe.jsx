@@ -7,7 +7,6 @@ import { getHeaders, addDailyVisitCount } from '@/utils/util';
 import { apiBe } from '@/services';
 
 import animationData from './loadingIcon.json';
-import Footer from '../../components/Footer';
 import TestPreview from '../../components/TestPreview';
 import styles from './index.module.css';
 
@@ -56,9 +55,7 @@ export default function PreviewTest() {
         </div>
       )}
 
-      <div className={`${styles.bgWhite} ${styles.footerWrap}`}>
-        <Footer />
-      </div>
+      <div className={`${styles.bgWhite} ${styles.footerWrap}`}></div>
     </div>
   );
 }

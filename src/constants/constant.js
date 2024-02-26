@@ -49,13 +49,15 @@ export const MEDIAQUERY = {
 export const CONST_FONT = {
   COLOR: {
     GRAY_1: '#8f8f8f',
+    GRAY_2: '#979797',
     WHITE: 'white',
     BLACK: 'black',
   },
   SIZE: {
-    SECTION_TITLE: '1.2rem',
-    BIG_TEST_BLACK_SQUARE_TEXT: '0.9rem',
-    SMALL_TEST_SET_TEXT: '0.8rem',
+    FONT_SIZE_BIG: '1.2rem',
+    FONT_SIZE_REGULAR: '0.9rem',
+    FONT_SIZE_SMALL_1: '0.8rem',
+    FONT_SIZE_SMALL_2: '0.7rem',
   },
   BOLD_SCALE: {
     FIRST: '700',
@@ -106,11 +108,13 @@ export const CONST_HEADER = {
 };
 
 export const CONST_FOOTER = {
-  DESCRIPTION: ['몽뭉이 크루   |   서울 관악구 신림역 스터디존에서 만듦 ', ' 채용문의   |   채용되고 싶다'],
+  DESCRIPTION: [
+    '몽뭉이 크루 \u00a0\u00a0 | \u00a0\u00a0  서울 관악구 신림역 스터디존에서 만듦',
+    ' 채용문의 \u00a0\u00a0 | \u00a0\u00a0 채용되고 싶다',
+  ],
   POLICY: ['이용약관', '개인정보처리방침'],
+  PAGE_URL: ['/terms', '/policy'],
   COPYRIGHT: '© 2023 MongMoongCrew. All rights reserved',
-  BUTTON_IMG_URL: {
-    GIT_HUB: '/images/footer/gitHub.svg',
-    INSTAGRAM: '/images.footer/instagram.png',
-  },
+  BUTTON_IMG_URL: ['/images/footer/gitHub.svg', '/images/footer/instagram.png'],
+  LINK_URL: ['https://github.com/Moorisong/MongBit_FE_Next', 'https://www.instagram.com/mongbit_'],
 };

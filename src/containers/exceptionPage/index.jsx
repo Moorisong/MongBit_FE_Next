@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { addDailyVisitCount } from '@/utils/util';
 
 import styles from './index.module.css';
-import Footer from '@/components/Footer';
 
 export default function ExceptionPage() {
   const router = useRouter();
@@ -33,9 +32,7 @@ export default function ExceptionPage() {
         <p className={styles.logoText}>© 2023 MongMoongCrew. All rights reserved</p>
       </div>
 
-      <div className={`${styles.bgWhite} ${styles.footerWrap}`}>
-        <Footer />
-      </div>
+      <div className={`${styles.bgWhite} ${styles.footerWrap}`}></div>
     </div>
   );
 }

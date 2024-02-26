@@ -1,4 +1,4 @@
-export const termsString = `
+export const TERM_STRING = `
 제 1 장 총 칙
 
 제 1 조 (목적)

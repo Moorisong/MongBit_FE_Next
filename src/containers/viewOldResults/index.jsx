@@ -7,7 +7,6 @@ import { getHeaders, setUTMParameter, addDailyVisitCount } from '@/utils/util';
 import { apiBe } from '@/services';
 
 import styles from './index.module.css';
-import Footer from '@/components/Footer';
 import TestResult from '@/components/TestResult';
 import animationData from './loading_1.json';
 
@@ -66,9 +65,7 @@ export default function ViewOldResult() {
         />
       )}
 
-      <div className={`${styles.bgWhite} ${styles.footerWrap}`}>
-        <Footer />
-      </div>
+      <div className={`${styles.bgWhite} ${styles.footerWrap}`}></div>
     </div>
   );
 }

@@ -17,5 +17,6 @@ const WhiteWrapElement = styled.div`
 `;
 
 export function WhiteWrapWithFlex({ style, children }) {
+  if (!style) style = {};
   return <WhiteWrapElement style={style}>{children}</WhiteWrapElement>;
 }

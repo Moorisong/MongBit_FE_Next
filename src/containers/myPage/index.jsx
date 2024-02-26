@@ -9,7 +9,6 @@ import { apiBe } from '@/services';
 
 import animationData_1 from './loading_2.json';
 import animationData_2 from './seeMoreIcon.json';
-import Footer from '../../components/Footer';
 import styles from './index.module.css';
 import { TestSetMyPage } from '../../components/TestSets';
 import { TitleWithText } from '../../components/Titles';
@@ -203,9 +202,7 @@ export default function MyPage() {
             </div>
           )}
 
-          <div className={styles.footerWrap}>
-            <Footer type={TYPE_MYPAGE} />
-          </div>
+          <div className={styles.footerWrap}></div>
         </div>
       )}
     </>

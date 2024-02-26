@@ -20,7 +20,7 @@ const TestTitleBlackSquare = styled.div`
 
 const TestTitleBlackSquareText = styled.p`
   color: ${CONST_FONT.COLOR.WHITE};
-  font-size: ${CONST_FONT.SIZE.SMALL_TEST_SET_TEXT};
+  font-size: ${CONST_FONT.SIZE.FONT_SIZE_SMALL_1};
   white-space: noWrap;
   overflow: hidden;
   text-overflow: ellipsis;

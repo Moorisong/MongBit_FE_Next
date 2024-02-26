@@ -4,13 +4,11 @@ import cx from 'classnames';
 import { useRouter, useParams } from 'next/navigation';
 import lottie from 'lottie-web';
 
-import { TYPE_MYPAGE } from '@/constants/constant';
 import { getHeaders, setUTMParameter, addDailyVisitCount } from '@/utils/util';
 import { apiBe } from '@/services';
 
 import styles from './index.module.css';
 import QuestionAndAnswer from '@/components/QuestionAndAnswer';
-import Footer from '../../components/Footer';
 import animationData_1 from './loading_1.json';
 
 export default function TestOn() {
@@ -152,9 +150,7 @@ export default function TestOn() {
           <div ref={containerRef_1}></div>
         </div>
       )}
-      <div className={`${styles.bgWhite} ${styles.footerWrap}`}>
-        <Footer type={TYPE_MYPAGE} />
-      </div>
+      <div className={`${styles.bgWhite} ${styles.footerWrap}`}></div>
     </div>
   );
 }

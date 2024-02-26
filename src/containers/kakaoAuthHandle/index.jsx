@@ -8,7 +8,6 @@ import { TOKEN_NAME, USER_INFO } from '@/constants/constant';
 import { apiBe } from '@/services';
 
 import animationData_1 from './loading_1.json';
-import Footer from '@/components/Footer';
 import styles from './index.module.css';
 
 export default function KakaoAuthHandle() {
@@ -72,9 +71,7 @@ export default function KakaoAuthHandle() {
       <div className={styles.content}>
         <div ref={containerRef_1}></div>
       </div>
-      <div className={`${styles.bgWhite} ${styles.footerWrap}`}>
-        <Footer />
-      </div>
+      <div className={`${styles.bgWhite} ${styles.footerWrap}`}></div>
     </div>
   );
 }

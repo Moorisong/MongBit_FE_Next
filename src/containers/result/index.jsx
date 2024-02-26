@@ -12,7 +12,6 @@ import { apiBe } from '@/services';
 
 import CoupangAdv_3 from '@/components/CoupangAdv_3';
 import styles from './index.module.css';
-import Footer from '@/components/Footer';
 import TestResult from '@/components/TestResult';
 import ResultLoading from '@/components/ResultLoading';
 
@@ -229,11 +228,7 @@ export default function Result() {
         />
       </div>
 
-      {loading && (
-        <div className={`${styles.bgWhite} ${styles.footerWrap}`}>
-          <Footer />
-        </div>
-      )}
+      {loading && <div className={`${styles.bgWhite} ${styles.footerWrap}`}></div>}
     </div>
   );
 }
