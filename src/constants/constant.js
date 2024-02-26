@@ -83,9 +83,13 @@ export const TEST_IMAGE_URL = {
   MAIN_TEST: 'https://i.ibb.co/GJ08BC3/quick-mbti-cover.png',
 };
 
-
 // 페이지 별
 export const CONST_MAIN_PAGE = {
+  HEADER_BUTTON_IMAGE_URL: {
+    SIDE_MENU_ICON: '/images/header/side-menu.svg',
+    MAIN_LOGO_ICON: '/images/header/logo_main.svg',
+    USER_ICON: '/images/header/user.svg',
+  },
   MAIN_TITLE_TEXT: {
     TITLE: '👀 랜덤 심리테스트',
     CONTENT: '고민할 틈은 안줄테니 일단 플레이하고 생각하기',

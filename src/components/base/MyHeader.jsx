@@ -2,25 +2,26 @@
 
 import { HeaderButton } from '@/components/ui/button/Button';
 import { WhiteWrapWithFlex } from '@/components/ui/wrap/Wrap';
+import { CONST_MAIN_PAGE } from '@/constants/constant';
 
 const buttonArray = [
   {
     name: 'sideMenuIconDetail',
     width: '1rem',
     height: '1rem',
-    imgUrl: '/images/header/side-menu.svg',
+    imgUrl: CONST_MAIN_PAGE.HEADER_BUTTON_IMAGE_URL.SIDE_MENU_ICON,
   },
   {
     name: 'dogLogoDetail',
     width: '12rem',
     height: '4rem',
-    imgUrl: '/images/header/logo_main.svg',
+    imgUrl: CONST_MAIN_PAGE.HEADER_BUTTON_IMAGE_URL.MAIN_LOGO_ICON,
   },
   {
     name: 'userIconDetatil',
     width: '1rem',
     height: '1rem',
-    imgUrl: '/images/header/user.svg',
+    imgUrl: CONST_MAIN_PAGE.HEADER_BUTTON_IMAGE_URL.USER_ICON,
   },
 ];
 
