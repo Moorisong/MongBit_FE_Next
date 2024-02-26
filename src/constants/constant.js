@@ -85,11 +85,6 @@ export const TEST_IMAGE_URL = {
 
 // 페이지 별
 export const CONST_MAIN_PAGE = {
-  HEADER_BUTTON_IMAGE_URL: {
-    SIDE_MENU_ICON: '/images/header/side-menu.svg',
-    MAIN_LOGO_ICON: '/images/header/logo_main.svg',
-    USER_ICON: '/images/header/user.svg',
-  },
   MAIN_TITLE_TEXT: {
     TITLE: '👀 랜덤 심리테스트',
     CONTENT: '고민할 틈은 안줄테니 일단 플레이하고 생각하기',
@@ -99,5 +94,23 @@ export const CONST_MAIN_PAGE = {
     MAIN_TEST: '🌟 심테의 근본, MBTI 검사',
     MAIN_TEST_SQUARE: '신속하고 아마도 정확한 퀵 MBTI!',
     LATEST_TEST: '💙 최신 심테',
+  },
+};
+
+export const CONST_HEADER = {
+  HEADER_BUTTON_IMAGE_URL: {
+    SIDE_MENU_ICON: '/images/header/side-menu.svg',
+    MAIN_LOGO_ICON: '/images/header/logo_main.svg',
+    USER_ICON: '/images/header/user.svg',
+  },
+};
+
+export const CONST_FOOTER = {
+  DESCRIPTION: ['몽뭉이 크루   |   서울 관악구 신림역 스터디존에서 만듦 ', ' 채용문의   |   채용되고 싶다'],
+  POLICY: ['이용약관', '개인정보처리방침'],
+  COPYRIGHT: '© 2023 MongMoongCrew. All rights reserved',
+  BUTTON_IMG_URL: {
+    GIT_HUB: '/images/footer/gitHub.svg',
+    INSTAGRAM: '/images.footer/instagram.png',
   },
 };

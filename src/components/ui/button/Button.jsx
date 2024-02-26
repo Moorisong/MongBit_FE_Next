@@ -7,7 +7,7 @@ const HeaderBtn = styled.button`
   height: ${(props) => props.style.height};
   border-style: none;
   background: none;
-  background-image: url('${(props) => props.style.imgUrl}');
+  background-image: url('${(props) => props.style.imageUrl}');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
