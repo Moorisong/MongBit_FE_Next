@@ -5,7 +5,7 @@ import { styled } from 'styled-components';
 import { CONST_FONT } from '@/constants/constant';
 
 import { TERM_STRING } from './content';
-import { WhiteWrapWithFlex } from '@/components/ui/wrap/Wrap';
+import { Wrap_mediaquery } from '@/components/ui/wrap/Wrap';
 
 const TermStringElement = styled.p`
   color: ${CONST_FONT.COLOR.BLACK};
@@ -16,8 +16,8 @@ const TermStringElement = styled.p`
 
 export default function Terms() {
   return (
-    <WhiteWrapWithFlex>
+    <Wrap_mediaquery>
       <TermStringElement>{TERM_STRING}</TermStringElement>
-    </WhiteWrapWithFlex>
+    </Wrap_mediaquery>
   );
 }

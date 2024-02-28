@@ -1,8 +1,22 @@
 'use client';
+
+import styled from 'styled-components';
+
 import { CONST_HEADER } from '@/constants/constant';
 
-import { HeaderButton } from '@/components/ui/button/Button';
-import { WhiteWrapWithFlex } from '@/components/ui/wrap/Wrap';
+import { Wrap_mediaquery } from '@/components/ui/wrap/Wrap';
+
+const HeaderButton = styled.button`
+  width: ${(props) => props.style.width};
+  height: ${(props) => props.style.height};
+  border-style: none;
+  background: none;
+  background-image: url('${(props) => props.style.imageUrl}');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin: 0 1rem;
+`;
 
 const buttonArray = [
   {
@@ -25,15 +39,14 @@ const buttonArray = [
   },
 ];
 
-const wrapStyle = { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' };
-const combinedStyle = { ...wrapStyle, paddingTop: '1.1rem;' };
+const wrapStyle = { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1.1rem' };
 
 export default function MyHeader() {
   return (
-    <WhiteWrapWithFlex style={combinedStyle}>
+    <Wrap_mediaquery style={wrapStyle}>
       {buttonArray.map((e, i) => (
         <HeaderButton key={i + e.name} style={e} />
       ))}
-    </WhiteWrapWithFlex>
+    </Wrap_mediaquery>
   );
 }

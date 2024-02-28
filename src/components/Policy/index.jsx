@@ -5,7 +5,7 @@ import { styled } from 'styled-components';
 import { CONST_FONT } from '@/constants/constant';
 
 import { POLICY_STRING } from './content';
-import { WhiteWrapWithFlex } from '@/components/ui/wrap/Wrap';
+import { Wrap_mediaquery } from '@/components/ui/wrap/Wrap';
 
 const PolicyStringElement = styled.p`
   color: ${CONST_FONT.COLOR.BLACK};
@@ -16,8 +16,8 @@ const PolicyStringElement = styled.p`
 
 export default function Policy() {
   return (
-    <WhiteWrapWithFlex>
+    <Wrap_mediaquery>
       <PolicyStringElement>{POLICY_STRING}</PolicyStringElement>
-    </WhiteWrapWithFlex>
+    </Wrap_mediaquery>
   );
 }

@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-import { CONST_FONT, CONST_MAIN_PAGE, MEDIAQUERY, TEST_ICON } from '@/constants/constant';
+import { CONST_FONT, MEDIAQUERY, TEST_ICON } from '@/constants/constant';
 
-import { TitleText, SmallTestContentText, TestIconText } from '@/components/ui/text/Text';
+import { TextElement } from '@/components/ui/text/Text';
 import { TestTitleBlackSquareArea } from '@/components/ui/square/Square';
-import { TestInfoIcon } from '@/components/ui/button/Button';
+import { TestCountIconImage } from '@/components/ui/button/Button';
 
-// 심리테스트 1개 표시
+// styled components
 const TestImageBig = styled.img`
   width: ${MEDIAQUERY.WIDTH_370};
   height: 240px;
@@ -17,24 +17,6 @@ const TestImageBig = styled.img`
   @media (max-width: ${MEDIAQUERY.WIDTH_375}) {
     width: ${MEDIAQUERY.WIDTH_345};
   }
-`;
-
-// 심리테스트 여러개 표시
-
-const TestImagesSmallWrap = styled.div`
-  width: ${MEDIAQUERY.WIDTH_420};
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  position: relative;
-
-  @media (max-width: ${MEDIAQUERY.WIDTH_375}) {
-    width: ${MEDIAQUERY.WIDTH_345};
-  }
-`;
-
-const SmallTestSetWrap = styled.div`
-  margin: 1rem 0.5rem;
 `;
 
 const TestImgageSmall = styled.img`
@@ -50,12 +32,48 @@ const TestImgageSmall = styled.img`
   }
 `;
 
-const TestInfoAreaWrap = styled.div`
+const TestImagesSmallWrap = styled.div`
+  width: ${MEDIAQUERY.WIDTH_420};
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+
+  @media (max-width: ${MEDIAQUERY.WIDTH_375}) {
+    width: ${MEDIAQUERY.WIDTH_345};
+  }
+`;
+
+const SmallTestSetWrap = styled.div`
+  margin: 0.5rem 0.5rem;
+`;
+
+const TestCountInfoAreaWrap = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: baseline;
   align-items: center;
 `;
+
+// style
+const smalltestsTitleTextStyle = {
+  color: CONST_FONT.COLOR.GRAY_1,
+  width: '150px',
+  paddingLeft: '3px',
+  fontSize: CONST_FONT.SIZE.FONT_SIZE_SMALL_1,
+  whiteSpace: 'nowrap',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  cursor: 'pointer',
+};
+
+const testIconTextStyle = {
+  fontSize: CONST_FONT.SIZE.FONT_SIZE_SMALL_1,
+  color: CONST_FONT.COLOR.GRAY_1,
+  display: 'inline-block',
+  marginLeft: '3px',
+  cursor: 'pointer',
+};
 
 export function TestVersionBig({ imageUrl, squareText }) {
   return (
@@ -67,19 +85,17 @@ export function TestVersionBig({ imageUrl, squareText }) {
 }
 
 export function TestVersionSmallForSeveral({ testData }) {
-  const testIconTextStyle = { fontSize: CONST_FONT.SIZE.FONT_SIZE_SMALL_1 };
   return (
     <>
-      <TitleText text={CONST_MAIN_PAGE.TITLE_TEXT.LATEST_TEST} />
       <TestImagesSmallWrap>
         {testData.map((e, i) => (
           <SmallTestSetWrap key={e.id + i}>
             <TestImgageSmall src={e.imageUrl} />
-            <SmallTestContentText text={e.title} />
-            <TestInfoAreaWrap>
-              <TestInfoIcon imageUrl={TEST_ICON.URL.PLAY_COUNT} />
-              <TestIconText style={testIconTextStyle} text={e.playCount} />
-            </TestInfoAreaWrap>
+            <TextElement text={e.title} style={smalltestsTitleTextStyle} />
+            <TestCountInfoAreaWrap>
+              <TestCountIconImage imageUrl={TEST_ICON.URL.PLAY_COUNT} />
+              <TextElement style={testIconTextStyle} text={e.playCount} />
+            </TestCountInfoAreaWrap>
           </SmallTestSetWrap>
         ))}
       </TestImagesSmallWrap>

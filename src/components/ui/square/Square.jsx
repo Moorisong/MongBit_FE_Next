@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { CONST_FONT, MEDIAQUERY } from '@/constants/constant';
 
-const TestTitleBlackSquare = styled.div`
+const TestTitleBlackSquareDiv = styled.div`
   width: ${MEDIAQUERY.WIDTH_370};
   height: 2.5rem;
   background-color: black;
@@ -29,8 +29,8 @@ const TestTitleBlackSquareText = styled.p`
 
 export function TestTitleBlackSquareArea({ text }) {
   return (
-    <TestTitleBlackSquare>
+    <TestTitleBlackSquareDiv>
       <TestTitleBlackSquareText>{text}</TestTitleBlackSquareText>
-    </TestTitleBlackSquare>
+    </TestTitleBlackSquareDiv>
   );
 }

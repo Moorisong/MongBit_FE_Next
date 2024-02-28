@@ -118,3 +118,12 @@ export const CONST_FOOTER = {
   BUTTON_IMG_URL: ['/images/footer/gitHub.svg', '/images/footer/instagram.png'],
   LINK_URL: ['https://github.com/Moorisong/MongBit_FE_Next', 'https://www.instagram.com/mongbit_'],
 };
+
+export const IMAGE_ALT_STRING = {
+  FOOTER: {
+    SNS: '몽빗 깃허브 및 인스타그램 바로가기',
+  },
+  TEST: {
+    COUNT: '몽빗 심리테스트 카운트 정보',
+  },
+};

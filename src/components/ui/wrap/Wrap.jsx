@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { MEDIAQUERY } from '@/constants/constant';
 
-const WhiteWrapElement = styled.div`
+const Div_mediaquery = styled.div`
   display: flex;
   flex-direction: ${(props) => props.style.flexDirection};
   justify-content: ${(props) => props.style.justifyContent};
@@ -16,7 +16,7 @@ const WhiteWrapElement = styled.div`
   }
 `;
 
-export function WhiteWrapWithFlex({ style, children }) {
+export function Wrap_mediaquery({ style, children }) {
   if (!style) style = {};
-  return <WhiteWrapElement style={style}>{children}</WhiteWrapElement>;
+  return <Div_mediaquery style={style}>{children}</Div_mediaquery>;
 }

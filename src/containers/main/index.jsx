@@ -7,7 +7,7 @@ import { CONST_MAIN_PAGE, MEDIAQUERY, TEST_IMAGE_URL } from '@/constants/constan
 
 import { TitleAndText, TitleAndTest, TitleAndTestsSmallForSeveral } from '@/components/base/TestContent';
 import { YellowButton } from '@/components/ui/button/Button';
-import { WhiteWrapWithFlex } from '@/components/ui/wrap/Wrap';
+import { Wrap_mediaquery } from '@/components/ui/wrap/Wrap';
 
 // import { getHeaders,} from '@/utils/util'
 // import { apiBe } from '@/services';
@@ -16,8 +16,11 @@ import { WhiteWrapWithFlex } from '@/components/ui/wrap/Wrap';
 const RandomStartYellowButton = styled(YellowButton)`
   margin: 1rem 0;
   border-radius: 1rem;
-  width: 95%;
+  width: ${MEDIAQUERY.WIDTH_370};
   height: 2.5rem;
+
+  @media (max-width: ${MEDIAQUERY.WIDTH_375}) {
+    width: ${MEDIAQUERY.WIDTH_345};
 `;
 
 const TestSquareSmallWrap = styled.div`
@@ -57,7 +60,7 @@ export default function main({ data }) {
   // }, [])
 
   return (
-    <WhiteWrapWithFlex style={wrapStyle}>
+    <Wrap_mediaquery style={wrapStyle}>
       <TitleAndText text={mainTitleText} />
       <RandomStartYellowButton>{CONST_MAIN_PAGE.RANDOM_START_BUTTON_TEXT}</RandomStartYellowButton>
 
@@ -68,6 +71,6 @@ export default function main({ data }) {
       <TestSquareSmallWrap>
         <TitleAndTestsSmallForSeveral testData={data} style={latestTestsDetail} />
       </TestSquareSmallWrap>
-    </WhiteWrapWithFlex>
+    </Wrap_mediaquery>
   );
 }

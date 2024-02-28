@@ -4,30 +4,17 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { CONST_FONT, CONST_FOOTER } from '@/constants/constant';
+import { CONST_FONT, CONST_FOOTER, IMAGE_ALT_STRING } from '@/constants/constant';
 
-import { WhiteWrapWithFlex } from '@/components/ui/wrap/Wrap';
+import { Wrap_mediaquery } from '@/components/ui/wrap/Wrap';
+import { TextElement } from '@/components/ui/text/Text';
 
-const FooterP = styled.p`
-  font-size: ${CONST_FONT.SIZE.FONT_SIZE_SMALL_2};
-  color: ${CONST_FONT.COLOR.GRAY_2};
-  margin-left: ${(props) => props.marginLeft};
-  padding-left: ${(props) => props.paddingLeft};
-`;
-
-const FooterImg = styled.img`
+const Image = styled.img`
   width: 20px;
   margin-right: 10px;
 `;
 
-const FlexDiv = styled.div`
-  display: flex;
-  align-item: center;
-`;
-
-const DescriptionWrapDiv = styled.div`
-  margin-bottom: 2rem;
-`;
+const Div = styled.div``;
 
 const totalWrapStyle = {
   flexDirection: 'column',
@@ -36,9 +23,24 @@ const totalWrapStyle = {
   position: 'relative',
 };
 
-const policyWrapStyle = { position: 'absolute', right: '-1.3rem', bottom: '2.7rem', padding: '1rem 2.5rem 0 0' };
-const policyStyle = { marginRight: '5px' };
-const copyrightStyle = { position: 'absolute', right: '0', padding: '0.2rem 1.5rem 0 0' };
+const policyWrapStyle = {
+  display: 'flex',
+  alignItem: 'center',
+  position: 'absolute',
+  right: '-1.3rem',
+  bottom: '2.7rem',
+  padding: '1rem 2.5rem 0 0',
+};
+
+const policyStyle = { marginRight: '5px', fontSize: CONST_FONT.SIZE.FONT_SIZE_SMALL_2, color: CONST_FONT.COLOR.GRAY_2 };
+
+const copyrightStyle = {
+  position: 'absolute',
+  right: '0',
+  padding: '0.2rem 1.5rem 0 0',
+  fontSize: CONST_FONT.SIZE.FONT_SIZE_SMALL_2,
+  color: CONST_FONT.COLOR.GRAY_2,
+};
 
 export default function MyFooter() {
   const pathName = usePathname();
@@ -48,32 +50,44 @@ export default function MyFooter() {
   if (isShow)
     return (
       <>
-        <WhiteWrapWithFlex style={totalWrapStyle}>
-          <DescriptionWrapDiv>
+        <Wrap_mediaquery style={totalWrapStyle}>
+          <Div style={{ marginBottom: '2rem' }}>
             {CONST_FOOTER.DESCRIPTION.map((e, i) => (
-              <FooterP key={e + i}>{e}</FooterP>
+              <TextElement
+                key={e + i}
+                text={e}
+                style={{
+                  fontSize: CONST_FONT.SIZE.FONT_SIZE_SMALL_2,
+                  color: CONST_FONT.COLOR.GRAY_2,
+                }}
+              />
             ))}
-          </DescriptionWrapDiv>
+          </Div>
 
-          <FlexDiv style={policyWrapStyle}>
+          <Div style={policyWrapStyle}>
             {CONST_FOOTER.POLICY.map((e, i) => (
               <Link key={e + i} href={CONST_FOOTER.PAGE_URL[i]} target="_blank">
-                <FooterP style={policyStyle}>{e}</FooterP>
+                <TextElement style={policyStyle} text={e} />
               </Link>
             ))}
-          </FlexDiv>
+          </Div>
 
-          <FlexDiv>
-            <FlexDiv>
+          <Div
+            style={{
+              display: 'flex',
+              alignItem: 'center',
+            }}
+          >
+            <Div style={{ display: 'flex', alignItem: 'center' }}>
               {CONST_FOOTER.BUTTON_IMG_URL.map((e, i) => (
                 <Link key={e + i} href={CONST_FOOTER.LINK_URL[i]} target="_blank">
-                  <FooterImg key={e + i} src={e} />
+                  <Image key={e + i} src={e} alt={IMAGE_ALT_STRING.FOOTER.SNS} />
                 </Link>
               ))}
-            </FlexDiv>
-            <FooterP style={copyrightStyle}>{CONST_FOOTER.COPYRIGHT}</FooterP>
-          </FlexDiv>
-        </WhiteWrapWithFlex>
+            </Div>
+            <TextElement style={copyrightStyle} text={CONST_FOOTER.COPYRIGHT} />
+          </Div>
+        </Wrap_mediaquery>
       </>
     );
 }
