@@ -16,7 +16,6 @@ const Div_mediaquery = styled.div`
   }
 `;
 
-export function Wrap_mediaquery({ style, children }) {
-  if (!style) style = {};
+export function Wrap_mediaquery({ style = {}, children }) {
   return <Div_mediaquery style={style}>{children}</Div_mediaquery>;
 }

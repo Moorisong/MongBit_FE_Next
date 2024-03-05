@@ -37,7 +37,6 @@ export const OG_RANDOM_IMAGE = 'https://i.ibb.co/N9ntw7s/og-random.png';
 export const OG_TEST_RESULT = 'https://i.ibb.co/tQWt0dF/image.png';
 export const OG_TEST_GO = 'https://i.ibb.co/P4KyxjF/image.png'; // 이건 아직 사용하는 곳 없음
 
-// refacor_ksh -----------------------------------------------------
 // 화면, 폰트
 export const MEDIAQUERY = {
   WIDTH_420: '420px',
@@ -73,6 +72,12 @@ export const TEST_ICON = {
     WIDTH: '15px',
     HEIGHT: '15px',
   },
+};
+
+export const BUTTON_TYPE = {
+  HEADER_MYPAGE: 'myPageButton',
+  HEADER_MAINLOGO: 'mainLogoButton',
+  HEADER_SIDEMENU: 'sideMenuButton',
 };
 
 export const YELLOW_BUTTON = {
@@ -121,9 +126,12 @@ export const CONST_FOOTER = {
 
 export const IMAGE_ALT_STRING = {
   FOOTER: {
-    SNS: '몽빗 깃허브 및 인스타그램 바로가기',
+    SNS: '몽빗 MBTI 심리테스트 깃허브 및 인스타그램 바로가기',
   },
   TEST: {
-    COUNT: '몽빗 심리테스트 카운트 정보',
+    COUNT: '몽빗 MBTI 심리테스트 카운트 정보',
+  },
+  LOGIN: {
+    KAKAO_LOGIN_BUTTON: '몽빗 MBTI 심리테스트 메인 로고',
   },
 };

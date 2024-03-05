@@ -8,7 +8,6 @@ const TestCountIconImg = styled.img`
   cursor: pointer;
 `;
 
-// export
 export function TestCountIconImage({ imageUrl }) {
   return <TestCountIconImg src={imageUrl} alt={IMAGE_ALT_STRING.TEST.COUNT} />;
 }

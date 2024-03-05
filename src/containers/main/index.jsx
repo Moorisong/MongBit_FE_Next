@@ -23,14 +23,6 @@ const RandomStartYellowButton = styled(YellowButton)`
     width: ${MEDIAQUERY.WIDTH_345};
 `;
 
-// const TestSquareSmallWrap = styled.div`
-//   width: ${MEDIAQUERY.WIDTH_420};
-
-//   @media (max-width: ${MEDIAQUERY.WIDTH_375}) {
-//     width: ${MEDIAQUERY.WIDTH_345};
-//   }
-// `;
-
 // Detail
 const mainTitleText = {
   titleText: CONST_MAIN_PAGE.MAIN_TITLE_TEXT.TITLE,
