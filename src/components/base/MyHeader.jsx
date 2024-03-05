@@ -39,7 +39,7 @@ const buttonArray = [
   },
 ];
 
-const wrapStyle = { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1.1rem' };
+const wrapStyle = { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: '1rem 0.5rem' };
 
 export default function MyHeader() {
   return (
