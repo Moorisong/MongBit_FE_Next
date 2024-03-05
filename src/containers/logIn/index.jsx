@@ -1,7 +1,4 @@
 'use client';
-// import { useEffect } from 'react';
-
-// import { addDailyVisitCount } from '@/utils/util';
 import { styled } from 'styled-components';
 
 import { CONST_FONT, DOMAIN, IMAGE_ALT_STRING, MEDIAQUERY } from '@/constants/constant';
@@ -64,6 +61,7 @@ export default function Login() {
     window.location.href = url;
   };
 
+  // 어드민
   // useEffect(() => {
   //   addDailyVisitCount();
   // }, []);

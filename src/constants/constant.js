@@ -3,10 +3,18 @@ export const DOMAIN = 'https://mongbit.vercel.app';
 // export const DOMAIN_BE_DEV = 'https://mongbit-willneiman.koyeb.app';
 export const DOMAIN_BE_PROD = 'https://mongbit.site';
 
-// Storage
+// Storage, Recoil
 export const TOKEN_NAME = 'mongBitToken';
 export const USER_INFO = 'mongBit';
 export const COUPANG_VISIT = 'mbCoupangVisitDate';
+export const LOGIN = {
+  TOKEN_NAME: 'mbToken',
+  USER_MEMBER_ID: 'mbUserID',
+  USER_THUMBNAIL: 'mbThumbnail',
+  USER_REGISTER_DATE: 'mbRegisterDate',
+  USER_USER_NAME: 'mbUserName',
+  COUPANG_VISIT: 'mbCoupangVisitDate',
+};
 
 // Type of the page
 export const TYPE_TEST_LIST = 'test_list';
@@ -90,6 +98,18 @@ export const TEST_IMAGE_URL = {
   MAIN_TEST: 'https://i.ibb.co/GJ08BC3/quick-mbti-cover.png',
 };
 
+export const IMAGE_ALT_STRING = {
+  FOOTER: {
+    SNS: '몽빗 MBTI 심리테스트 깃허브 및 인스타그램 바로가기',
+  },
+  TEST: {
+    COUNT: '몽빗 MBTI 심리테스트 카운트 정보',
+  },
+  LOGIN: {
+    KAKAO_LOGIN_BUTTON: '몽빗 MBTI 심리테스트 메인 로고',
+  },
+};
+
 // 페이지 별
 export const CONST_MAIN_PAGE = {
   MAIN_TITLE_TEXT: {
@@ -122,16 +142,4 @@ export const CONST_FOOTER = {
   COPYRIGHT: '© 2023 MongMoongCrew. All rights reserved',
   BUTTON_IMG_URL: ['/images/footer/gitHub.svg', '/images/footer/instagram.png'],
   LINK_URL: ['https://github.com/Moorisong/MongBit_FE_Next', 'https://www.instagram.com/mongbit_'],
-};
-
-export const IMAGE_ALT_STRING = {
-  FOOTER: {
-    SNS: '몽빗 MBTI 심리테스트 깃허브 및 인스타그램 바로가기',
-  },
-  TEST: {
-    COUNT: '몽빗 MBTI 심리테스트 카운트 정보',
-  },
-  LOGIN: {
-    KAKAO_LOGIN_BUTTON: '몽빗 MBTI 심리테스트 메인 로고',
-  },
 };
