@@ -23,13 +23,13 @@ const RandomStartYellowButton = styled(YellowButton)`
     width: ${MEDIAQUERY.WIDTH_345};
 `;
 
-const TestSquareSmallWrap = styled.div`
-  width: ${MEDIAQUERY.WIDTH_420};
+// const TestSquareSmallWrap = styled.div`
+//   width: ${MEDIAQUERY.WIDTH_420};
 
-  @media (max-width: ${MEDIAQUERY.WIDTH_375}) {
-    width: ${MEDIAQUERY.WIDTH_345};
-  }
-`;
+//   @media (max-width: ${MEDIAQUERY.WIDTH_375}) {
+//     width: ${MEDIAQUERY.WIDTH_345};
+//   }
+// `;
 
 // Detail
 const mainTitleText = {
@@ -68,9 +68,7 @@ export default function main({ data }) {
       <TitleAndTest style={mainTestDetail} />
 
       {/* 최신 심테 */}
-      <TestSquareSmallWrap>
-        <TitleAndTestsSmallForSeveral testData={data} style={latestTestsDetail} />
-      </TestSquareSmallWrap>
+      <TitleAndTestsSmallForSeveral testData={data} style={latestTestsDetail} />
     </Wrap_mediaquery>
   );
 }

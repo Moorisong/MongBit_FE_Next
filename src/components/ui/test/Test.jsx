@@ -27,7 +27,7 @@ const TestImgageSmall = styled.img`
   cursor: pointer;
 
   @media (max-width: ${MEDIAQUERY.WIDTH_375}) {
-    width: 150px;
+    width: 170px;
     height: 100px;
   }
 `;
@@ -36,16 +36,12 @@ const TestImagesSmallWrap = styled.div`
   width: ${MEDIAQUERY.WIDTH_420};
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   position: relative;
-
-  @media (max-width: ${MEDIAQUERY.WIDTH_375}) {
-    width: ${MEDIAQUERY.WIDTH_345};
-  }
+  padding-top: 0.5rem;
 `;
 
 const SmallTestSetWrap = styled.div`
-  margin: 0.5rem 0.5rem;
+  padding: 0 0.5rem 0.7rem 0;
 `;
 
 const TestCountInfoAreaWrap = styled.div`
@@ -86,19 +82,17 @@ export function TestVersionBig({ imageUrl, squareText }) {
 
 export function TestVersionSmallForSeveral({ testData }) {
   return (
-    <>
-      <TestImagesSmallWrap>
-        {testData.map((e, i) => (
-          <SmallTestSetWrap key={e.id + i}>
-            <TestImgageSmall src={e.imageUrl} />
-            <TextElement text={e.title} style={smalltestsTitleTextStyle} />
-            <TestCountInfoAreaWrap>
-              <TestCountIconImage imageUrl={TEST_ICON.URL.PLAY_COUNT} />
-              <TextElement style={testIconTextStyle} text={e.playCount} />
-            </TestCountInfoAreaWrap>
-          </SmallTestSetWrap>
-        ))}
-      </TestImagesSmallWrap>
-    </>
+    <TestImagesSmallWrap>
+      {testData.map((e, i) => (
+        <SmallTestSetWrap key={e.id + i}>
+          <TestImgageSmall src={e.imageUrl} />
+          <TextElement text={e.title} style={smalltestsTitleTextStyle} />
+          <TestCountInfoAreaWrap>
+            <TestCountIconImage imageUrl={TEST_ICON.URL.PLAY_COUNT} />
+            <TextElement style={testIconTextStyle} text={e.playCount} />
+          </TestCountInfoAreaWrap>
+        </SmallTestSetWrap>
+      ))}
+    </TestImagesSmallWrap>
   );
 }

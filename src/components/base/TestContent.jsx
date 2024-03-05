@@ -10,6 +10,7 @@ const titleTextStyle = {
   fontSize: CONST_FONT.SIZE.FONT_SIZE_BIG,
   fontWeight: CONST_FONT.BOLD_SCALE.FIRST,
 };
+
 export function TitleAndText({ text }) {
   const combinedStyle = { ...wrapStyle, padding: '2rem 1rem 0 0' };
 
@@ -36,19 +37,12 @@ export function TitleAndTest({ style }) {
 }
 
 export function TitleAndTestsSmallForSeveral({ testData }) {
-  const combinedStyle = { ...wrapStyle, padding: '1rem 1rem 0.8rem 1rem' };
+  const combinedStyle = { ...wrapStyle, padding: '1rem 1rem 0.8rem 0', position: 'relative' };
 
   return (
-    <div>
-      <TextElement
-        text={CONST_MAIN_PAGE.TITLE_TEXT.LATEST_TEST}
-        style={{
-          margin: '0 0 1rem 1.5rem',
-          fontSize: CONST_FONT.SIZE.FONT_SIZE_BIG,
-          fontWeight: CONST_FONT.BOLD_SCALE.FIRST,
-        }}
-      />
+    <Wrap_mediaquery style={combinedStyle}>
+      <TextElement text={CONST_MAIN_PAGE.TITLE_TEXT.LATEST_TEST} style={titleTextStyle} />
       <TestVersionSmallForSeveral style={combinedStyle} testData={testData.testCoverDTOList} />
-    </div>
+    </Wrap_mediaquery>
   );
 }
