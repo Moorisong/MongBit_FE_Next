@@ -1,21 +1,21 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import lottie from 'lottie-web';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
-import { getHeaders, decodeToken, goPage } from '@/utils/util';
+import { getHeaders, goPage } from '@/utils/util';
 import { LOGIN } from '@/constants/constant';
 import { apiBe } from '@/services';
 import { atomlogInState, selectorLogInState } from '@/recoil/atoms.js';
+import { useAnimationEffect } from '@/hooks/hooks';
 
-import animationData_1 from './loading_1.json';
-import styles from './index.module.css';
+import { Wrap_mediaquery, Div_animation } from '@/components/ui/wrap/Wrap';
+import loadingAnimationData from './anim_loading.json';
 
 export default function KakaoAuthHandle() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const containerRef_1 = useRef(null);
+  const containerRef = useRef(null);
   const code = searchParams.get('code');
 
   const [logInAtom, setLogInAtom] = useRecoilState(atomlogInState);
@@ -47,19 +47,8 @@ export default function KakaoAuthHandle() {
     });
   };
 
-  useEffect(() => {
-    const anim = lottie.loadAnimation({
-      container: containerRef_1.current,
-      renderer: 'svg',
-      animationData: animationData_1,
-      loop: true,
-      autoplay: true,
-    });
-
-    return () => {
-      anim.destroy();
-    };
-  }, []);
+  // hooks
+  useAnimationEffect(containerRef, loadingAnimationData);
 
   useEffect(() => {
     let headers = getHeaders();
@@ -89,11 +78,8 @@ export default function KakaoAuthHandle() {
   }, [logInAtom.goPage]);
 
   return (
-    <div className={styles.wrap}>
-      <div className={styles.content}>
-        <div ref={containerRef_1}></div>
-      </div>
-      <div className={`${styles.bgWhite} ${styles.footerWrap}`}></div>
-    </div>
+    <Wrap_mediaquery style={{ justifyContent: 'center', position: 'relative' }}>
+      <Div_animation ref={containerRef} style={{ width: '100px', margin: '10rem 10rem' }}></Div_animation>
+    </Wrap_mediaquery>
   );
 }
