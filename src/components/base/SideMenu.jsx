@@ -30,7 +30,11 @@ export function SideMenu({ show }) {
     setHeight(window.innerHeight);
   }, [window.innerHeight]);
 
-  const sideMenuBlacAreaStyle = { height, opacity: show.showSideMenu ? '.5' : '0' };
+  const sideMenuBlacAreaStyle = {
+    height,
+    opacity: show.showSideMenu ? '.5' : '0',
+    pointerEvents: show.showSideMenu ? '' : 'none',
+  };
   const sideMenuWhiteAreaStyle = {
     left: show.showSideMenu ? `calc(50% - ${CONST_HEADER.SIDE_MENU_WHITE_BOARD_WIDTH}px)` : '-300px',
   };
