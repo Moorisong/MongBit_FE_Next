@@ -1,10 +1,12 @@
 'use client';
 
-import styled from 'styled-components';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import styled from 'styled-components';
 
 import { BUTTON_TYPE, CONST_HEADER } from '@/constants/constant';
 
+import { SideMenu } from '@/components/base/SideMenu';
 import { Wrap_mediaquery } from '@/components/ui/wrap/Wrap';
 
 const HeaderButton = styled.button`
@@ -24,6 +26,7 @@ const buttonArray = [
     name: BUTTON_TYPE.HEADER_SIDEMENU,
     width: '1rem',
     height: '1rem',
+    zIndex: 2,
     imageUrl: CONST_HEADER.HEADER_BUTTON_IMAGE_URL.SIDE_MENU_ICON,
   },
   {
@@ -47,24 +50,33 @@ const wrapStyle = {
   padding: '1rem 0.5rem',
 };
 
-const clickHeaderButton = (type, router) => {
+const clickHeaderButton = (type, router, { showSideMenu, setShowSideMenu }) => {
   if (type === BUTTON_TYPE.HEADER_MYPAGE) router.push('/login');
   if (type === BUTTON_TYPE.HEADER_MAINLOGO) router.push('/');
+  if (type === BUTTON_TYPE.HEADER_SIDEMENU) showSideMenuSquare({ showSideMenu, setShowSideMenu });
+};
+
+const showSideMenuSquare = ({ showSideMenu, setShowSideMenu }) => {
+  setShowSideMenu(!showSideMenu);
 };
 
 export default function MyHeader() {
-  var router = useRouter();
+  const [showSideMenu, setShowSideMenu] = useState(false);
+  const router = useRouter();
   return (
-    <Wrap_mediaquery style={wrapStyle}>
-      {buttonArray.map((e, i) => (
-        <HeaderButton
-          key={i + e.name}
-          style={e}
-          onClick={() => {
-            clickHeaderButton(e.name, router);
-          }}
-        />
-      ))}
-    </Wrap_mediaquery>
+    <>
+      <Wrap_mediaquery style={wrapStyle}>
+        {buttonArray.map((e, i) => (
+          <HeaderButton
+            key={i + e.name}
+            style={e}
+            onClick={() => {
+              clickHeaderButton(e.name, router, { showSideMenu, setShowSideMenu });
+            }}
+          />
+        ))}
+      </Wrap_mediaquery>
+      <SideMenu show={{ showSideMenu, setShowSideMenu }} />
+    </>
   );
 }

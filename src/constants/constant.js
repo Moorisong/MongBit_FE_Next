@@ -130,6 +130,7 @@ export const CONST_HEADER = {
     MAIN_LOGO_ICON: '/images/header/logo_main.svg',
     USER_ICON: '/images/header/user.svg',
   },
+  SIDE_MENU_WHITE_BOARD_WIDTH: 220,
 };
 
 export const CONST_FOOTER = {

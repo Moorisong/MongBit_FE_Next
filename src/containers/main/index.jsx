@@ -1,6 +1,5 @@
 'use client';
 
-import lottie from 'lottie-web';
 import styled from 'styled-components';
 
 import { CONST_MAIN_PAGE, MEDIAQUERY, TEST_IMAGE_URL } from '@/constants/constant';
