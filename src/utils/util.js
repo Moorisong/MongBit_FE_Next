@@ -1,20 +1,9 @@
 import jwtDecode from 'jwt-decode';
-import { useRecoilValue } from 'recoil';
 
 import { apiBe } from '@/services';
 import { DOMAIN, LOGIN, USER_INFO } from '@/constants/constant';
-import { atomlogInState } from '@/recoil/atoms';
 
-export function decodeToken() {
-  const logIn = useRecoilValue(atomlogInState);
-
-  if (!logIn.key) return;
-  if (!logIn[LOGIN.TOKEN_NAME]) {
-    return {
-      state: false,
-    };
-  }
-  const token = logIn[LOGIN.TOKEN_NAME];
+export function decodeToken(token) {
   const decodedToken = jwtDecode(token);
   const expiration = decodedToken.exp;
   const expirationTime = new Date(expiration * 1000);

@@ -3,11 +3,15 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
+import { useRecoilValue } from 'recoil';
 
-import { BUTTON_TYPE, CONST_HEADER } from '@/constants/constant';
+import { BUTTON_TYPE, CONST_HEADER, LOGIN } from '@/constants/constant';
+import { decodeToken } from '@/utils/util';
+import { selectorLogInState } from '@/recoil/atoms';
 
 import { SideMenu } from '@/components/base/SideMenu';
 import { Wrap_mediaquery } from '@/components/ui/wrap/Wrap';
+
 
 const HeaderButton = styled.button`
   width: ${(props) => props.style.width};
@@ -50,19 +54,29 @@ const wrapStyle = {
   padding: '1rem 0.5rem',
 };
 
-const clickHeaderButton = (type, router, { showSideMenu, setShowSideMenu }) => {
-  if (type === BUTTON_TYPE.HEADER_MYPAGE) router.push('/login');
-  if (type === BUTTON_TYPE.HEADER_MAINLOGO) router.push('/');
-  if (type === BUTTON_TYPE.HEADER_SIDEMENU) showSideMenuSquare({ showSideMenu, setShowSideMenu });
-};
-
 const showSideMenuSquare = ({ showSideMenu, setShowSideMenu }) => {
   setShowSideMenu(!showSideMenu);
 };
 
 export default function MyHeader() {
   const [showSideMenu, setShowSideMenu] = useState(false);
+  const logInState = useRecoilValue(selectorLogInState);
   const router = useRouter();
+
+  const clickHeaderButton = (type, router, { showSideMenu, setShowSideMenu }) => {
+    if (type === BUTTON_TYPE.HEADER_MYPAGE) {
+      const hasToken = logInState[LOGIN.TOKEN_NAME];
+      const isLogIned = hasToken ? decodeToken(hasToken).state : false;
+
+      if (isLogIned) {
+        router.push('/mypage');
+      } else {
+        router.push('/login');
+      }
+    }
+    if (type === BUTTON_TYPE.HEADER_MAINLOGO) router.push('/');
+    if (type === BUTTON_TYPE.HEADER_SIDEMENU) showSideMenuSquare({ showSideMenu, setShowSideMenu });
+  };
   return (
     <>
       <Wrap_mediaquery style={wrapStyle}>

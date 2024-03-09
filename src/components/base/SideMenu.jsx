@@ -52,13 +52,13 @@ const WrapBottomLogoutArea = {
 
 const clickLogOutButton = (setLogIn, show) => {
   setLogIn(false);
-  show.setShowSideMenu(false)
+  show.setShowSideMenu(false);
 };
 
 export function SideMenu({ show }) {
   const [height, setHeight] = useState(window.innerHeight);
   const [logIn, setLogIn] = useRecoilState(atomlogInState);
-  const logInState = decodeToken();
+  const logInState = logIn[LOGIN.TOKEN_NAME] ? decodeToken(logIn[LOGIN.TOKEN_NAME]) : false;
 
   const onClickBlackArea = () => {
     show.setShowSideMenu(false);
