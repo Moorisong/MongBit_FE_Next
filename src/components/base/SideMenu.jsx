@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
 
 import { CONST_FONT, CONST_HEADER, MEDIAQUERY, LOGIN, IMAGE_ALT_STRING } from '@/constants/constant';
 import { decodeToken } from '@/utils/util';
+import { atomlogInState } from '@/recoil/atoms';
 
 const SideMenuBlackDiv = styled.div`
   background-color: black;
@@ -21,13 +23,11 @@ const SideMenuWhiteDiv = styled.div`
   z-index: 2;
 `;
 
-const ListElement = styled.li``;
-
-const titleListStyle = {
-  fontSize: CONST_FONT.SIZE.FONT_SIZE_REGULAR,
-  paddingBottom: '0.2rem',
-  fontWeight: CONST_FONT.BOLD_SCALE.FIRST,
-};
+const ListElement = styled.li`
+fontSize: CONST_FONT.SIZE.FONT_SIZE_REGULAR,
+paddingBottom: '0.2rem',
+fontWeight: CONST_FONT.BOLD_SCALE.FIRST,
+`;
 
 const wrapListStyle = {
   paddingTop: '1rem',
@@ -50,8 +50,14 @@ const WrapBottomLogoutArea = {
   color: CONST_FONT.COLOR.GRAY_1,
 };
 
+const clickLogOutButton = (setLogIn, show) => {
+  setLogIn(false);
+  show.setShowSideMenu(false)
+};
+
 export function SideMenu({ show }) {
   const [height, setHeight] = useState(window.innerHeight);
+  const [logIn, setLogIn] = useRecoilState(atomlogInState);
   const logInState = decodeToken();
 
   const onClickBlackArea = () => {
@@ -79,21 +85,21 @@ export function SideMenu({ show }) {
         <ul style={{ paddingLeft: '1.5rem' }}>
           <li style={{ paddingTop: '3rem' }}>
             <ul>
-              <ListElement style={titleListStyle}>심리테스트</ListElement>
+              <ListElement>심리테스트</ListElement>
               <li style={contentListStyle}>최신보기</li>
               <li style={contentListStyle}>전체보기</li>
             </ul>
           </li>
           <li style={wrapListStyle}>
             <ul>
-              <ListElement style={titleListStyle}>마이페이지</ListElement>
+              <ListElement>마이페이지</ListElement>
 
               <li style={contentListStyle}>심테 기록 보기</li>
             </ul>
           </li>
           <li style={wrapListStyle}>
             <ul>
-              <ListElement style={titleListStyle}>개발자 정보</ListElement>
+              <ListElement>개발자 정보</ListElement>
               <li style={contentListStyle}>몽뭉이 크루</li>
             </ul>
           </li>
@@ -107,12 +113,14 @@ export function SideMenu({ show }) {
                 )}
                 <ListElement style={contentListStyle}>
                   <div style={WrapBottomLogoutArea}>
-                    <span>로그아웃</span>
-                    <img
-                      src="/images/header/logOutIcon.svg"
-                      alt={IMAGE_ALT_STRING.MONGBIT_TITLE + '로그아웃 버튼'}
-                      style={{ marginLeft: '-1rem' }}
-                    />
+                    <div onClick={() => clickLogOutButton(setLogIn, show)}>
+                      <span>로그아웃</span>
+                      <img
+                        src="/images/header/logOutIcon.svg"
+                        alt={IMAGE_ALT_STRING.MONGBIT_TITLE + '로그아웃 버튼'}
+                        style={{ position: 'absolute', top: '1.6rem', paddingLeft: '0.2rem' }}
+                      />
+                    </div>
                     <img
                       src="/images/header/logo_dog.svg"
                       alt={IMAGE_ALT_STRING.MONGBIT_TITLE + '로고'}
