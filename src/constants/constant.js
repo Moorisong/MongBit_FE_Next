@@ -4,7 +4,6 @@ export const DOMAIN = 'https://mongbit.vercel.app';
 export const DOMAIN_BE_PROD = 'https://mongbit.site';
 
 // Storage, Recoil
-export const TOKEN_NAME = 'mongBitToken';
 export const USER_INFO = 'mongBit';
 export const COUPANG_VISIT = 'mbCoupangVisitDate';
 export const LOGIN = {
@@ -14,6 +13,7 @@ export const LOGIN = {
   USER_REGISTER_DATE: 'mbRegisterDate',
   USER_USER_NAME: 'mbUserName',
   COUPANG_VISIT: 'mbCoupangVisitDate',
+  ROLE_ADMIN: 'ROLE_ADMIN',
 };
 
 // Type of the page

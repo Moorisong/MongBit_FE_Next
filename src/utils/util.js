@@ -1,23 +1,25 @@
 import jwtDecode from 'jwt-decode';
+import { useRecoilValue } from 'recoil';
 
 import { apiBe } from '@/services';
-
-import { DOMAIN, TOKEN_NAME, USER_INFO } from '../constants/constant';
+import { DOMAIN, LOGIN, USER_INFO } from '@/constants/constant';
+import { atomlogInState } from '@/recoil/atoms';
 
 export function decodeToken() {
-  if (typeof sessionStorage === 'undefined') return;
-  if (!sessionStorage.getItem(TOKEN_NAME)) {
+  const logIn = useRecoilValue(atomlogInState);
+
+  if (!logIn.key) return;
+  if (!logIn[LOGIN.TOKEN_NAME]) {
     return {
       state: false,
     };
   }
-  const token = sessionStorage.getItem(TOKEN_NAME);
+  const token = logIn[LOGIN.TOKEN_NAME];
   const decodedToken = jwtDecode(token);
   const expiration = decodedToken.exp;
   const expirationTime = new Date(expiration * 1000);
   const currentTime = new Date();
 
-  // console.log('decoded-----> ', decodedToken)
   if (expirationTime < currentTime) {
     return {
       state: false,
@@ -128,7 +130,7 @@ export function shareToKakaotalk_result(testId, memberId, type, title, descripti
 }
 
 export function clearSessionStorage() {
-  sessionStorage.setItem(TOKEN_NAME, '');
+  sessionStorage.setItem(LOGIN.TOKEN_NAME, '');
   sessionStorage.setItem(USER_INFO + 'memeberId', '');
   sessionStorage.setItem(USER_INFO + 'thumbnail', '');
   sessionStorage.setItem(USER_INFO + 'registDate', '');
@@ -138,7 +140,7 @@ export function clearSessionStorage() {
 export function getHeaders() {
   if (typeof sessionStorage === 'undefined') return;
   return {
-    Authorization: sessionStorage.getItem(TOKEN_NAME),
+    Authorization: sessionStorage.getItem(LOGIN.TOKEN_NAME),
   };
 }
 
