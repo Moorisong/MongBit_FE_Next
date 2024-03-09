@@ -73,7 +73,7 @@ export default function Login() {
         <TextElement text={'무료로 성격 검사'} />
         <TextElement text={'친구에게 공유까지'} />
       </TextWrap>
-      <Image src={'/images/logIn/loginLogo.svg'} alt={IMAGE_ALT_STRING.LOGIN.KAKAO_LOGIN_BUTTON} />
+      <Image src={'/images/logIn/loginLogo.svg'} alt={IMAGE_ALT_STRING.MONGBIT_TITLE + '카카오 로그인 아이콘'} />
       <TextElement text={'© 2023 MongMoongCrew. All rights reserved'} style={copyrightTextStyle} />
       <YellowKakaoLoginButton onClick={kakaoLogin} />
     </Wrap_mediaquery>

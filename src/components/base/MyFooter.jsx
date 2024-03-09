@@ -81,7 +81,7 @@ export default function MyFooter() {
             <Div style={{ display: 'flex', alignItem: 'center' }}>
               {CONST_FOOTER.BUTTON_IMG_URL.map((e, i) => (
                 <Link key={e + i} href={CONST_FOOTER.LINK_URL[i]} target="_blank">
-                  <Image key={e + i} src={e} alt={IMAGE_ALT_STRING.FOOTER.SNS} />
+                  <Image key={e + i} src={e} alt={IMAGE_ALT_STRING.MONGBIT_TITLE + '깃허브 및 인스타그램 바로가기'} />
                 </Link>
               ))}
             </Div>

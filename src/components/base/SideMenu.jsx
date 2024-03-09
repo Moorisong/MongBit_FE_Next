@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 
-import { CONST_FONT, CONST_HEADER, MEDIAQUERY, LOGIN } from '@/constants/constant';
+import { CONST_FONT, CONST_HEADER, MEDIAQUERY, LOGIN, IMAGE_ALT_STRING } from '@/constants/constant';
 import { decodeToken } from '@/utils/util';
 
 const SideMenuBlackDiv = styled.div`
@@ -110,10 +110,14 @@ export function SideMenu({ show }) {
                     <span>로그아웃</span>
                     <img
                       src="/images/header/logOutIcon.svg"
-                      alt="몽빗 MBTI 심리테스트 로그아웃 아이콘"
+                      alt={IMAGE_ALT_STRING.MONGBIT_TITLE + '로그아웃 버튼'}
                       style={{ marginLeft: '-1rem' }}
                     />
-                    <img src="/images/header/logo_dog.svg" alt="몽빗 MBTI 심리테스트 로고" style={{ width: '60px' }} />
+                    <img
+                      src="/images/header/logo_dog.svg"
+                      alt={IMAGE_ALT_STRING.MONGBIT_TITLE + '로고'}
+                      style={{ width: '60px' }}
+                    />
                   </div>
                 </ListElement>
               </ul>

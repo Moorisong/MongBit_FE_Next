@@ -9,7 +9,7 @@ const TestCountIconImg = styled.img`
 `;
 
 export function TestCountIconImage({ imageUrl }) {
-  return <TestCountIconImg src={imageUrl} alt={IMAGE_ALT_STRING.TEST.COUNT} />;
+  return <TestCountIconImg src={imageUrl} alt={IMAGE_ALT_STRING.MONGBIT_TITLE + '카운트 정보'} />;
 }
 
 export const YellowButton = styled.button`

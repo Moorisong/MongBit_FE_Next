@@ -99,15 +99,7 @@ export const TEST_IMAGE_URL = {
 };
 
 export const IMAGE_ALT_STRING = {
-  FOOTER: {
-    SNS: '몽빗 MBTI 심리테스트 깃허브 및 인스타그램 바로가기',
-  },
-  TEST: {
-    COUNT: '몽빗 MBTI 심리테스트 카운트 정보',
-  },
-  LOGIN: {
-    KAKAO_LOGIN_BUTTON: '몽빗 MBTI 심리테스트 메인 로고',
-  },
+  MONGBIT_TITLE: '몽빗 MBTI 심리테스트 ',
 };
 
 // 페이지 별
