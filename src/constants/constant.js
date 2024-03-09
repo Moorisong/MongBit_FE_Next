@@ -48,6 +48,7 @@ export const OG_TEST_GO = 'https://i.ibb.co/P4KyxjF/image.png'; // 이건 아직
 // 화면, 폰트
 export const MEDIAQUERY = {
   WIDTH_420: '420px',
+  WIDTH_340: '340px',
   WIDTH_345: '345px',
   WIDTH_375: '375px',
   WIDTH_370: '370px',

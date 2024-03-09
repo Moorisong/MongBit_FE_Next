@@ -6,9 +6,12 @@ import { DOMAIN, LOGIN, USER_INFO } from '@/constants/constant';
 export function decodeToken(token) {
   const decodedToken = jwtDecode(token);
   const expiration = decodedToken.exp;
+  // const expirationTime = new Date(expiration * 1000 - 200000);
   const expirationTime = new Date(expiration * 1000);
   const currentTime = new Date();
 
+  // console.log('currentTime::: ', currentTime);
+  // console.log('expirationTime::: ', expirationTime);
   if (expirationTime < currentTime) {
     return {
       state: false,
@@ -19,6 +22,12 @@ export function decodeToken(token) {
       role: decodedToken.auth,
     };
   }
+}
+
+export function isLogIned(logInState) {
+  const hasToken = logInState[LOGIN.TOKEN_NAME];
+  const isLogIned = hasToken ? decodeToken(hasToken).state : false;
+  return isLogIned;
 }
 
 export function formatTimeDifference(dateString) {

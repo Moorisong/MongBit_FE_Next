@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
+import { useRouter } from 'next/navigation';
 
 import { CONST_FONT, CONST_HEADER, MEDIAQUERY, LOGIN, IMAGE_ALT_STRING } from '@/constants/constant';
 import { decodeToken } from '@/utils/util';
@@ -50,12 +51,14 @@ const WrapBottomLogoutArea = {
   color: CONST_FONT.COLOR.GRAY_1,
 };
 
-const clickLogOutButton = (setLogIn, show) => {
+const clickLogOutButton = (setLogIn, show, router) => {
   setLogIn(false);
   show.setShowSideMenu(false);
+  return router.push('/');
 };
 
 export function SideMenu({ show }) {
+  const router = useRouter();
   const [height, setHeight] = useState(window.innerHeight);
   const [logIn, setLogIn] = useRecoilState(atomlogInState);
   const logInState = logIn[LOGIN.TOKEN_NAME] ? decodeToken(logIn[LOGIN.TOKEN_NAME]) : false;
@@ -113,7 +116,7 @@ export function SideMenu({ show }) {
                 )}
                 <ListElement style={contentListStyle}>
                   <div style={WrapBottomLogoutArea}>
-                    <div onClick={() => clickLogOutButton(setLogIn, show)}>
+                    <div onClick={() => clickLogOutButton(setLogIn, show, router)}>
                       <span>로그아웃</span>
                       <img
                         src="/images/header/logOutIcon.svg"

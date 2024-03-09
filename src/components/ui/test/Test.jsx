@@ -15,7 +15,7 @@ const TestImageBig = styled.img`
   cursor: pointer;
 
   @media (max-width: ${MEDIAQUERY.WIDTH_375}) {
-    width: ${MEDIAQUERY.WIDTH_345};
+    width: ${MEDIAQUERY.WIDTH_340};
   }
 `;
 
@@ -27,29 +27,13 @@ const TestImgageSmall = styled.img`
   cursor: pointer;
 
   @media (max-width: ${MEDIAQUERY.WIDTH_375}) {
-    width: 170px;
+    width: 165px;
     height: 100px;
   }
 `;
-
-const TestImagesSmallWrap = styled.div`
-  width: ${MEDIAQUERY.WIDTH_420};
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-  padding-top: 0.5rem;
-`;
-
-const SmallTestSetWrap = styled.div`
-  padding: 0 0.5rem 0.7rem 0;
-`;
-
-const TestCountInfoAreaWrap = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: baseline;
-  align-items: center;
-`;
+const Wrap = styled.div``;
+const Image = styled.img``;
+const Ul = styled.ul``;
 
 // style
 const smalltestsTitleTextStyle = {
@@ -71,28 +55,63 @@ const testIconTextStyle = {
   cursor: 'pointer',
 };
 
+const totalWrapStyle = {
+  width: MEDIAQUERY.WIDTH_420,
+  display: 'flex',
+  flexWrap: 'wrap',
+  position: 'relative',
+  paddingTop: '0.5rem',
+};
+
+const TestCountInfoAreaWrapStyle = {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'baseline',
+  alignItems: 'center',
+};
+
 export function TestVersionBig({ imageUrl, squareText }) {
   return (
-    <div>
+    <Wrap style={{ paddingRight: '1rem' }}>
       <TestImageBig src={imageUrl} />
       <TestTitleBlackSquareArea text={squareText} />
-    </div>
+    </Wrap>
   );
 }
 
 export function TestVersionSmallForSeveral({ testData }) {
   return (
-    <TestImagesSmallWrap>
+    <Wrap style={totalWrapStyle}>
       {testData.map((e, i) => (
-        <SmallTestSetWrap key={e.id + i}>
+        <Wrap key={e.id + i} style={{ padding: ' 0 0.5rem 0.7rem 0' }}>
           <TestImgageSmall src={e.imageUrl} />
           <TextElement text={e.title} style={smalltestsTitleTextStyle} />
-          <TestCountInfoAreaWrap>
+          <Wrap style={TestCountInfoAreaWrapStyle}>
             <TestCountIconImage imageUrl={TEST_ICON.URL.PLAY_COUNT} />
             <TextElement style={testIconTextStyle} text={e.playCount} />
-          </TestCountInfoAreaWrap>
-        </SmallTestSetWrap>
+          </Wrap>
+        </Wrap>
       ))}
-    </TestImagesSmallWrap>
+    </Wrap>
+  );
+}
+
+export function ImageElement({ imageUrl, style, altStringt }) {
+  return <Image src={imageUrl} style={style} alt={altStringt} />;
+}
+
+export function TestResult({ imageUrl, text, resultDescriptionArray, altString }) {
+  return (
+    <Wrap>
+      <Image src={imageUrl} alt={altString} />
+      <Wrap>
+        <TextElement text={text} />
+        <Ul>
+          {resultDescriptionArray.map((e, i) => (
+            <li key={e + i}>{e}</li>
+          ))}
+        </Ul>
+      </Wrap>
+    </Wrap>
   );
 }
