@@ -8,7 +8,7 @@ const wrapStyle = { flexDirection: 'column', justifyContent: 'space-around', ali
 const titleTextStyle = {
   margin: '0 0 0 1.5rem',
   fontSize: CONST_FONT.SIZE.FONT_SIZE_BIG,
-  fontWeight: CONST_FONT.BOLD_SCALE.FIRST,
+  fontWeight: CONST_FONT.BOLD_SCALE.SECOND,
 };
 
 export function TitleAndText({ text }) {

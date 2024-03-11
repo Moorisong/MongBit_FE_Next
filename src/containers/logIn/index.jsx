@@ -13,7 +13,7 @@ const TextWrap = styled.div`
   align-items: center;
   color: ${CONST_FONT.COLOR.BLACK};
   font-size: ${CONST_FONT.SIZE.FONT_SIZE_BIG};
-  font-weight: ${CONST_FONT.BOLD_SCALE.FIRST};
+  font-weight: ${CONST_FONT.BOLD_SCALE.SECOND};
   margin-botton: 3rem;
 `;
 

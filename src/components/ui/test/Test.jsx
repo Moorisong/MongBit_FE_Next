@@ -33,7 +33,12 @@ const TestImgageSmall = styled.img`
 `;
 const Wrap = styled.div``;
 const Image = styled.img``;
-const Ul = styled.ul``;
+const Ul = styled.ul`
+  width: 230px;
+  @media (max-width: ${MEDIAQUERY.WIDTH_375}) {
+    width: 210px;
+  }
+`;
 
 // style
 const smalltestsTitleTextStyle = {
@@ -100,13 +105,21 @@ export function ImageElement({ imageUrl, style, altStringt }) {
   return <Image src={imageUrl} style={style} alt={altStringt} />;
 }
 
-export function TestResult({ imageUrl, text, resultDescriptionArray, altString }) {
+export function MyPageTestResult({ data, altString }) {
+  const resultDescriptionArray = data.content.split('<br>');
   return (
-    <Wrap>
-      <Image src={imageUrl} alt={altString} />
-      <Wrap>
-        <TextElement text={text} />
-        <Ul>
+    <Wrap style={{ margin: '0.5rem 0 1rem 0.5rem', display: 'flex', justifyContent: 'center' }}>
+      <Image
+        src={data.imageUrl}
+        alt={altString}
+        style={{ width: '120px', objectFit: 'cover', borderRadius: '1rem', marginRight: '0.5rem' }}
+      />
+      <Wrap style={{ height: '11rem', overflow: 'hidden' }}>
+        <TextElement
+          text={data.title}
+          style={{ fontWeight: CONST_FONT.BOLD_SCALE.FIRST, fontSize: CONST_FONT.SIZE.FONT_SIZE_SMALL_1 }}
+        />
+        <Ul style={{ color: CONST_FONT.COLOR.GRAY_2, fontSize: CONST_FONT.SIZE.FONT_SIZE_SMALL_2 }}>
           {resultDescriptionArray.map((e, i) => (
             <li key={e + i}>{e}</li>
           ))}

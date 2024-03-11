@@ -25,7 +25,7 @@ export default function KakaoAuthHandle() {
     setLogInAtom({
       ...atomlogInState,
       goPage: {
-        url: '/',
+        url: logInSelector.goPage ? logInSelector.goPage : '/',
       },
       [LOGIN.TOKEN_NAME]: response.headers['authorization'],
       [LOGIN.USER_MEMBER_ID]: response.data.memberId,

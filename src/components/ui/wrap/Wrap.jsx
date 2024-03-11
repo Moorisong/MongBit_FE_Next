@@ -22,8 +22,12 @@ export const Div_animation = styled.div`
   width: ${MEDIAQUERY.WIDTH_420};
 `;
 
-export function Wrap_mediaquery({ style = {}, children }) {
-  return <Div_mediaquery style={style}>{children}</Div_mediaquery>;
+export function Wrap_mediaquery({ style = {}, children, onClick }) {
+  return (
+    <Div_mediaquery style={style} onClick={onClick}>
+      {children}
+    </Div_mediaquery>
+  );
 }
 
 export function DivElement({ style = {}, children }) {

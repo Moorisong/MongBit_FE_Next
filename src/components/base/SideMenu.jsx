@@ -27,7 +27,7 @@ const SideMenuWhiteDiv = styled.div`
 const ListElement = styled.li`
 fontSize: CONST_FONT.SIZE.FONT_SIZE_REGULAR,
 paddingBottom: '0.2rem',
-fontWeight: CONST_FONT.BOLD_SCALE.FIRST,
+fontWeight: CONST_FONT.BOLD_SCALE.SECOND,
 `;
 
 const wrapListStyle = {

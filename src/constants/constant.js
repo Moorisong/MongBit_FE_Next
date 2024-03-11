@@ -47,17 +47,19 @@ export const OG_TEST_GO = 'https://i.ibb.co/P4KyxjF/image.png'; // 이건 아직
 
 // 화면, 폰트
 export const MEDIAQUERY = {
-  WIDTH_420: '420px',
   WIDTH_340: '340px',
   WIDTH_345: '345px',
   WIDTH_375: '375px',
   WIDTH_370: '370px',
+  WIDTH_400: '400px',
+  WIDTH_420: '420px',
 };
 
 export const CONST_FONT = {
   COLOR: {
     GRAY_1: '#8f8f8f',
     GRAY_2: '#979797',
+    GRAY_3: '#f2f2f2',
     WHITE: 'white',
     BLACK: 'black',
   },
@@ -68,7 +70,8 @@ export const CONST_FONT = {
     FONT_SIZE_SMALL_2: '0.7rem',
   },
   BOLD_SCALE: {
-    FIRST: '700',
+    FIRST: '500',
+    SECOND: '700',
   },
 };
 
