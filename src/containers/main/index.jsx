@@ -38,8 +38,6 @@ const latestTestsDetail = {
   titleText: CONST_MAIN_PAGE.TITLE_TEXT.LATEST_TEST,
 };
 
-const wrapStyle = { flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }; // 메인페이지 Wrap element
-
 export default function main({ data }) {
   // Test 삭제
   // useEffect(()=>{
@@ -51,7 +49,7 @@ export default function main({ data }) {
   // }, [])
 
   return (
-    <Wrap_mediaquery style={wrapStyle}>
+    <Wrap_mediaquery flexDirection="column" justifyContent="center" alignitems="center">
       <TitleAndText text={mainTitleText} />
       <RandomStartYellowButton>{CONST_MAIN_PAGE.RANDOM_START_BUTTON_TEXT}</RandomStartYellowButton>
 

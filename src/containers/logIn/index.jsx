@@ -4,7 +4,6 @@ import { styled } from 'styled-components';
 import { CONST_FONT, DOMAIN, IMAGE_ALT_STRING, MEDIAQUERY } from '@/constants/constant';
 
 import { Wrap_mediaquery } from '@/components/ui/wrap/Wrap';
-import { TextElement } from '@/components/ui/text/Text';
 
 const TextWrap = styled.div`
   display: flex;
@@ -14,7 +13,7 @@ const TextWrap = styled.div`
   color: ${CONST_FONT.COLOR.BLACK};
   font-size: ${CONST_FONT.SIZE.FONT_SIZE_BIG};
   font-weight: ${CONST_FONT.BOLD_SCALE.SECOND};
-  margin-botton: 3rem;
+  margin-top: 1rem;
 `;
 
 const Image = styled.img`
@@ -38,17 +37,16 @@ const YellowKakaoLoginButton = styled.button`
   }
 `;
 
-const wrapStyle = { flexDirection: 'column', justifyContent: 'center', alignItems: 'center' };
-const textSTyle = {
-  fontSize: CONST_FONT.SIZE.FONT_SIZE_SMALL_1,
-  color: CONST_FONT.COLOR.BLACK,
-  margin: '2rem 0 1rem 0',
-};
-const copyrightTextStyle = {
-  color: CONST_FONT.COLOR.GRAY_2,
-  fontSize: CONST_FONT.SIZE.FONT_SIZE_SMALL_2,
-  marginBottom: '5rem',
-};
+const Text = styled.p`
+  font-size: ${(props) => (props.fontSize ? props.fontSize : '')};
+  color: ${(props) => (props.color ? props.color : '')};
+`;
+
+const CopyrightText = styled.p`
+  color: ${CONST_FONT.COLOR.GRAY_2};
+  font-size: ${CONST_FONT.SIZE.FONT_SIZE_SMALL_2};
+  margin-bottom: 5rem;
+`;
 
 export default function Login() {
   // console.log(process.env.NEXT_PUBLIC_FE_URL);
@@ -67,14 +65,16 @@ export default function Login() {
   // }, []);
 
   return (
-    <Wrap_mediaquery style={wrapStyle}>
-      <TextElement text={'3초만에 로그인하고'} style={textSTyle}></TextElement>
+    <Wrap_mediaquery flexDirection="column" justifyContent="center" alignitems="center" padding='3rem 0 0 0 '>
+      <Text fontSize={CONST_FONT.SIZE.FONT_SIZE_SMALL_1} color={CONST_FONT.COLOR.BLACK}>
+        3초만에 로그인하고
+      </Text>
       <TextWrap>
-        <TextElement text={'무료로 성격 검사'} />
-        <TextElement text={'친구에게 공유까지'} />
+        <Text>무료로 성격 검사</Text>
+        <Text>친구에게 공유까지</Text>
       </TextWrap>
       <Image src={'/images/logIn/loginLogo.svg'} alt={IMAGE_ALT_STRING.MONGBIT_TITLE + '카카오 로그인 아이콘'} />
-      <TextElement text={'© 2023 MongMoongCrew. All rights reserved'} style={copyrightTextStyle} />
+      <CopyrightText>© 2023 MongMoongCrew. All rights reserved</CopyrightText>
       <YellowKakaoLoginButton onClick={kakaoLogin} />
     </Wrap_mediaquery>
   );

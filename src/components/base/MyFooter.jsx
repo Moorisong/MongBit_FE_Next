@@ -7,40 +7,41 @@ import { usePathname } from 'next/navigation';
 import { CONST_FONT, CONST_FOOTER, IMAGE_ALT_STRING } from '@/constants/constant';
 
 import { Wrap_mediaquery } from '@/components/ui/wrap/Wrap';
-import { TextElement } from '@/components/ui/text/Text';
 
 const Image = styled.img`
   width: 20px;
   margin-right: 10px;
 `;
+const Text = styled.p``;
+const Div = styled.div`
+  margin-bottom: ${(props) => (props.marginbottom ? props.marginbottom : '')};
+  flex-direction: ${(props) => (props.flexDirection ? props.flexDirection : '')};
+  align-items: ${(props) => (props.alignitems ? props.alignitems : '')};
+  padding: ${(props) => (props.padding ? props.padding : '')};
+  position: ${(props) => (props.position ? props.position : '')};
+  display: ${(props) => (props.display ? props.display : '')};
+  right: ${(props) => (props.right ? props.right : '')};
+  bottom: ${(props) => (props.bottom ? props.bottom : '')};
+`;
 
-const Div = styled.div``;
+const FooterDiscriptionText = styled(Text)`
+  font-size: ${CONST_FONT.SIZE.FONT_SIZE_SMALL_2};
+  color: ${CONST_FONT.COLOR.GRAY_2};
+`;
 
-const totalWrapStyle = {
-  flexDirection: 'column',
-  alignItems: 'baseline',
-  padding: '2em 0 1rem 1rem',
-  position: 'relative',
-};
+const PolicyText = styled(Text)`
+  margin-right: 5px;
+  font-size: ${CONST_FONT.SIZE.FONT_SIZE_SMALL_2};
+  color: ${CONST_FONT.COLOR.GRAY_2};
+`;
 
-const policyWrapStyle = {
-  display: 'flex',
-  alignItem: 'center',
-  position: 'absolute',
-  right: '-1.3rem',
-  bottom: '2.7rem',
-  padding: '1rem 2.5rem 0 0',
-};
-
-const policyStyle = { marginRight: '5px', fontSize: CONST_FONT.SIZE.FONT_SIZE_SMALL_2, color: CONST_FONT.COLOR.GRAY_2 };
-
-const copyrightStyle = {
-  position: 'absolute',
-  right: '0',
-  padding: '0.2rem 1.5rem 0 0',
-  fontSize: CONST_FONT.SIZE.FONT_SIZE_SMALL_2,
-  color: CONST_FONT.COLOR.GRAY_2,
-};
+const CopyrightText = styled(Text)`
+  position: absolute;
+  right: 0;
+  padding: 0.2rem 1.5rem 0 0;
+  font-size: ${CONST_FONT.SIZE.FONT_SIZE_SMALL_2};
+  color: ${CONST_FONT.COLOR.GRAY_2};
+`;
 
 export default function MyFooter() {
   const pathName = usePathname();
@@ -50,42 +51,37 @@ export default function MyFooter() {
   if (isShow)
     return (
       <>
-        <Wrap_mediaquery style={totalWrapStyle}>
-          <Div style={{ marginBottom: '2rem' }}>
+        <Wrap_mediaquery flexDirection="column" alignitems="baseline" padding="2em 0 1rem 1rem" position="relative">
+          <Div marginbottom="2rem">
             {CONST_FOOTER.DESCRIPTION.map((e, i) => (
-              <TextElement
-                key={e + i}
-                text={e}
-                style={{
-                  fontSize: CONST_FONT.SIZE.FONT_SIZE_SMALL_2,
-                  color: CONST_FONT.COLOR.GRAY_2,
-                }}
-              />
-            ))}
-          </Div>
-
-          <Div style={policyWrapStyle}>
-            {CONST_FOOTER.POLICY.map((e, i) => (
-              <Link key={e + i} href={CONST_FOOTER.PAGE_URL[i]} target="_blank">
-                <TextElement style={policyStyle} text={e} />
-              </Link>
+              <FooterDiscriptionText key={e + i}>{e}</FooterDiscriptionText>
             ))}
           </Div>
 
           <Div
-            style={{
-              display: 'flex',
-              alignItem: 'center',
-            }}
+            display="flex"
+            alignitems="center"
+            position="absolute"
+            right="-1.3rem"
+            bottom="2.7rem"
+            padding="1rem 2.5rem 0 0"
           >
-            <Div style={{ display: 'flex', alignItem: 'center' }}>
+            {CONST_FOOTER.POLICY.map((e, i) => (
+              <Link key={e + i} href={CONST_FOOTER.PAGE_URL[i]} target="_blank">
+                <PolicyText>{e}</PolicyText>
+              </Link>
+            ))}
+          </Div>
+
+          <Div display="flex" alignitems="center">
+            <Div display="flex" alignitems="center">
               {CONST_FOOTER.BUTTON_IMG_URL.map((e, i) => (
                 <Link key={e + i} href={CONST_FOOTER.LINK_URL[i]} target="_blank">
                   <Image key={e + i} src={e} alt={IMAGE_ALT_STRING.MONGBIT_TITLE + '깃허브 및 인스타그램 바로가기'} />
                 </Link>
               ))}
             </Div>
-            <TextElement style={copyrightStyle} text={CONST_FOOTER.COPYRIGHT} />
+            <CopyrightText>{CONST_FOOTER.COPYRIGHT}</CopyrightText>
           </Div>
         </Wrap_mediaquery>
       </>

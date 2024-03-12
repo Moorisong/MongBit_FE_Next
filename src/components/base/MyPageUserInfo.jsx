@@ -7,7 +7,7 @@ import { DivElement, Wrap_mediaquery } from '@/components/ui/wrap/Wrap';
 
 export function MyPageUserInfo({ logInState, registerDate }) {
   return (
-    <Wrap_mediaquery style={{ flexDirection: 'column', justifyContent: 'center', marginTop: '0.3rem' }}>
+    <Wrap_mediaquery flexDirection="column" justifyContent="center" margintop="0.3rem">
       <DivElement style={{ display: 'flex', flexDirection: 'row' }}>
         <ImageElement
           imageUrl={logInState[LOGIN.USER_THUMBNAIL]}

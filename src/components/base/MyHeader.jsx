@@ -46,13 +46,6 @@ const buttonArray = [
   },
 ];
 
-const wrapStyle = {
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  padding: '1rem 0.5rem',
-};
-
 const showSideMenuSquare = ({ showSideMenu, setShowSideMenu }) => {
   setShowSideMenu(!showSideMenu);
 };
@@ -74,7 +67,7 @@ export default function MyHeader() {
   };
   return (
     <>
-      <Wrap_mediaquery style={wrapStyle}>
+      <Wrap_mediaquery flexDirection="row" justifyContent="space-between" alignitems="center" padding="1rem 0.5rem">
         {buttonArray.map((e, i) => (
           <HeaderButton
             key={i + e.name}

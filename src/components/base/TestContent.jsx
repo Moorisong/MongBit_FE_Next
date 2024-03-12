@@ -1,48 +1,60 @@
+import styled from 'styled-components';
+
 import { CONST_FONT, CONST_MAIN_PAGE } from '@/constants/constant';
 
-import { TextElement } from '@/components/ui/text/Text';
 import { Wrap_mediaquery } from '@/components/ui/wrap/Wrap';
 import { TestVersionBig, TestVersionSmallForSeveral } from '@/components/ui/test/Test';
 
-const wrapStyle = { flexDirection: 'column', justifyContent: 'space-around', alignItems: 'baseline' };
-const titleTextStyle = {
-  margin: '0 0 0 1.5rem',
-  fontSize: CONST_FONT.SIZE.FONT_SIZE_BIG,
-  fontWeight: CONST_FONT.BOLD_SCALE.SECOND,
-};
+const Text = styled.p`
+  margin: ${(props) => (props.margin ? props.margin : '')};
+  font-size: ${(props) => (props.fontSize ? props.fontSize : '')};
+  font-weight: ${(props) => (props.fontWeight ? props.fontWeight : '')};
+  color: ${(props) => (props.color ? props.color : '')};
+`;
 
 export function TitleAndText({ text }) {
-  const combinedStyle = { ...wrapStyle, padding: '2rem 1rem 0 0' };
-
   return (
-    <Wrap_mediaquery style={combinedStyle}>
-      <TextElement text={text.titleText} style={titleTextStyle} />
-      <TextElement
-        text={text.contentText}
-        style={{ color: CONST_FONT.COLOR.GRAY_1, fontSize: CONST_FONT.SIZE.FONT_SIZE_REGULAR }}
-      />
+    <Wrap_mediaquery flexDirection="column" justifyContent="space-around" alignitems="baseline" padding="1rem 1rem 0 0 ">
+      <Text margin="0 0 0 1.5rem" fontSize={CONST_FONT.SIZE.FONT_SIZE_BIG} fontWeight={CONST_FONT.BOLD_SCALE.SECOND}>
+        {text.titleText}
+      </Text>
+      <Text fontSize={CONST_FONT.SIZE.FONT_SIZE_SMALL_1} color={CONST_FONT.COLOR.GRAY_1}>
+        {text.contentText}
+      </Text>
     </Wrap_mediaquery>
   );
 }
 
 export function TitleAndTest({ style }) {
-  const combinedStyle = { ...wrapStyle, padding: '1rem 1rem 0.8rem 0', position: 'relative' };
-
   return (
-    <Wrap_mediaquery style={combinedStyle}>
-      <TextElement text={style.titleText} style={titleTextStyle} />
+    <Wrap_mediaquery
+      flexDirection="column"
+      justifyContent="space-around"
+      alignitems="baseline"
+      padding="1rem 1rem 0.8rem 0"
+      position="relative"
+    >
+      <Text margin="0 0 0 1.5rem" fontSize={CONST_FONT.SIZE.FONT_SIZE_BIG} fontWeight={CONST_FONT.BOLD_SCALE.SECOND}>
+        {style.titleText}
+      </Text>
       <TestVersionBig imageUrl={style.imageUrl} squareText={style.squareText} />
     </Wrap_mediaquery>
   );
 }
 
 export function TitleAndTestsSmallForSeveral({ testData }) {
-  const combinedStyle = { ...wrapStyle, padding: '1rem 1rem 0.8rem 0', position: 'relative' };
-
   return (
-    <Wrap_mediaquery style={combinedStyle}>
-      <TextElement text={CONST_MAIN_PAGE.TITLE_TEXT.LATEST_TEST} style={titleTextStyle} />
-      <TestVersionSmallForSeveral style={combinedStyle} testData={testData.testCoverDTOList} />
+    <Wrap_mediaquery
+      flexDirection="column"
+      justifyContent="space-around"
+      alignitems="baseline"
+      padding="1rem 1rem 0.8rem 0"
+      position="relative"
+    >
+      <Text margin="0 0 0 1.5rem" fontSize={CONST_FONT.SIZE.FONT_SIZE_BIG} fontWeight={CONST_FONT.BOLD_SCALE.SECOND}>
+        {CONST_MAIN_PAGE.TITLE_TEXT.LATEST_TEST}
+      </Text>
+      <TestVersionSmallForSeveral testData={testData.testCoverDTOList} />
     </Wrap_mediaquery>
   );
 }
