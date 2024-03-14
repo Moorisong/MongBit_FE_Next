@@ -4,6 +4,7 @@ import { styled } from 'styled-components';
 import { CONST_FONT, DOMAIN, IMAGE_ALT_STRING, MEDIAQUERY } from '@/constants/constant';
 
 import { Wrap_mediaquery } from '@/components/ui/wrap/Wrap';
+import { Text } from '@/components/ui/CommonElements';
 
 const TextWrap = styled.div`
   display: flex;
@@ -37,11 +38,6 @@ const YellowKakaoLoginButton = styled.button`
   }
 `;
 
-const Text = styled.p`
-  font-size: ${(props) => (props.fontSize ? props.fontSize : '')};
-  color: ${(props) => (props.color ? props.color : '')};
-`;
-
 const CopyrightText = styled.p`
   color: ${CONST_FONT.COLOR.GRAY_2};
   font-size: ${CONST_FONT.SIZE.FONT_SIZE_SMALL_2};
@@ -65,7 +61,7 @@ export default function Login() {
   // }, []);
 
   return (
-    <Wrap_mediaquery flexDirection="column" justifyContent="center" alignitems="center" padding='3rem 0 0 0 '>
+    <Wrap_mediaquery flexDirection="column" justifyContent="center" alignItems="center" padding="3rem 0 0 0 ">
       <Text fontSize={CONST_FONT.SIZE.FONT_SIZE_SMALL_1} color={CONST_FONT.COLOR.BLACK}>
         3초만에 로그인하고
       </Text>

@@ -1,32 +1,28 @@
 import { CONST_FONT, LOGIN } from '@/constants/constant';
 
-import { TextElement } from '@/components/ui/text/Text';
 import { ImageElement } from '@/components/ui/test/Test';
-import { Div_stroke } from '@/components/ui/square/Square';
-import { DivElement, Wrap_mediaquery } from '@/components/ui/wrap/Wrap';
+import { Stroke } from '@/components/ui/square/Square';
+import { Wrap_mediaquery } from '@/components/ui/wrap/Wrap';
+import { Text, Wrap } from '@/components/ui/CommonElements';
 
 export function MyPageUserInfo({ logInState, registerDate }) {
   return (
-    <Wrap_mediaquery flexDirection="column" justifyContent="center" margintop="0.3rem">
-      <DivElement style={{ display: 'flex', flexDirection: 'row' }}>
+    <Wrap_mediaquery flexDirection="column" justifyContent="center" margin="0.3rem 0 0 0 ">
+      <Wrap display="flex" flexDirection="row">
         <ImageElement
           imageUrl={logInState[LOGIN.USER_THUMBNAIL]}
-          style={{ width: '35px', margin: '0 0.7rem 0 1.5rem', borderRadius: '13.5px' }}
+          style={{ width: '35px', height: '35px', margin: '0 0.7rem 0 1.5rem', borderRadius: '13.5px' }}
         />
-        <DivElement style={{ display: 'flex', flexDirection: 'column' }}>
-          <TextElement
-            text={logInState[LOGIN.USER_USER_NAME]}
-            style={{ fontSize: CONST_FONT.SIZE.FONT_SIZE_SMALL_1 }}
-          />
-          <TextElement
-            text={`${registerDate} 가입`}
-            style={{ fontSize: CONST_FONT.SIZE.FONT_SIZE_SMALL_2, color: CONST_FONT.COLOR.GRAY_2 }}
-          />
-        </DivElement>
-      </DivElement>
-      <DivElement style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
-        <Div_stroke />
-      </DivElement>
+        <Wrap display="flex" flexDirection="column" margin="0 0 1rem 0">
+          <Text fontSize={CONST_FONT.SIZE.FONT_SIZE_SMALL_1}>{logInState[LOGIN.USER_USER_NAME]}</Text>
+          <Text fontSize={CONST_FONT.SIZE.FONT_SIZE_SMALL_2} color={CONST_FONT.COLOR.GRAY_2}>
+            {registerDate} 가입
+          </Text>
+        </Wrap>
+      </Wrap>
+      <Wrap display="flex" justifyContent="center" margin="0.5rem 0 0 0">
+        <Stroke />
+      </Wrap>
     </Wrap_mediaquery>
   );
 }

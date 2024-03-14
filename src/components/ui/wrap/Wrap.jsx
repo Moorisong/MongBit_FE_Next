@@ -8,8 +8,9 @@ export const Wrap_mediaquery = styled.div`
   width: ${MEDIAQUERY.WIDTH_420};
   flex-direction: ${(props) => (props.flexDirection ? props.flexDirection : '')};
   justify-content: ${(props) => (props.justifyContent ? props.justifyContent : '')};
-  align-items: ${(props) => (props.alignitems ? props.alignitems : '')};
+  align-items: ${(props) => (props.alignItems ? props.alignItems : '')};
   padding: ${(props) => (props.padding ? props.padding : '')};
+  margin: ${(props) => (props.margin ? props.margin : '')};
   position: ${(props) => (props.position ? props.position : '')};
   text-align: ${(props) => (props.textAlign ? props.textAlign : '')};
 
@@ -21,5 +22,3 @@ export const Wrap_mediaquery = styled.div`
 export const Div_animation = styled.div`
   width: ${MEDIAQUERY.WIDTH_420};
 `;
-
-export const DivElement = styled.div``;
