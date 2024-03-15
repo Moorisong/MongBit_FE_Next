@@ -1,9 +1,8 @@
 import { CONST_FONT, LOGIN } from '@/constants/constant';
 
 import { ImageElement } from '@/components/ui/test/Test';
-import { Stroke } from '@/components/ui/square/Square';
 import { Wrap_mediaquery } from '@/components/ui/wrap/Wrap';
-import { Text, Wrap } from '@/components/ui/CommonElements';
+import { Text, Wrap, Stroke } from '@/components/ui/CommonElements';
 
 export function MyPageUserInfo({ logInState, registerDate }) {
   return (

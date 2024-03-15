@@ -27,12 +27,6 @@ const TestTitleBlackSquareText = styled.p`
   padding: 0.2rem 0.5rem 0 0.7rem;
 `;
 
-export const Stroke = styled.div`
-  border-bottom: 1px solid #f1f1f1;
-  width: 90%;
-  height: 5px;
-`;
-
 export function TestTitleBlackSquareArea({ text }) {
   return (
     <TestTitleBlackSquareDiv>

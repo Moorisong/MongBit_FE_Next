@@ -40,3 +40,9 @@ export const Wrap = styled.div`
   background-color: ${(props) => (props.backgroundcolor ? props.backgroundcolor : '')};
   border-radius: ${(props) => (props.borderradius ? props.borderradius : '')};
 `;
+
+export const Stroke = styled.div`
+  border-bottom: 1px solid #f1f1f1;
+  width: 90%;
+  height: 5px;
+`;
