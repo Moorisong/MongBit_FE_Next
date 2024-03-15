@@ -6,7 +6,7 @@ import { Text, Wrap, Stroke } from '@/components/ui/CommonElements';
 
 export function MyPageUserInfo({ logInState, registerDate }) {
   return (
-    <Wrap_mediaquery flexDirection="column" justifycontent="center" margin="0.3rem 0 0 0 ">
+    <Wrap_mediaquery flexDirection="column" justifyContent="center" margin="0.3rem 0 0 0 ">
       <Wrap display="flex" flexDirection="row">
         <ImageElement
           imageUrl={logInState[LOGIN.USER_THUMBNAIL]}
@@ -19,7 +19,7 @@ export function MyPageUserInfo({ logInState, registerDate }) {
           </Text>
         </Wrap>
       </Wrap>
-      <Wrap display="flex" justifycontent="center" margin="0.5rem 0 0 0">
+      <Wrap display="flex" justifyContent="center" margin="0.5rem 0 0 0">
         <Stroke />
       </Wrap>
     </Wrap_mediaquery>

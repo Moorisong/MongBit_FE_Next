@@ -23,7 +23,7 @@ export default async function Image() {
             display: 'flex',
             textAlign: 'center',
             alignitems: 'center',
-            justifycontent: 'center',
+            justifyContent: 'center',
           }}
         >
           <img

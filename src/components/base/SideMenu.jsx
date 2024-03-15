@@ -46,7 +46,7 @@ const wrapBottomArea = {
 
 const WrapBottomLogoutArea = {
   display: 'flex',
-  justifycontent: 'space-between',
+  justifyContent: 'space-between',
   width: CONST_HEADER.SIDE_MENU_WHITE_BOARD_WIDTH - 60,
   color: CONST_FONT.COLOR.GRAY_1,
 };

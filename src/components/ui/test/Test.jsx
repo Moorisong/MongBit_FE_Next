@@ -67,7 +67,7 @@ export function TestVersionSmallForSeveral({ testData }) {
           >
             {e.title}
           </Text>
-          <Wrap display="flex" justifycontent="baseline" alignitems="center">
+          <Wrap display="flex" justifyContent="baseline" alignitems="center">
             <TestCountIconImage imageUrl={TEST_ICON.URL.PLAY_COUNT} />
             <Text
               fontSize={CONST_FONT.SIZE.FONT_SIZE_SMALL_1}
@@ -92,7 +92,7 @@ export function ImageElement({ imageUrl, style, altStringt }) {
 export function MyPageTestResult({ data, altString }) {
   const resultDescriptionArray = data.content.split('<br>');
   return (
-    <Wrap margin="0.5rem 0 1rem 1rem" display="flex" justifycontent="center">
+    <Wrap margin="0.5rem 0 1rem 1rem" display="flex" justifyContent="center">
       <Image
         src={data.imageUrl}
         alt={altString}

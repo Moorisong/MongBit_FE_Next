@@ -49,7 +49,7 @@ export default function main({ data }) {
   // }, [])
 
   return (
-    <Wrap_mediaquery flexDirection="column" justifycontent="center" alignitems="center">
+    <Wrap_mediaquery flexDirection="column" justifyContent="center" alignitems="center">
       <TitleAndText text={mainTitleText} />
       <RandomStartYellowButton>{CONST_MAIN_PAGE.RANDOM_START_BUTTON_TEXT}</RandomStartYellowButton>
 

@@ -7,7 +7,7 @@ export const Wrap_mediaquery = styled.div`
   width: ${MEDIAQUERY.WIDTH_420};
   display: flex;
   flex-direction: ${(props) => (props.flexDirection ? props.flexDirection : '')};
-  justify-content: ${(props) => (props.justifycontent ? props.justifycontent : '')};
+  justify-content: ${(props) => (props.justifyContent ? props.justifyContent : '')};
   align-items: ${(props) => (props.alignitems ? props.alignitems : '')};
   padding: ${(props) => (props.padding ? props.padding : '')};
   margin: ${(props) => (props.margin ? props.margin : '')};

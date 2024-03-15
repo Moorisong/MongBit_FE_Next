@@ -113,7 +113,7 @@ export default function MyPage() {
     const registerDate = `${dateParts[0]}.${dateParts[1]}.${dateParts[2]}`;
 
     return (
-      <Wrap_mediaquery flexDirection="column" justifycontent="center">
+      <Wrap_mediaquery flexDirection="column" justifyContent="center">
         <TitleText
           fontSize={CONST_FONT.SIZE.FONT_SIZE_BIG}
           fontWeight={CONST_FONT.BOLD_SCALE.SECOND}
@@ -134,15 +134,16 @@ export default function MyPage() {
         {testData.resultArr.map((e, i) => (
           <MyPageTestResult key={e + i} data={e} altString={IMAGE_ALT_STRING.MONGBIT_TITLE + '결과 내용'} />
         ))}
-        <Wrap_mediaquery justifycontent="center" padding="1.3rem 0 0.3rem 0" onClick={clickSeeMoreResultButton}>
+        <Wrap_mediaquery justifyContent="center" padding="1.3rem 0 0.3rem 0" onClick={clickSeeMoreResultButton}>
           <Wrap
             width="100px"
             height="33px"
-            borderradius="15px"
+            borderRadius="15px"
             position="relative"
             display="flex"
-            justifycontent="center"
+            justifyContent="center"
             alignitems="center"
+            backgroundColor={CONST_FONT.COLOR.GRAY_3}
           >
             {loading ? (
               <AnimationRef_seeMore ref={containerRef_1}></AnimationRef_seeMore>

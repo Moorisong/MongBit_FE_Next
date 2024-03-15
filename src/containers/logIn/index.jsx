@@ -61,7 +61,7 @@ export default function Login() {
   // }, []);
 
   return (
-    <Wrap_mediaquery flexDirection="column" justifycontent="center" alignitems="center" padding="3rem 0 0 0 ">
+    <Wrap_mediaquery flexDirection="column" justifyContent="center" alignitems="center" padding="3rem 0 0 0 ">
       <Text fontSize={CONST_FONT.SIZE.FONT_SIZE_SMALL_1} color={CONST_FONT.COLOR.BLACK}>
         3초만에 로그인하고
       </Text>
