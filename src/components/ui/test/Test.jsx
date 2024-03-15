@@ -51,14 +51,14 @@ export function TestVersionBig({ imageUrl, squareText }) {
 
 export function TestVersionSmallForSeveral({ testData }) {
   return (
-    <Wrap width={MEDIAQUERY.WIDTH_420} display="flex" flexwrap="wrap" position="relative" paddingtop="0.5rem">
+    <Wrap width={MEDIAQUERY.WIDTH_420} display="flex" flexwrap="wrap" position="relative" padding="0.5rem 0 0 0">
       {testData.map((e, i) => (
         <Wrap key={e.id + i} style={{ padding: ' 0 0.5rem 0.7rem 0' }}>
           <TestImgageSmall src={e.imageUrl} />
           <Text
             color={CONST_FONT.COLOR.GRAY_1}
             width="150px"
-            paddingleft="3px"
+            padding="0 0 0 3px"
             fontSize={CONST_FONT.SIZE.FONT_SIZE_SMALL_1}
             whitespace="nowrap"
             overflow="hidden"
@@ -98,7 +98,7 @@ export function MyPageTestResult({ data, altString }) {
         alt={altString}
         style={{ width: '120px', objectFit: 'cover', borderRadius: '1rem', marginRight: '0.5rem' }}
       />
-      <Wrap height="11rem" overflow="hidden" margin="0 0 0 5px">
+      <Wrap height="11rem" overflow="hidden" margin="2px 0 0 5px">
         <Text fontWeight={CONST_FONT.BOLD_SCALE.FIRST} fontSize={CONST_FONT.SIZE.FONT_SIZE_SMALL_1}>
           {data.title}
         </Text>

@@ -7,7 +7,13 @@ export default function GlobalStateRoot({ children }) {
     <RecoilRoot>
       <StyleSheetManager
         shouldForwardProp={(prop) =>
-          prop !== 'flexDirection' && prop !== 'borderRadius' && prop !== 'justifyContent' && prop !== 'backgroundColor'
+          prop !== 'flexDirection' &&
+          prop !== 'borderRadius' &&
+          prop !== 'justifyContent' &&
+          prop !== 'alignItems' &&
+          prop !== 'backgroundColor' &&
+          prop !== 'whiteSpace' &&
+          prop !== 'textOverflow'
         }
       >
         {children}

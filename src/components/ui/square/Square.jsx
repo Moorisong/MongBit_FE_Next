@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 import { CONST_FONT, MEDIAQUERY } from '@/constants/constant';
 
+import { Text } from '@/components/ui/CommonElements';
+
 const TestTitleBlackSquareDiv = styled.div`
   width: ${MEDIAQUERY.WIDTH_370};
   height: 2.5rem;
@@ -18,19 +20,19 @@ const TestTitleBlackSquareDiv = styled.div`
   }
 `;
 
-const TestTitleBlackSquareText = styled.p`
-  color: ${CONST_FONT.COLOR.WHITE};
-  font-size: ${CONST_FONT.SIZE.FONT_SIZE_SMALL_1};
-  white-space: noWrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 0.2rem 0.5rem 0 0.7rem;
-`;
-
 export function TestTitleBlackSquareArea({ text }) {
   return (
     <TestTitleBlackSquareDiv>
-      <TestTitleBlackSquareText>{text}</TestTitleBlackSquareText>
+      <Text
+        color={CONST_FONT.COLOR.WHITE}
+        fontSize={CONST_FONT.SIZE.FONT_SIZE_SMALL_1}
+        whiteSpace="noWrap"
+        overflow="hidden"
+        textOverflow="ellipsis"
+        padding="0.2rem 0.5rem 0 0.7rem"
+      >
+        {text}
+      </Text>
     </TestTitleBlackSquareDiv>
   );
 }
