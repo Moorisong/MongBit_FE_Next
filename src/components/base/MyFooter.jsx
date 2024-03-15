@@ -16,7 +16,7 @@ const Text = styled.p``;
 const Div = styled.div`
   margin-bottom: ${(props) => (props.marginbottom ? props.marginbottom : '')};
   flex-direction: ${(props) => (props.flexDirection ? props.flexDirection : '')};
-  align-items: ${(props) => (props.alignItems ? props.alignItems : '')};
+  align-items: ${(props) => (props.alignitems ? props.alignitems : '')};
   padding: ${(props) => (props.padding ? props.padding : '')};
   position: ${(props) => (props.position ? props.position : '')};
   display: ${(props) => (props.display ? props.display : '')};
@@ -51,7 +51,7 @@ export default function MyFooter() {
   if (isShow)
     return (
       <>
-        <Wrap_mediaquery flexDirection="column" alignItems="baseline" padding="2em 0 1rem 1rem" position="relative">
+        <Wrap_mediaquery flexDirection="column" alignitems="baseline" padding="2em 0 1rem 1rem" position="relative">
           <Div marginbottom="2rem">
             {CONST_FOOTER.DESCRIPTION.map((e, i) => (
               <FooterDiscriptionText key={e + i}>{e}</FooterDiscriptionText>
@@ -60,7 +60,7 @@ export default function MyFooter() {
 
           <Div
             display="flex"
-            alignItems="center"
+            alignitems="center"
             position="absolute"
             right="-1.3rem"
             bottom="2.7rem"
@@ -73,8 +73,8 @@ export default function MyFooter() {
             ))}
           </Div>
 
-          <Div display="flex" alignItems="center">
-            <Div display="flex" alignItems="center">
+          <Div display="flex" alignitems="center">
+            <Div display="flex" alignitems="center">
               {CONST_FOOTER.BUTTON_IMG_URL.map((e, i) => (
                 <Link key={e + i} href={CONST_FOOTER.LINK_URL[i]} target="_blank">
                   <Image key={e + i} src={e} alt={IMAGE_ALT_STRING.MONGBIT_TITLE + '깃허브 및 인스타그램 바로가기'} />

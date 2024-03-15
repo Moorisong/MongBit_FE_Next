@@ -26,10 +26,10 @@ export function MetricsBarChartDashboard(props) {
         datasets: [
           {
             data: yValues,
-            backgroundColor: '#3F80FF',
+            backgroundcolor: '#3F80FF',
             hoverBorderColor: '#FF3FD5',
             barPercentage: 0.2,
-            borderRadius: 10,
+            borderradius: 10,
           },
         ],
       },

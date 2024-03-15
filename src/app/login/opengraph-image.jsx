@@ -22,8 +22,8 @@ export default async function Image() {
             background: 'white',
             display: 'flex',
             textAlign: 'center',
-            alignItems: 'center',
-            justifyContent: 'center',
+            alignitems: 'center',
+            justifycontent: 'center',
           }}
         >
           <img

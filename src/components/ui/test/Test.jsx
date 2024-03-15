@@ -67,7 +67,7 @@ export function TestVersionSmallForSeveral({ testData }) {
           >
             {e.title}
           </Text>
-          <Wrap display="flex" justifycontent="baseline" alignItems="center">
+          <Wrap display="flex" justifycontent="baseline" alignitems="center">
             <TestCountIconImage imageUrl={TEST_ICON.URL.PLAY_COUNT} />
             <Text
               fontSize={CONST_FONT.SIZE.FONT_SIZE_SMALL_1}

@@ -78,8 +78,8 @@ export default function KakaoAuthHandle() {
   }, [logInAtom.goPage]);
 
   return (
-    <Wrap_mediaquery justifyContent="center" position="relative">
-      <Div_animation ref={containerRef} style={{ width: '100px', margin: '10rem 10rem' }}></Div_animation>
+    <Wrap_mediaquery justifycontent="center" position="relative">
+      <Div_animation ref={containerRef} width="100px" margin="10rem 10rem"></Div_animation>
     </Wrap_mediaquery>
   );
 }

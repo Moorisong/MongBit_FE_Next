@@ -26,8 +26,8 @@ export default async function Image({ params: { testId } }) {
             background: 'white',
             display: 'flex',
             textAlign: 'center',
-            alignItems: 'center',
-            justifyContent: 'center',
+            alignitems: 'center',
+            justifycontent: 'center',
           }}
         >
           <img

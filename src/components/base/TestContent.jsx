@@ -8,8 +8,8 @@ export function TitleAndText({ text }) {
   return (
     <Wrap_mediaquery
       flexDirection="column"
-      justifyContent="space-around"
-      alignItems="baseline"
+      justifycontent="space-around"
+      alignitems="baseline"
       padding="1rem 1rem 0 0 "
     >
       <TitleText
@@ -30,8 +30,8 @@ export function TitleAndTest({ style }) {
   return (
     <Wrap_mediaquery
       flexDirection="column"
-      justifyContent="space-around"
-      alignItems="baseline"
+      justifycontent="space-around"
+      alignitems="baseline"
       padding="1rem 1rem 0.8rem 0"
       position="relative"
     >
@@ -51,8 +51,8 @@ export function TitleAndTestsSmallForSeveral({ testData }) {
   return (
     <Wrap_mediaquery
       flexDirection="column"
-      justifyContent="space-around"
-      alignItems="baseline"
+      justifycontent="space-around"
+      alignitems="baseline"
       padding="1rem 1rem 0.8rem 0"
       position="relative"
     >

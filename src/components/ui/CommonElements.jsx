@@ -35,8 +35,8 @@ export const Wrap = styled.div`
   position: ${(props) => (props.position ? props.position : '')};
   padding-top: ${(props) => (props.paddingtop ? props.paddingtop : '')};
   flex-direction: ${(props) => (props.flexDirection ? props.flexDirection : '')};
-  justify-content: ${(props) => (props.justifyContent ? props.justifyContent : '')};
-  align-items: ${(props) => (props.alignItems ? props.alignItems : '')};
-  background-color: ${(props) => (props.backgroundColor ? props.backgroundColor : '')};
-  border-radius: ${(props) => (props.borderRadius ? props.borderRadius : '')};
+  justify-content: ${(props) => (props.justifycontent ? props.justifycontent : '')};
+  align-items: ${(props) => (props.alignitems ? props.alignitems : '')};
+  background-color: ${(props) => (props.backgroundcolor ? props.backgroundcolor : '')};
+  border-radius: ${(props) => (props.borderradius ? props.borderradius : '')};
 `;
