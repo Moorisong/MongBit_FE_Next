@@ -6,8 +6,10 @@
 - 내용 : MBTI 심리테스트 제공
 <br><br>
 
-**기존 CRA 저장소**
-- https://github.com/Moorisong/MongBit_Frontend
+**🔸최신 업데이트 중인 레포지토리🔸**
+- 주소 : https://github.com/Moorisong/MongBit_Frontend](https://github.com/Mong-Bit/mongbit_fe_next_v2)
+   - 모노레포 구현(웹 서비스, 어드민 백 오피스 서비스)
+   - **🔸최신 업데이트 중인 레포지토리입니다. 꼭 방문하여 봐주세요!🔸**
 <br><br>
 
  **🐱 CRA에서 Next.js로 옮긴 이유**
