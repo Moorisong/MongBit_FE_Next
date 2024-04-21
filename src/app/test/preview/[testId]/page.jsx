@@ -6,7 +6,7 @@ export async function generateMetadata({ params: { testId } }) {
   const testData = await getData(testId);
   const url = `${DOMAIN}/test/preview/${testId}`;
   const title = '몽빗 | MBTI 심리테스트 공작소';
-  const description = testData.content.replaceAll('<br>', '');
+  const description = testData.test.content.replaceAll('<br>', '');
   let imageUrl = `${DOMAIN}/test/preview/${testId}/opengraph-image`;
 
   return {

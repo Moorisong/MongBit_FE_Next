@@ -23,7 +23,7 @@ export default function PreviewTest() {
   useEffect(() => {
     const headers = getHeaders();
     apiBe.get(`/api/v1/tests/test/${params.testId}`, { headers }).then((res) => {
-      setData(res.data);
+      setData(res.data.test);
     });
   }, []);
 
