@@ -35,7 +35,7 @@ async function getData(testId) {
   const res = await fetch(`${DOMAIN_BE_PROD}/api/v1/tests/test/${testId}`, { headers });
 
   if (!res.ok) {
-    throw new Error('Failed to fetch data');
+    throw new Error('Failed to fetch data!');
   }
 
   return res.json();
