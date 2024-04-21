@@ -1,10 +1,11 @@
-import axios from 'axios';
 import cx from 'classnames';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-import { TYPE_ON_TEST, TYPE_MYPAGE, TYPE_COMMENT, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '../../constants/constant';
+import { apiBe } from '@/services';
+
+import { TYPE_ON_TEST, TYPE_MYPAGE, TYPE_COMMENT } from '../../constants/constant';
 import { decodeToken, formatTimeDifference, getHeaders } from '../../utils/util';
 import styles from './index.module.css';
 
@@ -48,7 +49,7 @@ export function CommentReadOnly(props) {
 
   return (
     <div className={styles.commentWrapper}>
-      <img src={props.data.thumbnailImage} className={`${styles.userImg}`} alt="comment" />
+      <img src={props.data.thumbnailImage} className={`${styles.userImg}`} alt="몽빗 MBTI 심리테스트 코멘트" />
       <div className={styles.userAndDateReadOnly}>
         <div>
           <span>{`${props.data.username} · `}</span>
@@ -86,9 +87,9 @@ export function Comment(props) {
 
     const headers = getHeaders();
 
-    axios
+    apiBe
       .patch(
-        `${DOMAIN_BE_PROD}/api/v1/test/comments`,
+        `/api/v1/test/comments`,
         {
           memberId: sessionStorage.getItem('mongBitmemeberId'),
           testId: props.testId,
@@ -100,10 +101,6 @@ export function Comment(props) {
       .then((res) => {
         if (res.status === 400) return alert(res.data);
         props.modifyComment();
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
       });
   }
 
@@ -115,7 +112,7 @@ export function Comment(props) {
   }
   return (
     <div className={styles.commentWrapper}>
-      <img src={props.data.thumbnailImage} className={`${styles.userImg}`} alt="comment"></img>
+      <img src={props.data.thumbnailImage} className={`${styles.userImg}`} alt="몽빗 MBTI 심리테스트 코멘트"></img>
       <div className={styles.userAndDate}>
         <div>
           <span>{`${props.data.username} · `}</span>
@@ -150,9 +147,9 @@ export function Comment(props) {
                     setIsCommentEditMode(false);
 
                     const headers = getHeaders();
-                    axios
+                    apiBe
                       .patch(
-                        `${DOMAIN_BE_PROD}/api/v1/test/comments`,
+                        `/api/v1/test/comments`,
                         {
                           memberId: sessionStorage.getItem('mongBitmemeberId'),
                           testId: props.testId,
@@ -164,10 +161,6 @@ export function Comment(props) {
                       .then((res) => {
                         if (res.status === 400) return alert(res.data);
                         props.modifyComment();
-                      })
-                      .catch((err) => {
-                        alert(err.response.data);
-                        router.push('/login');
                       });
                   }
                 }}

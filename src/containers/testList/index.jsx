@@ -1,18 +1,18 @@
 'use client';
-import axios from 'axios';
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import cx from 'classnames';
 import lottie from 'lottie-web';
 
-import { getHeaders, setUTMParameter } from '@/utils/util';
+import { getHeaders, setUTMParameter, addDailyVisitCount } from '@/utils/util';
+import { apiBe } from '@/services';
 
 import animationData_1 from './loading_2.json';
 import { TitleWithText } from '@/components/Titles';
 import { TestSetComplete } from '@/components/TestSets';
 import styles from './index.module.css';
-import { TYPE_TEST_LIST, TITLE_WITH_CONTENT, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '../../constants/constant';
+import { TYPE_TEST_LIST, TITLE_WITH_CONTENT } from '../../constants/constant';
 
 export default function TestList() {
   const [data, setData] = useState({
@@ -25,6 +25,10 @@ export default function TestList() {
   const titleStr = '💛  몽빗 심테';
   const contentStr = '몽빗에 있는 모든 테스트는 이곳에!';
   const router = useRouter();
+
+  useEffect(() => {
+    addDailyVisitCount();
+  }, []);
 
   useEffect(() => {
     const anim = lottie.loadAnimation({
@@ -44,20 +48,14 @@ export default function TestList() {
     setUTMParameter(router);
 
     const headers = getHeaders();
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/tests/${page}/10`, { headers })
-      .then((res) => {
-        setData((prev) => ({
-          ...prev,
-          testArr: res.data.testCoverDTOList,
-          hasNextPage: res.data.hasNextPage,
-        }));
-        setPage(page + 1);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
-      });
+    apiBe.get(`/api/v1/tests/${page}/10`, { headers }).then((res) => {
+      setData((prev) => ({
+        ...prev,
+        testArr: res.data.testCoverDTOList,
+        hasNextPage: res.data.hasNextPage,
+      }));
+      setPage(page + 1);
+    });
     const timer = setTimeout(() => {
       setSlideIn(true);
     }, 3000);
@@ -69,24 +67,18 @@ export default function TestList() {
 
   function clickSeeMoreBtn() {
     const headers = getHeaders();
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/tests/${page}/10`, { headers })
-      .then((res) => {
-        let copy = [...data.testArr];
-        res.data.testCoverDTOList.forEach((d) => {
-          copy.push(d);
-        });
-        setData((prev) => ({
-          ...prev,
-          testArr: copy,
-          hasNextPage: res.data.hasNextPage,
-        }));
-        setPage(page + 1);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
+    apiBe.get(`/api/v1/tests/${page}/10`, { headers }).then((res) => {
+      let copy = [...data.testArr];
+      res.data.testCoverDTOList.forEach((d) => {
+        copy.push(d);
       });
+      setData((prev) => ({
+        ...prev,
+        testArr: copy,
+        hasNextPage: res.data.hasNextPage,
+      }));
+      setPage(page + 1);
+    });
   }
 
   return (
@@ -123,7 +115,7 @@ export default function TestList() {
       {data.hasNextPage && (
         <div className={styles.seeMoreWrap} onClick={clickSeeMoreBtn}>
           <button>더보기</button>
-          <img src="/images/test/seeMoreIcon.svg" alt="see_more" />
+          <img src="/images/test/seeMoreIcon.svg" alt="몽빗 MBTI 심리테스트 목록 더보기 이미지" />
         </div>
       )}
 
@@ -138,7 +130,7 @@ export default function TestList() {
         <Link className={styles.goRandomStartBtn} href="/test/random">
           아무거나 시작
         </Link>
-        <img src="/images/test/nextIcon.svg" alt="next_icon" />
+        <img src="/images/test/nextIcon.svg" alt="몽빗 MBTI 심리테스트 목록 더보기 이미지" />
       </div>
     </div>
   );

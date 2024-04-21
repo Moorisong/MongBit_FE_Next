@@ -2,11 +2,14 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import axios from 'axios';
 import lottie from 'lottie-web';
+import { useRecoilState } from 'recoil';
 
-import { getHeaders, setUTMParameter } from '@/utils/util';
-import { TITLE_WITH_CONTENT, TYPE_LATEST_MAIN, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '@/constants/constant';
+import { showCoupangClickWrap } from '/atom.js';
+
+import { getHeaders, setUTMParameter, addDailyVisitCount } from '@/utils/util';
+import { TITLE_WITH_CONTENT, TYPE_LATEST_MAIN } from '@/constants/constant';
+import { apiBe } from '@/services';
 
 import styles from './index.module.css';
 import animationData_1 from './loading_1.json';
@@ -19,7 +22,7 @@ export default function main() {
   // Test 삭제
   // useEffect(()=>{
   //   const headers = getHeaders()
-  //   axios.delete(`${DOMAIN_BE_PROD}/api/v1/tests/test/649e4baa11bc25457a51f534`, {headers})
+  //   apiBe.delete(`/api/v1/tests/test/649e4baa11bc25457a51f534`, {headers})
   //   .then((res)=>{
   //     console.log('r--> ', res)
   //   })
@@ -30,6 +33,11 @@ export default function main() {
   const [latestTestData, setLatestTestData] = useState({
     testArr: [],
   });
+  const [, setGlobalCoupangState] = useRecoilState(showCoupangClickWrap);
+
+  useEffect(() => {
+    addDailyVisitCount();
+  }, []);
 
   useEffect(() => {
     const anim = lottie.loadAnimation({
@@ -47,24 +55,20 @@ export default function main() {
 
   useEffect(() => {
     setUTMParameter(router);
+    setGlobalCoupangState(false);
 
     sessionStorage.getItem('mbResult') === '' && sessionStorage.removeItem('mbResult');
     sessionStorage.getItem('mbTest') === '' && sessionStorage.removeItem('mbTest');
 
     const headers = getHeaders();
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/tests/0/4`, { headers })
-      .then((res) => {
-        setLatestTestData((prev) => ({
-          ...prev,
-          testArr: res.data.testCoverDTOList,
-        }));
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
-      });
+    apiBe.get(`/api/v1/tests/0/6`, { headers }).then((res) => {
+      setLatestTestData((prev) => ({
+        ...prev,
+        testArr: res.data.testCoverDTOList,
+      }));
+    });
   }, []);
+
   return (
     <div className={styles.containerWrap}>
       <TitleWithText

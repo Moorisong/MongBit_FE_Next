@@ -8,9 +8,10 @@
     max-width: 345px;
   }
 }
+
 @media (min-width: 376px) {
   .wrap {
-    width: 400px;
+    width: 420px;
   }
 
   .kakaoLogInBtn {
@@ -34,6 +35,7 @@
   background-size: cover;
   margin-bottom: 120px;
 }
+
 .textSamll {
   color: black;
   font-size: 0.8rem;
@@ -64,7 +66,7 @@
 
 .docs {
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

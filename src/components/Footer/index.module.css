@@ -4,6 +4,7 @@
     max-width: 345px;
   }
 }
+
 @media (min-width: 376px) {
   .wrap {
     width: 100%;
@@ -19,7 +20,7 @@
 }
 
 .moveBottom_4 {
-  width: 400px;
+  width: 420px;
 }
 
 .upper > p:first-child {
@@ -32,6 +33,7 @@
   justify-content: space-between;
   position: relative;
 }
+
 .under > p {
   margin-bottom: 5px;
   position: absolute;

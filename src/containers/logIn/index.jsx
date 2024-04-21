@@ -1,4 +1,8 @@
 'use client';
+import { useEffect } from 'react';
+
+import { addDailyVisitCount } from '@/utils/util';
+
 import styles from './index.module.css';
 import Footer from '../../components/Footer';
 import { DOMAIN, TYPE_LOGIN } from '../../constants/constant';
@@ -14,6 +18,10 @@ export default function Login() {
     window.location.href = url;
   };
 
+  useEffect(() => {
+    addDailyVisitCount();
+  }, []);
+
   return (
     <div className={styles.wrap}>
       <p className={styles.textSamll}>3초만에 로그인하고</p>
@@ -21,7 +29,7 @@ export default function Login() {
         <p>무료로 성격 검사</p>
         <p>친구에게 공유까지</p>
       </div>
-      <img src="/images/logIn/loginLogo.svg" alt="Logo_image" className={styles.logoImg} />
+      <img src="/images/logIn/loginLogo.svg" alt="몽빗 MBTI 심리테스트 사이트 로고 이미지" className={styles.logoImg} />
       <p className={styles.logoText}>© 2023 MongMoongCrew. All rights reserved</p>
       <button
         className={styles.kakaoLogInBtn}

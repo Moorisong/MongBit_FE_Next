@@ -1,16 +1,14 @@
 'use client';
-import axios from 'axios';
 import { useEffect, useState, useRef } from 'react';
-import { useRouter } from 'next/navigation';
 import lottie from 'lottie-web';
 
-import { getHeaders } from '@/utils/util';
+import { getHeaders, addDailyVisitCount } from '@/utils/util';
+import { apiBe } from '@/services';
 
 import animationData_1 from './loading_2.json';
 import TestPreview from '../../components/TestPreview';
 import Footer from '../../components/Footer';
 import styles from './index.module.css';
-import { DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '../../constants/constant';
 
 export default function RandomTest() {
   const [thumbnailStr, setThumbnailStr] = useState('');
@@ -18,8 +16,11 @@ export default function RandomTest() {
   const [description, setDescription] = useState('');
   const [thumbnailUri, setThumbnailUri] = useState('');
   const [testId, setTestId] = useState('');
-  const router = useRouter();
   const containerRef_1 = useRef(null);
+
+  useEffect(() => {
+    addDailyVisitCount();
+  }, []);
 
   useEffect(() => {
     const anim = lottie.loadAnimation({
@@ -31,19 +32,13 @@ export default function RandomTest() {
     });
 
     const headers = getHeaders();
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/tests/random`, { headers })
-      .then((res) => {
-        setThumbnailStr(res.data.title);
-        setPlayCnt(res.data.playCount);
-        setDescription(res.data.content);
-        setThumbnailUri(res.data.imageUrl);
-        setTestId(res.data.id);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
-      });
+    apiBe.get(`/api/v1/tests/random`, { headers }).then((res) => {
+      setThumbnailStr(res.data.title);
+      setPlayCnt(res.data.playCount);
+      setDescription(res.data.content);
+      setThumbnailUri(res.data.imageUrl);
+      setTestId(res.data.id);
+    });
 
     return () => {
       anim.destroy();

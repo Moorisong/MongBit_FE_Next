@@ -1,12 +1,12 @@
 'use client';
-import axios from 'axios';
 import { useEffect, useState, useRef } from 'react';
 import cx from 'classnames';
 import { useRouter, useParams } from 'next/navigation';
 import lottie from 'lottie-web';
 
-import { DOMAIN_BE_PROD, TYPE_MYPAGE, DOMAIN_BE_DEV } from '@/constants/constant';
-import { getHeaders, setUTMParameter } from '@/utils/util';
+import { TYPE_MYPAGE } from '@/constants/constant';
+import { getHeaders, setUTMParameter, addDailyVisitCount } from '@/utils/util';
+import { apiBe } from '@/services';
 
 import styles from './index.module.css';
 import QuestionAndAnswer from '@/components/QuestionAndAnswer';
@@ -30,18 +30,16 @@ export default function TestOn() {
   const totalQuestionNumber = testData.questions ? testData.questions.length : ' loading';
 
   useEffect(() => {
+    addDailyVisitCount();
+  }, []);
+
+  useEffect(() => {
     setUTMParameter(router);
 
     const headers = getHeaders();
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/tests/test/${params.testId}`, { headers })
-      .then((res) => {
-        setTestData(res.data);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
-      });
+    apiBe.get(`/api/v1/tests/test/${params.testId}`, { headers }).then((res) => {
+      setTestData(res.data);
+    });
 
     const anim = lottie.loadAnimation({
       container: containerRef_1.current,

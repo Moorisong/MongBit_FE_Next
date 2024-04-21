@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/server';
 
 import { DOMAIN_BE_PROD } from '@/constants/constant';
-import { getTestData } from '@/utils/util';
+import { getHeaders } from '@/utils/util';
 
 export const size = {
   width: 1200,
@@ -9,12 +9,14 @@ export const size = {
 };
 export const contentType = 'image/png';
 export const runtime = 'edge';
+export const alt = '몽빗 MBTI 심리테스트 프리뷰 페이지';
 
 export default async function Image({ params: { testId } }) {
   try {
     let imgUrl;
 
-    await getTestData(`${DOMAIN_BE_PROD}/api/v1/tests/test/${testId}`).then((r) => (imgUrl = r.imageUrl));
+    const testData = await getData(testId);
+    imgUrl = testData.imageUrl;
 
     return new ImageResponse(
       (
@@ -45,4 +47,15 @@ export default async function Image({ params: { testId } }) {
   } catch (err) {
     return null;
   }
+}
+
+async function getData(testId) {
+  const headers = getHeaders();
+  const res = await fetch(`${DOMAIN_BE_PROD}/api/v1/tests/test/${testId}`, { headers });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
 }

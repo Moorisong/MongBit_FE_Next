@@ -2,18 +2,24 @@
   .bgWhite {
     width: 375px;
   }
+
   .footerWrap {
-    width: 400px;
+    width: 375px;
   }
 }
+
 @media (min-width: 376px) {
   .bgWhite {
-    width: 400px;
+    width: 420px;
   }
 
   .footerWrap {
-    width: 400px;
+    width: 420px;
   }
+}
+
+.wrap {
+  position: relative;
 }
 
 .bgWhite {
@@ -30,4 +36,119 @@
 
 .displayNone {
   display: none;
+}
+
+.wrap {
+  height: 100%;
+}
+
+.coupangBox {
+  z-index: 1;
+  width: 420px;
+  height: 1000px;
+  position: fixed;
+  top: 90px;
+  left: calc(50% - 210px);
+}
+
+.coupangContent {
+  height: 75%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.2) 5%,
+    rgba(113, 47, 255, 0.5) 20%,
+    rgba(0, 0, 0, 1) 55%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.coupangContent > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 10px 35px 10px 35px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.coupangContent > div:first-child {
+  background-color: #712fff;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.coupangContent > div:first-child > img {
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+}
+
+.noScroll {
+  position: fixed;
+  top: 90px;
+  left: calc(50% - 210px);
+  width: 420px;
+  opacity: 0.5;
+  filter: blur(5px);
+}
+
+.bannerWrap {
+  position: relative;
+}
+
+.overlayBanner {
+  width: 350px !important;
+  height: 100px !important;
+  z-index: 11 !important;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.bannerWrap > div {
+  width: 15px;
+  height: 15px;
+  background-color: #712fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bannerWrap > img,
+.bannerWrap > div {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  width: 15px;
+  height: 15px;
+}
+
+.bannerWrap > img {
+  z-index: 12;
+  cursor: pointer;
+}
+
+.aboveBannerText {
+  color: white;
+}
+
+.aboveBannerText > p {
+  font-size: 0.8rem;
+}
+
+.aboveBannerText > strong {
+  font-size: 0.9rem;
+}
+
+.secondNumber {
+  font-size: 0.7rem;
+  color: white;
 }

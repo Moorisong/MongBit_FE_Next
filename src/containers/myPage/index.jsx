@@ -2,10 +2,10 @@
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
-import axios from 'axios';
 import lottie from 'lottie-web';
 
-import { decodeToken, getHeaders } from '@/utils/util';
+import { decodeToken, getHeaders, addDailyVisitCount } from '@/utils/util';
+import { apiBe } from '@/services';
 
 import animationData_1 from './loading_2.json';
 import animationData_2 from './seeMoreIcon.json';
@@ -13,7 +13,7 @@ import Footer from '../../components/Footer';
 import styles from './index.module.css';
 import { TestSetMyPage } from '../../components/TestSets';
 import { TitleWithText } from '../../components/Titles';
-import { TITLE_WITH_CONTENT, TYPE_MYPAGE, USER_INFO, DOMAIN_BE_PROD, DOMAIN_BE_DEV } from '../../constants/constant';
+import { TITLE_WITH_CONTENT, TYPE_MYPAGE, USER_INFO } from '../../constants/constant';
 import { Stroke } from '../../components/ButtonSets';
 
 export default function MyPage() {
@@ -69,6 +69,10 @@ export default function MyPage() {
   }, [clickSeeMore]);
 
   useEffect(() => {
+    addDailyVisitCount();
+  }, []);
+
+  useEffect(() => {
     // 토큰 없는 경우
     if (!decodeToken().state) {
       sessionStorage.setItem('ngb', pathName);
@@ -83,8 +87,8 @@ export default function MyPage() {
     };
     const headers = getHeaders();
 
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/member-test-result/${memberId}`, {
+    apiBe
+      .get(`/api/v1/member-test-result/${memberId}`, {
         params: params,
         headers: headers,
       })
@@ -96,10 +100,6 @@ export default function MyPage() {
         }));
         setLoading(false);
         setPage(page + 1);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
       });
   }, []);
 
@@ -116,9 +116,9 @@ export default function MyPage() {
       size: 10,
     };
     const headers = getHeaders();
-    axios
+    apiBe
       .get(
-        `${DOMAIN_BE_PROD}/api/v1/member-test-result/${memberId}`,
+        `/api/v1/member-test-result/${memberId}`,
         {
           params,
         },
@@ -137,10 +137,6 @@ export default function MyPage() {
         setLoading(false);
         setPage(page + 1);
         setClickSeeMore(false);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
       });
   }
   return (
@@ -150,7 +146,11 @@ export default function MyPage() {
           <TitleWithText type_1={TITLE_WITH_CONTENT} title="🦁 마이페이지" />
 
           <div className={styles.userInfoWrap}>
-            <img src={sessionStorage.getItem(USER_INFO + 'thumbnail')} alt="user_img" className={styles.userImg} />
+            <img
+              src={sessionStorage.getItem(USER_INFO + 'thumbnail')}
+              alt="몽빗 MBTI 심리테스트 사이트 유저 이미지"
+              className={styles.userImg}
+            />
             <div className={styles.spanWrap}>
               <p>{sessionStorage.getItem(USER_INFO + 'username')}</p>
               <p>{registerDate} 가입</p>
@@ -197,7 +197,7 @@ export default function MyPage() {
               ) : (
                 <>
                   <button>더보기</button>
-                  <img src="/images/test/seeMoreIcon.svg" alt="see_more" />
+                  <img src="/images/test/seeMoreIcon.svg" alt="몽빗 MBTI 심리테스트 마이페이지 더보기 아이콘" />
                 </>
               )}
             </div>

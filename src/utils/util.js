@@ -1,6 +1,8 @@
 import jwtDecode from 'jwt-decode';
 
-import { DOMAIN, TOKEN_NAME, USER_INFO, OG_STANDARD_IMAGE } from '../constants/constant';
+import { apiBe } from '@/services';
+
+import { DOMAIN, TOKEN_NAME, USER_INFO } from '../constants/constant';
 
 export function decodeToken() {
   if (typeof sessionStorage === 'undefined') return;
@@ -140,16 +142,6 @@ export function getHeaders() {
   };
 }
 
-// OG 이미지 세팅할때 사용
-
-export const getTestData = async (url) => {
-  const headers = getHeaders();
-  return await fetch(url, { headers })
-    .then((response) => response.json())
-    .then((res) => res)
-    .catch(() => OG_STANDARD_IMAGE);
-};
-
 export function setUTMParameter(router) {
   const userAgent = navigator.userAgent.toLowerCase();
   let utmSource = '';
@@ -173,4 +165,91 @@ export function setUTMParameter(router) {
     return window.location.href;
   }
   router.push(getUtmUrl());
+}
+
+export function numberFormatToKoreanStyle(number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+export function resetVisitStateInMidnihgt() {
+  // 일일 방문자 수 체크를 위해 자정이 되면 로컬 스토리지의 mg_visitCounted 값을 false로 업데이트
+  const now = new Date();
+  const storedDate = new Date(localStorage.getItem('mg_visitCounted'));
+
+  function needToresetState(nowDate) {
+    if (!storedDate || storedDate.setHours(0, 0, 0, 0) < nowDate.setHours(0, 0, 0, 0)) return true;
+    return false;
+  }
+
+  if (storedDate !== 'n' && needToresetState(now)) localStorage.setItem('mg_visitCounted', 'n');
+}
+
+export function addDailyVisitCount() {
+  // 일별 방문자 수 산정을 위한 API 호출 및 로컬 스토리지 업데이트
+
+  resetVisitStateInMidnihgt();
+
+  const headers = getHeaders();
+  const params = {
+    landingPage: encodeURI(window.location.href),
+  };
+
+  if (localStorage.getItem('mg_visitCounted') === null) localStorage.setItem('mg_visitCounted', 'n');
+  if (localStorage.getItem('mg_visitCounted') === 'n') {
+    apiBe.post('/api/v1/visits/', null, { headers, params }).then(() => {
+      localStorage.setItem('mg_visitCounted', new Date());
+    });
+  }
+}
+
+// ----------- Date 포맷 관련 함수들
+
+export function formatTodayDateTimeRange() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+
+  const startDate = `${year}-${month}-${day} 00:00:00`;
+  const endDate = `${year}-${month}-${day} 23:59:59`;
+
+  return {
+    startDate,
+    endDate,
+  };
+}
+
+export function formatTimeRangeFromToday(days) {
+  // days만큼 이전 날짜와 오늘 날짜를 리턴함
+
+  const now = new Date();
+  const pastDate = new Date(now);
+  pastDate.setDate(now.getDate() - days);
+
+  const pastYear = pastDate.getFullYear();
+  const pastMonth = String(pastDate.getMonth() + 1).padStart(2, '0');
+  const pastDay = String(pastDate.getDate()).padStart(2, '0');
+
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+
+  const startDate = `${pastYear}-${pastMonth}-${pastDay} 00:00:00`;
+  const endDate = `${year}-${month}-${day} 23:59:59`;
+
+  return {
+    startDate,
+    endDate,
+  };
+}
+
+export function formatDateToShort(dateString) {
+  // yyyy-MM-dd HH:mm:ss -> mm/dd 변환
+
+  const date = new Date(dateString);
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const shortDate = `${month}/${day}`;
+
+  return shortDate;
 }

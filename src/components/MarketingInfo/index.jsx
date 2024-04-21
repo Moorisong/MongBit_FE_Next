@@ -1,14 +1,11 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 
-import { DOMAIN_BE_PROD } from '@/constants/constant';
 import { getHeaders } from '@/utils/util';
+import { apiBe } from '@/services';
 
 import styles from './index.module.css';
 
 export default function MarketingInfo() {
-  const router = useRouter();
   const [data, setData] = useState({
     logInCount: 'loading',
     shareCount: 'loading',
@@ -20,35 +17,17 @@ export default function MarketingInfo() {
   useEffect(() => {
     const headers = getHeaders();
 
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/loginTracker/count`, { headers })
-      .then((res) => {
-        setData((prev) => ({ ...prev, logInCount: res.data }));
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
-      });
+    apiBe.get(`/api/v1/loginTracker/count`, { headers }).then((res) => {
+      setData((prev) => ({ ...prev, logInCount: res.data }));
+    });
 
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/shares/count/type?type=KAKAO`, { headers })
-      .then((res) => {
-        setData((prev) => ({ ...prev, shareCount: res.data }));
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
-      });
+    apiBe.get(`/api/v1/shares/count/type?type=KAKAO`, { headers }).then((res) => {
+      setData((prev) => ({ ...prev, shareCount: res.data }));
+    });
 
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/shares/count/type?type=LINK`, { headers })
-      .then((res) => {
-        setData((prev) => ({ ...prev, linkCopyCount: res.data }));
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
-      });
+    apiBe.get(`/api/v1/shares/count/type?type=LINK`, { headers }).then((res) => {
+      setData((prev) => ({ ...prev, linkCopyCount: res.data }));
+    });
   }, []);
 
   function inputValChange(evt) {
@@ -57,26 +36,16 @@ export default function MarketingInfo() {
 
   function getMemberLoginCount() {
     const headers = getHeaders();
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/loginTracker/${memberId}/count`, { headers })
-      .then((res) => {
-        setData((prev) => ({ ...prev, resultCountMemberId: ['로그인 횟수', res.data] }));
-      })
-      .catch((err) => {
-        alert(err.response.data);
-      });
+    apiBe.get(`/api/v1/loginTracker/${memberId}/count`, { headers }).then((res) => {
+      setData((prev) => ({ ...prev, resultCountMemberId: ['로그인 횟수', res.data] }));
+    });
   }
 
   function getMemberShareCount() {
     const headers = getHeaders();
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/members/${memberId}/shares/count`, { headers })
-      .then((res) => {
-        setData((prev) => ({ ...prev, resultCountMemberId: ['공유 횟수', res.data] }));
-      })
-      .catch((err) => {
-        alert(err.response.data);
-      });
+    apiBe.get(`/api/v1/members/${memberId}/shares/count`, { headers }).then((res) => {
+      setData((prev) => ({ ...prev, resultCountMemberId: ['공유 횟수', res.data] }));
+    });
   }
 
   return (

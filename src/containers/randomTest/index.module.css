@@ -1,10 +1,11 @@
 .wrap {
-  width: 400px;
+  width: 420px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: white;
 }
+
 .loadImgWrap_1 {
   width: 370px;
   height: 100vh;

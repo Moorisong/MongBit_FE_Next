@@ -3,11 +3,13 @@
     width: 375px;
   }
 }
+
 @media (min-width: 376px) {
   .wrap {
-    width: 400px;
+    width: 420px;
   }
 }
+
 .wrap {
   height: 100%;
   background-color: #fff5da;
@@ -16,6 +18,7 @@
   align-items: center;
   position: relative;
 }
+
 .content {
   margin: 130px 0 110px 0;
   display: flex;

@@ -1,12 +1,12 @@
-import axios from 'axios';
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import lottie from 'lottie-web';
 import cx from 'classnames';
 
-import { DOMAIN, DOMAIN_BE_PROD, DOMAIN_BE_DEV, TYPE_COMMENT, COMMENT_TIME } from '@/constants/constant';
+import { DOMAIN, TYPE_COMMENT, COMMENT_TIME } from '@/constants/constant';
 import { decodeToken, shareToKakaotalk_result, getHeaders } from '@/utils/util';
+import { apiBe } from '@/services';
 
 import styles from './index.module.css';
 import CoupangAdv_1 from '../CoupangAdv_1';
@@ -19,16 +19,16 @@ export default function TestResult(props) {
   const [commentIndex, setCommentIndex] = useState([0, false]);
   const [commentLoading, setCommentLoading] = useState(true);
   const [commentChanged, setCommentChanged] = useState(true);
-  let [commentValue, setCommentValue] = useState('');
+  const [commentValue, setCommentValue] = useState('');
   const [commentCnt, setCommentCnt] = useState(0);
-  let [commentSeeMoreLoading, setCommentSeeMoreLoading] = useState(false);
+  const [commentSeeMoreLoading, setCommentSeeMoreLoading] = useState(false);
   const [canAddComment, setCanAddComment] = useState(true);
-  let [isSubmittingComment, setIsSubmittingComment] = useState(false);
+  const [isSubmittingComment, setIsSubmittingComment] = useState(false);
 
   // const [likeLoading, setLikeLoading] = useState(true);
   const [likeChanged, setLikeChanged] = useState(true);
-  let [linkCopyState, setLinkCopyState] = useState(false);
-  let [isSubmittingLike, setIsSubmittingLike] = useState(false);
+  const [linkCopyState, setLinkCopyState] = useState(false);
+  const [isSubmittingLike, setIsSubmittingLike] = useState(false);
 
   const [slideIn, setSlideIn] = useState(false);
   const [likeData, setLikeData] = useState({
@@ -36,7 +36,7 @@ export default function TestResult(props) {
     likeCnt: 0,
   });
 
-  let [data, setData] = useState({
+  const [data, setData] = useState({
     testId: props.testId,
     thumbnailStr: props.thumbnailStr,
     thumbnailUri: props.thumbnailUri,
@@ -47,17 +47,11 @@ export default function TestResult(props) {
 
   useEffect(() => {
     const headers = getHeaders();
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/test/comments/${data.testId}/page/${commentIndex[0]}`, { headers })
-      .then((res) => {
-        setData((prev) => ({ ...prev, comment: res.data.commentDTOList }));
-        setCommentLoading(false);
-        setCommentIndex([commentIndex[0] + 1, res.data.hasNextPage]);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
-      });
+    apiBe.get(`/api/v1/test/comments/${data.testId}/page/${commentIndex[0]}`, { headers }).then((res) => {
+      setData((prev) => ({ ...prev, comment: res.data.commentDTOList }));
+      setCommentLoading(false);
+      setCommentIndex([commentIndex[0] + 1, res.data.hasNextPage]);
+    });
   }, [commentChanged]);
 
   useEffect(() => {
@@ -78,7 +72,7 @@ export default function TestResult(props) {
 
   data.comment.sort((a, b) => new Date(b.commentDate) - new Date(a.commentDate));
 
-  const memberId = sessionStorage.getItem('mongBitmemeberId');
+  const memberId = typeof window !== 'undefined' ? sessionStorage.getItem('mongBitmemeberId') : '';
   const resultPathName =
     location.pathname.indexOf('record') > -1 ? location.pathname : `/record/${props.testId}/${props.testResultId}`;
   const router = useRouter();
@@ -116,38 +110,29 @@ export default function TestResult(props) {
   useEffect(() => {
     const headers = getHeaders();
     const fetchLikeDataLogIned = async () => {
-      try {
-        const [stateResponse, cntResponse] = await Promise.all([
-          axios.get(`${DOMAIN_BE_PROD}/api/v1/test/${props.testId}/${memberId}/like`, { headers }),
-          axios.get(`${DOMAIN_BE_PROD}/api/v1/test/${props.testId}/like/count`, {
-            headers,
-          }),
-        ]);
+      const [stateResponse, cntResponse] = await Promise.all([
+        apiBe.get(`/api/v1/test/${props.testId}/${memberId}/like`, { headers }),
+        apiBe.get(`/api/v1/test/${props.testId}/like/count`, {
+          headers,
+        }),
+      ]);
 
-        setLikeData((prev) => ({
-          ...prev,
-          likeState: stateResponse.data,
-          likeCnt: cntResponse.data,
-        }));
-        // setLikeLoading(false);
-      } catch (err) {
-        alert(err.response.data);
-        router.push('/login');
-      }
+      setLikeData((prev) => ({
+        ...prev,
+        likeState: stateResponse.data,
+        likeCnt: cntResponse.data,
+      }));
+      // setLikeLoading(false);
     };
 
     const fetchLikeDataNoLogined = async () => {
       const headers = getHeaders();
-      axios
-        .get(`${DOMAIN_BE_PROD}/api/v1/test/${props.testId}/like/count`, {
+      apiBe
+        .get(`/api/v1/test/${props.testId}/like/count`, {
           headers,
         })
         .then((res) => {
           setLikeData((prev) => ({ ...prev, likeCnt: res.data }));
-        })
-        .catch((err) => {
-          alert(err.response.data);
-          router.push('/login');
         });
       // setLikeLoading(false);
     };
@@ -161,28 +146,28 @@ export default function TestResult(props) {
 
   useEffect(() => {
     const headers = getHeaders();
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/test/${data.testId}/comments/count`, {
+    apiBe
+      .get(`/api/v1/test/${data.testId}/comments/count`, {
         headers,
       })
       .then((res) => {
         setCommentCnt(res.data);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
       });
   }, [commentChanged]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setSlideIn(true);
-    }, 2000);
+    let timer;
+
+    if (!props.loadingState) {
+      timer = setTimeout(() => {
+        setSlideIn(true);
+      }, 2000);
+    }
 
     return () => {
-      clearTimeout(timer);
+      if (timer) clearTimeout(timer);
     };
-  }, []);
+  }, [props.loadingState]);
 
   function clickRetry() {
     router.push(`/test/preview/${props.testId}`);
@@ -205,10 +190,7 @@ export default function TestResult(props) {
         likeState: false,
         likeCnt: prev.likeCnt - 1,
       }));
-      await axios.delete(`${DOMAIN_BE_PROD}/api/v1/test/${props.testId}/${memberId}/like`, { headers }).catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
-      });
+      await apiBe.delete(`/api/v1/test/${props.testId}/${memberId}/like`, { headers });
       setLikeChanged(!likeChanged);
     } else {
       setLikeData((prev) => ({
@@ -216,16 +198,11 @@ export default function TestResult(props) {
         likeState: true,
         likeCnt: prev.likeCnt + 1,
       }));
-      await axios
-        .post(
-          `${DOMAIN_BE_PROD}/api/v1/test/${props.testId}/${memberId}/like`,
-          { testId: props.testId, memberId: memberId },
-          { headers },
-        )
-        .catch((err) => {
-          alert(err.response.data);
-          router.push('/login');
-        });
+      await apiBe.post(
+        `/api/v1/test/${props.testId}/${memberId}/like`,
+        { testId: props.testId, memberId: memberId },
+        { headers },
+      );
       setLikeChanged(!likeChanged);
     }
     setIsSubmittingLike(false);
@@ -233,9 +210,9 @@ export default function TestResult(props) {
 
   async function addComment() {
     const headers = getHeaders();
-    axios
+    apiBe
       .post(
-        `${DOMAIN_BE_PROD}/api/v1/test/comments`,
+        `/api/v1/test/comments`,
         {
           memberId: sessionStorage.getItem('mongBitmemeberId'),
           testId: data.testId,
@@ -246,10 +223,6 @@ export default function TestResult(props) {
       .then((res) => {
         setCommentIndex([0, res.data.hasNextPage]);
         setCommentChanged(!commentChanged);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
       });
     setIsSubmittingComment(false);
   }
@@ -319,22 +292,16 @@ export default function TestResult(props) {
   function clikeSeeMoreBtn() {
     setCommentSeeMoreLoading(true);
     const headers = getHeaders();
-    axios
-      .get(`${DOMAIN_BE_PROD}/api/v1/test/comments/${data.testId}/page/${commentIndex[0]}`, { headers })
-      .then((res) => {
-        let newArr = [...data.comment];
-        res.data.commentDTOList.forEach((d) => {
-          newArr.push(d);
-        });
-        setData((prev) => ({ ...prev, comment: newArr }));
-        setCommentLoading(false);
-        setCommentIndex([commentIndex[0] + 1, res.data.hasNextPage]);
-        setCommentSeeMoreLoading(false);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
+    apiBe.get(`/api/v1/test/comments/${data.testId}/page/${commentIndex[0]}`, { headers }).then((res) => {
+      let newArr = [...data.comment];
+      res.data.commentDTOList.forEach((d) => {
+        newArr.push(d);
       });
+      setData((prev) => ({ ...prev, comment: newArr }));
+      setCommentLoading(false);
+      setCommentIndex([commentIndex[0] + 1, res.data.hasNextPage]);
+      setCommentSeeMoreLoading(false);
+    });
   }
 
   function deleteCommnet(com) {
@@ -343,25 +310,19 @@ export default function TestResult(props) {
       id: com.id,
       memberId: sessionStorage.getItem('mongBitmemeberId'),
     };
-    axios
-      .delete(`${DOMAIN_BE_PROD}/api/v1/test/comments`, { headers, data })
-      .then(() => {
-        setCommentIndex((prev) => [0, prev[1]]);
-        setCommentChanged(!commentChanged);
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        router.push('/login');
-      });
+    apiBe.delete(`/api/v1/test/comments`, { headers, data }).then(() => {
+      setCommentIndex((prev) => [0, prev[1]]);
+      setCommentChanged(!commentChanged);
+    });
   }
   function clickLinkCopy() {
     const headers = getHeaders();
     const memeberId = sessionStorage.getItem('mongBitmemeberId') || 'anonymous';
 
     if (!decodeToken().role || decodeToken().role === 'ROLE_USER') {
-      axios
+      apiBe
         .post(
-          `${DOMAIN_BE_PROD}/api/v1/tests/share`,
+          `/api/v1/tests/share`,
           {
             testId: data.testId,
             memberId: memeberId,
@@ -372,10 +333,6 @@ export default function TestResult(props) {
         .then((res) => {
           setCommentIndex([0, res.data.hasNextPage]);
           setCommentChanged(!commentChanged);
-        })
-        .catch((err) => {
-          alert(err.response.data);
-          router.push('/login');
         });
     }
 
@@ -383,12 +340,12 @@ export default function TestResult(props) {
   }
   return (
     <div className={styles.resultWrap}>
-      <img className={styles.resultImg} src={props.imgUri} alt="test_result_image" />
+      <img className={styles.resultImg} src={props.imgUri} alt="몽빗 MBTI 심리테스트 결과 이미지" />
       <p>{[props.titleStr]}</p>
       <ul className={styles.resultStrList}>
         {props.contentStrArr.map((str, i) => (
           <li key={i}>
-            <img src="/images/test/circleIcon.svg" alt="circle" />
+            <img src="/images/test/circleIcon.svg" alt="몽빗 MBTI 심리테스트 결과 목록 인덱스 이미지" />
             <p>{str}</p>
           </li>
         ))}
@@ -410,7 +367,7 @@ export default function TestResult(props) {
           <div className={styles.retryDiv} onClick={clickRetry}>
             <p>다시 해보기</p>
           </div>
-          <img src="/images/test/retryIcon.svg" alt="retry" />
+          <img src="/images/test/retryIcon.svg" alt="몽빗 MBTI 심리테스트 다시 해보기 버튼 이미지" />
         </div>
 
         <div className={styles.partWrap} onClick={clickLikeBtn}>
@@ -445,7 +402,11 @@ export default function TestResult(props) {
         <AddCommentButton onClick={clickAddCommentBtn} />
       </div>
 
-      <div className={styles.commentWrap}>
+      <div
+        className={cx(styles.commentWrap, {
+          [styles.commentWrapInResult_paddingBottom]: location.pathname.includes('result'),
+        })}
+      >
         {commentLoading ? (
           <div className={styles.loadImgWrap_2}>
             <div ref={containerRef_2}></div>
@@ -481,7 +442,7 @@ export default function TestResult(props) {
           ) : (
             <>
               <button onClick={clikeSeeMoreBtn}>더보기</button>
-              <img src="/images/test/seeMoreIcon.svg" alt="see_more" />
+              <img src="/images/test/seeMoreIcon.svg" alt="몽빗 MBTI 심리테스트 코멘트 더보기 이미지" />
             </>
           )}
         </div>

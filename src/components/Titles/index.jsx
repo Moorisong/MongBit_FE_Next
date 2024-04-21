@@ -1,7 +1,7 @@
 import styles from './index.module.css';
 import { TITLE_WITH_CONTENT, TYPE_TEST_LIST, TYPE_MYPAGE } from '../../constants/constant';
 
-function TitleWithText(props) {
+export function TitleWithText(props) {
   const cn_1 = props.type_1 === TITLE_WITH_CONTENT ? `${styles.title} ${styles.withContent}` : `${styles.title}`;
   const cn_2 =
     props.type_2 === TYPE_TEST_LIST
@@ -17,4 +17,6 @@ function TitleWithText(props) {
   );
 }
 
-export { TitleWithText };
+export function TitleInDashboard(props) {
+  return <p className={styles.titleInDashboard}>{props.text}</p>;
+}

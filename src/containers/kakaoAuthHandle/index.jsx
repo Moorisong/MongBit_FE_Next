@@ -1,11 +1,11 @@
 'use client';
-import axios from 'axios';
 import { useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import lottie from 'lottie-web';
 
 import { getHeaders, decodeToken } from '@/utils/util';
-import { DOMAIN_BE_PROD, DOMAIN_BE_DEV, TOKEN_NAME, USER_INFO } from '@/constants/constant';
+import { TOKEN_NAME, USER_INFO } from '@/constants/constant';
+import { apiBe } from '@/services';
 
 import animationData_1 from './loading_1.json';
 import Footer from '@/components/Footer';
@@ -34,8 +34,8 @@ export default function KakaoAuthHandle() {
   useEffect(() => {
     let headers = getHeaders();
     if (code) {
-      axios
-        .get(`${DOMAIN_BE_PROD}/login/oauth2/kakao/code?code=${code}`, {
+      apiBe
+        .get(`/login/oauth2/kakao/code?code=${code}`, {
           headers,
         })
         .then((response) => {
@@ -53,12 +53,7 @@ export default function KakaoAuthHandle() {
 
           // 로그인 트랙킹 api 호출
           if (!decodeToken().role || decodeToken().role === 'ROLE_USER') {
-            axios
-              .post(`${DOMAIN_BE_PROD}/api/v1/loginTracker/${response.data.memberId}/track`, {}, { headers })
-              .catch((err) => {
-                alert(err.response.data);
-                router.push('/login');
-              });
+            apiBe.post(`/api/v1/loginTracker/${response.data.memberId}/track`, {}, { headers });
           }
 
           if (prev) {
@@ -66,12 +61,8 @@ export default function KakaoAuthHandle() {
             sessionStorage.setItem('ngb', false);
             prev.indexOf('need_login') > -1 ? router.back() : router.push(prev);
           } else {
-            router.push('/main');
+            router.push('/');
           }
-        })
-        .catch((err) => {
-          alert(err.response.data);
-          router.push('/login');
         });
     }
   }, []);

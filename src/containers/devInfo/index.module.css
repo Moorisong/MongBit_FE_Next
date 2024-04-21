@@ -10,19 +10,24 @@
 
 @media (min-width: 376px) {
   .footerWrap {
-    width: 400px;
+    width: 420px;
   }
 
   .logoImgWrap {
-    width: 400;
+    width: 420;
   }
 }
 
 .wrap {
+  height: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: white;
+}
+
+.wrap ul > li span {
+  display: inline-block;
 }
 
 .footerWrap {
@@ -67,4 +72,38 @@
   color: #979797;
   font-size: 0.7rem;
   margin-bottom: 110px;
+}
+
+.gitHub {
+  padding-left: 5px;
+}
+
+.instagram {
+  margin-top: 10px;
+  padding-left: 5px;
+  position: relative;
+}
+
+.gitHub > a {
+  background-image: url('../../../public/images/footer/gitHub.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  padding-left: 20px;
+}
+
+.instagram > a {
+  background-image: url('../../../public/images/footer/instagram.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  position: absolute;
+  top: 6px;
+  right: -19px;
 }

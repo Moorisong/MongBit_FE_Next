@@ -2,6 +2,7 @@
   .footerWrap {
     width: 375px;
   }
+
   .content {
     width: 375px;
   }
@@ -9,10 +10,11 @@
 
 @media (min-width: 376px) {
   .footerWrap {
-    width: 400px;
+    width: 420px;
   }
+
   .content {
-    width: 400px;
+    width: 420px;
   }
 }
 
@@ -22,6 +24,7 @@
   align-items: center;
   background-color: white;
 }
+
 .content {
   height: 700px;
   display: flex;
@@ -29,9 +32,11 @@
   align-items: center;
   justify-content: center;
 }
+
 .content > div {
   width: 100px;
 }
+
 .footerWrap {
   display: flex;
   justify-content: center;

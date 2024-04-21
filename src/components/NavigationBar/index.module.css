@@ -11,7 +11,7 @@
   .menuWrap {
     width: 180px;
     height: 100%;
-    left: calc(50% - 400px);
+    left: calc(50% - 410px);
     top: -1px;
     transition: all 0.3s ease-in-out;
   }
@@ -28,19 +28,19 @@
   }
 
   .wrap {
-    width: 400px;
+    width: 420px;
   }
 
   .menuWrap {
     width: 200px;
     height: 100%;
-    left: calc(50% - 400px);
+    left: calc(50% - 410px);
     top: -1px;
     transition: all 0.3s ease-in-out;
   }
 
   .menuMoveToRight {
-    left: calc(50% - 200px);
+    left: calc(50% - 210px);
   }
 }
 
@@ -120,6 +120,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  cursor: pointer;
 }
 
 .menuWrap > ul {
@@ -135,14 +136,14 @@
   width: 300px;
   height: 100%;
   position: fixed;
-  left: calc(50% - 500px);
+  left: calc(50% - 510px);
   top: -1px;
   z-index: 2;
   background-color: #f4f4f4;
 }
 
 .blackModal {
-  width: 400px;
+  width: 420px;
   position: absolute;
   top: 0;
   opacity: 0;
@@ -245,4 +246,8 @@
   width: 60px;
   height: 40px;
   margin-left: 30px;
+}
+
+.cursorPointer {
+  cursor: default;
 }

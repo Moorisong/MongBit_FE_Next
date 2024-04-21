@@ -1,17 +1,10 @@
 'use client';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-import {
-  ALL_FULLFILL,
-  NUMBER_500,
-  LENGTH_OVER_500,
-  DOMAIN_BE_PROD,
-  DOMAIN_BE_DEV,
-  TOKEN_NAME,
-} from '@/constants/constant';
+import { ALL_FULLFILL, NUMBER_500, LENGTH_OVER_500, TOKEN_NAME } from '@/constants/constant';
 import { getHeaders } from '@/utils/util';
+import { apiBe } from '@/services';
 
 import styles from './index.module.css';
 import { ImagePart, InfoPart, QuestionPart, ResultPart } from '../TestAddElements';
@@ -35,16 +28,10 @@ export default function TestAdd() {
   useEffect(() => {
     if (!imgUploading) {
       const headers = getHeaders();
-      axios
-        .post(`${DOMAIN_BE_PROD}/api/v1/tests/test`, data, { headers })
-        .then(() => {
-          alert('테스트 등록 완료. 고생 많으셨어요 :)');
-          router.push('/main');
-        })
-        .catch((err) => {
-          alert(err.response.data);
-          router.push('/login');
-        });
+      apiBe.post(`/api/v1/tests/test`, data, { headers }).then(() => {
+        alert('테스트 등록 완료. 고생 많으셨어요 :)');
+        router.push('/');
+      });
     }
   }, [imgUploading]);
 
@@ -139,7 +126,7 @@ export default function TestAdd() {
     };
 
     imgCntArr.forEach((fdata) => {
-      const promise = axios.post(`${DOMAIN_BE_PROD}/upload`, fdata, {
+      const promise = apiBe.post(`/upload`, fdata, {
         headers,
       });
       promiseArr.push(promise);
@@ -158,10 +145,8 @@ export default function TestAdd() {
         });
         setImgUploading(false);
       })
-      .catch((err) => {
-        alert(err.response.data);
+      .catch(() => {
         setImgUploading(false);
-        router.push('/login');
       });
   }
 
@@ -183,7 +168,7 @@ export default function TestAdd() {
   }
 
   function onClickMain() {
-    router.push('/main');
+    router.push('/admin');
   }
 
   return (
@@ -195,7 +180,7 @@ export default function TestAdd() {
         formData.append('file', file);
 
         const headers = getHeaders()
-        axios.post(`${DOMAIN_BE_PROD}/upload`, formData, {
+        apiBe.post(`/upload`, formData, {
           headers,
         });
       }} /> */}

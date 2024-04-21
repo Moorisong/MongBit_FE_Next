@@ -3,8 +3,9 @@
     width: 375px;
   }
 }
+
 @media (min-width: 376px) {
   .iframe {
-    width: 400px;
+    width: 420px;
   }
 }

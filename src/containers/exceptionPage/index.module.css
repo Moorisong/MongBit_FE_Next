@@ -6,20 +6,23 @@
   .footerWrap {
     width: 375px;
   }
+
   .logoImgWrap {
     width: 375px;
   }
 }
+
 @media (min-width: 376px) {
   .bgWhite {
-    width: 400px;
+    width: 420px;
   }
 
   .footerWrap {
-    width: 400px;
+    width: 420px;
   }
+
   .logoImgWrap {
-    width: 400px;
+    width: 420px;
   }
 }
 
@@ -28,6 +31,7 @@
   justify-content: center;
   background-color: white;
 }
+
 .logoImgWrap {
   background-color: white;
   display: flex;
@@ -35,6 +39,7 @@
   align-items: center;
   padding-bottom: 50px;
 }
+
 .textBox {
   color: black;
   font-size: 1.4rem;

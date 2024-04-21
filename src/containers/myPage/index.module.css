@@ -3,18 +3,21 @@
     width: 345px;
   }
 }
+
 @media (min-width: 376px) {
   .userInfoWrap {
     width: 370px;
   }
 }
+
 .userInfoWrap {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
+
 .wrap {
-  width: 400px;
+  width: 420px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -66,6 +69,7 @@
 .seeMoreWrap {
   cursor: pointer;
 }
+
 .seeMoreWrap > button {
   color: #979797;
   font-size: 0.8rem;
@@ -90,9 +94,11 @@
 .noResultWrap {
   margin: 150px 0 200px 0;
 }
+
 .noResultWrap > p {
   margin-top: 50px;
 }
+
 .goTestLink {
   text-align: center;
   padding: 8px;
@@ -105,7 +111,7 @@
 .footerWrap {
   position: absolute;
   bottom: 0;
-  width: 400px;
+  width: 420px;
   display: flex;
   flex-direction: column;
   align-items: center;
