@@ -38,7 +38,7 @@ export default function TestOn() {
 
     const headers = getHeaders();
     apiBe.get(`/api/v1/tests/test/${params.testId}`, { headers }).then((res) => {
-      setTestData(res.data);
+      setTestData(res.data.test);
     });
 
     const anim = lottie.loadAnimation({
