@@ -1,4 +1,4 @@
-import { DOMAIN, DOMAIN_BE_PROD } from '@/constants/constant';
+import { DOMAIN } from '@/constants/constant';
 import { getHeaders } from '@/utils/util';
 import PreviewTest from '@/containers/previewTest/indxe';
 
@@ -32,7 +32,10 @@ export async function generateMetadata({ params: { testId } }) {
 
 async function getData(testId) {
   const headers = getHeaders();
-  const res = await fetch(`${DOMAIN_BE_PROD}/api/v1/tests/test/${testId}`, { headers });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BE_URL_PROD}/api/v1/tests/test/${testId}`, {
+    method: 'GET',
+    headers,
+  });
 
   if (!res.ok) {
     throw new Error('Failed to fetch data!');
