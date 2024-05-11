@@ -33,11 +33,11 @@ export default function RandomTest() {
 
     const headers = getHeaders();
     apiBe.get(`/api/v1/tests/random`, { headers }).then((res) => {
-      setThumbnailStr(res.data.title);
-      setPlayCnt(res.data.playCount);
-      setDescription(res.data.content);
-      setThumbnailUri(res.data.imageUrl);
-      setTestId(res.data.id);
+      setThumbnailStr(res.data.test.title);
+      setPlayCnt(res.data.test.playCount);
+      setDescription(res.data.test.content);
+      setThumbnailUri(res.data.test.imageUrl);
+      setTestId(res.data.test.id);
     });
 
     return () => {
